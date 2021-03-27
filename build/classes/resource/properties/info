@@ -1,0 +1,9 @@
+# Database Connect Info
+driver=oracle.jdbc.driver.OracleDriver
+dburl=jdbc:oracle:thin:@localhost:1521:xe
+user=scott
+pass=tiger
+
+# File Server Info
+# upload=C:/Users/ELIE/eclipse/workspace/board/WebContent/z01_upload/
+# uploadTmp=C:/Users/ELIE/eclipse/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/board/z01_upload/
