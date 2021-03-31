@@ -31,20 +31,7 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#regBtn").click(function(){
-       //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=groupInsForm";
-    });
- });
-</script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 <!-- Navbar -->
@@ -61,69 +48,51 @@ $(document).ready(function(){
           <div class="col-sm-6">
             <h1 class="m-0">Group</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6"> 
-            <ol class="breadcrumb float-sm-right">
+          <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Admin</li>
             </ol>
-           </div>  <!-- .col -->
+          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    
-    
-    
-    
-<!-- card -->
-      <div class="card">
+ 
+
+   <!-- Horizontal Form -->
+            <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">그룹</h3>
-                <button type="button" id="regBtn" class="btn btn-info float-right">새 그룹</button>
+                <h3 class="card-title">새 그룹</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th style="text-align:center;">그룹명</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>서버팀</td>
-                  </tr>
-                  <tr>
-                    <td>관리팀</td>
-                  </tr>
-                  </tbody>
-               <!--<tfoot>
-                  	<tr>
-                    <th>관리팀</th>
-                  	</tr>
-                  </tfoot> -->
-                </table>
-              </div>
-              <!-- /.card-body -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">그룹명</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputEmail3" placeholder="그룹명">
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-info">등록</button>
+                </div>
+                <!-- /.card-footer -->
+              </form>
             </div>
             <!-- /.card -->
-            
 
-     
-     </div>
+      </div>
   <!-- /.content-wrapper -->
               <!-- Footer -->
   <jsp:include page="../a00_common/a02_footer.jsp"/>
   
-         <!-- Control Sidebar
-  <aside class="control-sidebar control-sidebar-dark">
-  //   Control sidebar content goes here
-  </aside>
-   /.control-sidebar -->
-    
-
 </div><!-- wrapper -->
-
+        
+      
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -152,19 +121,6 @@ $(document).ready(function(){
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
@@ -172,20 +128,6 @@ $(document).ready(function(){
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>  
 <script>
 $(function () {
   bsCustomFileInput.init();
