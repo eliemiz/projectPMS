@@ -16,6 +16,13 @@ public class A01_ProjectController {
 	// http://localhost:7080/projectPMS/project.do?method=list
 	@GetMapping(params = "method=list")
 	public String ProjectList() {
-		return "a01_project\\a00_project list";
+		return "a01_project\\project_manage";
 	}
+	// http://localhost:7080/projectPMS/project.do?method=insForm
+	@GetMapping(params = "method=insForm")
+	public String insForm() {
+		return "a01_project\\project_edit";
+	}
+	
+	
 }

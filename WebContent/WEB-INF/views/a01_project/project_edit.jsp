@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+ 
 
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -45,64 +45,78 @@
 
   <!-- Main Sidebar Container -->
   <jsp:include page="../a00_common/a01_sidebar.jsp"/>  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
 
-<div class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="index2.html"><b>로그인</b></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-  <div class="card-body login-card-body">
-  
-        <form action="" method="post">
-        <div class="input-group mb-3">
-          아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input type="id" class="form-control" >
-          <div class="input-group-append">
-            <div class="input-group-text">
+  <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <a href="" class="h1">새 프로젝트</a>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
             </div>
-          </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label for="inputName">이름</label>
+                <input type="text" id="inputName" class="form-control" value="">
+              </div>
+              <div class="form-group">
+                <label for="inputDescription">설명</label>
+                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputClientCompany">식별자</label>
+                <input type="text" id="inputClientCompany" class="form-control" value="">
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">홈페이지</label>
+                <input type="text" id="inputProjectLeader" class="form-control" value="">
+              </div>
+               <label for="inputProjectLeader">공개</label>&nbsp;&nbsp;
+              <div class="icheck-success d-inline">
+                <input type="checkbox" checked id="checkboxSuccess1">
+                <label for="checkboxSuccess1">
+                </label>
+	          </div>
+              <div class="form-group">
+                <label for="inputStatus">상위 프로젝트</label>
+                <select id="inputStatus" class="form-control custom-select">
+                  <option disabled>Select one</option>
+                  <option>On Hold</option>
+                  <option>Canceled</option>
+                  <option selected>Success</option>
+                </select>
+              </div>
+               <div class="form-row float-right">
+          <!-- /.col -->
+            <button type="submit" class="btn btn-primary btn-block">만들기</button>
+          <!-- /.col -->
         </div>
-        <div class="input-group mb-3">
-           비밀번호&nbsp;&nbsp;<input type="password" class="form-control" >
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
             </div>
+            
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
         </div>
-        <div class="form-row float-right">
-          <!-- /.col -->
-            <button type="submit" class="btn btn-primary btn-block">로그인</button>
-          <!-- /.col -->
-        </div>
-        <br><br><br>
-      </form>
-      
-          <button type="button" class="btn btn-outline-info btn-block btn-flat">
-          비밀번호 찾기</button>
-    	  <button type="button" class="btn btn-outline-danger btn-block btn-sm">
-    	  <i class="fa fa-book"></i> 새로 등록하기</button>
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-</div>
-</div>
-<!-- /.login-box -->
+      </div>
+	</section>
+   </div>
+ </div>     
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
-
 </body>
 </html>
