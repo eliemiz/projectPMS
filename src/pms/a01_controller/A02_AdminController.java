@@ -13,22 +13,58 @@ public class A02_AdminController {
 	private A02_AdminService service;
 	
 	
-	// http://localhost:7080/projectPMS/admin.do?method=userlist
-	@RequestMapping( params = "method=userlist")
+	// http://localhost:7080/projectPMS/admin.do?method=userList
+	@RequestMapping( params = "method=userList")
 	public String userList() {
 		return "a02_admin\\a01_userList";
 	}
+	// http://localhost:7080/projectPMS/admin.do?method=userInsForm
+	@RequestMapping( params = "method=userInsForm")
+	public String userInsForm() {
+		return "a02_admin\\a02_userIns";
+	}
+	// http://localhost:7080/projectPMS/admin.do?method=userDetail
+	@RequestMapping( params = "method=userDetail")
+	public String userDetail() {
+		return "a02_admin\\a03_userDetail";
+	}
 	
 	
 	
 	
 	
-	
-	// http://localhost:7080/projectPMS/admin.do?method=grouplist
-	@RequestMapping( params = "method=grouplist")
+	// http://localhost:7080/projectPMS/admin.do?method=groupList
+	@RequestMapping( params = "method=groupList")
 	public String groupList() {
 		return "a02_admin\\a04_groupList";
 	}
+	
+	// http://localhost:7080/projectPMS/admin.do?method=groupInsForm
+	@RequestMapping( params = "method=groupInsForm")
+	public String groupInsForm() {
+		return "a02_admin\\a05_groupIns";
+	}
+	// http://localhost:7080/projectPMS/admin.do?method=groupDetail
+		@RequestMapping( params = "method=groupDetail")
+		public String groupDetail() {
+			return "a02_admin\\a06_groupDetail";
+		}
+		// http://localhost:7080/projectPMS/admin.do?method=gUser
+		@RequestMapping( params = "method=gUser")
+		public String groupUser() {
+			return "a02_admin\\a07_groupUser";
+		}
+		// http://localhost:7080/projectPMS/admin.do?method=gUserInsForm
+		@RequestMapping( params = "method=gUserInsForm")
+		public String groupUserInsForm() {
+			return "a02_admin\\a08_groupUserIns";
+		}
+		// http://localhost:7080/projectPMS/admin.do?method=gUserDel
+		@RequestMapping( params = "method=gUserDel")
+		public String groupUserDel() {
+			return "a02_admin\\a09_groupUserDel";
+		}
+
 	
 }
 
