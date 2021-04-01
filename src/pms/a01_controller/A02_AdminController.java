@@ -54,15 +54,23 @@ public class A02_AdminController {
 		public String groupUser() {
 			return "a02_admin\\a07_groupUser";
 		}
-		// http://localhost:7080/projectPMS/admin.do?method=gUserInsForm
-		@RequestMapping( params = "method=gUserInsForm")
-		public String groupUserInsForm() {
+		// http://localhost:7080/projectPMS/admin.do?method=gUserIns
+		@RequestMapping( params = "method=gUserIns")
+		public String groupUserIns() {
 			return "a02_admin\\a08_groupUserIns";
 		}
 		// http://localhost:7080/projectPMS/admin.do?method=gUserDel
 		@RequestMapping( params = "method=gUserDel")
 		public String groupUserDel() {
 			return "a02_admin\\a09_groupUserDel";
+		}
+
+		
+		
+		// http://localhost:7080/projectPMS/admin.do?method=roleList
+		@RequestMapping( params = "method=roleList")
+		public String roleList() {
+			return "a02_admin\\a10_roleList";
 		}
 
 	
