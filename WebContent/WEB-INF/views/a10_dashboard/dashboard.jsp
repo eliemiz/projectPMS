@@ -22,6 +22,15 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 <link rel="stylesheet" href="dist/font/fonts.css"/>
+<style type="text/css">
+html, body {
+	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+}
+</style>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -53,9 +62,44 @@
 
     <!-- Main content -->
     <section class="content">
-    	<jsp:include page="project_info.jsp"/>
-    	<jsp:include page="project_chart.jsp"/>
-    	<jsp:include page="project_recent.jsp"/>
+    	<div class="container-fluid">
+	    	<div class="row">
+	          <div class="col-12">
+	            <div class="card card-primary card-outline card-tabs">
+	              <div class="card-header p-0 pt-1 border-bottom-0">
+	                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+	                  <li class="nav-item">
+	                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">정보</a>
+	                  </li>
+	                  <li class="nav-item">
+	                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">구성원</a>
+	                  </li>
+	                  <li class="nav-item">
+	                    <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">산출물</a>
+	                  </li>
+	                </ul>
+	              </div>
+	              <div class="card-body">
+	                <div class="tab-content" id="custom-tabs-three-tabContent">
+	                  <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                      	<jsp:include page="project_info.jsp"/>
+ 						<jsp:include page="project_chart.jsp"/>
+				    	<jsp:include page="project_recent.jsp"/>
+                      	
+	                  </div>
+	                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+	                     <jsp:include page="project_members.jsp"/>
+	                  </div>
+	                  <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+	                     <jsp:include page="project_issues.jsp"/>
+	                  </div>
+	                </div>
+	              </div>
+	              <!-- /.card -->
+	            </div>
+	          </div>
+	        </div>
+    	</div>
     </section>
     <!-- /.content -->
   </div>
@@ -72,14 +116,10 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+	$.widget.bridge('uibutton', $.ui.button);
 </script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="plugins/chart.js/Chart.min.js"></script>
 <script src="plugins/sparklines/sparkline.js"></script>
 <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -90,5 +130,6 @@
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <script src="dist/js/adminlte.js"></script>
+
 </body>
 </html>

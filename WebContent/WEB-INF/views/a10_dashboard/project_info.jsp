@@ -4,4 +4,51 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<h3>테이블 추가 예정</h3>
+<div class="container-fluid">
+	<div class="row">
+		<!-- /.col -->
+		<div class="col-10">
+			<div class="table-responsive">
+				<table class="table">
+					<colgroup>
+						<col width="25%" />
+						<col width="25%" />
+						<col width="25%" />
+						<col width="25%" />
+					</colgroup>
+					<tr>
+						<th>프로젝트명</th>
+						<td>projectPMS</td>
+						<th>프로젝트 매니저(PM)</th>
+						<td>홍길동</td>
+					</tr>
+					<tr>
+						<th>기간</th>
+						<td>2021-02-17 ~ 2021-04-30</td>
+						<th>담당부서</th>
+						<td>개발팀</td>
+					</tr>
+					<tr>
+						<th>참여 인원 수</th>
+						<td>6명</td>
+						<th></th>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th>프로젝트 상태</th>
+					</tr>
+					<tr>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!-- /.col -->
+	</div>
+</div>
