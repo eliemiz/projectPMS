@@ -51,7 +51,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">register</h1>
+            <h1 class="m-0">management list</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -65,86 +65,29 @@
     <!-- /.content-header -->
     
     
-     <!-- Main content -->
+         <!-- Main content -->
     <section class="content">
 	
-	<div class="hold-transition register-page">
-	<div class="register-box">
-	  <div class="card card-outline card-primary">
-	    <div class="card-header text-center">
-	      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
-	    </div>
-	    <div class="card-body">
-	      <p class="login-box-msg">Register a new membership</p>
-	
-	      <form action="../../index.html" method="post">
-	        <div class="input-group mb-3">
-	          <input type="text" class="form-control" placeholder="Full name">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-user"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="input-group mb-3">
-	          <input type="email" class="form-control" placeholder="Email">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-envelope"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="input-group mb-3">
-	          <input type="password" class="form-control" placeholder="Password">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="input-group mb-3">
-	          <input type="password" class="form-control" placeholder="Retype password">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="row">
-	          <div class="col-8">
-	            <div class="icheck-primary">
-	              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-	              <label for="agreeTerms">
-	               I agree to the <a href="#">terms</a>
-	              </label>
-	            </div>
-	          </div>
-	          <!-- /.col -->
-	          <div class="col-4">
-	            <button type="submit" class="btn btn-primary btn-block">Register</button>
-	          </div>
-	          <!-- /.col -->
-	        </div>
-	      </form>
-	
-	      <div class="social-auth-links text-center">
-	        <a href="#" class="btn btn-block btn-primary">
-	          <i class="fab fa-facebook mr-2"></i>
-	          Sign up using Facebook
-	        </a>
-	        <a href="#" class="btn btn-block btn-danger">
-	          <i class="fab fa-google-plus mr-2"></i>
-	          Sign up using Google+
-	        </a>
-	      </div>
-	
-	      <a href="login.html" class="text-center">I already have a membership</a>
-	    </div>
-	    <!-- /.form-box -->
-	  </div><!-- /.card -->
-	</div>
-	<!-- /.register-box -->
-	</div>
+            <div class="card card-row card-primary">
+          <div class="card-header">
+            <h3 class="card-title">
+              To Do
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="card-title">Create first milestone</h5>
+                <div class="card-tools">
+                  <a href="#" class="btn btn-tool btn-link">#5</a>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 	
     </section>
     <!-- /.content -->
