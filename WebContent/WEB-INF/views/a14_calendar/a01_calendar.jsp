@@ -46,13 +46,14 @@
   <!-- Main Sidebar Container -->
   <jsp:include page="../a00_common/a01_sidebar.jsp"/>  
 
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Calendar</h1>
+            <h1 class="m-0">Calendar</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
