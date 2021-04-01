@@ -89,19 +89,19 @@
                   <thead>
                     <tr>
                       <th>번호</th>
-                      <th class="text-center">제목</th>
+                      <th>제목</th>
                       <th>글쓴이</th>
                       <th>조회수</th>
-                      <th class="text-center">등록일</th>
+                      <th>등록일</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>001</td>
-                      <td class="text-center">Test123456789</td>
+                      <td>Test123456789</td>
                       <td>홍길동</td>
                       <td><span class="tag tag-success">0</span></td>
-                      <td class="text-center">2021-04-01</td>
+                      <td>2021-04-01</td>
                     </tr>
                     <tr>
                       <td>001</td>
