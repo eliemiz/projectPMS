@@ -11,10 +11,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
-
-  <!-- jsGrid -->
-  <link rel="stylesheet" href="plugins/jsgrid/jsgrid.min.css">
-  <link rel="stylesheet" href="plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -67,22 +67,122 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Task</h3>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">검색조건</h3><br><br>
+                <div class="form-group">
+                  <label>검색조건</label>
+                  <select class="form-control select2" style="width: 500px;">
+                    <option>상태</option>
+                    <option>유형</option>
+                    <option>담당자</option>
+                    <option>제목</option>
+                    <option>설명</option>
+                  </select>
+                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <label>유형</label>
+                  <select class="form-control select2" style="width: 500px;">
+                    <option>결함</option>
+                    <option>새기능</option>
+                    <option>지원</option>
+                  </select>
+                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <label>상태</label>
+                  <select class="form-control select2" style="width: 500px;">
+                    <option>진행중</option>
+                    <option>완료</option>
+                    <option>모두</option>
+                  </select><br>
+                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <label>담당자</label>
+                  <input type="text" size="40"><br>
+                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <label>제목</label>
+                  <input type="text" size="50"><br>
+                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <label>설명</label>
+                  <input type="text" size="50"><br>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>유형</th>
+                    <th>상태</th>
+                    <th>우선순위</th>
+                    <th>제목</th>
+                    <th>담당자</th>
+                    <th>날짜</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>결함</td>
+                    <td>진행중</td>
+                    <td>낮음</td>
+                    <td>task1</td>
+                    <td>김철수</td>
+                    <td>2021-04-01</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>새기능</td>
+                    <td>진행중</td>
+                    <td>보통</td>
+                    <td>task2</td>
+                    <td>김철수</td>
+                    <td>2021-04-01</td>
+                  </tr>
+                 <tr>
+                    <td>3</td>
+                    <td>지원</td>
+                    <td>진행중</td>
+                    <td>높음</td>
+                    <td>task3</td>
+                    <td>홍길동</td>
+                    <td>2021-04-01</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>새기능</td>
+                    <td>완료</td>
+                    <td>긴급</td>
+                    <td>task4</td>
+                    <td>홍길동</td>
+                    <td>2021-04-01</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>새기능</td>
+                    <td>완료</td>
+                    <td>즉시</td>
+                    <td>task5</td>
+                    <td>이춘향</td>
+                    <td>2021-04-01</td>
+                  </tr>
+                  </tbody>
+                </table>
+                </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <div id="jsGrid1"></div>
-        </div>
-        <!-- /.card-body -->
+        <!-- /.row -->
       </div>
-      <!-- /.card -->
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
     <!-- Footer -->
   <jsp:include page="../a00_common/a02_footer.jsp"/>
  
@@ -125,30 +225,32 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 
-<!-- jsGrid -->
-<script src="plugins/jsgrid/demos/db.js"></script>
-<script src="plugins/jsgrid/jsgrid.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <!-- Page specific script -->
 <script>
   $(function () {
-    $("#jsGrid1").jsGrid({
-        height: "100%",
-        width: "100%",
-
-        sorting: true,
-        paging: true,
-
-        data: db.clients,
-
-        fields: [
-            { name: "Name", type: "text", width: 150 },
-            { name: "Age", type: "number", width: 50 },
-            { name: "Address", type: "text", width: 200 },
-            { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
-            { name: "Married", type: "checkbox", title: "Is Married" }
-        ]
-    });
+	  $('#example2').DataTable({
+	      "paging": true,
+	      "lengthChange": false,
+	      "searching": false,
+	      "ordering": true,
+	      "info": true,
+	      "autoWidth": false,
+	      "responsive": true,
+	    });
   });
 </script>
 </body>
