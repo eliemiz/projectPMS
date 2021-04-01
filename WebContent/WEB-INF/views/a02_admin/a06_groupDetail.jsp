@@ -58,7 +58,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
- 
+  <section class="content">
 
    <!-- Horizontal Form -->
             <div class="card card-info">
@@ -87,7 +87,7 @@
               </form>
             </div>
             <!-- /.card -->
-
+</section>
       </div>
   <!-- /.content-wrapper -->
               <!-- Footer -->

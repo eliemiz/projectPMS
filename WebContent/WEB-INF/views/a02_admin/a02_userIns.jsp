@@ -12,6 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>관리-사용자</title>
 
+<!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -61,7 +63,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+ <section class="content">
 
  <!-- 내용 -->
     <!-- Horizontal Form -->
@@ -109,7 +111,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">등록</button>
+                  <button type="button" class="btn btn-info">등록</button>
                 </div>
                 <!-- /.card-footer -->
               </form>
@@ -118,7 +120,7 @@
     
     
     
-    
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

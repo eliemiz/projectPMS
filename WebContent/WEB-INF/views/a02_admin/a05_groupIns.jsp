@@ -58,6 +58,8 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+  <section class="content">
+ 
  
 
    <!-- Horizontal Form -->
@@ -85,6 +87,7 @@
             </div>
             <!-- /.card -->
 
+</section>
       </div>
   <!-- /.content-wrapper -->
               <!-- Footer -->

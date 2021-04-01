@@ -61,18 +61,18 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-
-
-
- <!-- 내용 -->
-    
-    
-    
-    
-    
-    
-    
+<!-- Main content -->
+    <section class="content">
+    	
+    	
+    	
+    	<!-- 내용 -->
+    	
+    	
+    	
+    	
+    </section>
+    <!-- /.content -->
     
     <!-- /.content -->
   </div>

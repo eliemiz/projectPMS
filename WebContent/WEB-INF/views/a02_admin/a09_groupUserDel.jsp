@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+   <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="plugins/ekko-lightbox/ekko-lightbox.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -61,19 +63,40 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+ <section class="content">
 
 
 
  <!-- 내용 -->
+         <div class="card card-row card-info">
+          <div class="card-header">
+            <h3 class="card-title">
+              	[구성원 아이디] 삭제
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="card card-info card-outline">
+              <div class="card-header">
+                <h5 class="card-title">해당 구성원을 정말로 삭제하시겠습니까?</h5>
+                <div class="card-tools">
+                  <a href="#" class="btn btn-tool btn-link">#5</a>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-default float-right">돌아가기</button>
+             <button type="button" id="" class="btn btn-info float-right">삭제</button>
+          </div>
+        </div> 
     
     
     
     
     
     
-    
-    
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -99,6 +122,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Ekko Lightbox -->
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -117,6 +142,8 @@
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- Filterizr-->
+<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->

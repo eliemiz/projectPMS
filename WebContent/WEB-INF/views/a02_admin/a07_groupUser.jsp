@@ -69,13 +69,14 @@ $(document).ready(function(){
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+ <section class="content">
 
  <!-- 내용 -->
    <!-- card -->
       <div class="card">
               <div class="card-header">
-                <h3 class="card-title">서버팀</h3>
-                <button type="button" id="regBtn" class="btn btn-info float-right">새 구성원</button>
+                <h3 class="card-title">[서버팀]</h3>
+                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -106,7 +107,7 @@ $(document).ready(function(){
     
     
     
-    
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

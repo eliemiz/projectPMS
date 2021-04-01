@@ -32,7 +32,20 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
 </head>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#regBtn").click(function(){
+       //등록 컨트롤러 호출
+       location.href="${path}/admin.do?method=userInsForm";
+    });
+ });
+</script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -49,7 +62,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Group</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -61,19 +74,62 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+ <section class="content">
 
 
 
  <!-- 내용 -->
+   <!-- card -->
+      <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">사용자</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                <col width="150">
+                <col width="150">
+                <col width="250">
+                <col width="30">
+                  <thead>
+                  <tr>
+                    <th style="text-align:center;">아이디</th>
+                    <th style="text-align:center;">이름</th>
+                    <th style="text-align:center;">이메일</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>asdf11</td>
+                    <td>이해수</td>
+                    <td>adf@naver.com</td>
+                      <td> <button type="button" id="" class="btn btn-primary">구성원 추가</button></td>
+                  </tr>
+                  <tr>
+                    <td>qeree56</td>
+                    <td>이길원</td>
+                    <td>dfsew@gmail.com</td>
+                    <td> <button type="button" id="" class="btn btn-primary">구성원 추가</button></td>
+                  </tr>
+                  </tbody>
+               <!--<tfoot>
+                  	<tr>
+                    <th>관리팀</th>
+                  	</tr>
+                  </tfoot> -->
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card --> 
     
     
     
     
     
     
-    
-    
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -117,11 +173,44 @@
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!-- Page specific script -->
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>  
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 </html>

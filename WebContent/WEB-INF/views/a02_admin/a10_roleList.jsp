@@ -10,8 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리-사용자</title>
-
+<title>관리-역할 및 권한</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -42,69 +41,60 @@
 $(document).ready(function(){
     $("#regBtn").click(function(){
        //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=userInsForm";
+       location.href="${path}/admin.do?method=groupInsForm";
     });
  });
 </script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Navbar -->
+<!-- Navbar -->
   <jsp:include page="../a00_common/a00_header.jsp"/>
 
   <!-- Main Sidebar Container -->
   <jsp:include page="../a00_common/a01_sidebar.jsp"/> 
-
-  <!-- Content Wrapper. Contains page content -->
+  	<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">User</h1>
+            <h1 class="m-0">Role</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          <div class="col-sm-6"> 
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Admin</li>
             </ol>
-          </div><!-- /.col -->
+           </div>  <!-- .col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
- <section class="content">
-
-
-
- <!-- 내용 -->
-   <!-- card -->
+     <section class="content">
+    
+    
+    
+<!-- card -->
       <div class="card">
               <div class="card-header">
-                <h3 class="card-title">사용자</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 사용자</button>
+                <h3 class="card-title">역할</h3>
+                <button type="button" id="regBtn" class="btn btn-primary float-right">새 역할</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th style="text-align:center;">아이디</th>
-                    <th style="text-align:center;">이름</th>
-                    <th style="text-align:center;">이메일</th>
+                    <th style="text-align:center;">역할명</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>asdf11</td>
-                    <td>이해수</td>
-                    <td>adf@naver.com</td>
+                    <td>개발자</td>
                   </tr>
                   <tr>
-                    <td>qeree56</td>
-                    <td>이길원</td>
-                    <td>dfsew@gmail.com</td>
+                    <td>관리자</td>
                   </tr>
                   </tbody>
                <!--<tfoot>
@@ -116,28 +106,23 @@ $(document).ready(function(){
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card --> 
-    
-    
-    
-    
-    
-    
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  <!-- Footer -->
-  <jsp:include page="../a00_common/a02_footer.jsp"/>
+            <!-- /.card -->
+            
 
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">
-    Control sidebar content goes here
-  </aside> -->
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+     </section>
+     </div>
+  <!-- /.content-wrapper -->
+              <!-- Footer -->
+  <jsp:include page="../a00_common/a02_footer.jsp"/>
+  
+         <!-- Control Sidebar
+  <aside class="control-sidebar control-sidebar-dark">
+     Control sidebar content goes here
+  </aside>
+    /.control-sidebar -->
+    
+
+</div><!-- wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>

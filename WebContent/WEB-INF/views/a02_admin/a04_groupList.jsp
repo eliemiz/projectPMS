@@ -71,7 +71,7 @@ $(document).ready(function(){
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    
+     <section class="content">
     
     
     
@@ -79,7 +79,7 @@ $(document).ready(function(){
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">그룹</h3>
-                <button type="button" id="regBtn" class="btn btn-info float-right">새 그룹</button>
+                <button type="button" id="regBtn" class="btn btn-primary float-right">새 그룹</button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -109,7 +109,7 @@ $(document).ready(function(){
             <!-- /.card -->
             
 
-     
+     </section>
      </div>
   <!-- /.content-wrapper -->
               <!-- Footer -->
@@ -117,9 +117,9 @@ $(document).ready(function(){
   
          <!-- Control Sidebar
   <aside class="control-sidebar control-sidebar-dark">
-  //   Control sidebar content goes here
+     Control sidebar content goes here
   </aside>
-   /.control-sidebar -->
+    /.control-sidebar -->
     
 
 </div><!-- wrapper -->
