@@ -73,6 +73,10 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">검색조건</h3><br><br>
+                <a href="">
+                <div style="text-align:right;">
+                	<label >새Task만들기</label><!-- 이미지삽입예정 -->
+                </div></a>
                 <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
                   <select class="form-control select2">
