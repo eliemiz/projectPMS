@@ -128,7 +128,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="${path}/settings2.do?method=task" class="nav-link" id="sb-setting-members">
+							<a href="${path}/settings2.do?method=task" class="nav-link" id="sb-setting-tracker">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Tracker</p>
 							</a>
