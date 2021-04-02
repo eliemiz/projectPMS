@@ -44,10 +44,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-    $("#regBtn").click(function(){
-       //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=userInsForm";
-    });
  });
 </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -111,7 +107,7 @@ $(function () {
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">사용자</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 사용자</button>
+                <a href="${path}/admin.do?method=userInsForm"><button type="button" id="regBtn" class="btn btn-primary float-right">새 사용자</button></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

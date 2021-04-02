@@ -78,17 +78,17 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="${path}/admin.do?method=userList" class="nav-link">
+								<a href="${path}/admin.do?method=list" class="nav-link">
 									<i class="fas fa-user"></i> Users
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="${path}/admin.do?method=groupList" class="nav-link">
+								<a href="${path}/admin2.do?method=list" class="nav-link">
 									<i class="fas fa-user-friends"></i> Groups
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="${path}/admin.do?method=roleList" class="nav-link">
+								<a href="${path}/admin3.do?method=list" class="nav-link">
 									<i class="fas fa-key"></i> Roles and Permissions
 								</a>
 							</li>
