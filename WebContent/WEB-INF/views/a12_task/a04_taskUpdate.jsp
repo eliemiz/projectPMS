@@ -257,9 +257,9 @@
 			
 				<!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" onclick="location.href='../task.do'">수정</button>
-                  <button type="button" class="btn btn-primary" onclick="location.href='../task.do'">삭제</button>
-                  <button type="button" class="btn btn-primary" onclick="location.href='../task.do'">취소</button>
+                  <button type="submit" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">수정</button>
+                  <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">삭제</button>
+                  <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">취소</button>
                 </div>
           <!--/.col (right) -->
         </div>

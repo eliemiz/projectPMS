@@ -37,6 +37,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
+<script src="https://kit.fontawesome.com/e67c060a53.js" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -73,9 +74,10 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">검색조건</h3><br><br>
-                <a href="">
+            	<a href="${path}/task.do?method=insForm">
                 <div style="text-align:right;">
-                	<label >새Task만들기</label><!-- 이미지삽입예정 -->
+                	<i class="fas fa-pen"></i>
+                	<label>새Task만들기</label>
                 </div></a>
                 <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
@@ -146,7 +148,7 @@
                     <th>날짜</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody onclick="location.href='${path}/task.do?method=detail'">
                   <tr>
                     <td>1</td>
                     <td>결함</td>

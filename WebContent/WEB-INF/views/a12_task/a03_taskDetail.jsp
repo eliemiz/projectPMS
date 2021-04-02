@@ -85,8 +85,11 @@
           <h3 class="card-title">새기능&nbsp;&nbsp;#2</h3>
         </div>
         <div class="card-body">
-          <div style="text-align:right;" onclick="location.href='../task.do'">
-          편집<!-- 이미지삽입예정 -->
+          <div style="text-align:right;">
+          <a href="${path}/task.do?method=list">
+          <i class="fas fa-list"></i>목록</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="${path}/task.do?method=update">
+          <i class="fas fa-pen"></i>편집</a>
           </div>
           <div style="background-Color:lightyellow; textcolor:black;">
                 <h2 class="mb-0">
@@ -163,7 +166,7 @@
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>첨부파일</label>
-            		&nbsp;&nbsp;&nbsp;첨부파일<!-- 다운로드 이미지 입력예정 -->
+            		&nbsp;&nbsp;&nbsp;첨부파일명&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>상/하위 일감</label>
             		&nbsp;&nbsp;&nbsp;상/하위 일감명
@@ -195,7 +198,7 @@
               	</div>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-              	<!-- 댓글이미지 삽입 예정 -->
+              	<i class="far fa-comment-dots"></i>
               	<div>
               	댓글 달기
               	</div>
