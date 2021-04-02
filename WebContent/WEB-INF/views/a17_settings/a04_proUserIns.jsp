@@ -34,6 +34,22 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
    <!-- Ekko Lightbox -->
   <link rel="stylesheet" href="plugins/ekko-lightbox/ekko-lightbox.css">
+  <!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#sm-setting").addClass("menu-open");
+	$("#sd-setting").addClass("active");
+	$("#sb-setting-members").addClass("active");
+    
+ });
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -68,11 +84,32 @@
 
 
  <!-- 내용 -->
+ <div class="container-fluid">
+          <div class="col-md-6">
+ 
+ 
          <div class="card card-row card-primary">
           <div class="card-header">
             <h3 class="card-title">
               	[사용자/그룹 아이디] 추가
             </h3>
+          </div>
+          
+          <div class="card-body">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+              <h5 class="card-title">역할을 선택하세요</h5><br><br>
+              <select class="card-title">
+            	<option>역할목록</option>
+             </select>
+                <div class="card-tools">
+                  <a href="#" class="btn btn-tool btn-link">#5</a>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <div class="card card-primary card-outline">
@@ -91,6 +128,9 @@
           </div>
         </div> 
     
+    
+    	</div>
+    </div>
     
     
     
@@ -112,14 +152,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Ekko Lightbox -->

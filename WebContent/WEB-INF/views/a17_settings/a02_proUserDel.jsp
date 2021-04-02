@@ -34,6 +34,22 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
    <!-- Ekko Lightbox -->
   <link rel="stylesheet" href="plugins/ekko-lightbox/ekko-lightbox.css">
+  <!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#sm-setting").addClass("menu-open");
+	$("#sd-setting").addClass("active");
+	$("#sb-setting-members").addClass("active");
+    
+ });
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -68,6 +84,10 @@
 
 
  <!-- 내용 -->
+ 
+ <div class="container-fluid">
+          <div class="col-md-6">
+ 
          <div class="card card-row card-primary">
           <div class="card-header">
             <h3 class="card-title">
@@ -91,7 +111,8 @@
           </div>
         </div> 
     
-    
+    </div>
+   </div>
     
     
     
@@ -112,14 +133,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Ekko Lightbox -->

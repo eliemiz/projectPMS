@@ -35,8 +35,15 @@
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  
-</head>
+  <!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
 <script type="text/javascript">
 $(document).ready(function(){
     $("#regBtn").click(function(){
@@ -45,6 +52,26 @@ $(document).ready(function(){
     });
  });
 </script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>  
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+</head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 <!-- Navbar -->
@@ -83,6 +110,31 @@ $(document).ready(function(){
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                     <!-- 검색 -->
+              <!--  <div class="row">
+                <div class="col-sm-4.5">
+            		<label>검색조건</label>
+            			<select class="form-control select2" style="width: 500px;">
+             				<option selected="selected">사용중</option>
+              				<option>사용중</option>
+              				<option>등록대기</option>
+            			</select>
+            	</div>
+              	<div class="col-sm-1">
+           			 <label></label><br>
+            			<h3></h3>
+            			<button type="submit" class="btn btn-primary btn-block">검색</button>
+            	</div>
+           </div> -->
+                <!-- 검색 -->
+           <nav class="navbar navbar-expand-sm bg-white navbar-white">
+		     <form  class="form-inline" method="post">
+		      <input  class="form-control mr-sm-2" placeholder="그룹명"/>
+		       <button class="btn btn-primary" type="submit">Search</button>&nbsp;
+		     </form>
+		  </nav>
+           <!-- /검색 -->
+           <!-- /검색 -->
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -124,14 +176,7 @@ $(document).ready(function(){
 
 </div><!-- wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -172,24 +217,6 @@ $(document).ready(function(){
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>  
-<script>
-$(function () {
-  bsCustomFileInput.init();
-});
-</script>
+
 </body>
 </html>
