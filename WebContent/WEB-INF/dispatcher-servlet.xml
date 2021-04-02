@@ -24,10 +24,12 @@
 	<context:property-placeholder location="classpath:resource/properties/info"/>
 	
 	<context:component-scan base-package="pms">
-		<!-- 이런 annotation이 설정된 모든 클래스에 대해 객체를 메모리에 로딩해라 -->
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" 
+			expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

@@ -83,7 +83,6 @@
 
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="plugins/uplot/uPlot.iife.min.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
 
 <script type="text/javascript">
 	//-------------

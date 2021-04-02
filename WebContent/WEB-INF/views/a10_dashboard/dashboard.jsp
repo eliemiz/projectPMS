@@ -30,7 +30,14 @@ html, body {
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sm-dashboard").addClass("menu-open");
+		$("#sb-dashboard").addClass("active");
+		$("#sb-dashboard-info").addClass("active");
+	});
 
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
