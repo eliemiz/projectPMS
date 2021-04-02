@@ -116,7 +116,7 @@
 					</a>
 				</li>
 				<li class="nav-item" id="sm-setting">
-					<a href="#" class="nav-link" id="sd-setting">
+					<a href="#" class="nav-link" id="sb-setting">
 						<i class="nav-icon fas fa-cog"></i>
 						<p>
 							Setting <i class="right fas fa-angle-left"></i>
@@ -124,7 +124,7 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="${path}/settings.do?method=project" class="nav-link" id="sd-setting-project">
+							<a href="${path}/settings.do?method=project" class="nav-link" id="sb-setting-project">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Project</p>
 							</a>

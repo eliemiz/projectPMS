@@ -45,7 +45,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#sm-setting").addClass("menu-open");
-	$("#sd-setting").addClass("active");
+	$("#sb-setting").addClass("active");
 	$("#sb-setting-members").addClass("active");
     
  });
