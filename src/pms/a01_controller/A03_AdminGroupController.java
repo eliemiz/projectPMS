@@ -30,8 +30,8 @@ public class A03_AdminGroupController {
 			public String groupUser() {
 				return "a02_admin\\a07_groupUser";
 			}
-			// http://localhost:7080/projectPMS/admin2.do?method=gUserIns
-			@RequestMapping( params = "method=gUserIns")
+			// http://localhost:7080/projectPMS/admin2.do?method=gUserInsForm
+			@RequestMapping( params = "method=gUserInsForm")
 			public String groupUserIns() {
 				return "a02_admin\\a08_groupUserIns";
 			}
