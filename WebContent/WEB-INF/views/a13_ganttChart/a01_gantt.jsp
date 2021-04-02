@@ -46,7 +46,7 @@
 			height: 100%;
 			padding: 0px;
 			margin: 0px;
-			overflow: hidden;
+			/* overflow: hidden; */
 		}
 		.main-content {
 			height: 600px;

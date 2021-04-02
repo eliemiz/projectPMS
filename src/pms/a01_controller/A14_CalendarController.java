@@ -16,6 +16,6 @@ public class A14_CalendarController {
 	// http://localhost:7080/projectPMS/calendar.do?method=list
 	@GetMapping(params = "method=list")
 	public String CalendarList() {
-		return "a14_calendar\\a01_calendar";
+		return "a14_calendar\\a00_calendar";
 	}
 }
