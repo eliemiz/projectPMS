@@ -11,6 +11,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
+  <style>
+  #round1 {border-radius : 20px;}
+  </style>
  <!-- pace-progress -->
   <link rel="stylesheet" href="plugins/pace-progress/themes/black/pace-theme-flat-top.css">
  
@@ -48,7 +51,26 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-
+<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="dist/font/fonts.css"/>
+<style type="text/css">
+html, body {
+	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+}
+</style>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sm-dashboard").addClass("menu-open");
+		$("#sb-dashboard").addClass("active");
+		$("#sb-dashboard-info").addClass("active");
+	});
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -197,16 +219,25 @@
               	</div>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-              	<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
+           		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
+              	<form class="form-horizontal">
+              		<div>
+                          <input class="form-control form-control-sm" placeholder="댓글을 작성해주세요"><br>
+                          	<input type = "button" class="btn btn-success" value="등록"/>
+                            <input type = "button" class="btn btn-danger" value="취소"/>
+                    </div><br>
+                </form>
+                <div align="center">2021-04-03</div>
               	<div class="form-group" style="width:700px;"><br>
-              		<div class="form control" style="width:300px; background-Color:lightgreen; float:right;">
-              		팀장&nbsp;:&nbsp;김철수<br>수정사항 확인부탁드립니다
+              		<%-- 시간도 추가여부 확인 --%>
+              		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;">
+              		김철수&nbsp;&nbsp;팀장<br>수정사항 확인 바랍니다
               		</div><br><br><br>
-              		<div class="form control" style="width:250px;background-Color:lightpink; float:left;">
-              		사원&nbsp;:&nbsp;홍길동<br>확인했습니다
+              		<div class="form control" id="round1" style="padding:10px; background-Color:lightpink; float:left;">
+              		홍길동&nbsp;&nbsp;사원<br>확인했습니다
               		</div><br><br><br>
-              		<div class="form control" style="width:250px; background-Color:skyblue; float:left;">
-              		대리&nbsp;:&nbsp;이춘향<br>확인했습니다
+              		<div class="form control" id="round1" style="padding:10px; background-Color:skyblue; float:left;">
+              		이춘향&nbsp;&nbsp;대리<br>확인했습니다
               		</div>
               	</div>
               </div>
