@@ -67,10 +67,21 @@ public class A02_AdminController {
 
 		
 		
+		
 		// http://localhost:7080/projectPMS/admin.do?method=roleList
 		@RequestMapping( params = "method=roleList")
 		public String roleList() {
 			return "a02_admin\\a10_roleList";
+		}
+		// http://localhost:7080/projectPMS/admin.do?method=roleInsForm
+		@RequestMapping( params = "method=roleInsForm")
+		public String roleInsForm() {
+			return "a02_admin\\a11_roleIns";
+		}
+		// http://localhost:7080/projectPMS/admin.do?method=roleDetail
+		@RequestMapping( params = "method=roleDetail")
+		public String roleDetail() {
+			return "a02_admin\\a12_roleDetail";
 		}
 
 	
