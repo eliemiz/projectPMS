@@ -12,6 +12,11 @@ public class A02_AdminController {
 	@Autowired(required = false)
 	private A02_AdminService service;
 	
+	// http:localhost:7080/projectPMS/admin.do
+	@RequestMapping
+	public String main() {
+		return "a02_admin\\a00_adminMain";
+	}
 	
 	// http://localhost:7080/projectPMS/admin.do?method=userList
 	@RequestMapping( params = "method=userList")

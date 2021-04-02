@@ -35,6 +35,22 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-dashboard").addClass("active");
 		$("#sb-dashboard-info").addClass("active");
+		
+		$("#custom-tabs-three-info-tab").click(function(){
+			$("#sb-dashboard-info").addClass("active");
+			$("#sb-dashboard-members").removeClass("active");
+			$("#sb-dashboard-issues").removeClass("active");
+		});
+		$("#custom-tabs-three-members-tab").click(function(){
+			$("#sb-dashboard-info").removeClass("active");
+			$("#sb-dashboard-members").addClass("active");
+			$("#sb-dashboard-issues").removeClass("active");
+		});
+		$("#custom-tabs-three-issues-tab").click(function(){
+			$("#sb-dashboard-info").removeClass("active");
+			$("#sb-dashboard-members").removeClass("active");
+			$("#sb-dashboard-issues").addClass("active");
+		});
 	});
 
 </script>
@@ -76,28 +92,28 @@ html, body {
 	              <div class="card-header p-0 pt-1 border-bottom-0">
 	                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
 	                  <li class="nav-item">
-	                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">정보</a>
+	                    <a class="nav-link active" id="custom-tabs-three-info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">정보</a>
 	                  </li>
 	                  <li class="nav-item">
-	                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">구성원</a>
+	                    <a class="nav-link" id="custom-tabs-three-members-tab" data-toggle="pill" href="#members" role="tab" aria-controls="members" aria-selected="false">구성원</a>
 	                  </li>
 	                  <li class="nav-item">
-	                    <a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">산출물</a>
+	                    <a class="nav-link" id="custom-tabs-three-issues-tab" data-toggle="pill" href="#issues" role="tab" aria-controls="issues" aria-selected="false">산출물</a>
 	                  </li>
 	                </ul>
 	              </div>
 	              <div class="card-body">
 	                <div class="tab-content" id="custom-tabs-three-tabContent">
-	                  <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+	                  <div class="tab-pane fade show active" id="into" role="tabpanel" aria-labelledby="custom-tabs-three-info-tab">
                       	<jsp:include page="project_info.jsp"/>
  						<jsp:include page="project_chart.jsp"/>
 				    	<jsp:include page="project_recent.jsp"/>
                       	
 	                  </div>
-	                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+	                  <div class="tab-pane fade" id="members" role="tabpanel" aria-labelledby="custom-tabs-three-members-tab">
 	                     <jsp:include page="project_members.jsp"/>
 	                  </div>
-	                  <div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+	                  <div class="tab-pane fade" id="issues" role="tabpanel" aria-labelledby="custom-tabs-three-issues-tab">
 	                     <jsp:include page="project_issues.jsp"/>
 	                  </div>
 	                </div>

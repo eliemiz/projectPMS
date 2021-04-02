@@ -46,13 +46,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="${path}/dashboard.do" class="nav-link" id="sb-dashboard-members">
+							<a href="${path}/dashboard.do#members" class="nav-link" id="sb-dashboard-members">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Members</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="${path}/dashboard.do" class="nav-link" id="sb-dashboard-issues">
+							<a href="${path}/dashboard.do#issues" class="nav-link" id="sb-dashboard-issues">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Issues</p>
 							</a>

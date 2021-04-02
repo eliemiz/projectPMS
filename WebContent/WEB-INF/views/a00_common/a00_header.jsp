@@ -17,6 +17,9 @@
     <li class="nav-item d-none d-sm-inline-block">
       <a href="${path}/project.do?method=projectList" class="nav-link">Projects</a>
     </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="${path}/admin.do" class="nav-link">Admin</a>
+    </li>
   </ul>
 
   <!-- SEARCH FORM -->
