@@ -31,7 +31,7 @@
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column"
 				data-widget="treeview" role="menu" data-accordion="false">
-				<li class="nav-item" id="sm-dashboard">
+				<%-- <li class="nav-item" id="sm-dashboard">
 					<a href="#" class="nav-link" id="sb-dashboard">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
@@ -46,18 +46,26 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="${path}/dashboard.do#members" class="nav-link" id="sb-dashboard-members">
+							<a href="${path}/dashboard.do?page=members" class="nav-link" id="sb-dashboard-members">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Members</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="${path}/dashboard.do#issues" class="nav-link" id="sb-dashboard-issues">
+							<a href="${path}/dashboard.do?page=issues" class="nav-link" id="sb-dashboard-issues">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Issues</p>
 							</a>
 						</li>
 					</ul>
+				</li> --%>
+				<li class="nav-item">
+					<a href="${path}/dashboard.do" class="nav-link" id="sb-dashboard">
+						<i class="nav-icon fas fa-tachometer-alt"></i>
+						<p>
+							Dashboard
+						</p>
+					</a>
 				</li>
 				<li class="nav-item">
 					<a href="${path}/activity.do" class="nav-link" id="sb-activity">
