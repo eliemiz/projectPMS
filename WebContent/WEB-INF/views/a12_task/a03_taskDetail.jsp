@@ -159,7 +159,7 @@
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>설명</label><br><br>
-            		PMS 프로젝트의 Front-end 완료해야합니다.
+            		projectPMS Front End 입니다.
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
@@ -173,12 +173,10 @@
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>연결된 일감</label>
             		&nbsp;&nbsp;&nbsp;연결된 일감명
-            		<hr align="left" style="border: solid 1px gray; width: 90%;">
             	</div>
             </div>
         </div>
         <!-- /.card-body -->
-        
         
             </div><br> <!-- /.yellowbox -->
             <div class="row mt-4">
@@ -190,17 +188,26 @@
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
+              	<br>
               	<div>
               	첨부파일&nbsp;삭제&nbsp;&nbsp;&nbsp;2021-04-03
-              	</div>
+              	</div><br>
               	<div>
               	제목&nbsp;수정&nbsp;&nbsp;&nbsp;2021-04-04
               	</div>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-              	<i class="far fa-comment-dots"></i>
-              	<div>
-              	댓글 달기
+              	<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
+              	<div class="form-group" style="width:700px;"><br>
+              		<div class="form control" style="width:300px; background-Color:lightgreen; float:right;">
+              		팀장&nbsp;:&nbsp;김철수<br>수정사항 확인부탁드립니다
+              		</div><br><br><br>
+              		<div class="form control" style="width:250px;background-Color:lightpink; float:left;">
+              		사원&nbsp;:&nbsp;홍길동<br>확인했습니다
+              		</div><br><br><br>
+              		<div class="form control" style="width:250px; background-Color:skyblue; float:left;">
+              		대리&nbsp;:&nbsp;이춘향<br>확인했습니다
+              		</div>
               	</div>
               </div>
             </div>

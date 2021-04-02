@@ -123,15 +123,15 @@
               </div>
               <!-- /.col -->
             </div>
+             <%-- TODO: 제목, 설명 부분 화면에 꽉차게 하는 방법? --%>
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>제목 *</label>
             		<input type="text" class="form-control" style="width: 100%;">
             	</div>
             	<div class="form-group">
-            		<label>설명</label>
-            		<textarea class="form-control" style="width: 100%; height:300px;">
-            		</textarea>
+            		<label>설명</label>            	
+            		<textarea class="form-control" style="width: 100%; height:300px;"></textarea>
             	</div>
             </div>
             <div class="row">
@@ -162,27 +162,14 @@
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>추정시간</label> <!-- 시간을 input 뒤에 붙여야함 -->
-                  <input type="text" class="form-control" style="width: 70%;">시간
+                  <label>추정시간</label>
+                  <input type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)">
                 </div>
-                <!-- /.form-group -->
-                <!-- forms > general.html > Date
-                <div class="form-group">
-                  <label>Date:</label>
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                    </div>
-                </div>
-                ** 현 문제점
-                변경한 날짜 적용 불가
-                 -->
+                
                 <div class="form-group">
                   <label>시작시간</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input type="date" class="form-control datetimepicker-input" value="20021-04-01" >
+                       <input type="date" class="form-control" value="2021-04-05" style="width:100%;"><%-- 발표날짜에 맞춤 --%>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -229,10 +216,8 @@
                 <div class="form-group">
                   <label>완료기한</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input type="date" value="20021-04-06" >
-                    	</div>
-                    </div><br>
+                       <input type="date" class="form-control" value="2021-04-06" style="width:100%;">
+                   </div><br>
                 
                 <!-- /.form-group -->
                 <div class="form-group">
