@@ -106,7 +106,9 @@ $(function () {
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">그룹</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 그룹</button>
+                <a href="${path}/admin2.do?method=insForm">
+                	<button type="button" id="regBtn" class="btn btn-primary float-right">새 그룹</button>
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

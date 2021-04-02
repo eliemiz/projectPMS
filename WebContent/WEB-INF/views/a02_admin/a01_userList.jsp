@@ -107,7 +107,9 @@ $(function () {
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">사용자</h3>
-                <a href="${path}/admin.do?method=userInsForm"><button type="button" id="regBtn" class="btn btn-primary float-right">새 사용자</button></a>
+                <a href="${path}/admin.do?method=insForm">
+                	<button type="button" class="btn btn-primary float-right">새 사용자</button>
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

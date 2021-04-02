@@ -85,7 +85,9 @@ $(document).ready(function(){
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">[그룹명]</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
+                <a href="${path}/admin2.do?method=gUserInsForm">
+                	<button type="button" class="btn btn-primary float-right">새 구성원</button>
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

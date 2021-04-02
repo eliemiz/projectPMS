@@ -105,7 +105,9 @@ $(function () {
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">역할</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 역할</button>
+                <a href="${path}/admin3.do?method=insForm">
+                	<button type="button" id="regBtn" class="btn btn-primary float-right">새 역할</button>
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

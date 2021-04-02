@@ -117,6 +117,9 @@ $(function () {
                 <div class="card-footer">
                   <button type="button" class="btn btn-info">수정</button>
                   <button type="button" class="btn btn-info">삭제</button>
+                  <a href="${path}/admin3.do?method=list">
+                  	<button type="button" class="btn btn-default">돌아가기</button>
+                  </a>
                 </div>
                 <!-- /.card-footer -->
               </form>
