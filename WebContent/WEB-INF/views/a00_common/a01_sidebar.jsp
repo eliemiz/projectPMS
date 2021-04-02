@@ -84,7 +84,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="${path}/calendar.do?method=list" class="nav-link" id="sb-calender">
+					<a href="${path}/calendar.do?method=list" class="nav-link" id="sb-calendar">
 						<i class="nav-icon far fa-calendar-alt"></i>
 						<p>
 							Calendar
