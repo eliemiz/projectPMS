@@ -10,8 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리-사용자</title>
-
+<title>프로젝트 설정-구성원</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -32,51 +31,54 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  
 </head>
 <script type="text/javascript">
 $(document).ready(function(){
     $("#regBtn").click(function(){
        //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=groupinsForm";
+       location.href="${path}/admin.do?method=groupInsForm";
     });
  });
 </script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
-  <!-- Navbar -->
+<!-- Navbar -->
   <jsp:include page="../a00_common/a00_header.jsp"/>
 
   <!-- Main Sidebar Container -->
   <jsp:include page="../a00_common/a01_sidebar.jsp"/> 
-
-  <!-- Content Wrapper. Contains page content -->
+  	<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Group</h1>
+            <h1 class="m-0">Member</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          <div class="col-sm-6"> 
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin</li>
+              <li class="breadcrumb-item active">Setting</li>
             </ol>
-          </div><!-- /.col -->
+           </div>  <!-- .col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
- <section class="content">
-
- <!-- 내용 -->
-   <!-- card -->
+     <section class="content">
+    
+    
+    
+<!-- card -->
       <div class="card">
               <div class="card-header">
-                <h3 class="card-title">[그룹명]</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
+                <h3 class="card-title">구성원 추가</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -85,18 +87,30 @@ $(document).ready(function(){
                 <col width="7%">
                   <thead>
                   <tr>
-                    <th style="text-align:center;">구성원</th>
+                    <th style="text-align:center;">사용자/그룹</th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>박예진</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
+                    <td>관리팀</td>
+                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
                   </tr>
                   <tr>
-                    <td>김가연</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
+                    <td>2팀</td>
+                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                  </tr>
+                  <tr>
+                    <td>3팀</td>
+                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                  </tr>
+                  <tr>
+                    <td>이해수</td>
+                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                  </tr>
+                  <tr>
+                    <td>박강인</td>
+                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
                   </tr>
                   </tbody>
                <!--<tfoot>
@@ -108,25 +122,23 @@ $(document).ready(function(){
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card --> 
-    
-    
-    
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  <!-- Footer -->
-  <jsp:include page="../a00_common/a02_footer.jsp"/>
+            <!-- /.card -->
+            
 
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">
-    Control sidebar content goes here
-  </aside> -->
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+     </section>
+     </div>
+  <!-- /.content-wrapper -->
+              <!-- Footer -->
+  <jsp:include page="../a00_common/a02_footer.jsp"/>
+  
+         <!-- Control Sidebar
+  <aside class="control-sidebar control-sidebar-dark">
+     Control sidebar content goes here
+  </aside>
+    /.control-sidebar -->
+    
+
+</div><!-- wrapper -->
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -156,11 +168,44 @@ $(document).ready(function(){
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!-- Page specific script -->
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>  
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 </html>

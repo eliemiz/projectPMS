@@ -87,10 +87,10 @@ $(document).ready(function(){
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
-                <col width="150">
-                <col width="150">
+                <col width="160">
+                <col width="135">
                 <col width="250">
-                <col width="30">
+                <col width="50">
                   <thead>
                   <tr>
                     <th style="text-align:center;">아이디</th>
@@ -104,13 +104,13 @@ $(document).ready(function(){
                     <td>asdf11</td>
                     <td>이해수</td>
                     <td>adf@naver.com</td>
-                      <td> <button type="button" id="" class="btn btn-primary">구성원 추가</button></td>
+                      <td> <button type="button" id="" class="btn btn-primary">그룹에 추가</button></td>
                   </tr>
                   <tr>
                     <td>qeree56</td>
                     <td>이길원</td>
                     <td>dfsew@gmail.com</td>
-                    <td> <button type="button" id="" class="btn btn-primary">구성원 추가</button></td>
+                    <td> <button type="button" id="" class="btn btn-primary">그룹에 추가</button></td>
                   </tr>
                   </tbody>
                <!--<tfoot>

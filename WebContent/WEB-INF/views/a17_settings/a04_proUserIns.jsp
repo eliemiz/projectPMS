@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리-사용자</title>
+  <title>프로젝트 설정-구성원</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -32,15 +32,9 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+   <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="plugins/ekko-lightbox/ekko-lightbox.css">
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#regBtn").click(function(){
-       //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=groupinsForm";
-    });
- });
-</script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -57,12 +51,12 @@ $(document).ready(function(){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Group</h1>
+            <h1 class="m-0">Member</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin</li>
+              <li class="breadcrumb-item active">Setting</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -71,44 +65,34 @@ $(document).ready(function(){
     <!-- /.content-header -->
  <section class="content">
 
+
+
  <!-- 내용 -->
-   <!-- card -->
-      <div class="card">
+         <div class="card card-row card-primary">
+          <div class="card-header">
+            <h3 class="card-title">
+              	[사용자/그룹 아이디] 추가
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">[그룹명]</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
+                <h5 class="card-title">해당 구성원을 추가하시겠습니까?</h5>
+                <div class="card-tools">
+                  <a href="#" class="btn btn-tool btn-link">#5</a>
+                  <a href="#" class="btn btn-tool">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                <col width="93%">
-                <col width="7%">
-                  <thead>
-                  <tr>
-                    <th style="text-align:center;">구성원</th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>박예진</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
-                  </tr>
-                  <tr>
-                    <td>김가연</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
-                  </tr>
-                  </tbody>
-               <!--<tfoot>
-                  	<tr>
-                    <th>관리팀</th>
-                  	</tr>
-                  </tfoot> -->
-                </table>
-              </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card --> 
+            <button type="button" class="btn btn-default float-right">돌아가기</button>
+             <button type="button" id="" class="btn btn-primary float-right">추가</button>
+          </div>
+        </div> 
+    
+    
+    
     
     
     
@@ -138,6 +122,8 @@ $(document).ready(function(){
 </script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Ekko Lightbox -->
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -156,6 +142,8 @@ $(document).ready(function(){
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- Filterizr-->
+<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->

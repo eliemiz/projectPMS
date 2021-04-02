@@ -10,37 +10,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>관리-사용자</title>
+  <title>관리-역할 및 권한</title>
 
-  <!-- Google Font: Source Sans Pro -->
+
+<!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+  <!-- BS Stepper -->
+  <link rel="stylesheet" href="plugins/bs-stepper/css/bs-stepper.min.css">
+  <!-- dropzonejs -->
+  <link rel="stylesheet" href="plugins/dropzone/min/dropzone.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#regBtn").click(function(){
-       //등록 컨트롤러 호출
-       location.href="${path}/admin.do?method=groupinsForm";
-    });
- });
-</script>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -57,62 +63,93 @@ $(document).ready(function(){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Group</h1>
+            <h1 class="m-0">Task</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Admin</li>
+              <li class="breadcrumb-item active">Setting</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
- <section class="content">
-
- <!-- 내용 -->
-   <!-- card -->
-      <div class="card">
+<!-- Main content -->
+    <section class="content">
+    	
+    	
+    	
+    	<!-- 내용 -->
+    	
+    	<!-- iCheck -->
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">[그룹명]</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
+                <h3 class="card-title">task 유형</h3>
               </div>
-              <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                <col width="93%">
-                <col width="7%">
-                  <thead>
-                  <tr>
-                    <th style="text-align:center;">구성원</th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>박예진</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
-                  </tr>
-                  <tr>
-                    <td>김가연</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
-                  </tr>
-                  </tbody>
-               <!--<tfoot>
-                  	<tr>
-                    <th>관리팀</th>
-                  	</tr>
-                  </tfoot> -->
-                </table>
+                    
+                <!-- Minimal red style -->
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- checkbox -->
+                    <div class="form-group clearfix">
+                     <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkboxSuccess1">
+                        <label for="checkboxSuccess1">
+                       		결함
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- checkbox -->
+                    <div class="form-group clearfix">
+                     <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkboxSuccess2">
+                        <label for="checkboxSuccess2">
+                        	새 기능
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- checkbox -->
+                    <div class="form-group clearfix">
+                     <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkboxSuccess3">
+                        <label for="checkboxSuccess3">
+                        	지원
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- checkbox -->
+                    <div class="form-group clearfix">
+                     <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="checkboxSuccess4">
+                        <label for="checkboxSuccess4">
+                        	새 의견
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="button" id="" class="btn btn-primary">저장</button>
+              </div>
             </div>
-            <!-- /.card --> 
-    
-    
-    
+            <!-- /.card -->
+    	
+    	
+    	
+    	
     </section>
+    <!-- /.content -->
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -156,11 +193,17 @@ $(document).ready(function(){
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!-- Page specific script -->
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 </body>
 </html>
