@@ -67,28 +67,33 @@
     
          <!-- Main content -->
     <section class="content">
-	
+	        <div class="col-md-10">
             <div class="card card-row card-primary">
           <div class="card-header">
             <h3 class="card-title">
-              To Do
+              관리 목록
             </h3>
           </div>
           <div class="card-body">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">Create first milestone</h5>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-link">#5</a>
-                  <a href="#" class="btn btn-tool">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                </div>
+                <a class="btn btn-app bg-primary">
+                  <i class="fas fa-edit"></i>프로젝트
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <a class="btn btn-app bg-success">
+                  <i class="fas fa-user"></i>사용자
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <a class="btn btn-app bg-warning">
+                  <i class="fas fa-users"></i>그룹
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-app bg-default">
+                  <i class="fas fa-inbox"></i>설정
+                </a>
               </div>
             </div>
           </div>
         </div>
-	
+		</div>
     </section>
     <!-- /.content -->
   </div>

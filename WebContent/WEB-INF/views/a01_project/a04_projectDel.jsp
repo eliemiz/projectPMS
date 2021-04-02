@@ -56,7 +56,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"></li>
+              <li class="breadcrumb-item active">project</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -67,37 +67,22 @@
     
 	 <!-- Main content -->
     <section class="content">
-    
+      <div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
+	  <div class="login-box">
          <!-- left column -->
-          <div class="col-md-10">
+          <div class="col-md-30">
             <!-- general form elements -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">확인</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
+                    <label for="exampleInputEmail1">이 프로젝트의 데이터를 지우시겠습니까?</label>
+                    
                   </div>
                   <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -107,16 +92,18 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-danger">Submit</button>
+                  <button type="submit" class="btn btn-danger">삭제</button>
+                  <button type="submit" class="btn btn-default">취소</button>
                 </div>
               </form>
             </div>
             <!-- /.card -->
             </div>
-		
+          </div>  
+		</div>
     </section>
     <!-- /.content -->
-  </div>
+      </div>
   <!-- /.content-wrapper -->
 
 

@@ -71,9 +71,9 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
+              <h3 class="card-title">새 프로젝트</h3>
 
-              <div class="card-tools">
+			<div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -81,30 +81,53 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">이름</label>
+                <input type="text" id="inputName" class="form-control" value="">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
+                <label for="inputDescription">설명</label>
                 <textarea id="inputDescription" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
+                <label for="inputClientCompany">식별자</label>
+                <input type="text" id="inputClientCompany" class="form-control" value="">
+                <a>1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
+                식별자는 저장후에는 수정할 수 없습니다.</a>
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">홈페이지</label>
+                <input type="text" id="inputProjectLeader" class="form-control" value="">
+              </div>
+              <div class="form-group">
+               <label for="inputProjectLeader">공개</label>&nbsp;&nbsp;
+               <div class="icheck-success d-inline">
+                <input type="checkbox" checked id="checkboxSuccess1">
+                <label for="checkboxSuccess1">
+                </label>
+	           </div>
+	          </div> 
+              <div class="form-group">
+                <label for="inputStatus">상위 프로젝트</label>
                 <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
+                  <option disabled>Select one</option>
                   <option>On Hold</option>
                   <option>Canceled</option>
-                  <option>Success</option>
+                  <option selected>Success</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
-              </div>
+               <label for="inputProjectLeader">상위 프로젝트 구성원 상속</label>&nbsp;&nbsp;
+               <div class="icheck-success d-inline">
+                <input type="checkbox" checked id="checkboxSuccess1">
+                <label for="checkboxSuccess1">
+                </label>
+	           </div>
+	          </div> 
+               <div class="form-row float-right">
+          <!-- /.col -->
+            <button type="submit" class="btn btn-primary btn-block">만들기</button>
+          <!-- /.col -->
+        </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -112,12 +135,7 @@
         </div>
       
       </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Porject" class="btn btn-success float-right">
-        </div>
-      </div>
+
     </section>
     <!-- /.content -->
   </div>

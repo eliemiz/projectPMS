@@ -70,15 +70,26 @@
 	
 	<div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">Featured</h5>
+                <h5 class="m-0">화소반</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">Special title treatment</h6>
+                <h6 class="card-title">화소반 프로젝트 입니다.</h6>
 
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">프로젝트 확인하기</a>
               </div>
             </div>
+      <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="m-0">PMS</h5>
+              </div>
+              <div class="card-body">
+                <h6 class="card-title">PMS 프로젝트 입니다.</h6>
+
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">프로젝트 확인하기</a>
+              </div>
+            </div>      
 	
     </section>
     <!-- /.content -->

@@ -20,18 +20,18 @@ public class A00_AccountController {
 	}
 	
 	// http://localhost:7080/projectPMS/loginSearch.do
-		@RequestMapping("loginSearch.do")
-		public String loginSearch() {
-			
-			return "a00_account\\a01_login_search";
-		}
+	@RequestMapping("loginSearch.do")
+	public String loginSearch() {
+		
+		return "a00_account\\a01_login_search";
+	}
 	
-		// http://localhost:7080/projectPMS/signin.do
-		@RequestMapping("signin.do")
-		public String signin() {
-			
-			return "a00_account\\a02_signin";
-		}
+	// http://localhost:7080/projectPMS/signin.do
+	@RequestMapping("signin.do")
+	public String signin() {
+		
+		return "a00_account\\a02_signin";
+	}
 	
 
 }

@@ -16,32 +16,32 @@ public class A01_ProjectController {
 	
 	// http://localhost:7080/projectPMS/project.do?method=projectList
 	@GetMapping(params = "method=projectList")
-	public String ProjectList() {
+	public String projectList() {
 		return "a01_project\\a00_projectList";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=mgtList
 	@GetMapping(params = "method=mgtList")
-	public String MgtList() {
+	public String mgtList() {
 		return "a01_project\\a01_mgtList";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=projectMgt
 	@GetMapping(params = "method=projectMgt")
-	public String ProjectMgt() {
+	public String projectMgt() {
 		return "a01_project\\a02_projectMgt";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=projectIns
 	@GetMapping(params = "method=projectIns")
-	public String ProjectIns() {
+	public String projectIns() {
 		return "a01_project\\a03_projectIns";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=projectDel
 	@GetMapping(params = "method=projectDel")
-	public String ProjectDel() {
+	public String projectDel() {
 		return "a01_project\\a04_projectDel";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=activity
 	@GetMapping(params = "method=activity")
-	public String Activity() {
+	public String activity() {
 		return "a01_project\\a05_activity";
 	}
 	
