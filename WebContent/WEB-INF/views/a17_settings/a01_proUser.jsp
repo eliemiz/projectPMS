@@ -110,7 +110,9 @@ $(document).ready(function(){
       <div class="card">
               <div class="card-header">
                 <h3 class="card-title">구성원</h3>
-                <button type="button" id="regBtn" class="btn btn-primary float-right">새 구성원</button>
+                <a href="${path}/settings2.do?method=pUserInsList">
+                	<button type="button"  class="btn btn-primary float-right">새 구성원</button>
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
