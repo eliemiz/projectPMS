@@ -100,88 +100,51 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
-    	<!-- /.row -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">공지사항</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm">
-                    <div class="input-group-append">
-                      <button type="button" onclick="location.href='${path}/notice.do?method=insert'"
-                      class="btn btn-primary float-right">공지사항 등록</button>
+     <div class="card card-primary">
+      <div class="card-header">
+       <h3 class="card-title">공지사항 수정</h3>
+         </div>
+           <!-- /.card-header -->
+           <!-- form start -->
+             <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">제목</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해주세요">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">설명</label>
+                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">파일 첨부</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">파일 선택</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">업로드</span>
+                      </div>
                     </div>
                   </div>
+                  <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div> -->
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>제목</th>
-                      <th>글쓴이</th>
-                      <th>조회수</th>
-                      <th>등록일</th>
-                    </tr>
-                  </thead>
-                  <tbody onclick="location.href='${path}/notice.do?method=detail'">
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
+                <!-- /.card-body -->
+         <div class="card-footer">
+          <button type="button" onclick="location.href='${path}/notice.do?method=detail'"
+           class="btn btn-secondary float-right">취소</button>
+           <button type="button" onclick="location.href='${path}/notice.do?method=list'"
+           class="btn btn-primary float-right">수정</button>
+         </div>
+        </form>
+      </div>	
     </section>
     <!-- /.content -->
   </div>
