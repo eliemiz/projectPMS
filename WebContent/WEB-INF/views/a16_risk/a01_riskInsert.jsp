@@ -68,7 +68,7 @@
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->  
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#sb-notice").addClass("active");
+		$("#sb-risk").addClass("active");
 	})
 </script>
 </head>
