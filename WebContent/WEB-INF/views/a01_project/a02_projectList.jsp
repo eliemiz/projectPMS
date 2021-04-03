@@ -7,33 +7,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로젝트 목록</title>
 
 
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- icheck bootstrap -->
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+ <!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+  $.widget.bridge('uibutton', $.ui.button)
+
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -51,12 +61,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">project</h1>
+            <h1 class="m-0">project list</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"></li>
+              <li class="breadcrumb-item active">project</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -67,8 +77,7 @@
     
      <!-- Main content -->
     <section class="content">
-	<div class="row">
-	<div class="col-md-10">
+    
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -82,28 +91,23 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-          <div class="row">
-           <div class="col-sm-4.5">
-            <label>검색조건</label>
-            <select class="form-control select2" style="width: 500px;">
-             <option selected="selected">사용중</option>
-              <option>모두</option>
-              <option>사용중</option>
-              <option>닫힘</option>
-              <option>잠금보관</option>
-            </select>
-            </div>
-            <div class="col-sm-1">
-            <label></label><br>
-            <h3></h3>
-            <button type="submit" class="btn btn-success btn-block">적용</button>
-            </div>
-             <div class="col-sm-2">
-            <label></label><br>
-            <h3></h3>
-            <button type="submit" class="btn btn-primary btn-block">새 프로젝트 만들기</button>
-            </div>
-        </div>
+          
+           <nav class="navbar navbar-expand-sm bg-white navbar-white">
+		     <form  class="form-inline" method="post">
+		      상태:&nbsp;
+		        <select class="form-control mr-sm-2">
+		        <option selected="selected">사용중</option>
+		           <option>모두</option>
+	               <option>사용중</option>
+	               <option>닫힘</option>
+	               <option>잠금보관</option>
+		        </select>
+		        <input  class="form-control mr-sm-2" placeholder="프로젝트명"/>
+		       <button class="btn btn-success" type="submit">적용</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		       <button class="btn btn-primary" type="submit"><i class="fas fa-pen">새 프로젝트 만들기</i></button>
+		     </form>
+		  </nav>
+          <br>
 		<div class="row text-center">
                 <table class="table table-striped">
                   <thead>
@@ -119,34 +123,8 @@
                   </thead>
                   <tbody>
                     <tr>
+                      
                       <td>1.</td>
-                      <td>게시판 프로젝트</td>
-                      <td>  
-	                      <div class="icheck-success d-inline">
-	                        <input type="checkbox" checked id="checkboxSuccess1">
-	                        <label for="checkboxSuccess1">
-	                        </label>
-	                      </div>
-                      </td>
-                      <td>2021/04/01</td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="#" class="btn btn-warning"><i class="fas fa-lock"></i>잠금</a>
-                        </div>
-                      </td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="#" class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
-                        </div>
-                      </td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
                       <td>화소반 프로젝트</td>
                       <td>  
 	                      <div class="icheck-success d-inline">
@@ -163,17 +141,17 @@
                       </td>
                       <td>
                       	<div class="btn-group">
-                        <a href="#" class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
+                        <a href="${path}/project.do?method=insert"  class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
                         </div>
                       </td>
                       <td>
                       	<div class="btn-group">
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
+                        <a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
                         </div>
                       </td>
                     </tr>
                     <tr>
-                      <td>3.</td>
+                      <td>2.</td>
                       <td>PMS 프로젝트</td>
                       <td>  
 	                      <div class="icheck-success d-inline">
@@ -190,12 +168,12 @@
                       </td>
                       <td>
                       	<div class="btn-group">
-                        <a href="#" class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
+                        <a href="${path}/project.do?method=insert" class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
                         </div>
                       </td>
                       <td>
                       	<div class="btn-group">
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
+                        <a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
                         </div>
                       </td>
                     </tr>
@@ -204,35 +182,8 @@
               </div>
              </div> 
         <!-- /.card-body -->
-      </div>
-      </div>
       <!-- /.card -->
-      <div class="col-md-2">
-            <div class="card card-row card-primary">
-          <div class="card-header">
-            <h3 class="card-title">
-              관리
-            </h3>
-          </div>
-          <div class="card-body">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <a class="btn btn-app bg-primary">
-                  <i class="fas fa-edit"></i>프로젝트
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <a class="btn btn-app bg-success">
-                  <i class="fas fa-user"></i>사용자
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <a class="btn btn-app bg-warning">
-                  <i class="fas fa-users"></i>그룹
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-	</div>
-	</div>
+      
     </section>
     <!-- /.content -->
   </div>
@@ -251,14 +202,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->

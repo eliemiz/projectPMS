@@ -7,33 +7,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in (v2)</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로젝트</title>
 
 
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- icheck bootstrap -->
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+ <!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript">
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+  $.widget.bridge('uibutton', $.ui.button)
+
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -51,12 +61,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">project list</h1>
+            <h1 class="m-0">projects</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"></li>
+              <li class="breadcrumb-item active">project</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -67,6 +77,26 @@
     
      <!-- Main content -->
     <section class="content">
+	<div class="card card-warning card-outline">
+	 <div class="card-header">
+	         검색조건&nbsp;&nbsp;&nbsp;
+		     <form  class="form-inline" method="post">
+		       <select class="form-control mr-sm-2">
+		           <option>이다</option>
+		           <option>아니다</option>
+		        </select>
+		        <select class="form-control mr-sm-2">
+		           <option>사용중</option>
+		           <option>등록대기</option>
+		        </select>
+		       <button class="btn btn-success" type="submit">적용</button>
+		     </form>
+		     <div class="form-row float-right">
+		     <button class="btn btn-primary" type="submit"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
+		     <button class="btn btn-default" type="submit"><i class="fas fa-cog">관리</i></button>
+		     </div>
+		  </div>
+		  </div>
 	
 	<div class="card card-primary card-outline">
               <div class="card-header">
@@ -74,9 +104,8 @@
               </div>
               <div class="card-body">
                 <h6 class="card-title">화소반 프로젝트 입니다.</h6>
-
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">프로젝트 확인하기</a>
+                <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
               </div>
             </div>
       <div class="card card-primary card-outline">
@@ -87,7 +116,7 @@
                 <h6 class="card-title">PMS 프로젝트 입니다.</h6>
 
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">프로젝트 확인하기</a>
+                <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
               </div>
             </div>      
 	
@@ -109,14 +138,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->

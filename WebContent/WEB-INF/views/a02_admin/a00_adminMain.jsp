@@ -73,7 +73,7 @@
 					<div class="card-body p-0">
 						<ul class="nav nav-pills flex-column">
 							<li class="nav-item active">
-								<a href="#" class="nav-link">
+								<a href="${path}/project.do?method=list" class="nav-link">
 									<i class="fas fa-folder-open"></i> Projects
 								</a>
 							</li>

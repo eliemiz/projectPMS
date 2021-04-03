@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Log in (v2)</title>
+<title>프로젝트 설정-프로젝트</title>
 
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -38,11 +38,26 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+  $.widget.bridge('uibutton', $.ui.button)
+
 	$(document).ready(function(){
 		$("#sm-setting").addClass("menu-open");
 		$("#sb-setting").addClass("active");
 		$("#sb-setting-project").addClass("active");
 	});
+
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -61,12 +76,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">project settings</h1>
+            <h1 class="m-0">project </h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"></li>
+              <li class="breadcrumb-item active">setting</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -78,43 +93,59 @@
          <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
+              <h3 class="card-title">프로젝트 설정</h3>
 
-              <div class="card-tools">
+            	<div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                   <i class="fas fa-minus"></i>
                 </button>
               </div>
             </div>
             <div class="card-body">
+               <div class="form-group">
+               <label for="inputName">이름</label>
+                <input type="text" id="inputName" class="form-control" value="">
+              </div>
+               <div class="form-group">
+            <label for="inputName">설명</label>
+            
+              <textarea id="summernote">
+              <!-- Place <em>some</em> <u>text</u> <strong>here</strong> -->
+              </textarea>
+          
+            </div>
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputClientCompany">식별자</label>
+                <input type="text" id="inputClientCompany" class="form-control" value="project" disabled>
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <label for="inputProjectLeader">홈페이지</label>
+                <input type="text" id="inputProjectLeader" class="form-control" value="">
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
-              </div>
+               <label for="inputProjectLeader">공개</label>&nbsp;&nbsp;
+               <div class="icheck-success d-inline">
+                <input type="checkbox" checked id="checkboxSuccess1">
+                <label for="checkboxSuccess1">
+                </label>
+	           </div>
+	          </div> 
               <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
-              </div>
+               <label for="inputProjectLeader">상위 프로젝트 구성원 상속</label>&nbsp;&nbsp;
+               <div class="icheck-success d-inline">
+                <input type="checkbox" checked id="checkboxSuccess1">
+                <label for="checkboxSuccess1">
+                </label>
+	           </div>
+	           <br><br><br>
+	            <div class="form-row float-right">
+		          <button type="submit" class="btn btn-primary">저장</button>&nbsp;&nbsp;
+            	  <button type="submit" class="btn btn-default">취소</button>
+		        </div>
+	          </div> 
             </div>
             <!-- /.card-body -->
           </div>
@@ -122,12 +153,7 @@
         </div>
       
       </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Porject" class="btn btn-success float-right">
-        </div>
-      </div>
+     
     </section>
     <!-- /.content -->
   </div>
@@ -145,14 +171,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
