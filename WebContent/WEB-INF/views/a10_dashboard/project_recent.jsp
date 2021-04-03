@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- TABLE: LATEST ORDERS -->
 <div class="container-fluid">
@@ -26,53 +27,62 @@
 				<table class="table m-0">
 					<thead>
 						<tr>
-							<th>Order ID</th>
-							<th>Item</th>
-							<th>Status</th>
-							<th>Popularity</th>
+							<th>번호</th>
+							<th>제목</th>
+							<th>상태</th>
+							<th>발생 가능성</th>
+							<th>유형</th>
+							<th>예상 시작일자</th>
+							<th>예상 완료일자</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR9842</a></td>
-							<td>Call of Duty IV</td>
-							<td><span class="badge badge-success">Shipped</span></td>
-							<td>
-								<div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-							</td>
-						</tr>
+	                      <td>5</td>
+	                      <td><a href="${path}/risk.do?method=detail">개발일정 연장 고려</a></td>
+	                      <td>open</td>
+	                      <td>6</td>
+	                      <td>delay</td>
+	                      <td>2021-03-01</td>
+	                      <td>2021-04-01</td>
+	                    </tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR1848</a></td>
-							<td>Samsung Smart TV</td>
-							<td><span class="badge badge-warning">Pending</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-							</td>
-						</tr>
+	                      <td>4</td>
+	                      <td><a href="${path}/risk.do?method=detail">새 프로젝트 생성 시 500 error 질문드립니다.</a></td>
+	                      <td>open</td>
+	                      <td>2</td>
+	                      <td>delay</td>
+	                      <td>2021-03-05</td>
+	                      <td>2021-04-05</td>
+	                    </tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR7429</a></td>
-							<td>iPhone 6 Plus</td>
-							<td><span class="badge badge-danger">Delivered</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-							</td>
-						</tr>
+	                      <td>3</td>
+	                      <td><a href="${path}/risk.do?method=detail">dic 도입 추진</a></td>
+	                      <td>open</td>
+	                      <td>15</td>
+	                      <td>cost</td>
+	                      <td>2021-03-02</td>
+	                      <td>2021-04-11</td>
+	                    </tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR7429</a></td>
-							<td>Samsung Smart TV</td>
-							<td><span class="badge badge-info">Processing</span></td>
-							<td>
-								<div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-							</td>
-						</tr>
+	                      <td>2</td>
+	                      <td><a href="${path}/risk.do?method=detail">일감에 가중치(Weight)를 적용 방법 문의	신규	긴급</a></td>
+	                      <td>open</td>
+	                      <td>1</td>
+	                      <td>delay</td>
+	                      <td>2021-03-02</td>
+	                      <td>2021-03-10</td>
+	                    </tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR1848</a></td>
-							<td>Samsung Smart TV</td>
-							<td><span class="badge badge-warning">Pending</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-							</td>
-						</tr>
+	                      <td>1</td>
+	                      <td><a href="${path}/risk.do?method=detail">업무흐름 도형 표시 방법 및 프로젝트 메뉴로 들어갔을 때 뜨는 다양한 차트들 방법 문의</a></td>
+	                      <td>open</td>
+	                      <td>9</td>
+	                      <td>delay</td>
+	                      <td>2021-03-01</td>
+	                      <td>2021-04-01</td>
+	                    </tr>
+						
 					</tbody>
 				</table>
 			</div>
@@ -80,9 +90,8 @@
 		</div>
 		<!-- /.card-body -->
 		<div class="card-footer clearfix">
-			<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place
-				New Order</a> <a href="javascript:void(0)"
-				class="btn btn-sm btn-secondary float-right">View All Orders</a>
+			<a href="${path}/risk.do?method=insert" class="btn btn-sm btn-info float-left">Create New Risk</a>
+			<a href="${path}/risk.do?method=list" class="btn btn-sm btn-secondary float-right">View All Risks</a>
 		</div>
 		<!-- /.card-footer -->
 	</div>
@@ -107,52 +116,48 @@
 				<table class="table m-0">
 					<thead>
 						<tr>
-							<th>Order ID</th>
-							<th>Item</th>
-							<th>Status</th>
-							<th>Popularity</th>
+							<th>번호</th>
+							<th>제목</th>
+							<th>담당자</th>
+							<th>완료 예정일</th>
+							<th>완료일</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR7429</a></td>
-							<td>iPhone 6 Plus</td>
-							<td><span class="badge badge-danger">Delivered</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-							</td>
+		                    <td>5</td>
+		                    <td><a href="${path}/task.do?method=detail">동료검토결과보고서</a></td>
+		                    <td>김철수</td>
+		                    <td>2021-04-01</td>
+		                    <td>2021-03-27</td>
 						</tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR7429</a></td>
-							<td>Samsung Smart TV</td>
-							<td><span class="badge badge-info">Processing</span></td>
-							<td>
-								<div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-							</td>
+		                    <td>4</td>
+		                    <td><a href="${path}/task.do?method=detail">PDF 파일 미리보기</a></td>
+		                    <td>김피엠</td>
+		                    <td>2021-03-30</td>
+		                    <td>2021-03-27</td>
 						</tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR1848</a></td>
-							<td>Samsung Smart TV</td>
-							<td><span class="badge badge-warning">Pending</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-							</td>
+		                    <td>3</td>
+		                    <td><a href="${path}/task.do?method=detail">사용자를 위한 이용 매뉴얼을 작성합시다</a></td>
+		                    <td>오재복</td>
+		                    <td>2021-04-01</td>
+		                    <td>2021-04-01</td>
 						</tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR7429</a></td>
-							<td>iPhone 6 Plus</td>
-							<td><span class="badge badge-danger">Delivered</span></td>
-							<td>
-								<div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-							</td>
+		                    <td>2</td>
+		                    <td><a href="${path}/task.do?method=detail">테스트결과서가이드</a></td>
+		                    <td>이점검</td>
+		                    <td>2021-04-01</td>
+		                    <td>2021-03-27</td>
 						</tr>
 						<tr>
-							<td><a href="pages/examples/invoice.html">OR9842</a></td>
-							<td>Call of Duty IV</td>
-							<td><span class="badge badge-success">Shipped</span></td>
-							<td>
-								<div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-							</td>
+		                    <td>1</td>
+		                    <td><a href="${path}/task.do?method=detail">SW아키텍처</a></td>
+		                    <td>김희종</td>
+		                    <td>2021-04-12</td>
+		                    <td>2021-04-11</td>
 						</tr>
 					</tbody>
 				</table>
@@ -161,9 +166,8 @@
 		</div>
 		<!-- /.card-body -->
 		<div class="card-footer clearfix">
-			<a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place
-				New Order</a> <a href="javascript:void(0)"
-				class="btn btn-sm btn-secondary float-right">View All Orders</a>
+			<a href="${path}/task.do?method=insForm" class="btn btn-sm btn-info float-left">Create new Task</a> 
+			<a href="${path}/task.do?method=list" class="btn btn-sm btn-secondary float-right">View new Activities</a>
 		</div>
 		<!-- /.card-footer -->
 	</div>

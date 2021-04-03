@@ -13,45 +13,90 @@
 		<div class="col-md-4">
 			<!-- LINE CHART -->
 	        <div class="card card-info">
-	          <div class="card-header">
-	            <h3 class="card-title">Line Chart</h3>
-	
-	            <div class="card-tools">
-	              <button type="button" class="btn btn-tool" data-card-widget="collapse">
-	                <i class="fas fa-minus"></i>
-	              </button>
-	              <button type="button" class="btn btn-tool" data-card-widget="remove">
-	                <i class="fas fa-times"></i>
-	              </button>
-	            </div>
-	          </div>
-	          <div class="card-body">
-	            <div class="chart">
-	              <div id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
-	            </div>
-	          </div>
-	          <!-- /.card-body -->
+				<div class="card-header">
+					<h3 class="card-title">Line Chart</h3>
+
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool"
+							data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool"
+							data-card-widget="remove">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="chart">
+						<div id="lineChart"
+							style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+					</div>
+					<div class="mt-4">
+						<table class="table table-bordered table-hover text-center">
+							<thead>
+								<tr>
+									<th>계획</th>
+									<th>실적</th>
+									<th>차주 계획</th>
+									<th>달성률</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-widget="expandable-table" aria-expanded="false">
+									<td>100%</td>
+									<td>24.8%</td>
+									<td>100%</td>
+									<td>24.8%</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<!-- /.card-body -->
 	        </div>
 		</div>
-		
+
 		<div class="col-md-4">
 			<!-- DONUT CHART -->
 			<div class="card card-danger">
-			  <div class="card-header">
-			    <h3 class="card-title">Donut Chart</h3>
-			    <div class="card-tools">
-			      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-			        <i class="fas fa-minus"></i>
-			      </button>
-			      <button type="button" class="btn btn-tool" data-card-widget="remove">
-			        <i class="fas fa-times"></i>
-			      </button>
-			    </div>
-			  </div>
-			  <div class="card-body">
-			    <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-			  </div>
-			  <!-- /.card-body -->
+				<div class="card-header">
+					<h3 class="card-title">프로젝트 업무 상태별 현황</h3>
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool"
+							data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool"
+							data-card-widget="remove">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<canvas id="donutChart"
+						style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+					<div class="mt-4">
+						<table class="table table-bordered table-hover text-center">
+							<thead>
+								<tr>
+									<th>전체</th>
+									<th>진행</th>
+									<th>완료</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-widget="expandable-table" aria-expanded="false">
+									<td>75</td>
+									<td>57</td>
+									<td>15</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- /.card-body -->
 			</div>
 		</div>
 		<!-- /.card -->
@@ -59,22 +104,43 @@
 		<!-- DONUT CHART -->
 		<div class="col-md-4">
 			<div class="card card-danger">
-			  <div class="card-header">
-			    <h3 class="card-title">Donut Chart</h3>
-			
-			    <div class="card-tools">
-			      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-			        <i class="fas fa-minus"></i>
-			      </button>
-			      <button type="button" class="btn btn-tool" data-card-widget="remove">
-			        <i class="fas fa-times"></i>
-			      </button>
-			    </div>
-			  </div>
-			  <div class="card-body">
-			    <canvas id="donutChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-			  </div>
-			  <!-- /.card-body -->
+				<div class="card-header">
+					<h3 class="card-title">개인 업무 상태별 현황</h3>
+
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool"
+							data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool"
+							data-card-widget="remove">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					<canvas id="donutChart2"
+						style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+					<div class="mt-4">
+						<table class="table table-bordered table-hover text-center">
+							<thead>
+								<tr>
+									<th>전체</th>
+									<th>진행</th>
+									<th>완료</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-widget="expandable-table" aria-expanded="false">
+									<td>6</td>
+									<td>4</td>
+									<td>2</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- /.card-body -->
 			</div>
 		</div>
 		<!-- /.card -->
@@ -91,22 +157,35 @@
 	// Get context with jQuery - using jQuery's .get() method.
 	var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
 	var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
-	var donutData        = {
+	var donutData1 = {
 	  labels: [
-	      'Chrome',
-	      'IE',
-	      'FireFox',
-	      'Safari',
-	      'Opera',
-	      'Navigator',
+	      '진행',
+	      '완료',
+	      
 	  ],
 	  datasets: [
 	    {
-	      data: [700,500,400,600,300,100],
-	      backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+	      data: [57, 15],
+	      backgroundColor : ['#f56954', '#00c0ef'],
 	    }
 	  ]
 	}
+	
+	var donutData2 = {
+	  labels: [
+	      '진행',
+	      '완료',
+	      
+	  ],
+	  datasets: [
+	    {
+	      data: [4, 2],
+	      backgroundColor : ['#f56954', '#00c0ef'],
+	    }
+	  ]
+	}
+	
+	
 	var donutOptions     = {
 	  maintainAspectRatio : false,
 	  responsive : true,
@@ -115,12 +194,12 @@
 	// You can switch between pie and douhnut using the method below.
 	var donutChart = new Chart(donutChartCanvas, {
 	  type: 'doughnut',
-	  data: donutData,
+	  data: donutData1,
 	  options: donutOptions
 	})
 	var donutChart2 = new Chart(donutChartCanvas2, {
 	  type: 'doughnut',
-	  data: donutData,
+	  data: donutData2,
 	  options: donutOptions
 	})
 	

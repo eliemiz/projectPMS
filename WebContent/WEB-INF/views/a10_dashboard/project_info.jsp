@@ -39,12 +39,27 @@
 		</div>
 		<div class="col-2">
 			<div class="table-responsive">
-				<table class="table">
+				<table class="table text-center">
 					<tr>
 						<th>프로젝트 상태</th>
 					</tr>
+					<!-- <tr>
+						<td style="color:red">
+						<i class="fas fa-times-circle" style="font-size: 50px;"></i><br>
+						<span style="font-weight:bold;">Danger</span>
+						</td>
+					</tr>
 					<tr>
-						<td></td>
+						<td style="color:orange">
+						<i class="fas fa-exclamation-triangle" style="font-size: 50px;"></i><br>
+						<span style="font-weight:bold;">Warning</span>
+						</td>
+					</tr> -->
+					<tr>
+						<td style="color:green">
+						<i class="fas fa-thumbs-up" style="font-size: 50px;"></i><br>
+						<span style="font-weight:bold;">Safe</span>
+						</td>
 					</tr>
 				</table>
 			</div>
