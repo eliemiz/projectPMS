@@ -68,7 +68,7 @@
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->  
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#sb-risk").addClass("active");
+		$("#sb-notice").addClass("active");
 	})
 </script>
 </head>
@@ -100,78 +100,90 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
-    	<!-- /.row -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">리스크</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm">
-                    <div class="input-group-append">
-                      <button type="button" onclick="location.href='${path}/risk.do?method=insert'"
-                      class="btn btn-primary float-right">리스크 등록</button>
+     <div class="card card-primary">
+      <div class="card-header">
+       <h3 class="card-title">리스크 등록</h3>
+         </div>
+           <!-- /.card-header -->
+           <!-- form start -->
+             <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">제목</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해주세요">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">상태</label>
+	                  <div class="col-sm-6">
+	                      <!-- select -->
+	                      <div class="form-group">
+	                        <select class="form-control">
+	                          <option>open</option>       
+	                          <option>close</option>
+	                        </select>
+	                      </div>
+	                    </div>
+	              </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">상세설명</label>
+                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">발생가능성</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">영향도</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">유형</label>
+	                  <div class="col-sm-6">
+	                      <!-- select -->
+	                      <div class="form-group">
+	                        <select class="form-control">
+	                          <option>cost</option>
+	                          <option>tech</option>
+	                          <option>delay</option>
+	                          <option>etc</option>
+	                        </select>
+	                      </div>
+	                    </div>
+	              </div>
+	              <div class="form-group">
+                    <label for="exampleInputEmail1">예상시작일</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">예상종료일</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">파일 첨부</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">파일 선택</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">업로드</span>
+                      </div>
                     </div>
                   </div>
+                  <!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div> -->
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>제목</th>
-                      <th>상태</th>
-                      <th>RPN</th>
-                      <th>발생도</th>
-                      <th>영향도</th>
-                      <th>유형</th>
-                      <th>예상시작일</th>
-                      <th>예상종료일</th>
-                      <th>담당자</th>
-                      <th>변경일자</th>
-                    </tr>
-                  </thead>
-                  <tbody onclick="location.href='${path}/risk.do?method=detail'">
-                    <tr>
-                      <td>001</td>
-                      <td>test 문제</td>
-                      <td>open</td>
-                      <td>9</td>
-                      <td>3</td>
-                      <td>3</td>
-                      <td>cost</td>
-                      <td>2021-03-01</td>
-                      <td>2021-04-01</td>
-                      <td>홍길동</td>
-                      <td>2021-03-28</td>
-                    </tr>
-                    <tr>
-                      <td>002</td>
-                      <td>해결 문제</td>
-                      <td>close</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>delay</td>
-                      <td>2021-03-01</td>
-                      <td>2021-03-20</td>
-                      <td>홍길동</td>
-                      <td>2021-03-20</td>
-                    </tr>              
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
+                <!-- /.card-body -->
+            <div class="card-footer">
+          <button type="submit" class="btn btn-primary float-right">등록</button>
+         </div>
+        </form>
+      </div>	
     </section>
     <!-- /.content -->
   </div>
@@ -187,5 +199,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+
 </body>
 </html>
