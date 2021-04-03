@@ -18,6 +18,26 @@ public class A16_RiskController {
 	@GetMapping(params="method=list")
 	public String RiskList() {
 		return "a16_risk\\a01_risk";
-		
+	}
+	
+	// http://localhost:6080/projectPMS/risk.do?method=detail
+	// http://localhost:7080/projectPMS/risk.do?method=detail
+	@GetMapping(params="method=detail")
+	public String RiskDetail() {
+		return "a16_risk\\a01_riskDetail";
+	}
+	
+	// http://localhost:6080/projectPMS/risk.do?method=insert
+	// http://localhost:7080/projectPMS/risk.do?method=insert
+	@GetMapping(params="method=insert")
+	public String RiskInsert() {
+		return "a16_risk\\a01_riskInsert";
+	}
+	
+	// http://localhost:6080/projectPMS/risk.do?method=update
+	// http://localhost:7080/projectPMS/risk.do?method=update
+	@GetMapping(params="method=update")
+	public String RiskUpdate() {
+		return "a16_risk\\a01_riskUpdate";			
 	}
 }
