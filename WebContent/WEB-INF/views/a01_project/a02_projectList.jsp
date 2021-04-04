@@ -104,7 +104,7 @@
 		        </select>
 		        <input  class="form-control mr-sm-2" placeholder="프로젝트명"/>
 		       <button class="btn btn-success" type="submit">적용</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		       <button class="btn btn-primary" type="submit"><i class="fas fa-pen">새 프로젝트 만들기</i></button>
+		       <a href="${path}/project.do?method=insert" class="btn btn-primary"><i class="fas fa-pen">새 프로젝트 만들기</i></a>
 		     </form>
 		  </nav>
           <br>

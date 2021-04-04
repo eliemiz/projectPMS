@@ -92,8 +92,8 @@
 		       <button class="btn btn-success" type="submit">적용</button>
 		     </form>
 		     <div class="form-row float-right">
-		     <button class="btn btn-primary" type="submit"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
-		     <button class="btn btn-default" type="submit"><i class="fas fa-cog">관리</i></button>
+		     <a href="${path}/project.do?method=insert" class="btn btn-primary"><i class="fas fa-pen">새 프로젝트 만들기</i></a>&nbsp;&nbsp;
+		     <a href="${path}/project.do?method=list" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
 		     </div>
 		  </div>
 		  </div>
