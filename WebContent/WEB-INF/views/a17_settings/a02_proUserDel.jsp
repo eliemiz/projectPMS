@@ -106,7 +106,9 @@ $(document).ready(function(){
                 </div>
               </div>
             </div>
+            <a href="${path}/settings2.do?method=pUserList">
             <button type="button" class="btn btn-default float-right">돌아가기</button>
+            </a>
              <button type="button" id="" class="btn btn-primary float-right">삭제</button>
           </div>
         </div> 

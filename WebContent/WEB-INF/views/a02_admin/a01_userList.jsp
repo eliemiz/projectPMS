@@ -136,14 +136,14 @@ $(function () {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>asdf11</td>
-                    <td>이해수</td>
-                    <td>adf@naver.com</td>
+                    <td><a href="${path}/admin.do?method=detail">asdf11</a></td>
+                    <td><a href="${path}/admin.do?method=detail">이해수</a></td>
+                    <td><a href="${path}/admin.do?method=detail">adf@naver.com</a></td>
                   </tr>
                   <tr>
-                    <td>qeree56</td>
-                    <td>이길원</td>
-                    <td>dfsew@gmail.com</td>
+                    <td><a href="${path}/admin.do?method=detail">asdfad</a></td>
+                    <td><a href="${path}/admin.do?method=detail">이길원</a></td>
+                    <td><a href="${path}/admin.do?method=detail">sdfer@naver.com</a></td>
                   </tr>
                   </tbody>
                <!--<tfoot>

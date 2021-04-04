@@ -136,12 +136,21 @@ $(document).ready(function(){
                   <tbody>
                   <tr>
                     <td>박예진</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
+                    <td>
+                     <a href="${path}/settings2.do?method=pUserDel">
+                    <button type="button" id="" class="btn btn-primary">삭제</button>
+                    </a>
+                    </td>
                   </tr>
                   <tr>
                     <td>관리팀</td>
-                    <td><button type="button" id="" class="btn btn-primary">삭제</button></td>
+                    <td>
+                     <a href="${path}/settings2.do?method=pUserDel">
+                    <button type="button" id="" class="btn btn-primary">삭제</button>
+                    </a>
+                    </td>
                   </tr>
+                
                   </tbody>
                <!--<tfoot>
                   	<tr>

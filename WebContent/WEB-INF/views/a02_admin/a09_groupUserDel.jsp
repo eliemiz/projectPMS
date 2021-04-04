@@ -98,7 +98,9 @@
                 </div>
               </div>
             </div>
+            <a href="${path}/admin2.do?method=list">
             <button type="button" class="btn btn-default float-right">돌아가기</button>
+            </a>
              <button type="button" id="" class="btn btn-info float-right">삭제</button>
           </div>
         </div> 

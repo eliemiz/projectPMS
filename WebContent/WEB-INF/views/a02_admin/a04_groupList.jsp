@@ -145,11 +145,20 @@ $(function () {
                   </thead>
                   <tbody>
                   <tr>
-                    <td>서버팀</td>
+                    <td>
+                    <a href="${path}/admin.do?method=detail">
+                 		   서버팀
+                 	</a>
+                    </td>
                   </tr>
                   <tr>
-                    <td>관리팀</td>
+                    <td>
+                    <a href="${path}/admin2.do?method=detail">
+                 		   관리팀
+                 	</a>
+                    </td>
                   </tr>
+                 
                   </tbody>
                <!--<tfoot>
                   	<tr>
