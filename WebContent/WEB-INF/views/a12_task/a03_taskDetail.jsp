@@ -163,10 +163,6 @@ html, body {
               </div>
               <!-- /.col -->
               <div class="col-md-6">
-                <div class="form-group">
-                  <label>작업시간</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;130시간
-                </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>진척도</label>
