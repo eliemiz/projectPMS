@@ -1,22 +1,29 @@
 package pms.a01_controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A01_ProjectService;
+import pms.z01_vo.Project;
 
 @Controller
 @RequestMapping("project.do")
 public class A01_ProjectController {
+	
 	@Autowired(required = false)
 	private A01_ProjectService service;
-	
 	
 	// http://localhost:7080/projectPMS/project.do
 	@RequestMapping
 	public String projects() {
+		
+//		ArrayList<Project> projectList = service.getProjectList();
+//		d.addAttribute("projectList", projectList);
+		
 		return "a01_project\\a00_projects";
 	}
 	/*
