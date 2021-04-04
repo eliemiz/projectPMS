@@ -121,10 +121,65 @@ $(document).ready(function(){
 							<span class="toggle-multiselect icon-only icon-toggle-plus">&nbsp;</span>
 						</span>
 					</td>
+					<td>
+						<div class="add-filter">
+							<label for="add_filter_select">Add filter</label>
+							<select id="add_filter_select">
+								<option value="">&nbsp;</option>
+								<option value="status_id" disabled="disabled">Status</option>
+								<option value="project_id">Project</option>
+								<option value="tracker_id">Tracker</option>
+								<option value="priority_id">Priority</option>
+								<option value="author_id">Author</option>
+								<option value="assigned_to_id">Assignee</option>
+								<option value="fixed_version_id">Target version</option>
+								<option value="subject">Subject</option>
+								<option value="description">Description</option>
+								<option value="done_ratio">% Done</option>
+								<option value="attachment">File</option>
+								<option value="updated_by">Updated by</option>
+								<option value="last_updated_by">Last updated by</option>
+								<option value="issue_id">Issue</option>
+								<optgroup label="Assignee"><option value="member_of_group">Assignee's group</option>
+									<option value="assigned_to_role">Assignee's role</option>
+								</optgroup>
+								<optgroup label="Target version">
+									<option value="fixed_version.due_date">Target version's Due date</option>
+									<option value="fixed_version.status">Target version's Status</option>
+								</optgroup>
+								<optgroup label="Date">
+									<option value="created_on">Created</option>
+									<option value="updated_on">Updated</option>
+									<option value="closed_on">Closed</option>
+									<option value="start_date">Start date</option>
+									<option value="due_date">Due date</option>
+								</optgroup>
+								<optgroup label="Time tracking">
+									<option value="estimated_hours">Estimated time</option>
+									<option value="spent_time">Spent time</option>
+								</optgroup><optgroup label="Project">
+									<option value="project.status">Project's Status</option>
+								</optgroup>
+								<optgroup label="Relations">
+									<option value="relates">Related to</option>
+									<option value="duplicates">Is duplicate of</option>
+									<option value="duplicated">Has duplicate</option>
+									<option value="blocks">Blocks</option>
+									<option value="blocked">Blocked by</option>
+									<option value="precedes">Precedes</option>
+									<option value="follows">Follows</option>
+									<option value="copied_to">Copied to</option>
+									<option value="copied_from">Copied from</option>
+									<option value="parent_id">Parent task</option>
+									<option value="child_id">Subtasks</option>
+								</optgroup>
+							</select>						
+						</div>
+					</td>
 				</tr>
 			</tbody>
 			</table>				
-			<div class="add-filter">
+			<!-- <div class="add-filter">
 				<label for="add_filter_select">Add filter</label>
 				<select id="add_filter_select">
 					<option value="">&nbsp;</option>
@@ -176,7 +231,7 @@ $(document).ready(function(){
 						<option value="child_id">Subtasks</option>
 					</optgroup>
 				</select>
-				</div>				
+				</div> -->				
 				<input type="hidden" name="f[]" id="f_" value="">				
 			</div>
 			</fieldset>
