@@ -54,8 +54,8 @@ html, body {
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
-		$("#sb-dashboard").addClass("active");
-		$("#sb-dashboard-info").addClass("active");
+		$("#sb-task").addClass("active");
+		$("#sb-task").addClass("active");
 	});
 </script>
 </head>
