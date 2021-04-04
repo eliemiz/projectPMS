@@ -33,5 +33,12 @@ public class A00_AccountController {
 		return "a00_account\\a02_signin";
 	}
 	
+	// http://localhost:7080/projectPMS/info.do
+	@RequestMapping("info.do")
+	public String info() {
+		
+		return "a00_account\\a03_info";
+	}
+	
 
 }

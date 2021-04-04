@@ -23,7 +23,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">Alexander Pierce</a>
+				<a href="${path}/info.do" class="d-block">Alexander Pierce</a>
 			</div>
 		</div>
 
