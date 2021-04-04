@@ -5,6 +5,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container-fluid">
+	<div class="text-right mb-3">
+		<span style="font-weight: bolder;">달성률 기준</span>
+		<i class="fas fa-thumbs-up ml-3" style="color:green;"></i> 정상 (90% 이상)
+		<i class="fas fa-exclamation-triangle ml-3" style="color:orange;"></i> 경고 (70% 이상 90% 미만)
+		<i class="fas fa-times-circle ml-3" style="color:red"></i> 위험 (70% 미만)
+	</div>
 	<div class="row">
 		<!-- /.col -->
 		<div class="col-10">

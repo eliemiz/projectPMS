@@ -29,7 +29,7 @@
 	<tbody>
 		<tr>
 			<td>5</td>
-			<td><a href="${path}/admin.do?method=detail">홍길동</a></td>
+			<td><a href="${path}/info.do">홍길동</a></td>
 			<td>관리자</td>
 			<td>22</td>
 			<td>15</td>
@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>4</td>
-			<td><a href="${path}/admin.do?method=detail">마길동</a></td>
+			<td><a href="${path}/info.do">마길동</a></td>
 			<td>개발자</td>
 			<td>22</td>
 			<td>15</td>
@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td>3</td>
-			<td><a href="${path}/admin.do?method=detail">이점검</a></td>
+			<td><a href="${path}/info.do">이점검</a></td>
 			<td>개발자</td>
 			<td>22</td>
 			<td>15</td>
@@ -56,7 +56,7 @@
 		</tr>
 		<tr>
 			<td>2</td>
-			<td><a href="${path}/admin.do?method=detail">김피엠</a></td>
+			<td><a href="${path}/info.do">김피엠</a></td>
 			<td>개발자</td>
 			<td>22</td>
 			<td>15</td>
@@ -65,7 +65,7 @@
 		</tr>
 		<tr>
 			<td>1</td>
-			<td><a href="${path}/admin.do?method=detail">김실장</a></td>
+			<td><a href="${path}/info.do">김실장</a></td>
 			<td>관리자</td>
 			<td>22</td>
 			<td>15</td>
