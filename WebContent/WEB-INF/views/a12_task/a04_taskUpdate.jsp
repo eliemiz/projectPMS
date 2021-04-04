@@ -191,7 +191,7 @@ html, body {
                 <div class="form-group">
                   <label>시작시간</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input type="date" class="form-control" value="2021-04-01" style="width:100%;">
+                       <input type="date" class="form-control"  disabled="disabled" value="2021-04-01" style="width:100%;">
                     </div>
                 </div>
                 <!-- /.form-group -->
