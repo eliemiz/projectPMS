@@ -137,23 +137,43 @@ $(document).ready(function(){
                   <tbody>
                   <tr>
                     <td>관리팀</td>
-                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                    <td>
+                    <a href="${path}/settings2.do?method=pUserIns">
+                    <button type="button" id="" class="btn btn-primary">추가</button>
+                    </a>
+                    </td>
                   </tr>
                   <tr>
                     <td>2팀</td>
-                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                     <td>
+                    <a href="${path}/settings2.do?method=pUserIns">
+                    <button type="button" id="" class="btn btn-primary">추가</button>
+                    </a>
+                    </td>
                   </tr>
                   <tr>
                     <td>3팀</td>
-                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                    <td>
+                    <a href="${path}/settings2.do?method=pUserIns">
+                    <button type="button" id="" class="btn btn-primary">추가</button>
+                    </a>
+                    </td>
                   </tr>
                   <tr>
                     <td>이해수</td>
-                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                     <td>
+                    <a href="${path}/settings2.do?method=pUserIns">
+                    <button type="button" id="" class="btn btn-primary">추가</button>
+                    </a>
+                    </td>
                   </tr>
                   <tr>
                     <td>박강인</td>
-                    <td><button type="button" id="" class="btn btn-primary">추가</button></td>
+                     <td>
+                    <a href="${path}/settings2.do?method=pUserIns">
+                    <button type="button" id="" class="btn btn-primary">추가</button>
+                    </a>
+                    </td>
                   </tr>
                   </tbody>
                <!--<tfoot>
