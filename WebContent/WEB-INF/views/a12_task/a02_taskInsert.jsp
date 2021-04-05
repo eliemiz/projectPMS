@@ -135,7 +135,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>상위일감</label>
+                  <label>상위Task</label>
                   <input type="text" class="form-control" style="width: 100%;">
                 </div>
                 <!-- /.form-group -->
@@ -246,7 +246,7 @@ html, body {
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div><br><br>
                   <div class="form-group">
-                  <label>연결된 일감</label>
+                  <label>연결된 Task</label>
                   <input type="text" class="form-control" style="width: 100%;">
                 </div>
                 
