@@ -92,11 +92,11 @@
               <div class="card-body">
                 <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" id="customCheckbox1" >
-                  <label for="customCheckbox1" class="custom-control-label">일감</label>
+                  <label for="customCheckbox1" class="custom-control-label">task</label>
                 </div>
                 <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" id="customCheckbox2" >
-                  <label for="customCheckbox2" class="custom-control-label">공지</label>
+                  <label for="customCheckbox2" class="custom-control-label">notice</label>
                 </div>
                 <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" id="customCheckbox3" >

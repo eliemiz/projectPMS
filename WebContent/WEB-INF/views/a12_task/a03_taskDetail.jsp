@@ -186,11 +186,19 @@ html, body {
             		<label>첨부파일</label>
             		&nbsp;&nbsp;&nbsp;첨부파일명&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
+<<<<<<< Updated upstream
             		<label>상/하위 Task</label>
             		&nbsp;&nbsp;&nbsp;상/하위 Task명
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>연결된 Task</label>
             		&nbsp;&nbsp;&nbsp;연결된 Task명
+=======
+            		<label>상/하위 task</label>
+            		&nbsp;&nbsp;&nbsp;상/하위 task명
+            		<hr align="left" style="border: solid 1px gray; width: 90%;">
+            		<label>연결된 task</label>
+            		&nbsp;&nbsp;&nbsp;연결된 task명
+>>>>>>> Stashed changes
             	</div>
             </div>
         </div>

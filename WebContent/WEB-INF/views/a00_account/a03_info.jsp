@@ -104,7 +104,7 @@
           
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">일감</h3>
+                <h3 class="card-title">task</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -119,13 +119,13 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>할당된 일감</td>
+                      <td>할당된 task</td>
                       <td>1</td>
                       <td>1</td>
                       <td>2</td>
                     </tr>
                     <tr>
-                      <td>보고된 일감</td>
+                      <td>보고된 task</td>
                       <td>1</td>
                       <td>1</td>
                       <td>2</td>

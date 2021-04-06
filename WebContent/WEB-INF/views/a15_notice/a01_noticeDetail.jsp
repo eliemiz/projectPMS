@@ -105,7 +105,7 @@
      <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">상세 내용</h3>
+          <h3 class="card-title">공지사항</h3>
 
           <div class="card-tools">
             <div class="input-group input-group-sm">
@@ -123,11 +123,11 @@
           <div class="row">
             
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fas fa-paint-brush"></i> 공지사항 제목</h3>
+              <h3 class="text-primary"><i class="fas fa-paint-brush"></i> 새 프로젝트 진행</h3>
               &nbsp;&nbsp;&nbsp;
               <p class="text-muted">
-              공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-              공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용             
+              새 프로젝트 진행 중입니다. 아래 첨부파일 확인해주세요.
+             
               </p>
               <br>
               <div class="text-muted">
@@ -181,7 +181,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       1등ㅋㅋ 
+                       ok 
                       </p>
                     </div>
 
@@ -195,7 +195,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                        2등
+                        no
                       </p>
                     </div>
 
@@ -209,7 +209,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       3등 ㅠㅜ
+                       ok
                       </p>
                     </div>
               </div>
