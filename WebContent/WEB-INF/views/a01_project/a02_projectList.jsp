@@ -83,15 +83,7 @@
         <div class="card-header">
           <h3 class="card-title"></h3>
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          
+               <!-- 검색 -->
            <nav class="navbar navbar-expand-sm bg-white navbar-white">
 		     <form  class="form-inline" method="post">
 		      상태:&nbsp;
@@ -99,23 +91,21 @@
 		        <option selected="selected">사용중</option>
 		           <option>모두</option>
 	               <option>사용중</option>
-	               <option>닫힘</option>
-	               <option>잠금보관</option>
+	               <option>잠금</option>
 		        </select>
 		        <input  class="form-control mr-sm-2" placeholder="프로젝트명"/>
-		       <button class="btn btn-success" type="submit">적용</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		       <button class="btn btn-success" type="submit">검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		       <a href="${path}/project.do?method=insert" class="btn btn-primary"><i class="fas fa-pen">새 프로젝트 만들기</i></a>
 		     </form>
 		  </nav>
+		     <!-- /검색 -->
           <br>
 		<div class="row text-center">
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 50px">#</th>
+                      <th style="width: 50px">번호</th>
                       <th style="width: 500px">프로젝트명</th>
-                      <th style="width: 100px">공개여부</th>
-                      <th style="width: 120px">등록</th>
                       <th style="width: 100px"></th>
                       <th style="width: 100px"></th>
                       <th style="width: 100px"></th>
@@ -123,17 +113,15 @@
                   </thead>
                   <tbody>
                     <tr>
-                      
-                      <td>1.</td>
+                      <%-- <c:forEach var="rev" varStatus="sts" items="${Rev}">
+				<tr>
+					<td><span id="rev-r=toggle">${rev.review_id}</span></td>
+					<div class="rev-content">
+						<td class="title2" id="rev-${sts.count}" style="text-align: left;">
+							<span>${rev.title}</span>
+						</td> --%>
+                      <td>1</td>
                       <td>화소반 프로젝트</td>
-                      <td>  
-	                      <div class="icheck-success d-inline">
-	                        <input type="checkbox" checked id="checkboxSuccess1">
-	                        <label for="checkboxSuccess1">
-	                        </label>
-	                      </div>
-                      </td>
-                      <td>2021/04/01</td>
                       <td>
                       	<div class="btn-group">
                         <a href="#" class="btn btn-warning"><i class="fas fa-lock"></i>잠금</a>
@@ -150,38 +138,12 @@
                         </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>PMS 프로젝트</td>
-                      <td>  
-	                      <div class="icheck-success d-inline">
-	                        <input type="checkbox" checked id="checkboxSuccess1">
-	                        <label for="checkboxSuccess1">
-	                        </label>
-	                      </div>
-                      </td>
-                      <td>2021/04/01</td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="#" class="btn btn-warning"><i class="fas fa-lock"></i>잠금</a>
-                        </div>
-                      </td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="${path}/project.do?method=insert" class="btn btn-info"><i class="fas fa-copy"></i>복사</a>
-                        </div>
-                      </td>
-                      <td>
-                      	<div class="btn-group">
-                        <a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
-                        </div>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
              </div> 
         <!-- /.card-body -->
+        </div>
       <!-- /.card -->
       
     </section>
