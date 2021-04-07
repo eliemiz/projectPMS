@@ -11,5 +11,5 @@ public interface A01_ProjectDao {
 	
 	public ArrayList<Project> getProjectList();
 	
-	public Project getProject(int projectId);
+	public Project getProject(int id);
 }
