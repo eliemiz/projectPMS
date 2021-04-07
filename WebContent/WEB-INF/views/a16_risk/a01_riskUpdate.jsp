@@ -132,6 +132,24 @@
                     </textarea>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">담당자</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1">               
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">범주</label>
+	                  <div class="col-sm-6">
+	                      <!-- select -->
+	                      <div class="form-group">
+	                        <select class="form-control">
+	                          <option>Internal</option>
+	                          <option>External</option>
+	                          <option>Technical</option>
+	                          <option>Unforeseeable</option>
+	                        </select>
+	                      </div>
+	                    </div>
+	              </div>
+                  <div class="form-group">
                     <label for="exampleInputEmail1">발생가능성</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
@@ -140,15 +158,15 @@
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">유형</label>
+                    <label for="exampleInputEmail1">전략</label>
 	                  <div class="col-sm-6">
 	                      <!-- select -->
 	                      <div class="form-group">
 	                        <select class="form-control">
-	                          <option>cost</option>
-	                          <option>tech</option>
-	                          <option>delay</option>
-	                          <option>etc</option>
+	                          <option>Accept</option>
+	                          <option>Mitigate</option>
+	                          <option>Transfer</option>
+	                          <option>Eliminate</option>
 	                        </select>
 	                      </div>
 	                    </div>
@@ -160,6 +178,11 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">예상종료일</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">해결방안</label>
+                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
+                    </textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
