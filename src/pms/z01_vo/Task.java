@@ -13,6 +13,7 @@ public class Task {
 	private int user_id;
 	private String subject;
 	private String description;
+	private String tracker;
 	private String status;
 	private int priority;
 	private Date created_on;
@@ -34,7 +35,7 @@ public class Task {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
+	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String tracker, String status,
 			int priority, Date created_on, Date updated_on, Date start_date, Date due_date, int estimated,
 			int done_ratio, Date completed_on) {
 		super();
@@ -44,6 +45,7 @@ public class Task {
 		this.user_id = user_id;
 		this.subject = subject;
 		this.description = description;
+		this.tracker = tracker;
 		this.status = status;
 		this.priority = priority;
 		this.created_on = created_on;
@@ -54,7 +56,7 @@ public class Task {
 		this.done_ratio = done_ratio;
 		this.completed_on = completed_on;
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
+	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String tracker, String status,
 			int priority, String created_on_s, String updated_on_s, String start_date_s, String due_date_s,
 			int estimated, int done_ratio, String completed_on_s) {
 		super();
@@ -64,6 +66,7 @@ public class Task {
 		this.user_id = user_id;
 		this.subject = subject;
 		this.description = description;
+		this.tracker = tracker;
 		this.status = status;
 		this.priority = priority;
 		this.created_on_s = created_on_s;
@@ -109,6 +112,12 @@ public class Task {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getTracker() {
+		return tracker;
+	}
+	public void setTracker(String tracker) {
+		this.tracker = tracker;
 	}
 	public String getStatus() {
 		return status;

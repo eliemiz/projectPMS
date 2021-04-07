@@ -172,7 +172,7 @@ html, body {
                   <c:forEach var="task" items="${tasklist}">
                   <tr onclick="location.href='${path}/task.do?method=detail'">
                   	<td>${task.id}</td>
-                  	<td>${task.status}</td>
+                  	<td>${task.tracker}</td>
                   	<td>${task.status}</td>
                   	<td>${task.priority}</td>
                   	<td>${task.subject}</td>

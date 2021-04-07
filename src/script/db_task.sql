@@ -16,7 +16,9 @@ CREATE TABLE task(
    done_ratio NUMBER, -- 진척도
    completed_on DATE -- 완료일자
 );
+ALTER TABLE task ADD (tracker varchar2(30));
 SELECT * FROM task;
+UPDATE task SET tracker ='새기능' WHERE id=10001;
 INSERT INTO task VALUES (10001, 10000, 11111, 12345, 'test용 TASK', '테스트용입니다.', '신규', 1, 
 						 sysdate, sysdate, sysdate,
 						 '2021/04/30', 180, 30, '2021/04/30');
