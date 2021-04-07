@@ -110,16 +110,18 @@
 			</div>
 		</div>
 	</c:forEach> --%>
+	<c:forEach var="project" items="${projectList}">
 	<div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">화소반</h5>
+                <h5 class="m-0">${project.name}</h5>
               </div>
               <div class="card-body">
-                <h6 class="card-title">화소반 프로젝트 입니다.</h6>
+                <h6 class="card-title">${project.description}</h6>
                 <p class="card-text"></p>
                 <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
               </div>
             </div>
+            </c:forEach> 
       <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">PMS</h5>
