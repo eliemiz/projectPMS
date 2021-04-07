@@ -4,8 +4,27 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="project" type="pms.z01_vo.Project"/>
+		<typeAlias alias="account" type="pms.z01_vo.Account"/>
+		
+		<typeAlias alias="task" type="pms.z01_vo.Task"/>
+		<typeAlias alias="taskSch" type="pms.z01_vo.TaskSch"/>
+		<typeAlias alias="taskRelation" type="pms.z01_vo.TaskRelation"/>
+		<typeAlias alias="timeEntry" type="pms.z01_vo.TimeEntry"/>
+		
+		<typeAlias alias="notice" type="pms.z01_vo.Notice"/>
+		<typeAlias alias="risk" type="pms.z01_vo.Risk"/>
+		<typeAlias alias="riskRelation" type="pms.z01_vo.RiskRelation"/>
+		
+		<typeAlias alias="attachment" type="pms.z01_vo.Attachment"/>
+		<typeAlias alias="journal" type="pms.z01_vo.Journal"/>
+		<typeAlias alias="journalDetail" type="pms.z01_vo.JournalDetail"/>
+		<typeAlias alias="comments" type="pms.z01_vo.Comments"/>
+		
+		
+		
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/ProjectMapper.xml"/>
+		<mapper resource="resource/AccountMapper.xml"/>
 	</mappers>
 </configuration>
