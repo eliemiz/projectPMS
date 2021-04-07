@@ -1,96 +1,52 @@
 package pms.z01_vo;
 
 public class Project {
-
-	private int projectId;
-	private String subject;
+	private int id;
+	private String name;
 	private String description;
 	private String identifier;
 	private String homepage;
-	private boolean isPublic;
-	private int parentProjectId;
-	private boolean inheritMembers;
-
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Project(int projectId, String subject, String description, String identifier, String homepage,
-			boolean isPublic, int parentProjectId, boolean inheritMembers) {
+	public Project(int id, String name, String description, String identifier, String homepage) {
 		super();
-		this.projectId = projectId;
-		this.subject = subject;
+		this.id = id;
+		this.name = name;
 		this.description = description;
 		this.identifier = identifier;
 		this.homepage = homepage;
-		this.isPublic = isPublic;
-		this.parentProjectId = parentProjectId;
-		this.inheritMembers = inheritMembers;
 	}
-
-	public int getProjectId() {
-		return projectId;
+	public int getId() {
+		return id;
 	}
-
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public String getSubject() {
-		return subject;
+	public String getName() {
+		return name;
 	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setName(String name) {
+		this.name = name;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 	public String getIdentifier() {
 		return identifier;
 	}
-
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-
 	public String getHomepage() {
 		return homepage;
 	}
-
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
-
-	public boolean isPublic() {
-		return isPublic;
-	}
-
-	public void setPublic(boolean isPublic) {
-		this.isPublic = isPublic;
-	}
-
-	public int getParentProjectId() {
-		return parentProjectId;
-	}
-
-	public void setParentProjectId(int parentProjectId) {
-		this.parentProjectId = parentProjectId;
-	}
-
-	public boolean isInheritMembers() {
-		return inheritMembers;
-	}
-
-	public void setInheritMembers(boolean inheritMembers) {
-		this.inheritMembers = inheritMembers;
-	}
-
+	
 }
