@@ -95,6 +95,9 @@ html, body {
 
      <!-- Main content -->
     <section class="content">
+    <form:form modelAttribute="task" action="${path}/task.do?method=insert"
+    	enctype="multipart/form-data" method="post">
+    	
       <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
@@ -107,17 +110,18 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>프로젝트 *</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option>게시판 프로젝트</option>
-                    <option>화소반 프로젝트</option>
-                    <option selected>PMS 프로젝트</option>
+                  <select name="project_id" class="form-control select2" style="width: 100%;">
+                    <option value="0">프로젝트 선택</option>
+                    <c:forEach var = "project" items="${projects}">
+                    	<option value="${project.id}">${project.name}</option>
+                    </c:forEach>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <option selected="selected">신규</option>
+                  <select name="status" class="form-control select2" disabled="disabled" style="width: 100%;">
+                    <option selected="selected" value="신규">신규</option>
                   </select>
                 </div>
                 <!-- /.form-group -->
@@ -126,17 +130,18 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>유형 *</label>
-                  <select class="form-control select" style="width: 100%;">
-                    <option>유형</option>
-                    <option>결함</option>
-                    <option>새기능</option>
-                    <option>지원</option>
+                  <select name="tracker" class="form-control select" style="width: 100%;">
+                    <option value="">유형 선택</option>
+                    <option value="결함">결함</option>
+                    <option value="새기능">새기능</option>
+                    <option value="지원">지원</option>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상위Task</label>
-                  <input type="text" class="form-control" style="width: 100%;">
+    <%-- TODO: 최상위 task id(value)만 불러와서 task 이름을 select 할 것인지, 입력할 것인지? --%>
+                  <input name="parent_id" type="text" class="form-control" style="width: 100%;">
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -146,34 +151,36 @@ html, body {
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>제목 *</label>
-            		<input type="text" class="form-control" style="width: 100%;">
+            		<input name="subject" type="text" class="form-control" style="width: 100%;">
             	</div>
             	<div class="form-group">
             		<label>설명</label>            	
-            		<textarea class="form-control" style="width: 100%; height:300px;"></textarea>
+            		<textarea name="description" class="form-control" style="width: 100%; height:300px;"></textarea>
             	</div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>우선순위 *</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>우선순위</option>
-                    <option>낮음</option>
-                    <option>보통</option>
-                    <option>높음</option>
-                    <option>긴급</option>
-                    <option>즉시</option>
+       <%-- TODO: 우선순위 varchar2로 변경할건지? --%>
+                  <select name="priority" class="form-control select" style="width: 100%;">
+                  	<option value="">우선순위</option>
+                    <option value="1">낮음</option>
+                    <option value="2">보통</option>
+                    <option value="3">높음</option>
+                    <option value="4">긴급</option>
+                    <option value="5">즉시</option>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>담당자</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>담당자</option>
-                    <option>홍길동</option>
-                    <option>김철수</option>
-                    <option>이춘향</option>
+       <%-- TODO: account테이블 이용해서 담당자명(역할)형식으로 띄우기. value는 넘길 값에 따라서 설정 --%>
+                  <select name="user_id" class="form-control select" style="width: 100%;">
+                  	<option value="">담당자 선택</option>
+                  	<c:forEach var="account" items="${accounts}">
+	                    <option value="${account.id}">${account.name}</option>
+                    </c:forEach>
                   </select>
                 </div>
                 <!-- /.form-group -->
@@ -182,13 +189,13 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>추정시간</label>
-                  <input type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)">
+                  <input name="estimated" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)">
                 </div>
                 
                 <div class="form-group">
-                  <label>시작시간</label><br>
+                  <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input type="date" class="form-control" value="2021-04-05" style="width:100%;"><%-- 발표날짜에 맞춤 --%>
+                       <input name="start_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"><%-- 발표날짜에 맞춤 --%>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -196,29 +203,21 @@ html, body {
               <!-- /.col -->
             </div>
             <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>담당그룹</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>담당그룹</option>
-                    <option>개발팀1</option>
-                    <option>개발팀2</option>
-                    <option>개발팀3</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
+              <div class="col-md-6">              
+     <%-- TODO: 진척도 대신 다른 용어 선택하거나, 없애기 --%>  
                 <div class="form-group">
                   <label>진척도</label>
                   <select class="form-control select" style="width: 100%;">
-                  	<option>진척도</option>
-                    <option>낮음</option>
-                    <option>보통</option>
-                    <option>높음</option>
-                    <option>긴급</option>
-                    <option>즉시</option>
+                  	<option value="">진척도</option>
+                    <option value="1">낮음</option>
+                    <option value="2">보통</option>
+                    <option value="3">높음</option>
+                    <option value="4">긴급</option>
+                    <option value="5">즉시</option>
                   </select>
                 </div>
-                <div class="form-group">
+      <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
+                <!-- <div class="form-group">
                   <label>Task 관리자</label><br>
                   <select class="form-control select" style="width: 100%;">
                   	<option>관리자</option>
@@ -226,47 +225,48 @@ html, body {
                     <option>김철수</option>
                     <option>이춘향</option>
                   </select>
-                </div>
+                </div> -->
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
               <div class="col-md-6">
                 <!-- Date -->
                 <div class="form-group">
-                  <label>완료기한</label>
+                  <label>완료일</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <input type="date" class="form-control" value="2021-04-06" style="width:100%;">
+                       <input name="due_date" type="date" class="form-control" value="${sysdate}" style="width:100%;">
                    </div><br>
-                
+                </div>
                 <!-- /.form-group -->
                 <div class="form-group">
+       <%-- TODO: fileUpload 완성 후 수정 --%>
                   <label for="exampleInputFile">첨부파일</label> <!-- 첨부파일명 안뜸 -->
                   <div class="custom-file">
                         <input type="file" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div><br><br>
                   <div class="form-group">
-                  <label>연결된 Task</label>
-                  <input type="text" class="form-control" style="width: 100%;">
-                </div>
-                
+                  	<label>연결된 Task</label>
+        <%-- TODO: task_relation 이용해서 select로 할 지 입력으로 할 지 결정 --%>
+                  	<input type="text" class="form-control" style="width: 100%;">
+                  </div>            
+                 </div>    
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
             </div>
             <!-- /.row -->
-			</div>   
-			
-				<!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">만들기</button>
-                  <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">취소</button>
-                </div>
+			</div> 			
+			<!-- /.card-body -->
+            <div class="card-footer">
+               <button type="submit" class="btn btn-primary">만들기</button>
+               <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">취소</button>
+            </div>
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-      </div>
+      </form:form>
     </section>
     <!-- /.content -->
   </div>

@@ -180,51 +180,6 @@ html, body {
                   	<td><fmt:formatDate value="${task.start_date}"/></td>
                   </tr>
                   </c:forEach>
-<!--                   <tr>
-                    <td>1</td>
-                    <td>결함</td>
-                    <td>진행중</td>
-                    <td>낮음</td>
-                    <td>task1</td>
-                    <td>김철수</td>
-                    <td>2021-04-01</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>새기능</td>
-                    <td>진행중</td>
-                    <td>보통</td>
-                    <td>task2</td>
-                    <td>김철수</td>
-                    <td>2021-04-01</td>
-                  </tr>
-                 <tr>
-                    <td>3</td>
-                    <td>지원</td>
-                    <td>진행중</td>
-                    <td>높음</td>
-                    <td>task3</td>
-                    <td>홍길동</td>
-                    <td>2021-04-01</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>새기능</td>
-                    <td>완료</td>
-                    <td>긴급</td>
-                    <td>task4</td>
-                    <td>홍길동</td>
-                    <td>2021-04-01</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>새기능</td>
-                    <td>완료</td>
-                    <td>즉시</td>
-                    <td>task5</td>
-                    <td>이춘향</td>
-                    <td>2021-04-01</td>
-                  </tr> -->
                   </tbody>
                 </table>
                 </div>

@@ -9,3 +9,11 @@ CREATE TABLE attachment(
 	filesize varchar2(30), -- 파일 사이즈
 	created_on DATE -- 파일 생성일자
 );
+
+-- Attachment Sequence
+CREATE SEQUENCE ATTACHMENT_SEQ 
+	START WITH 1
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 9999999
+	CYCLE;

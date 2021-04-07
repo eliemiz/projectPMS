@@ -8,3 +8,11 @@ CREATE TABLE comments(
 	created_on DATE, -- 댓글 작성일자
 	updated_on DATE -- 댓글 수정일자
 );
+
+-- Comments Sequence
+CREATE SEQUENCE COMMENTS_SEQ 
+	START WITH 1
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 9999999
+	CYCLE;

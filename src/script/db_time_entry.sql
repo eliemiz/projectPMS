@@ -8,3 +8,11 @@ CREATE TABLE time_entry(
 	spent_hours NUMBER, -- 작업시간
 	created_on DATE -- 작업일자
 );
+
+-- TimeEntry 시퀀스
+CREATE SEQUENCE TIME_ENTRY_SEQ 
+	START WITH 1
+	INCREMENT BY 1
+	MINVALUE 1
+	MAXVALUE 9999999
+	CYCLE;

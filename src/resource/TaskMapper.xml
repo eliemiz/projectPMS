@@ -4,6 +4,47 @@
 	<!-- public ArrayList<Task> getTaskList(Task sch) -->
 	<resultMap type="task" id="taskList"/>
 	<select id="getTaskList" resultMap="taskList" parameterType="task">
-		SELECT * FROM task
+		SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t
 	</select>
+	
+	<!--public Task getTask(int task_id) -->
+	<select id="getTask" parameterType="int">
+		SELECT * FROM TASK
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- public void insertTask(Task ins) -->
+	<insert id="insertTask" parameterType="task">
+		INSERT INTO TASK
+		VALUES (TASK_seq.nextval, #{parent_id}, #{project_id}, #{user_id},
+				#{subject}, #{description}, #{status}, #{priority}, 
+				sysdate, sysdate, #{start_date}, #{due_date},
+				#{estimated}, #{done_ratio}, #{completed_on}, #{tracker})
+	</insert>
+	
+	<!-- public void updateTask(Task upt) -->
+	<update id="updateTask" parameterType="task">
+		UPDATE TASK
+			SET subject = #{subject},
+				description = #{description},
+				status = #{status},
+				priority = #{priority},
+				updated_on = sysdate,
+				done_ratio = #{done_ratio},
+				tracker = #{tracker}
+			WHERE ID = #{id}
+	</update>
+	
+	<!-- public void deleteTask(int task_id) -->
+	<delete id="deleteTask" parameterType="int">
+		DELETE FROM TASK
+		WHERE ID in (
+ 	 		SELECT ID
+ 	 		FROM TASK
+ 	 		START WITH ID=#{id}
+ 	 		CONNECT BY PRIOR ID = PARENT_ID
+ 	 	) 
+	</delete>
 </mapper>
+
+
