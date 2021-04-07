@@ -77,6 +77,20 @@
     
      <!-- Main content -->
     <section class="content">
+    
+    
+    <table>
+    	<c:forEach var="account" items="${accountList}">
+			<tr>
+				<td>${account.name}</td>
+				<td>${account.mail}</td>
+				
+			</tr>    	
+    	</c:forEach>
+    	</table>
+    	
+    	
+    	
 	<div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
 	<div class="login-box">
 	  <!-- /.login-logo -->
