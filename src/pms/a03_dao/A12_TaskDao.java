@@ -16,6 +16,7 @@ public interface A12_TaskDao {
 	
 	public void uploadFile(Attachment ins); // 파일업로드
 	public Task getTask(int no); // task 조회
+	public ArrayList<Task> getTaskList();
 	public ArrayList<Attachment> fileInfo(int no); // 파일정보 조회
 	public void insertTask(Task insert); // task 등록
 	public void updateTask(Task upt); // task 수정
