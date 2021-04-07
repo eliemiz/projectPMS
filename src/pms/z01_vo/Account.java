@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Account {
 	private int id;
-	private String user;
+	private String user_id;
 	private String password;
 	private String name;
 	private String mail;
@@ -17,11 +17,11 @@ public class Account {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Account(int id, String user, String password, String name, String mail, Date created_on, Date last_login_on,
-			String auth) {
+	public Account(int id, String user_id, String password, String name, String mail, Date created_on,
+			Date last_login_on, String auth) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.user_id = user_id;
 		this.password = password;
 		this.name = name;
 		this.mail = mail;
@@ -29,11 +29,11 @@ public class Account {
 		this.last_login_on = last_login_on;
 		this.auth = auth;
 	}
-	public Account(int id, String user, String password, String name, String mail, String created_on_s,
+	public Account(int id, String user_id, String password, String name, String mail, String created_on_s,
 			String last_login_on_s, String auth) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.user_id = user_id;
 		this.password = password;
 		this.name = name;
 		this.mail = mail;
@@ -47,11 +47,11 @@ public class Account {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUser() {
-		return user;
+	public String getUser_id() {
+		return user_id;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	public String getPassword() {
 		return password;
@@ -101,6 +101,5 @@ public class Account {
 	public void setAuth(String auth) {
 		this.auth = auth;
 	}
-
 
 }
