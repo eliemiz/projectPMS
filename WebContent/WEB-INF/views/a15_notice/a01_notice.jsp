@@ -133,24 +133,45 @@
                   </thead>
                   <tbody onclick="location.href='${path}/notice.do?method=detail'">
                     <tr>
-                      <td>003</td>
-                      <td>새 프로젝트 진행</td>
+                      <td>001</td>
+                      <td>Test123456789</td>
                       <td>홍길동</td>
-                      <td><span class="tag tag-success">30</span></td>
-                      <td>2021-04-03</td>
-                    </tr>
-                    <tr>
-                      <td>002</td>
-                      <td>일정 참고</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">17</span></td>
-                      <td>2021-04-02</td>
+                      <td><span class="tag tag-success">0</span></td>
+                      <td>2021-04-01</td>
                     </tr>
                     <tr>
                       <td>001</td>
-                      <td>테스트시 참고</td>
+                      <td>Test123456789</td>
                       <td>홍길동</td>
-                      <td><span class="tag tag-success">34</span></td>
+                      <td><span class="tag tag-success">0</span></td>
+                      <td>2021-04-01</td>
+                    </tr>
+                    <tr>
+                      <td>001</td>
+                      <td>Test123456789</td>
+                      <td>홍길동</td>
+                      <td><span class="tag tag-success">0</span></td>
+                      <td>2021-04-01</td>
+                    </tr>
+                    <tr>
+                      <td>001</td>
+                      <td>Test123456789</td>
+                      <td>홍길동</td>
+                      <td><span class="tag tag-success">0</span></td>
+                      <td>2021-04-01</td>
+                    </tr>
+                    <tr>
+                      <td>001</td>
+                      <td>Test123456789</td>
+                      <td>홍길동</td>
+                      <td><span class="tag tag-success">0</span></td>
+                      <td>2021-04-01</td>
+                    </tr>
+                    <tr>
+                      <td>001</td>
+                      <td>Test123456789</td>
+                      <td>홍길동</td>
+                      <td><span class="tag tag-success">0</span></td>
                       <td>2021-04-01</td>
                     </tr>
                   </tbody>

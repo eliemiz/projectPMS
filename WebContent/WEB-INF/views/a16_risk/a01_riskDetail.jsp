@@ -123,10 +123,10 @@
           <div class="row">
             
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fas fa-paint-stamp"></i> 개발일정 연장 고려</h3>
+              <h3 class="text-primary"><i class="fas fa-paint-stamp"></i> 리스크 제목</h3>
               &nbsp;&nbsp;&nbsp;
               <p class="text-muted">
-               리스크 상세 설명            
+               리스크 내용             
               </p>
               <br>
               <div class="text-muted">
@@ -189,7 +189,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       댓글1 
+                       댓글 
                       </p>
                     </div>
 
@@ -203,7 +203,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       댓글2
+                       댓글
                       </p>
                     </div>
 
@@ -217,7 +217,7 @@
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       댓글3
+                       댓글
                       </p>
                     </div>
               </div>

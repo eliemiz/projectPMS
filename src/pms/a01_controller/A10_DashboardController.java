@@ -11,7 +11,6 @@ public class A10_DashboardController {
 //	private A00_TempService service
 	
 	// http://localhost:7080/projectPMS/dashboard.do
-	// http://localhost:6080/projectPMS/dashboard.do
 	@RequestMapping("dashboard.do")
 	public String dashboard() {
 		

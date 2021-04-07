@@ -139,70 +139,31 @@
                   </thead>
                   <tbody onclick="location.href='${path}/risk.do?method=detail'">
                     <tr>
-                      <td>005</td>
-                      <td>개발일정 연장 고려</td>
+                      <td>001</td>
+                      <td>test 문제</td>
                       <td>open</td>
                       <td>9</td>
                       <td>3</td>
                       <td>3</td>
-                      <td>delay</td>
+                      <td>cost</td>
                       <td>2021-03-01</td>
                       <td>2021-04-01</td>
                       <td>홍길동</td>
                       <td>2021-03-28</td>
                     </tr>
                     <tr>
-                      <td>004</td>
-                      <td>새 프로젝트 생성 시 500 error 질문드립니다.</td>
+                      <td>002</td>
+                      <td>해결 문제</td>
                       <td>close</td>
-                      <td>6</td>
-                      <td>2</td>
-                      <td>5</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
                       <td>delay</td>
                       <td>2021-03-01</td>
                       <td>2021-03-20</td>
                       <td>홍길동</td>
                       <td>2021-03-20</td>
-                    </tr>  
-                    <tr>
-                      <td>003</td>
-                      <td>dic 도입 추진</td>
-                      <td>close</td>
-                      <td>9</td>
-                      <td>3</td>
-                      <td>3</td>
-                      <td>delay</td>
-                      <td>2021-04-01</td>
-                      <td>2021-04-20</td>
-                      <td>홍길동</td>
-                      <td>2021-03-20</td>
-                    </tr>
-                    <tr>
-                      <td>002</td>
-                      <td>일감에 가중치(Weight)를 적용 방법 문의 신규 긴급</td>
-                      <td>close</td>
-                      <td>10</td>
-                      <td>5</td>
-                      <td>2</td>
-                      <td>delay</td>
-                      <td>2021-02-01</td>
-                      <td>2021-05-20</td>
-                      <td>홍길동</td>
-                      <td>2021-03-20</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>업무흐름 도형 표시 방법 및 프로젝트 메뉴로 들어갔을 때 뜨는 다양한 차트들 방법 문의</td>
-                      <td>close</td>
-                      <td>4</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>delay</td>
-                      <td>2021-01-01</td>
-                      <td>2021-06-20</td>
-                      <td>홍길동</td>
-                      <td>2021-03-20</td>
-                    </tr>            
+                    </tr>              
                   </tbody>
                 </table>
               </div>

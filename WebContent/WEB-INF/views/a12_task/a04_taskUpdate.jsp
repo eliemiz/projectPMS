@@ -139,11 +139,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-<<<<<<< Updated upstream
                   <label>상위Task</label>
-=======
-                  <label>상위task</label>
->>>>>>> Stashed changes
                   <input type="text" class="form-control" style="width: 100%;">
                 </div>
                 <!-- /.form-group -->
@@ -253,11 +249,7 @@ html, body {
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div><br><br>
                   <div class="form-group">
-<<<<<<< Updated upstream
                   <label>연결된 Task</label>
-=======
-                  <label>연결된 task</label>
->>>>>>> Stashed changes
                   <input type="text" class="form-control" style="width: 100%;">
                 </div>
                 <!-- /.form-group -->
