@@ -231,9 +231,6 @@ html, body {
               		</div><br><br><br>
               		<div class="form control" id="round1" style="padding:10px; background-Color:lightpink; float:left;">
               		홍길동&nbsp;&nbsp;사원<br>확인했습니다
-              		</div><br><br><br>
-              		<div class="form control" id="round1" style="padding:10px; background-Color:skyblue; float:left;">
-              		이춘향&nbsp;&nbsp;대리<br>확인했습니다
               		</div>
               	</div>
               </div>
