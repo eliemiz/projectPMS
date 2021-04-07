@@ -2,10 +2,13 @@ package pms.a01_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A12_TaskService;
+import pms.z01_vo.Task;
 
 @Controller
 @RequestMapping("task.do")
@@ -15,7 +18,8 @@ public class A12_TaskController {
 	
 	// http://localhost:7080/projectPMS/task.do?method=list
 	@RequestMapping(params = "method=list")
-	public String taskList() {
+	public String taskList(@ModelAttribute("sch") Task sch, Model d) {
+		d.addAttribute("tasklist", service.getTaskList(sch));
 		return "a12_task\\a01_taskList";
 	}
 	// http://localhost:7080/projectPMS/task.do?method=insForm

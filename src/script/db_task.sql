@@ -16,21 +16,7 @@ CREATE TABLE task(
    done_ratio NUMBER, -- 진척도
    completed_on DATE -- 완료일자
 );
-
--- TASK-연결된 TASK
-CREATE TABLE task_relation(
-   task_id NUMBER, -- Task 일련번호
-   related_id NUMBER, -- 연결된 Task 일련번호
-   CONSTRAINT task_relation_pk PRIMARY KEY (task_id, related_id) -- primary key 2개 설정
-);
-
--- TASK-작업시간
-CREATE TABLE time_entry(
-	id NUMBER, -- 작업 일련번호
-	task_id NUMBER, -- Task 일련번호
-	CONSTRAINT time_entry_pk PRIMARY KEY (id, task_id), -- primary key 2개 설정
-	account_id NUMBER, -- 작업자 일련번호
-	comments varchar2(1000), -- 작업내용
-	spent_hours NUMBER, -- 작업시간
-	created_on DATE -- 작업일자
-);
+SELECT * FROM task;
+INSERT INTO task VALUES (10001, 10000, 11111, 12345, 'test용 TASK', '테스트용입니다.', '신규', 1, 
+						 sysdate, sysdate, sysdate,
+						 '2021/04/30', 180, 30, '2021/04/30');

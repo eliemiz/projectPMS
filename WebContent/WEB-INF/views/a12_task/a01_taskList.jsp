@@ -165,11 +165,22 @@ html, body {
                     <th>우선순위</th>
                     <th>제목</th>
                     <th>담당자</th>
-                    <th>날짜</th>
+                    <th>시작날짜</th>
                   </tr>
                   </thead>
-                  <tbody onclick="location.href='${path}/task.do?method=detail'">
-                  <tr>
+                  <tbody>
+                  <c:forEach var="task" items="${tasklist}">
+                  <tr onclick="location.href='${path}/task.do?method=detail'">
+                  	<td>${task.id}</td>
+                  	<td>${task.status}</td>
+                  	<td>${task.status}</td>
+                  	<td>${task.priority}</td>
+                  	<td>${task.subject}</td>
+                  	<td>${task.user_id}</td>
+                  	<td><fmt:formatDate value="${task.start_date}"/></td>
+                  </tr>
+                  </c:forEach>
+<!--                   <tr>
                     <td>1</td>
                     <td>결함</td>
                     <td>진행중</td>
@@ -213,7 +224,7 @@ html, body {
                     <td>task5</td>
                     <td>이춘향</td>
                     <td>2021-04-01</td>
-                  </tr>
+                  </tr> -->
                   </tbody>
                 </table>
                 </div>

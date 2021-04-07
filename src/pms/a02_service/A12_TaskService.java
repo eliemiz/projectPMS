@@ -12,8 +12,8 @@ import pms.z01_vo.Task;
 public class A12_TaskService {
 	@Autowired(required = false)
 	private A12_TaskDao dao;
-	public ArrayList<Task> getTaskList(){
-		return dao.getTaskList();
+	public ArrayList<Task> getTaskList(Task sch){
+		return dao.getTaskList(sch);
 	}
 	public Task getTask(int task_id) {
 		return dao.getTask(task_id);
