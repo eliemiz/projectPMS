@@ -114,10 +114,10 @@
                     <label for="exampleInputEmail1">제목</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해주세요">
                   </div>
-<!--                   <div class="form-group">
+                  <div class="form-group">
                     <label for="exampleInputEmail1">상태</label>
 	                  <div class="col-sm-6">
-	                      select
+	                      <!-- select -->
 	                      <div class="form-group">
 	                        <select class="form-control">
 	                          <option>open</option>       
@@ -125,30 +125,12 @@
 	                        </select>
 	                      </div>
 	                    </div>
-	              </div> -->
+	              </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">상세설명</label>
-                    <textarea class="form-control" id="exampleInputEmail1" rows="3" placeholder="설명을 입력해주세요">
+                    <label for="exampleInputPassword1">상세설명</label>
+                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
                     </textarea>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">담당자</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">               
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">범주</label>
-	                  <div class="col-sm-6">
-	                      <!-- select -->
-	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>Internal</option>
-	                          <option>External</option>
-	                          <option>Technical</option>
-	                          <option>Unforeseeable</option>
-	                        </select>
-	                      </div>
-	                    </div>
-	              </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">발생가능성</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
@@ -157,6 +139,20 @@
                     <label for="exampleInputEmail1">영향도</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">유형</label>
+	                  <div class="col-sm-6">
+	                      <!-- select -->
+	                      <div class="form-group">
+	                        <select class="form-control">
+	                          <option>cost</option>
+	                          <option>tech</option>
+	                          <option>delay</option>
+	                          <option>etc</option>
+	                        </select>
+	                      </div>
+	                    </div>
+	              </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">예상시작일</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">

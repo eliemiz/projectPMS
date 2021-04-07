@@ -122,58 +122,28 @@
         <div class="card-body">
           <div class="row">
             
-            <div class="col-12 col-lg-12 col-lg-4 order-1 order-md-2">
+            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
               <h3 class="text-primary"><i class="fas fa-paint-stamp"></i> 개발일정 연장 고려</h3>
               &nbsp;&nbsp;&nbsp;
-              
-               <p>
-               		프로젝트 리스크 관리의 책임 <br>
-
-				- 프로젝트 매니저가 책임성과 추진력을 가지고 프로젝트에 임해야 함<br>
-				
-				- 프로젝트 매니저에게 리스크에 대해 처리할 수 있는 권한 부여<br>
-				
-				- 프로젝트 매니저는 프로젝트 팀원에게 리스크를 추적하고 관리할 책임을 할당할 수 있음<br>
-				
-				- 리스크 파악, 분석, 대응책 수립은 가능한 프로젝트 이해관계자가 함께 참여해야 함<br>
-				
-				- 개별 리스크에 대해서는 별도의 리스크 대응 담당자가 지정되어야 함<br>
-				
-				- 프로젝트 리스크 관링 대한 부정적 인식에도 불구하고 프로젝트 리스크 관리는 반드시 수행되어야 함<br>
-				
-				- PM은 체계적 분석에 근거하여 정확한 결정을 내려야 함<br>
-				
-				- 리스크를 프로젝트 내부에 존재하는 본질적인 것으로 인식해야 함<br>
-        		</p>
-              
+              <p class="text-muted">
+               리스크 상세 설명            
+              </p>
               <br>
               <div class="text-muted">
-                <p class="text-sm">상태
-                  <b class="d-block">open</b>
-                </p>
-                <p class="text-sm">담당자
+                <p class="text-sm">작성자
                   <b class="d-block">홍길동</b>
                 </p>
-                <p class="text-sm">범주
-                  <b class="d-block">Internal</b>
+                <p class="text-sm">RPN
+                  <b class="d-block">6</b>
                 </p>
-                <p class="text-sm">발생도
-                  <b class="d-block">5</b>
-                </p>
-                <p class="text-sm">영향도
-                  <b class="d-block">5</b>
+                <p class="text-sm">등록일
+                  <b class="d-block">2021-04-02</b>
                 </p>
                 <p class="text-sm">예상시작일
                   <b class="d-block">2021-04-10</b>
                 </p>
                 <p class="text-sm">예상종료일
                   <b class="d-block">2021-04-30</b>
-                </p>
-                <p class="text-sm">전략
-                  <b class="d-block">Mitigate</b>
-                </p>
-                <p class="text-md">해결방안
-                  <b class="d-block">해결방안 내용</b>
                 </p>
               </div>
 
@@ -196,7 +166,7 @@
                 </li>
               </ul>
               
-		<div class="col-12 col-lg-12 col-lg-8 order-2 order-md-1">
+		<div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
           <div class="row">
            <div class="col-12">
             <div class="row mt-4">
