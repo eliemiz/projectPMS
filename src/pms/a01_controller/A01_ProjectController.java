@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A01_ProjectService;
@@ -19,10 +20,9 @@ public class A01_ProjectController {
 	
 	// http://localhost:7080/projectPMS/project.do
 	@RequestMapping
-	public String projects() {
+	public String projects(@ModelAttribute("sch") Project sch, Model d) {
 		
-//		ArrayList<Project> projectList = service.getProjectList();
-//		d.addAttribute("projectList", projectList);
+		d.addAttribute("projectList", service.getProjectList(sch));
 		
 		return "a01_project\\a00_projects";
 	}

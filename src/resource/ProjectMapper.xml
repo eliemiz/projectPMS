@@ -5,6 +5,10 @@
 	<select id="getProjectList" resultType="project">
 		SELECT * FROM PROJECT
 	</select>
+	<select id="getProject" resultType="project" parameterType="int">
+		SELECT * FROM PROJECT
+		WHERE id = #{id} 
+	</select>
 	
 
 </mapper>
