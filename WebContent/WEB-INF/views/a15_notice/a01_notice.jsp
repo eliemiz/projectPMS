@@ -126,54 +126,19 @@
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
-                      <th>글쓴이</th>
-                      <th>조회수</th>
                       <th>등록일</th>
+                      <th>변경일</th>
                     </tr>
                   </thead>
                   <tbody onclick="location.href='${path}/notice.do?method=detail'">
+                  <c:forEach var="notice" items="${noticeList}">
                     <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
+                      <td>${notice.id}</td>
+                      <td>${notice.subject}</td>
+                      <td>${notice.created_on}</td>
+                      <td>${notice.updated_on}</td>
                     </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
-                    <tr>
-                      <td>001</td>
-                      <td>Test123456789</td>
-                      <td>홍길동</td>
-                      <td><span class="tag tag-success">0</span></td>
-                      <td>2021-04-01</td>
-                    </tr>
+                   </c:forEach>
                   </tbody>
                 </table>
               </div>
