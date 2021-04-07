@@ -1,9 +1,9 @@
 package pms.z01_vo;
-// pms.z01_vo.Time_Entry
+// pms.z01_vo.TimeEntry
 
 import java.util.Date;
 
-public class Time_Entry {
+public class TimeEntry {
 	private int id;
 	private int task_id;
 	private int account_id;
@@ -11,11 +11,11 @@ public class Time_Entry {
 	private int spent_hours;
 	private Date created_on;
 	private String created_on_s;
-	public Time_Entry() {
+	public TimeEntry() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Time_Entry(int id, int task_id, int account_id, String comments, int spent_hours, Date created_on) {
+	public TimeEntry(int id, int task_id, int account_id, String comments, int spent_hours, Date created_on) {
 		super();
 		this.id = id;
 		this.task_id = task_id;
@@ -24,7 +24,7 @@ public class Time_Entry {
 		this.spent_hours = spent_hours;
 		this.created_on = created_on;
 	}
-	public Time_Entry(int id, int task_id, int account_id, String comments, int spent_hours, String created_on_s) {
+	public TimeEntry(int id, int task_id, int account_id, String comments, int spent_hours, String created_on_s) {
 		super();
 		this.id = id;
 		this.task_id = task_id;

@@ -1,14 +1,14 @@
 package pms.z01_vo;
-// pms.z01_vo.Task_Relation
+// pms.z01_vo.TaskRelation
 
-public class Task_Relation {
+public class TaskRelation {
 	private int task_id;
 	private int related_id;
-	public Task_Relation() {
+	public TaskRelation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Task_Relation(int task_id, int related_id) {
+	public TaskRelation(int task_id, int related_id) {
 		super();
 		this.task_id = task_id;
 		this.related_id = related_id;
