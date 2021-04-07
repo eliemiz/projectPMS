@@ -2,5 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A16_RiskDao">
-
+	<resultMap type="risk" id="riskList"/>
+	<select id="getRiskList" resultMap="riskList" parameterType="risk">
+		SELECT * FROM risk;
+	</select>
 </mapper>
