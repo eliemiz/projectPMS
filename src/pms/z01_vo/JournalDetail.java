@@ -1,17 +1,17 @@
 package pms.z01_vo;
 
-public class Journal_detail {
+public class JournalDetail {
 	private int id;
 	private int journal_id;
 	private String property;
 	private String prop_key;
 	private String old_value;
 	private String value;
-	public Journal_detail() {
+	public JournalDetail() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Journal_detail(int id, int journal_id, String property, String prop_key, String old_value, String value) {
+	public JournalDetail(int id, int journal_id, String property, String prop_key, String old_value, String value) {
 		super();
 		this.id = id;
 		this.journal_id = journal_id;
