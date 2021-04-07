@@ -9,7 +9,11 @@ import pms.z01_vo.Project;
 @Repository
 public interface A01_ProjectDao {
 	
-	public ArrayList<Project> getProjectList(Project sch);
+	public ArrayList<Project> getProjectList();
 	
 	public Project getProject(int id);
+	
+	public void projectIns(Project insert);
+	
+	public void projectDel(int id);
 }

@@ -42,6 +42,11 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
+  
+   $(document).ready(function(){
+      $("#regBtn").click(function(){
+    	  location.href="${path}/board.do?method=insForm";
+      });
 
 </script>
 </head>
@@ -79,18 +84,12 @@
     <section class="content">
 	<div class="card card-warning card-outline">
 	 <div class="card-header">
-	         검색조건&nbsp;&nbsp;&nbsp;
+ 		<nav class="navbar navbar-expand-sm bg-white navbar-white">
 		     <form  class="form-inline" method="post">
-		       <select class="form-control mr-sm-2">
-		           <option>이다</option>
-		           <option>아니다</option>
-		        </select>
-		        <select class="form-control mr-sm-2">
-		           <option>사용중</option>
-		           <option>등록대기</option>
-		        </select>
-		       <button class="btn btn-success" type="submit">적용</button>
+		        <input  class="form-control mr-sm-2" placeholder="프로젝트명"/>
+		       <button class="btn btn-success" type="submit">검색</button>
 		     </form>
+		  </nav>
 		     <div class="form-row float-right">
 		     <a href="${path}/project.do?method=insert" class="btn btn-primary"><i class="fas fa-pen">새 프로젝트 만들기</i></a>&nbsp;&nbsp;
 		     <a href="${path}/project.do?method=list" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
@@ -98,20 +97,8 @@
 		  </div>
 		  </div>
 	
-	<%-- <c:forEach var="project" items="${projectList}">
-		<div class="card card-primary card-outline">
-			<div class="card-header">
-				<h5 class="m-0">${project.name}</h5>
-			</div>
-			<div class="card-body">
-				<h6 class="card-title">${project.description}</h6>
-				<p class="card-text"></p>
-				<a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
-			</div>
-		</div>
-	</c:forEach> --%>
-	<c:forEach var="project" items="${projectList}">
-	<div class="card card-primary card-outline">
+			<c:forEach var="project" items="${projectList}">
+			<div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">${project.name}</h5>
               </div>
@@ -119,21 +106,13 @@
                 <h6 class="card-title">${project.description}</h6>
                 <p class="card-text"></p>
                 <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
+              <div class="form-row float-right">
+              	<a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
+              </div>
               </div>
             </div>
             </c:forEach> 
-      <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h5 class="m-0">PMS</h5>
-              </div>
-              <div class="card-body">
-                <h6 class="card-title">PMS 프로젝트 입니다.</h6>
-
-                <p class="card-text"></p>
-                <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
-              </div>
-            </div>      
-	
+   
     </section>
     <!-- /.content -->
   </div>

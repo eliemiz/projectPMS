@@ -14,13 +14,21 @@ public class A01_ProjectService {
 	@Autowired(required = false)
 	private A01_ProjectDao dao;
 
-	public ArrayList<Project> getProjectList(Project sch) {
+	public ArrayList<Project> getProjectList() {
 
-		return dao.getProjectList(sch);
+		return dao.getProjectList();
 	}
 
 	public Project getProject(int id) {
 
 		return dao.getProject(id);
+	}
+	
+	public void projectIns(Project insert) {
+		
+		dao.projectIns(insert);
+	}
+	public void projectDel(int id) {
+		dao.projectDel(id);
 	}
 }

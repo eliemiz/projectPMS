@@ -88,7 +88,7 @@
          <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">새 프로젝트</h3>
@@ -120,27 +120,9 @@
                 <label for="inputProjectLeader">홈페이지</label>
                 <input type="text" id="inputProjectLeader" class="form-control" value="">
               </div>
+
               <div class="form-group">
-               <label for="inputProjectLeader">공개</label>&nbsp;&nbsp;
                <div class="icheck-success d-inline">
-                <input type="checkbox" checked id="checkboxSuccess1">
-                <label for="checkboxSuccess1">
-                </label>
-	           </div>
-	          </div> 
-              <div class="form-group">
-                <label for="inputStatus">상위 프로젝트</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option>화소반 프로젝트</option>
-                  <option>PMS 프로젝트</option>
-                </select>
-              </div>
-              <div class="form-group">
-               <label for="inputProjectLeader">상위 프로젝트 구성원 상속</label>&nbsp;&nbsp;
-               <div class="icheck-success d-inline">
-                <input type="checkbox" checked id="checkboxSuccess1">
-                <label for="checkboxSuccess1">
-                </label>
 	           </div>
 	          </div> 
                <div class="form-row float-right">
