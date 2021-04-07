@@ -18,7 +18,7 @@
 		<typeAlias alias="attachment" type="pms.z01_vo.Attachment"/>
 		<typeAlias alias="journal" type="pms.z01_vo.Journal"/>
 		<typeAlias alias="journalDetail" type="pms.z01_vo.JournalDetail"/>
-		<typeAlias alias="comments" type="pms.z01_vo.Comment"/>
+		<typeAlias alias="comment" type="pms.z01_vo.Comment"/>
 
 		<typeAlias alias="temp" type="pms.z01_vo.Temp"/>
 		
@@ -26,6 +26,13 @@
 	<mappers>
 		<mapper resource="resource/ProjectMapper.xml"/>
 		<mapper resource="resource/AccountMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
+		<mapper resource="resource/NoticeMapper.xml"/>
+		<mapper resource="resource/RiskMapper.xml"/>
+		<mapper resource="resource/AttachmentMapper.xml"/>
+		<mapper resource="resource/JournalMapper.xml"/>
+		<mapper resource="resource/CommentMapper.xml"/>
+		
 
 		<mapper resource="resource/TempMapper.xml"/>
 	</mappers>
