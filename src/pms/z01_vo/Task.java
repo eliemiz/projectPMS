@@ -13,7 +13,6 @@ public class Task {
 	private int user_id;
 	private String subject;
 	private String description;
-	private String tracker;
 	private String status;
 	private int priority;
 	private Date created_on;
@@ -28,6 +27,7 @@ public class Task {
 	private int done_ratio;
 	private Date completed_on;
 	private String completed_on_s;
+	private String tracker; // 유형 추가
 //	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
 //	private String[] filename; // 파일 수정시 사용
 //	private ArrayList<Attachment> fileInfo;
@@ -35,9 +35,9 @@ public class Task {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String tracker, String status,
+	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
 			int priority, Date created_on, Date updated_on, Date start_date, Date due_date, int estimated,
-			int done_ratio, Date completed_on) {
+			int done_ratio, Date completed_on, String tracker) {
 		super();
 		this.id = id;
 		this.parent_id = parent_id;
@@ -45,7 +45,6 @@ public class Task {
 		this.user_id = user_id;
 		this.subject = subject;
 		this.description = description;
-		this.tracker = tracker;
 		this.status = status;
 		this.priority = priority;
 		this.created_on = created_on;
@@ -55,10 +54,11 @@ public class Task {
 		this.estimated = estimated;
 		this.done_ratio = done_ratio;
 		this.completed_on = completed_on;
+		this.tracker = tracker;
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String tracker, String status,
+	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
 			int priority, String created_on_s, String updated_on_s, String start_date_s, String due_date_s,
-			int estimated, int done_ratio, String completed_on_s) {
+			int estimated, int done_ratio, String completed_on_s, String tracker) {
 		super();
 		this.id = id;
 		this.parent_id = parent_id;
@@ -66,7 +66,6 @@ public class Task {
 		this.user_id = user_id;
 		this.subject = subject;
 		this.description = description;
-		this.tracker = tracker;
 		this.status = status;
 		this.priority = priority;
 		this.created_on_s = created_on_s;
@@ -76,6 +75,7 @@ public class Task {
 		this.estimated = estimated;
 		this.done_ratio = done_ratio;
 		this.completed_on_s = completed_on_s;
+		this.tracker = tracker;
 	}
 	public int getId() {
 		return id;
@@ -112,12 +112,6 @@ public class Task {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public String getTracker() {
-		return tracker;
-	}
-	public void setTracker(String tracker) {
-		this.tracker = tracker;
 	}
 	public String getStatus() {
 		return status;
@@ -202,6 +196,12 @@ public class Task {
 	}
 	public void setCompleted_on_s(String completed_on_s) {
 		this.completed_on_s = completed_on_s;
+	}
+	public String getTracker() {
+		return tracker;
+	}
+	public void setTracker(String tracker) {
+		this.tracker = tracker;
 	}
 	/*
 	public MultipartFile[] getReport() {
