@@ -64,6 +64,17 @@
 
     <!-- Main content -->
     <section class="content">
+    	<h3>MyBatis 테스트</h3>
+    	<table>
+    	<c:forEach var="temp" items="${tempList}">
+			<tr>
+				<td>${temp.name}</td>
+				<td>${temp.age}</td>
+				
+			</tr>    	
+    	</c:forEach>
+    	</table>
+
     	<jsp:include page="../a00_common/z00_content.jsp"/>
     </section>
     <!-- /.content -->
