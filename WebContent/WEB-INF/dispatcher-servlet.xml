@@ -60,5 +60,15 @@
 	</bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</bean>
+	
+	<!-- 다국어 처리 모듈 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+   	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<property name="basenames">
+   			<list>
+   				<value>resource.properties.msg</value>
+   			</list>
+   		</property>
+   	</bean>
 	<!-- 다운로드 작성 예정--> 
 </beans>

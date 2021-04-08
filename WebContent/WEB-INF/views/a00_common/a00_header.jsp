@@ -1,9 +1,27 @@
+<%@page import="pms.z02_util.LocaleManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#selectLang").val("<%= LocaleManager.getInstance().getLang() %>");
+		$("#selectLang").change(function(){
+			var lang = $(this).val();
+			if (lang != "") {
+				$("[name=lang]").val($(this).val());
+				$("#langForm").submit();
+			}
+		});
+	});
+</script>
+<form action="" id="langForm" method="post">
+	<input type="hidden" name="lang">
+</form>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
@@ -12,27 +30,15 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/login.do" class="nav-link">Login</a>
+      <a href="${path}/login.do" class="nav-link"><spring:message code="hd-login"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/project.do?method=projectList" class="nav-link">Projects</a>
+      <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/admin.do" class="nav-link">Admin</a>
+      <a href="${path}/admin.do" class="nav-link"><spring:message code="hd-admin"/></a>
     </li>
   </ul>
-
-  <!-- SEARCH FORM -->
-  <%-- <form class="form-inline ml-3">
-    <div class="input-group input-group-sm">
-      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-      <div class="input-group-append">
-        <button class="btn btn-navbar" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-    </div>
-  </form> --%>
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
@@ -130,6 +136,14 @@
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
         <i class="fas fa-th-large"></i>
       </a>
+    </li>
+    <li class="nav-item">
+    	<i class="fas fa-globe-asia"></i>
+		<select class="form-control" id="selectLang">
+			<option value="">none</option>
+			<option value="ko">ko</option>
+			<option value="en">en</option>
+		</select>
     </li>
   </ul>
 </nav>
