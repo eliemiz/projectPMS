@@ -18,4 +18,11 @@ public class A17_SettingsController {
 	public String Project() {
 		return "a17_settings\\a00_project";
 	}
+	// http://localhost:7080/projectPMS/settings.do?method=update
+	@RequestMapping( params = "method=update")
+	public String update() {
+		return "a17_settings\\a01_update";
+	}
+	
+	
 }

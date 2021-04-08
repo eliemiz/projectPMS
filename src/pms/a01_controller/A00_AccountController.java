@@ -33,15 +33,12 @@ public class A00_AccountController {
 	
 	// http://localhost:7080/projectPMS/login.do
 	@RequestMapping("login.do")
-	public String login(@RequestParam("id") String user_id, @RequestParam("pass") String password, HttpServletRequest request) {
+	public String login(@RequestParam(value="user_id",defaultValue="") String user_id, @RequestParam(value="password",defaultValue="") String password, HttpServletRequest request) {
 		
-		
-		if (user_id == null) {
-			user_id = "";
-		}
-		if (password == null) {
-			password = "";
-		}
+		/*
+		 * if (user_id == null) { user_id = ""; } if (password == null) { password = "";}
+		 * 
+		 */
 		
 		if (!user_id.equals("")) {
 		Account account = service.Login(user_id, password);

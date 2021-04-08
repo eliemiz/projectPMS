@@ -9,8 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>로그인</title>
-
+<title>프로젝트 설정-프로젝트</title>
 
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -43,23 +42,22 @@
 
   $.widget.bridge('uibutton', $.ui.button)
 
-</script>
-<script type="text/javascript">
-	
 	$(document).ready(function(){
-
-		// id, user_id 여부
-		var hasId = ${not empty param.id};
-		var hasUserId = ${not empty user_id};
-		if (hasId) {
-			if (hasUserId) {
-				location.href = "${path}";	
-			} else {
-				alert("입력하신 회원아이디는 존재하지 않습니다.");	
-			}
-		}
+		$("#sm-setting").addClass("menu-open");
+		$("#sb-setting").addClass("active");
+		$("#sb-setting-project").addClass("active");
 	});
-		
+
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+      mode: "htmlmixed",
+      theme: "monokai"
+    });
+  })
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -78,12 +76,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">login</h1>
+            <h1 class="m-0">project</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">login</li>
+              <li class="breadcrumb-item active">projectSetting</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -92,62 +90,59 @@
     <!-- /.content-header -->
     
     
-     <!-- Main content -->
+         <!-- Main content -->
     <section class="content">
-	<div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
-	<div class="login-box">
-	  <!-- /.login-logo -->
-	  <div class="card card-outline card-primary">
-	    <div class="card-header text-center">
-	      <a href="../../index2.html" class="h1">로그인</a>
-	    </div>
-	    <div class="card-body">
-	
-	      <form id="login-form" method="post">
-	        <div class="input-group mb-3">
-	           아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	  <input type="text" class="form-control" name="user_id" >
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	               <span class="fas fa-user"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="input-group mb-3">
-	          비밀번호&nbsp;&nbsp;
-	          <input type="password" class="form-control" name="password">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="form-row float-right">
-	          <!-- /.col -->
-	            <button id="loginBtn" type="button" class="btn btn-primary btn-block">로그인</button>
-	          
-	          <!-- /.col -->
-	        </div>
-	        <br><br><br>
-	      </form>
-	      <a href="${path}/loginSearch.do">
-		  <button type="button" class="btn btn-outline-info btn-block btn-flat">
-          비밀번호 찾기</button></a>
-          <a href="${path}/signin.do">
-    	  <button type="button" class="btn btn-outline-danger btn-block btn-sm">
-    	  <i class="fa fa-book"></i> 새로 등록하기</button></a>
-	    </div>
-	    <!-- /.card-body -->
-	  </div>
-	  <!-- /.card -->
-	</div>
-	<!-- /.login-box -->
-	</div>
- </section>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">프로젝트 설정</h3>
+
+            	<div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+               <div class="form-group">
+               <label for="inputName">이름</label>
+                <input type="text" id="inputName" class="form-control" value="">
+              </div>
+               <div class="form-group">
+            <label for="inputName">설명</label>
+            
+              <textarea id="summernote">
+              <!-- Place <em>some</em> <u>text</u> <strong>here</strong> -->
+              </textarea>
+          
+            </div>
+              <div class="form-group">
+                <label for="inputClientCompany">식별자</label>
+                <input type="text" id="inputClientCompany" class="form-control" value="project" disabled>
+              </div>
+              <div class="form-group">
+                <label for="inputProjectLeader">홈페이지</label>
+                <input type="text" id="inputProjectLeader" class="form-control" value="">
+              </div>
+              <div class="form-group">
+	            <div class="form-row float-right">
+		          <button type="submit" class="btn btn-primary">저장</button>&nbsp;&nbsp;
+            	  <button type="submit" class="btn btn-default">취소</button>
+		        </div>
+	          </div> 
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      
+      </div>
+     
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 
 
  <!-- Footer -->
@@ -161,21 +156,7 @@
 </div>
 <!-- ./wrapper -->
 
-<script type="text/javascript">
- 	$("#loginBtn").on("click", function(){
- 		
- 		// 유효성 체크
-	 	if ($("[name=user_id]").val() == "") {
-	 		alert("아이디를 입력해주세요.");
-	 		return false;
-	 	} else if ($("[name=password]").val() == "") {
-	 		alert("패스워드를 입력해주세요.");
-	 		return false;
-	 	}
- 		
- 		$("#login-form").submit();
- 	});
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
