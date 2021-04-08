@@ -10,3 +10,7 @@ auth VARCHAR2(30)
 );
 INSERT INTO account values(100000,'아이디','비밀번호','이채영','메일',sysdate,sysdate,'관리자');
 SELECT * FROM account;
+
+SELECT * 
+FROM account
+WHERE user_id='아이디' AND password='비밀번호';

@@ -44,6 +44,23 @@
   $.widget.bridge('uibutton', $.ui.button)
 
 </script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+		// id, user_id 여부
+		var hasId = ${not empty param.id};
+		var hasUserId = ${not empty user_id};
+		if (hasId) {
+			if (hasUserId) {
+				location.href = "${path}";	
+			} else {
+				alert("입력하신 회원아이디는 존재하지 않습니다.");	
+			}
+		}
+	});
+		
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -77,20 +94,6 @@
     
      <!-- Main content -->
     <section class="content">
-    
-    
-    <table>
-    	<c:forEach var="account" items="${accountList}">
-			<tr>
-				<td>${account.name}</td>
-				<td>${account.mail}</td>
-				
-			</tr>    	
-    	</c:forEach>
-    	</table>
-    	
-    	
-    	
 	<div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
 	<div class="login-box">
 	  <!-- /.login-logo -->
@@ -100,10 +103,10 @@
 	    </div>
 	    <div class="card-body">
 	
-	      <form action="../../index3.html" method="post">
+	      <form id="login-form" method="post">
 	        <div class="input-group mb-3">
 	           아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	  <input type="id" class="form-control" >
+          	  <input type="text" class="form-control" name="id" >
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	               <span class="fas fa-user"></span>
@@ -112,7 +115,7 @@
 	        </div>
 	        <div class="input-group mb-3">
 	          비밀번호&nbsp;&nbsp;
-	          <input type="password" class="form-control" >
+	          <input type="password" class="form-control" name="pass">
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-lock"></span>
@@ -121,7 +124,7 @@
 	        </div>
 	        <div class="form-row float-right">
 	          <!-- /.col -->
-	            <button type="submit" class="btn btn-primary btn-block">확인</button>
+	            <button id="loginBtn" type="button" class="btn btn-primary btn-block">로그인</button>
 	          
 	          <!-- /.col -->
 	        </div>
@@ -158,7 +161,21 @@
 </div>
 <!-- ./wrapper -->
 
-
+<script type="text/javascript">
+ 	$("#loginBtn").on("click", function(){
+ 		
+ 		// 유효성 체크
+	 	if ($("[name=id]").val() == "") {
+	 		alert("아이디를 입력해주세요.");
+	 		return false;
+	 	} else if ($("[name=pass]").val() == "") {
+	 		alert("패스워드를 입력해주세요.");
+	 		return false;
+	 	}
+ 		
+ 		$("#login-form").submit();
+ 	});
+</script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->

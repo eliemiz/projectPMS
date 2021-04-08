@@ -10,4 +10,5 @@ import pms.z01_vo.Account;
 public interface A00_AccountDao {
 
 	public ArrayList<Account> getAccountList();
+	public Account Login(String user_id, String password);
 }

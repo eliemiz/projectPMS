@@ -7,4 +7,10 @@
 	select * from account
 	</select>
 	
+	<!-- public Account Login(String user_id, String password); -->
+	<select id="Login" resultType="account">
+	SELECT * 
+	FROM account
+	WHERE user_id=#{user_id} AND password=#{password}
+	</select>
 </mapper>
