@@ -13,4 +13,13 @@
 	FROM account
 	WHERE user_id=#{user_id} AND password=#{password}
 	</select>
+	
+	<!-- public ArrayList<AccountTask> getAccountTaskList(); -->
+	<select id="getAccountTaskList" resultType="accountTask">
+		SELECT A.ID ACCOUNT_ID, A.NAME, A.AUTH,
+			COUNT(CASE WHEN A.ID = T.ACCOUNT_ID THEN 1 END) TOTAL,
+			COUNT(CASE WHEN T.STATUS = '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) COMPLETED, 
+			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
+			FROM ACCOUNT A, TASK T GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+	</select>
 </mapper>

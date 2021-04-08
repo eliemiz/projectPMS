@@ -27,51 +27,17 @@
 		</tr>
 	</thead>
 	<tbody>
+		<c:forEach var="account" items="${accountList}">
 		<tr>
-			<td>5</td>
-			<td><a href="${path}/info.do">홍길동</a></td>
-			<td>관리자</td>
-			<td>22</td>
-			<td>15</td>
-			<td>7</td>
-			<td>77.5%</td>
+			<td>${account.account_id}</td>
+			<td><a href="${path}/info.do">${account.name}</a></td>
+			<td>${account.auth}</td>
+			<td>${account.total}</td>
+			<td>${account.incompleted}</td>
+			<td>${account.completed}</td>
+			<td>${account.completed/account.total*100}%</td>
 		</tr>
-		<tr>
-			<td>4</td>
-			<td><a href="${path}/info.do">마길동</a></td>
-			<td>개발자</td>
-			<td>22</td>
-			<td>15</td>
-			<td>7</td>
-			<td>77.5%</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td><a href="${path}/info.do">이점검</a></td>
-			<td>개발자</td>
-			<td>22</td>
-			<td>15</td>
-			<td>7</td>
-			<td>77.5%</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td><a href="${path}/info.do">김피엠</a></td>
-			<td>개발자</td>
-			<td>22</td>
-			<td>15</td>
-			<td>7</td>
-			<td>77.5%</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td><a href="${path}/info.do">김실장</a></td>
-			<td>관리자</td>
-			<td>22</td>
-			<td>15</td>
-			<td>7</td>
-			<td>77.5%</td>
-		</tr>
+		</c:forEach>
 	</tbody>
 	<tfoot>
 		<tr>
