@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,14 +21,19 @@ public class A01_ProjectController {
 	private A01_ProjectService service;
 	
 	// http://localhost:7080/projectPMS/project.do
-	@GetMapping
-	public String projects(Model d) {
-		ArrayList<Project> projectList = service.getProjectList();
-		d.addAttribute("projectList", projectList);
+	@RequestMapping
+	public String projectList(@ModelAttribute("sch")Project sch, Model d) {
+		d.addAttribute("projectList", service.projectList(sch));
 		
 		return "a01_project\\a00_projects";
 	}
 
+	// http://localhost:7080/projectPMS/project.do?method=insForm
+		@RequestMapping(params = "method=insForm")
+		public String insForm(@ModelAttribute("project") Project p) {
+
+			return "a01_project\\a03_projectIns";
+		}
 	// http://localhost:7080/projectPMS/project.do?method=insert
 	@RequestMapping(params = "method=insert")
 	public String projectIns(Project insert, Model d) {

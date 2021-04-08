@@ -44,9 +44,10 @@
   $.widget.bridge('uibutton', $.ui.button)
   
    $(document).ready(function(){
-      $("#regBtn").click(function(){
-    	  location.href="${path}/board.do?method=insForm";
+      $("#regBtn1").click(function(){
+    	  location.href="${path}/project.do?method=insForm";
       });
+      
 
 </script>
 </head>
@@ -84,14 +85,15 @@
     <section class="content">
 	<div class="card card-warning card-outline">
 	 <div class="card-header">
+	 
  		<nav class="navbar navbar-expand-sm bg-white navbar-white">
-		     <form  class="form-inline" method="post">
-		        <input  class="form-control mr-sm-2" placeholder="프로젝트명"/>
+		     <form:form modelAttribute="sch" class="form-inline" method="post">
+		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
 		       <button class="btn btn-success" type="submit">검색</button>
-		     </form>
+		     </form:form>
 		  </nav>
 		     <div class="form-row float-right">
-		     <a href="${path}/project.do?method=insert" class="btn btn-primary"><i class="fas fa-pen">새 프로젝트 만들기</i></a>&nbsp;&nbsp;
+		     <button class="btn btn-primary" id="regBtn1" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
 		     <a href="${path}/project.do?method=list" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
 		     </div>
 		  </div>

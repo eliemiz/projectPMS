@@ -14,6 +14,9 @@ public class A01_ProjectService {
 	@Autowired(required = false)
 	private A01_ProjectDao dao;
 
+	public ArrayList<Project> projectList(Project sch){
+		return dao.projectList(sch);
+	}
 	public ArrayList<Project> getProjectList() {
 
 		return dao.getProjectList();

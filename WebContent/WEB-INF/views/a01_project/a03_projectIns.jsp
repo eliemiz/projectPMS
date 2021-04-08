@@ -40,6 +40,19 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+      
+  $(document).ready(function(){
+	  var proc = "{proc}";
+	  if(proc=="insert"){
+		  $("[name=id]").val("0");
+		  $("[name=name]").val("");
+		  
+		  if(!confirm("등록완료")){
+      		  location.href="${path}/project.do";
+      	  }
+	  }
+  }
+  
 
   $.widget.bridge('uibutton', $.ui.button)
 
@@ -53,6 +66,7 @@
       theme: "monokai"
     });
   })
+  
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -87,6 +101,10 @@
     
          <!-- Main content -->
     <section class="content">
+      <form:form modelAttribute="project" action="${path}/project.do?method=insert" 
+				 	enctype="multipart/form-data" 
+				 	method="post">
+ 		<form:hidden path="id"/>
       <div class="row">
         <div class="col-md-7">
           <div class="card card-primary">
@@ -99,26 +117,25 @@
                 </button>
               </div>
             </div>
+           
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">이름</label>
-                <input type="text" id="inputName" class="form-control" value="">
+                <form:input path="name" class="form-control"/>
               </div>
               <div class="form-group">
-                <label for="inputDescription">설명</label>
-                <textarea id="summernote">
-              <!-- Place <em>some</em> <u>text</u> <strong>here</strong> -->
-                </textarea>
+                <label for="inputDescription">설명</label><br>
+                <form:textarea path="description" rows="8" cols="100"/>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
-                <input type="text" id="inputClientCompany" class="form-control" value="">
+                <form:input path="identifier" class="form-control"/>
                 <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
                 * 식별자는 저장후에는 수정할 수 없습니다.</a>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>
-                <input type="text" id="inputProjectLeader" class="form-control" value="">
+                <form:input path="homepage" class="form-control" />
               </div>
 
               <div class="form-group">
@@ -133,12 +150,14 @@
         </div>
             </div>
             <!-- /.card-body -->
+             
           </div>
+          
           <!-- /.card -->
         </div>
       
       </div>
-
+</form:form>
     </section>
     <!-- /.content -->
   </div>

@@ -2,15 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A01_ProjectDao">
-	<select id="getProjectList" resultType="project">
-		SELECT * FROM PROJECT
+
+<!-- public ArrayList<Project> projectList(Project sch); -->
+	<resultMap type="project" id="projectMap"/>
+	<select id="projectList" resultMap="projectMap" parameterType="project">
+		select * from project
+		where name like '%'||#{name, jdbcType=VARCHAR}||'%'
+		order by id desc
 	</select>
+	<select id="getProjectList" resultType="project">
+      SELECT * FROM PROJECT
+    </select>
 	<select id="getProject" resultType="project" parameterType="int">
 		SELECT * FROM PROJECT
 		WHERE id = #{id} 
 	</select>
-	
-
+	<!-- public void projectIns(Project insert); -->
+	<insert id="projectIns" parameterType="project">
+	 	INSERT INTO PROJECT VALUES(PROJECT_seq.nextval,#{id},#{name},#{description},
+	 		#{identifier},#{homepage})
+	</insert>
+	<!-- public void projectDel(int id); -->
+	<delete id="projectDel" parameterType="int">
+   		DELETE FROM PROJECT 
+	   		 WHERE id = #{id} 
+    </delete>
 </mapper>
 
 
