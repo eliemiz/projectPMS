@@ -207,14 +207,7 @@ html, body {
      <%-- TODO: 진척도 대신 다른 용어 선택하거나, 없애기 --%>  
                 <div class="form-group">
                   <label>진척도</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option value="">진척도</option>
-                    <option value="1">낮음</option>
-                    <option value="2">보통</option>
-                    <option value="3">높음</option>
-                    <option value="4">긴급</option>
-                    <option value="5">즉시</option>
-                  </select>
+                 <input name="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)">
                 </div>
       <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
                 <!-- <div class="form-group">

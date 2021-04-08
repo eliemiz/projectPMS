@@ -176,7 +176,7 @@ html, body {
                   	<td>${task.status}</td>
                   	<td>${task.priority}</td>
                   	<td>${task.subject}</td>
-                  	<td>${task.user_id}</td>
+                  	<td>${task.account_id}</td>
                   	<td><fmt:formatDate value="${task.start_date}"/></td>
                   </tr>
                   </c:forEach>

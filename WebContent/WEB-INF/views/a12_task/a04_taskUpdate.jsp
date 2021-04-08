@@ -200,26 +200,10 @@ html, body {
             </div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label>담당그룹</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>담당그룹</option>
-                    <option>개발팀1</option>
-                    <option>개발팀2</option>
-                    <option>개발팀3</option>
-                  </select>
-                </div>
-                <!-- /.form-group -->
+                
                 <div class="form-group">
                   <label>진척도</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>진척도</option>
-                    <option>낮음</option>
-                    <option>보통</option>
-                    <option>높음</option>
-                    <option>긴급</option>
-                    <option>즉시</option>
-                  </select>
+                  <input name="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)">
                 </div>
                 <div class="form-group">
                   <label>Task 관리자</label><br>

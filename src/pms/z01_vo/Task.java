@@ -10,7 +10,7 @@ public class Task {
 	private int id;
 	private int parent_id;
 	private int project_id;
-	private int user_id;
+	private int account_id;
 	private String subject;
 	private String description;
 	private String status;
@@ -35,14 +35,14 @@ public class Task {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
+	public Task(int id, int parent_id, int project_id, int account_id, String subject, String description, String status,
 			int priority, Date created_on, Date updated_on, Date start_date, Date due_date, int estimated,
 			int done_ratio, Date completed_on, String tracker) {
 		super();
 		this.id = id;
 		this.parent_id = parent_id;
 		this.project_id = project_id;
-		this.user_id = user_id;
+		this.account_id = account_id;
 		this.subject = subject;
 		this.description = description;
 		this.status = status;
@@ -56,14 +56,14 @@ public class Task {
 		this.completed_on = completed_on;
 		this.tracker = tracker;
 	}
-	public Task(int id, int parent_id, int project_id, int user_id, String subject, String description, String status,
+	public Task(int id, int parent_id, int project_id, int account_id, String subject, String description, String status,
 			int priority, String created_on_s, String updated_on_s, String start_date_s, String due_date_s,
 			int estimated, int done_ratio, String completed_on_s, String tracker) {
 		super();
 		this.id = id;
 		this.parent_id = parent_id;
 		this.project_id = project_id;
-		this.user_id = user_id;
+		this.account_id = account_id;
 		this.subject = subject;
 		this.description = description;
 		this.status = status;
@@ -95,11 +95,11 @@ public class Task {
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getaccount_id() {
+		return account_id;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setaccount_id(int account_id) {
+		this.account_id = account_id;
 	}
 	public String getSubject() {
 		return subject;
