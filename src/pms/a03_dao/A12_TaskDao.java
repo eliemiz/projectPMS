@@ -18,7 +18,7 @@ public interface A12_TaskDao {
 	public Task getTask(int task_id); // task 조회
 	public ArrayList<Task> getTaskList(Task sch);
 	public ArrayList<Attachment> fileInfo(int task_id); // 파일정보 조회
-	public void insertTask(Task insert); // task 등록
+	public void insertTask(Task ins); // task 등록
 	public void updateTask(Task upt); // task 수정
 	public void updateFile(HashMap<String, String> hs); // 파일 수정
 	public void deleteTask(int task_id); // task 삭제

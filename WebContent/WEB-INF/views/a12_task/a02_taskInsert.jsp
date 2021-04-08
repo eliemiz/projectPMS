@@ -110,18 +110,18 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>프로젝트 *</label>
-                  <select name="project_id" class="form-control select2" style="width: 100%;">
+                  <select class="form-control select2" style="width: 100%;">
                     <option value="0">프로젝트 선택</option>
                     <c:forEach var = "project" items="${projects}">
-                    	<option value="${project.id}">${project.name}</option>
+                    	<form:option path="project_id" value="${project.id}">${project.name}</form:option>
                     </c:forEach>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <select name="status" class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <option selected="selected" value="신규">신규</option>
+                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
+                    <form:option path="status" selected="selected" value="신규">신규</form:option>
                   </select>
                 </div>
                 <!-- /.form-group -->
@@ -130,18 +130,18 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>유형 *</label>
-                  <select name="tracker" class="form-control select" style="width: 100%;">
+                  <select class="form-control select" style="width: 100%;">
                     <option value="">유형 선택</option>
-                    <option value="결함">결함</option>
-                    <option value="새기능">새기능</option>
-                    <option value="지원">지원</option>
+                    <form:option path="tracker" value="결함">결함</form:option>
+                    <form:option path="tracker" value="새기능">새기능</form:option>
+                    <form:option path="tracker" value="지원">지원</form:option>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상위Task</label>
     <%-- TODO: 최상위 task id(value)만 불러와서 task 이름을 select 할 것인지, 입력할 것인지? --%>
-                  <input name="parent_id" type="text" class="form-control" style="width: 100%;">
+                  <form:input path="parent_id" type="text" class="form-control" style="width: 100%;"/>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -151,11 +151,11 @@ html, body {
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>제목 *</label>
-            		<input name="subject" type="text" class="form-control" style="width: 100%;">
+            		<form:input path="subject" type="text" class="form-control" style="width: 100%;"/>
             	</div>
             	<div class="form-group">
             		<label>설명</label>            	
-            		<textarea name="description" class="form-control" style="width: 100%; height:300px;"></textarea>
+            		<form:textarea path="description" class="form-control" style="width: 100%; height:300px;"/>
             	</div>
             </div>
             <div class="row">
@@ -163,23 +163,23 @@ html, body {
                 <div class="form-group">
                   <label>우선순위 *</label>
        <%-- TODO: 우선순위 varchar2로 변경할건지? --%>
-                  <select name="priority" class="form-control select" style="width: 100%;">
+                  <select class="form-control select" style="width: 100%;">
                   	<option value="">우선순위</option>
-                    <option value="1">낮음</option>
-                    <option value="2">보통</option>
-                    <option value="3">높음</option>
-                    <option value="4">긴급</option>
-                    <option value="5">즉시</option>
+                    <form:option path="priority" value="1">낮음</form:option>
+                    <form:option path="priority" value="2">보통</form:option>
+                    <form:option path="priority" value="3">높음</form:option>
+                    <form:option path="priority" value="4">긴급</form:option>
+                    <form:option path="priority" value="5">즉시</form:option>
                   </select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>담당자</label>
        <%-- TODO: account테이블 이용해서 담당자명(역할)형식으로 띄우기. value는 넘길 값에 따라서 설정 --%>
-                  <select name="user_id" class="form-control select" style="width: 100%;">
+                  <select class="form-control select" style="width: 100%;">
                   	<option value="">담당자 선택</option>
                   	<c:forEach var="account" items="${accounts}">
-	                    <option value="${account.id}">${account.name}</option>
+	                    <form:option path="account_id" value="${account.id}">${account.name}</form:option>
                     </c:forEach>
                   </select>
                 </div>
@@ -189,13 +189,13 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>추정시간</label>
-                  <input name="estimated" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)">
+                  <form:input path="estimated" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
                 </div>
                 
                 <div class="form-group">
                   <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input name="start_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"><%-- 발표날짜에 맞춤 --%>
+                       <form:input path="start_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"/><%-- 발표날짜에 맞춤 --%>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -207,7 +207,7 @@ html, body {
      <%-- TODO: 진척도 대신 다른 용어 선택하거나, 없애기 --%>  
                 <div class="form-group">
                   <label>진척도</label>
-                 <input name="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)">
+                  <form:input path="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
                 </div>
       <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
                 <!-- <div class="form-group">
@@ -227,7 +227,7 @@ html, body {
                 <div class="form-group">
                   <label>완료일</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <input name="due_date" type="date" class="form-control" value="${sysdate}" style="width:100%;">
+                       <form:input path="due_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"/>
                    </div><br>
                 </div>
                 <!-- /.form-group -->
