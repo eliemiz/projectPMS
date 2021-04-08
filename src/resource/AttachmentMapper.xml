@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="pms.a03_dao.A12_TaskDao">
-	
+<mapper namespace="pms.a03_dao.A18_AttachmentDao">
+	<!-- 
+	파일 등록
+	INSERT INTO attachment VALUES 
+		(1,'TASK',10002,'파일.jpg','파일저장.jpg','파일경로','파일사이즈',SYSDATE); -->
+	<insert id="uploadFile" parameterType="attachment">
+		INSERT INTO attachment VALUES (
+			ATTACHMENT_SEQ.currval,#{document_type},#{document_id},#{filename},
+			#{disk_filename},#{pathname},#{filesize},SYSDATE)
+	</insert>
+	<!-- 파일 조회 -->
+	<select id="fileInfo" resultType="attachment" parameterType="int">
+		select * from attachment
+		where id = #{id}
+	</select>
+	<!-- 파일 수정 -->
+	<update id="updateFile" parameterType="hashmap">
+		update attachment
+			set filename = #{filename}
+		where id = #{id}
+	</update>
+	<!-- 파일 삭제 -->
+	<delete id="deleteFile" parameterType="int">
+		delete from attachment where id = #{id}
+	</delete>
 </mapper>
