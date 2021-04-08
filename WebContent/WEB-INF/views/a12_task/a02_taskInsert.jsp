@@ -64,7 +64,16 @@ html, body {
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
 		
+		var proc = "${proc}";
+		if(proc=="ins"){
+			$("[name=subject]").val("");
+			$("[name=description]").val("");
+			if(!confirm("등록완료\n계속 등록하시겠습니까?")){
+				location.href = "${path}/task.do?method=list";
+			}
+		}
 		/* 유효성 체크 */
+		/*
 		var projcet_id = $("[name=project_id]").val();
 		var status = $("[name=status]").val();
 		var tracker = $("[name=tracker]").val();
@@ -89,6 +98,7 @@ html, body {
 		alert("done_ratio "+done_ratio);
 		alert("due_date "+due_date);
 		alert("estimated "+estimated);
+		*/
 	});
 </script>
 </head>
@@ -129,6 +139,9 @@ html, body {
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">새 Task 만들기</h3>
+            <form:hidden path="created_on"/>
+            <form:hidden path="updated_on"/>
+            <form:hidden path="completed_on"/>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -221,7 +234,7 @@ html, body {
                 <div class="form-group">
                   <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <form:input path="start_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"/><%-- 발표날짜에 맞춤 --%>
+                       <form:input path="start_date" type="date" class="form-control" style="width:100%;"/>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -253,7 +266,7 @@ html, body {
                 <div class="form-group">
                   <label>완료일</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <form:input path="due_date" type="date" class="form-control" value="${sysdate}" style="width:100%;"/>
+                       <form:input path="due_date" type="date" class="form-control" style="width:100%;"/>
                    </div><br>
                 </div>
                 <!-- /.form-group -->

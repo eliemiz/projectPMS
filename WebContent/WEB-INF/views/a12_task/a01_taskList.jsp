@@ -108,7 +108,7 @@ html, body {
                     <option>제목</option>
                     <option>설명</option>
                   </select>
-                  </div><br>
+                </div><br>
                   <%--
                   <div class="input-group input-group-m" style="width: 200px;">
                   <input type="checkbox" checked id="checkboxSuccess1">
@@ -120,7 +120,7 @@ html, body {
                   </select>
                    </div><br>
                    --%>
-                  <div class="input-group input-group-m" style="width: 200px;">
+                <div class="input-group input-group-m" style="width: 200px;">
                   <input type="checkbox" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>상태</label>&nbsp;&nbsp;
                   <select class="form-control select2">
@@ -128,7 +128,7 @@ html, body {
                     <option>완료</option>
                     <option selected>모두</option>
                   </select>
-                  </div><br>
+                </div><br>
                   <%--
                   <div class="input-group input-group-m" style="width: 600px;">
                   <input type="checkbox" checked id="checkboxSuccess1">
@@ -170,14 +170,14 @@ html, body {
                   </thead>
                   <tbody>
                   <c:forEach var="task" items="${tasklist}">
-                  <tr onclick="location.href='${path}/task.do?method=detail'">
+                  <tr ondblclick="location.href='${path}/task.do?method=detail'">
                   	<td>${task.id}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>
                   	<td>${task.priority}</td>
                   	<td>${task.subject}</td>
                   	<td>${task.account_id}</td>
-                  	<td><fmt:formatDate value="${task.start_date}"/></td>
+                  	<td>${task.start_date}</td>
                   </tr>
                   </c:forEach>
                   </tbody>

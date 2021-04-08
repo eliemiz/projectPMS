@@ -11,35 +11,11 @@ public class Attachment {
 	private String disk_filename;
 	private String pathname;
 	private String filesize;
-	private Date created_on;
-	private String created_on_s;
+//	private Date created_on;
+	private String created_on;
 	public Attachment() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public Attachment(int id, String document_type, int document_id, String filename, String disk_filename,
-			String pathname, String filesize, Date created_on) {
-		super();
-		this.id = id;
-		this.document_type = document_type;
-		this.document_id = document_id;
-		this.filename = filename;
-		this.disk_filename = disk_filename;
-		this.pathname = pathname;
-		this.filesize = filesize;
-		this.created_on = created_on;
-	}
-	public Attachment(int id, String document_type, int document_id, String filename, String disk_filename,
-			String pathname, String filesize, String created_on_s) {
-		super();
-		this.id = id;
-		this.document_type = document_type;
-		this.document_id = document_id;
-		this.filename = filename;
-		this.disk_filename = disk_filename;
-		this.pathname = pathname;
-		this.filesize = filesize;
-		this.created_on_s = created_on_s;
 	}
 	public int getId() {
 		return id;
@@ -83,17 +59,20 @@ public class Attachment {
 	public void setFilesize(String filesize) {
 		this.filesize = filesize;
 	}
+/*
 	public Date getCreated_on() {
 		return created_on;
 	}
 	public void setCreated_on(Date created_on) {
 		this.created_on = created_on;
 	}
-	public String getCreated_on_s() {
-		return created_on_s;
+*/
+	public String getCreated_on() {
+		return created_on;
 	}
-	public void setCreated_on_s(String created_on_s) {
-		this.created_on_s = created_on_s;
+	public void setCreated_on(String created_on) {
+		this.created_on = created_on;
 	}
+
 	
 }

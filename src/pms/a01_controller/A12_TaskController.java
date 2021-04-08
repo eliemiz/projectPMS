@@ -44,7 +44,7 @@ public class A12_TaskController {
 	public String insertTask(Task ins, Model d) {
 		System.out.println("등록:" + ins.getSubject());
 		service.insertTask(ins);
-//		d.addAttribute("proc", "ins");
+		d.addAttribute("proc", "ins");
 
 		return "a12_task\\a02_taskInsert";
 	}

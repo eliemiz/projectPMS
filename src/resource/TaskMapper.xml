@@ -4,7 +4,7 @@
 	<!-- public ArrayList<Task> getTaskList(Task sch) -->
 	<resultMap type="task" id="taskList"/>
 	<select id="getTaskList" resultMap="taskList" parameterType="task">
-		SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t
+		SELECT * FROM task
 	</select>
 	
 	<!--public Task getTask(int task_id) -->
@@ -18,7 +18,7 @@
 		INSERT INTO TASK
 		VALUES (TASK_seq.nextval, #{parent_id}, #{project_id}, #{account_id},
 				#{subject}, #{description}, #{status}, #{priority}, 
-				sysdate, sysdate, #{start_date}, #{due_date},
+				#{created_on}, #{updated_on}, #{start_date}, #{due_date},
 				#{estimated}, #{done_ratio}, #{completed_on}, #{tracker})
 	</insert>
 	
@@ -29,7 +29,7 @@
 				description = #{description},
 				status = #{status},
 				priority = #{priority},
-				updated_on = sysdate,
+				updated_on = #{updated_on},
 				done_ratio = #{done_ratio},
 				tracker = #{tracker}
 			WHERE ID = #{id}

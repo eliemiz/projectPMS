@@ -8,7 +8,7 @@
 	<insert id="uploadFile" parameterType="attachment">
 		INSERT INTO attachment VALUES (
 			ATTACHMENT_SEQ.currval,#{document_type},#{document_id},#{filename},
-			#{disk_filename},#{pathname},#{filesize},SYSDATE)
+			#{disk_filename},#{pathname},#{filesize},#{created_on})
 	</insert>
 	<!-- 파일 조회 -->
 	<select id="fileInfo" resultType="attachment" parameterType="int">

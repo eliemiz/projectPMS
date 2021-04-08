@@ -4,7 +4,7 @@
 	<!-- 댓글 등록 -->
 	<insert id="insComment" parameterType="comment">
 		INSERT INTO COMMENTS VALUES (COMMENTS_SEQ,#{document_type},#{document_id},
-			#{account_id},#{content},SYSDATE,SYSDATE)
+			#{account_id},#{content},#{created_on},#{updated_on})
 	</insert>
 	<!-- 댓글 조회 -->
 	<select id="CommentInfo" resultType="comment" parameterType="int">
