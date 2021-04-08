@@ -8,17 +8,15 @@ public class Account {
 	private String password;
 	private String name;
 	private String mail;
-	private Date created_on;
-	private String created_on_s;
-	private Date last_login_on;
-	private String last_login_on_s;
+	private String created_on;
+	private String last_login_on;
 	private String auth;
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Account(int id, String user_id, String password, String name, String mail, Date created_on,
-			Date last_login_on, String auth) {
+	public Account(int id, String user_id, String password, String name, String mail, String created_on,
+			String last_login_on, String auth) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -27,18 +25,6 @@ public class Account {
 		this.mail = mail;
 		this.created_on = created_on;
 		this.last_login_on = last_login_on;
-		this.auth = auth;
-	}
-	public Account(int id, String user_id, String password, String name, String mail, String created_on_s,
-			String last_login_on_s, String auth) {
-		super();
-		this.id = id;
-		this.user_id = user_id;
-		this.password = password;
-		this.name = name;
-		this.mail = mail;
-		this.created_on_s = created_on_s;
-		this.last_login_on_s = last_login_on_s;
 		this.auth = auth;
 	}
 	public int getId() {
@@ -71,29 +57,17 @@ public class Account {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Date getCreated_on() {
+	public String getCreated_on() {
 		return created_on;
 	}
-	public void setCreated_on(Date created_on) {
+	public void setCreated_on(String created_on) {
 		this.created_on = created_on;
 	}
-	public String getCreated_on_s() {
-		return created_on_s;
-	}
-	public void setCreated_on_s(String created_on_s) {
-		this.created_on_s = created_on_s;
-	}
-	public Date getLast_login_on() {
+	public String getLast_login_on() {
 		return last_login_on;
 	}
-	public void setLast_login_on(Date last_login_on) {
+	public void setLast_login_on(String last_login_on) {
 		this.last_login_on = last_login_on;
-	}
-	public String getLast_login_on_s() {
-		return last_login_on_s;
-	}
-	public void setLast_login_on_s(String last_login_on_s) {
-		this.last_login_on_s = last_login_on_s;
 	}
 	public String getAuth() {
 		return auth;
@@ -101,5 +75,6 @@ public class Account {
 	public void setAuth(String auth) {
 		this.auth = auth;
 	}
+
 
 }
