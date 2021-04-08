@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.LocaleResolver;
@@ -11,30 +12,29 @@ import org.springframework.web.servlet.LocaleResolver;
 @Controller
 public class LocaleManager {
 	
-	private static LocaleManager instance = new LocaleManager();
-	private String _lang = "ko";
+	private static final String DEFAULT_LANG = "ko";
 	
-	private LocaleManager() {
-	}
 	
-	public static LocaleManager getInstance() {
-		return instance;
-	}
-	
-	public String getLang() {
-		return _lang;
-	}
-	
-	public void setLang(String lang) {
-		_lang = lang;
-	}
-	
-	public void setLocale(HttpServletRequest request, HttpServletResponse response, LocaleResolver localeResolver) {
-		Object str = request.getParameter("lang");
-		if (str != null) {
-			setLang(str.toString());
+	public static String getLang(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		if (session.getAttribute("lang") == null) {
+			session.setAttribute("lang", DEFAULT_LANG);
 		}
-		Locale locale = new Locale(getLang());
+		
+		return session.getAttribute("lang").toString();
+	}
+	
+	public static void setLang(HttpServletRequest request, HttpServletResponse response, LocaleResolver localeResolver) {
+		String lang = request.getParameter("lang");
+		if (lang == null) {
+			lang = DEFAULT_LANG;
+		}
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("lang", lang);
+		
+		Locale locale = new Locale(session.getAttribute("lang").toString());
 		localeResolver.setLocale(request, response, locale);
 	}
 }

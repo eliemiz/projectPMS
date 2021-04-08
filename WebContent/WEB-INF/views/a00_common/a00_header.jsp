@@ -7,9 +7,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script type="text/javascript">
-	
 	$(document).ready(function() {
-		$("#selectLang").val("<%= LocaleManager.getInstance().getLang() %>");
+		$("#selectLang").val("<%= LocaleManager.getLang(request) %>");
 		$("#selectLang").change(function(){
 			var lang = $(this).val();
 			if (lang != "") {

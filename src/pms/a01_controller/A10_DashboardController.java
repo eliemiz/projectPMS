@@ -29,7 +29,9 @@ public class A10_DashboardController {
 	public String dashboard(HttpServletRequest request, HttpServletResponse response, Model d) {
 
 		/* Set Locale */
-		LocaleManager.getInstance().setLocale(request, response, localeResolver);
+		if (request.getParameter("lang") != null) {
+			LocaleManager.setLang(request, response, localeResolver);
+		}
 
 		/* Get Model */
 		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskList();
