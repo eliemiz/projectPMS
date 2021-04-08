@@ -63,6 +63,32 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
+		
+		/* 유효성 체크 */
+		var projcet_id = $("[name=project_id]").val();
+		var status = $("[name=status]").val();
+		var tracker = $("[name=tracker]").val();
+		var parent_id = $("[name=parent_id]").val();
+		var subject = $("[name=subject]").val();
+		var description = $("[name=description]").val();
+		var priority = $("[name=priority]").val();
+		var account_id = $("[name=account_id]").val();
+		var start_date = $("[name=start_date]").val();
+		var done_ratio = $("[name=done_ratio]").val();
+		var due_date = $("[name=due_date]").val();
+		var estimated = $("[name=estimated]").val();
+		alert("projcet_id "+projcet_id);
+		alert("status "+status);
+		alert("tracker "+tracker);
+		alert("parent_id "+parent_id);
+		alert("subject "+subject);
+		alert("description "+description);
+		alert("priority "+priority);
+		alert("account_id "+account_id);
+		alert("start_date "+start_date);
+		alert("done_ratio "+done_ratio);
+		alert("due_date "+due_date);
+		alert("estimated "+estimated);
 	});
 </script>
 </head>
@@ -110,19 +136,19 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>프로젝트 *</label>
-                  <select class="form-control select2" style="width: 100%;">
+                  <form:select path="project_id" class="form-control select2" style="width: 100%;">
                     <option value="0">프로젝트 선택</option>
                     <c:forEach var = "project" items="${projects}">
-                    	<form:option path="project_id" value="${project.id}">${project.name}</form:option>
+                    	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
-                  </select>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <select class="form-control select2" disabled="disabled" style="width: 100%;">
-                    <form:option path="status" selected="selected" value="신규">신규</form:option>
-                  </select>
+                  <form:select path="status" class="form-control select2" disabled="disabled" style="width: 100%;">
+                    <form:option selected="selected" value="신규" label="신규"/>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -130,12 +156,12 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>유형 *</label>
-                  <select class="form-control select" style="width: 100%;">
+                  <form:select path="tracker" class="form-control select" style="width: 100%;">
                     <option value="">유형 선택</option>
-                    <form:option path="tracker" value="결함">결함</form:option>
-                    <form:option path="tracker" value="새기능">새기능</form:option>
-                    <form:option path="tracker" value="지원">지원</form:option>
-                  </select>
+                    <form:option value="결함" label="결함"/>
+                    <form:option value="새기능" label="새기능"/>
+                    <form:option value="지원" label="지원"/>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -163,25 +189,25 @@ html, body {
                 <div class="form-group">
                   <label>우선순위 *</label>
        <%-- TODO: 우선순위 varchar2로 변경할건지? --%>
-                  <select class="form-control select" style="width: 100%;">
+                  <form:select path="priority" class="form-control select" style="width: 100%;">
                   	<option value="">우선순위</option>
-                    <form:option path="priority" value="1">낮음</form:option>
-                    <form:option path="priority" value="2">보통</form:option>
-                    <form:option path="priority" value="3">높음</form:option>
-                    <form:option path="priority" value="4">긴급</form:option>
-                    <form:option path="priority" value="5">즉시</form:option>
-                  </select>
+                    <form:option value="1" label="낮음"/>
+                    <form:option value="2" label="보통"/>
+                    <form:option value="3" label="높음"/>
+                    <form:option value="4" label="긴급"/>
+                    <form:option value="5" label="즉시"/>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>담당자</label>
        <%-- TODO: account테이블 이용해서 담당자명(역할)형식으로 띄우기. value는 넘길 값에 따라서 설정 --%>
-                  <select class="form-control select" style="width: 100%;">
+                  <form:select path="account_id" class="form-control select" style="width: 100%;">
                   	<option value="">담당자 선택</option>
                   	<c:forEach var="account" items="${accounts}">
-	                    <form:option path="account_id" value="${account.id}">${account.name}</form:option>
+	                    <form:option value="${account.id}">${account.name}</form:option>
                     </c:forEach>
-                  </select>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
               </div>
