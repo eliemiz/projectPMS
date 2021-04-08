@@ -16,4 +16,6 @@ public interface A01_ProjectDao {
 	public void projectIns(Project insert);
 	// 삭제
 	public void projectDel(int id);
+	//setting
+	public void projectUpt(Project upt);
 }

@@ -27,6 +27,15 @@
    		DELETE FROM PROJECT 
 	   		 WHERE id = #{id} 
     </delete>
+      <!-- public void projectUpt(Project upt); -->
+   <update id="projectUpt" parameterType="project">
+   UPDATE project
+   SET name = #{name},
+   description = #{description},
+   identifier = #{identifier},
+   homepage = #{homepage}
+   WHERE id = #{id}
+   </update>
 </mapper>
 
 

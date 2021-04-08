@@ -14,3 +14,5 @@ SELECT * FROM account;
 SELECT * 
 FROM account
 WHERE user_id='아이디' AND password='비밀번호';
+
+
