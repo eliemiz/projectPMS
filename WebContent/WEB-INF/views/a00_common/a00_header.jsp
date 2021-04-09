@@ -29,7 +29,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/login.do" class="nav-link"><spring:message code="hd-login"/></a>
+      <a href="${path}/account.do?method=login" class="nav-link"><spring:message code="hd-login"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
