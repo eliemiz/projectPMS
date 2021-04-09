@@ -23,24 +23,20 @@ public class A01_ProjectController {
 	// http://localhost:7080/projectPMS/project.do
 	@RequestMapping
 	public String projectList(@ModelAttribute("sch")Project sch, Model d) {
-		d.addAttribute("projectList", service.projectList(sch));
-		
+		d.addAttribute("projectList", service.projectList(sch));		
 		return "a01_project\\a00_projects";
 	}
 
 	// http://localhost:7080/projectPMS/project.do?method=insForm
 		@RequestMapping(params = "method=insForm")
 		public String insForm(@ModelAttribute("project") Project p) {
-
 			return "a01_project\\a03_projectIns";
 		}
 	// http://localhost:7080/projectPMS/project.do?method=insert
 	@RequestMapping(params = "method=insert")
 	public String projectIns(Project insert, Model d) {
-		service.projectIns(insert);
-		
-		d.addAttribute("proc", "insert");
-		
+		service.projectIns(insert);		
+		d.addAttribute("proc", "insert");		
 		return "a01_project\\a03_projectIns";
 	}
 	// http://localhost:7080/projectPMS/project.do?method=delete

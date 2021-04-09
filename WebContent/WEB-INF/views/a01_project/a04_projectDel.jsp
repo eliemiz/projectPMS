@@ -42,6 +42,15 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
+  
+  $(document).ready(function(){
+	  
+	  var proc = "${param.proc}";   	
+	   $("#delBtn").click(function(){
+		   if(proc=="del"){
+				 alert("삭제되었습니다");
+		   	   }
+	});		  
 
 </script>
 </head>
@@ -88,7 +97,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="post" enctype="multipart/form-data">
+              <form:hidden path="id"/>(${param.id})
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">이 프로젝트의 데이터를 지우시겠습니까?</label>
@@ -102,8 +112,8 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-danger">삭제</button>
-                  <button type="submit" class="btn btn-default">취소</button>
+                  <input type="button" class="btn btn-danger" value="삭제" id="${project.id}"/>
+                  <a href="${path}/project.do"><button type="submit" class="btn btn-default">취소</button></a>
                 </div>
               </form>
             </div>

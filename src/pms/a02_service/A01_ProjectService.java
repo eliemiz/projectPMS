@@ -15,6 +15,7 @@ public class A01_ProjectService {
 	private A01_ProjectDao dao;
 
 	public ArrayList<Project> projectList(Project sch){
+		if(sch.getName()==null) sch.setName("");
 		return dao.projectList(sch);
 	}
 	public ArrayList<Project> getProjectList() {

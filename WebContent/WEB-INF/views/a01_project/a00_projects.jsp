@@ -44,10 +44,10 @@
   $.widget.bridge('uibutton', $.ui.button)
   
    $(document).ready(function(){
-      $("#regBtn1").click(function(){
+      $("#regBtn").click(function(){
     	  location.href="${path}/project.do?method=insForm";
-      });
-      
+   });
+   });
 
 </script>
 </head>
@@ -85,17 +85,18 @@
     <section class="content">
 	<div class="card card-warning card-outline">
 	 <div class="card-header">
-	 
+	 <form:form modelAttribute="sch" class="form-inline" method="post">
  		<nav class="navbar navbar-expand-sm bg-white navbar-white">
-		     <form:form modelAttribute="sch" class="form-inline" method="post">
+		     
 		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
 		       <button class="btn btn-success" type="submit">검색</button>
-		     </form:form>
+		     
 		  </nav>
 		     <div class="form-row float-right">
-		     <button class="btn btn-primary" id="regBtn1" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
-		     <a href="${path}/project.do?method=list" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
+		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
+		     <a href="${path}/settings.do?method=update" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
 		     </div>
+		     </form:form>
 		  </div>
 		  </div>
 	
@@ -107,7 +108,7 @@
               <div class="card-body">
                 <h6 class="card-title">${project.description}</h6>
                 <p class="card-text"></p>
-                <a href="${path}/project.do?method=list" class="btn btn-success">프로젝트 확인하기</a>
+                <a href="${path}/dashboard.do" class="btn btn-success">프로젝트 확인하기</a>
               <div class="form-row float-right">
               	<a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
               </div>
