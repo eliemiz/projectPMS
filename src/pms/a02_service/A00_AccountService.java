@@ -19,9 +19,9 @@ public class A00_AccountService {
 		return dao.getAccountList();
 	}
 
-	public Account Login(String user_id, String password) {
+	public Account Login(Account log) {
 
-		return dao.Login(user_id, password);
+		return dao.Login(log);
 	}
 
 	public ArrayList<AccountTask> getAccountTaskList() {

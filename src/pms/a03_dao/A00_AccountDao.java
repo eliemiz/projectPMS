@@ -12,7 +12,7 @@ public interface A00_AccountDao {
 
 	public ArrayList<Account> getAccountList();
 
-	public Account Login(String user_id, String password);
+	public Account Login(Account log);
 	
 	public ArrayList<AccountTask> getAccountTaskList();
 }

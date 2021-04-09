@@ -48,16 +48,16 @@
 	
 	$(document).ready(function(){
 
-		// id, user_id 여부
-		var hasId = ${not empty param.id};
-		var hasUserId = ${not empty user_id};
-		if (hasId) {
-			if (hasUserId) {
-				location.href = "${path}";	
-			} else {
-				alert("입력하신 회원아이디는 존재하지 않습니다.");	
-			}
-		}
+		var loginSucc="${loginSucc}";
+	     // alert(loginSucc);
+	      if(loginSucc=="Y"){
+	    	  alert("로그인성공\n 메인페이지로 이동합니다.");
+	    		$(location).attr("href","${path}/account.do?method=account");
+	      }
+	      if(loginSucc=="N"){
+	    	  alert("등록된 계정이 아닙니다.\n다시 로그인해주세요. ");
+	    	  $("[name=user_id]").focus();
+	      }
 	});
 		
 </script>
