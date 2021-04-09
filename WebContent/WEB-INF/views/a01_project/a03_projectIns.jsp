@@ -145,7 +145,7 @@
                <div class="form-row float-right">
           <!-- /.col -->
             <button type="submit" class="btn btn-primary">만들기</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-default">취소</button>
+            <a href="${path}/project.do" class="btn btn-default">취소</a>
           <!-- /.col -->
         </div>
             </div>

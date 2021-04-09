@@ -87,12 +87,10 @@
 	 <div class="card-header">
 	 <form:form modelAttribute="sch" class="form-inline" method="post">
  		<nav class="navbar navbar-expand-sm bg-white navbar-white">
-		     
 		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
-		       <button class="btn btn-success" type="submit">검색</button>
-		     
-		  </nav>
-		     <div class="form-row float-right">
+		       <button class="btn btn-warning" type="submit">검색</button>
+		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		     <div class="float-right">
 		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
 		     <a href="${path}/settings.do?method=update" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
 		     </div>
