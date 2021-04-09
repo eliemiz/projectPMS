@@ -51,8 +51,8 @@
 		var loginSucc="${loginSucc}";
 	     // alert(loginSucc);
 	      if(loginSucc=="Y"){
-	    	  alert("로그인성공\n 메인페이지로 이동합니다.");
-	    		$(location).attr("href","${path}/account.do?method=account");
+	    	  alert("로그인성공\nDashboard로 이동합니다.");
+	    		$(location).attr("href","${path}/dashboard.do");
 	      }
 	      if(loginSucc=="N"){
 	    	  alert("등록된 계정이 아닙니다.\n다시 로그인해주세요. ");

@@ -58,6 +58,7 @@
 		$("#sm-setting").addClass("menu-open");
 		$("#sb-setting").addClass("active");
 		$("#sb-setting-project").addClass("active");
+		
 	});
 </script>
 <!-- Page specific script -->
@@ -106,7 +107,6 @@ $(function () {
   
           <!--   </div>
            </div> -->
-            
     	<!-- iCheck -->
             <div class="card card-success">
               <div class="card-header">

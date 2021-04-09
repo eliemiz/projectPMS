@@ -33,7 +33,12 @@ public class A00_AccountController {
 		return "a00_account\\a00_login";
 	}
 	
+	
 	// http://localhost:7080/projectPMS/account.do?method=login
+	@GetMapping(params = "method=login")
+		  public String login() {
+			return "a00_account\\a00_login";
+		  }
 	@PostMapping(params = "method=login")
 	public String login( Account log ,HttpServletRequest request) {
 		System.out.println("아이디:"+log.getUser_id());
@@ -48,27 +53,33 @@ public class A00_AccountController {
 	
 		return "a00_account\\a00_login";
 	}
+	@RequestMapping(params = "method=logout")
+	public String logout(HttpServletRequest request){
+	request.getSession().invalidate();
+	return "redirect:/dashboard.do";
+	}
 	
 	// http://localhost:7080/projectPMS/account.do?method=loginSearch
-	@RequestMapping(params = "method=loginSearch")
-	public String loginSearch() {
-		
-		return "a00_account\\a01_login_search";
-	}
+			@RequestMapping(params = "method=loginSearch")
+			public String loginSearch() {
+				
+				return "a00_account\\a01_login_search";
+			}
+			
+			// http://localhost:7080/projectPMS/account.do?method=signin
+			@RequestMapping(params = "method=signin")
+			public String signin() {
+				
+				return "a00_account\\a02_signin";
+			}
+			
+			// http://localhost:7080/projectPMS/account.do?method=info
+			@RequestMapping(params = "method=info")
+			public String info() {
+				
+				return "a00_account\\a03_info";
+			}
 	
-	// http://localhost:7080/projectPMS/account.do?method=signin
-	@RequestMapping(params = "method=signin")
-	public String signin() {
-		
-		return "a00_account\\a02_signin";
-	}
-	
-	// http://localhost:7080/projectPMS/account.do?method=info
-	@RequestMapping(params = "method=info")
-	public String info() {
-		
-		return "a00_account\\a03_info";
-	}
 	
 
 }
