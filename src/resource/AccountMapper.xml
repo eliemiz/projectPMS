@@ -15,12 +15,13 @@
 	</select>
 	
 	<!-- public ArrayList<AccountTask> getAccountTaskList(); -->
-	<select id="getAccountTaskList" resultType="accountTask">
+	<select id="getAccountTaskList" resultType="accountTask" parameterType="int">
 		SELECT A.ID ACCOUNT_ID, A.NAME, A.AUTH,
 			COUNT(CASE WHEN A.ID = T.ACCOUNT_ID THEN 1 END) TOTAL,
 			COUNT(CASE WHEN T.STATUS = '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) COMPLETED, 
 			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
-			FROM ACCOUNT A, TASK T GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+			FROM ACCOUNT A, TASK T WHERE T.PROJECT_ID = #{projectId}
+			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
 	</select>
 
 </mapper>

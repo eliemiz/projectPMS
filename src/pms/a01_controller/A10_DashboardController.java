@@ -72,8 +72,22 @@ public class A10_DashboardController {
 		d.addAttribute("project", project);
 		
 		// Account List
-		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskList();
+		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskList(projectId);
 		d.addAttribute("accountList", accountList);
+		
+		int incompleteAll = 0;
+		int completeAll = 0;
+		for (AccountTask at : accountList) {
+			incompleteAll += at.getIncompleted();
+			completeAll += at.getCompleted();
+			if (at.getAccount_id() == 100000) {
+				d.addAttribute("incompleteUser", at.getIncompleted());
+				d.addAttribute("completeUser", at.getCompleted());
+			}
+		}
+		
+		d.addAttribute("incompleteAll", incompleteAll);
+		d.addAttribute("completeAll", completeAll);
 		
 		// TaskResult List
 		ArrayList<TaskResult> taskList = serviceTask.getTaskResult(projectId);

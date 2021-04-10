@@ -30,7 +30,7 @@
 		<c:forEach var="account" items="${accountList}">
 		<tr>
 			<td>${account.account_id}</td>
-			<td><a href="${path}/info.do">${account.name}</a></td>
+			<td><a href="${path}/account.do?method=info&id=${account.account_id}">${account.name}</a></td>
 			<td>${account.auth}</td>
 			<td>${account.total}</td>
 			<td>${account.incompleted}</td>

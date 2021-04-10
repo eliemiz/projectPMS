@@ -24,8 +24,8 @@ public class A00_AccountService {
 		return dao.Login(log);
 	}
 
-	public ArrayList<AccountTask> getAccountTaskList() {
+	public ArrayList<AccountTask> getAccountTaskList(int projectId) {
 
-		return dao.getAccountTaskList();
+		return dao.getAccountTaskList(projectId);
 	}
 }

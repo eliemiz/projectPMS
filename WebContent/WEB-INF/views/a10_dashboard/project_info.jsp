@@ -49,24 +49,32 @@
 					<tr>
 						<th>프로젝트 상태</th>
 					</tr>
-					<!-- <tr>
-						<td style="color:red">
-						<i class="fas fa-times-circle" style="font-size: 50px;"></i><br>
-						<span style="font-weight:bold;">Danger</span>
-						</td>
-					</tr>
-					<tr>
-						<td style="color:orange">
-						<i class="fas fa-exclamation-triangle" style="font-size: 50px;"></i><br>
-						<span style="font-weight:bold;">Warning</span>
-						</td>
-					</tr> -->
-					<tr>
-						<td style="color:green">
-						<i class="fas fa-thumbs-up" style="font-size: 50px;"></i><br>
-						<span style="font-weight:bold;">Safe</span>
-						</td>
-					</tr>
+					<c:choose>
+						<c:when test="${incompleteAll / (incompleteAll + completeAll) <= 0.7}">
+						<tr>
+							<td style="color:red">
+							<i class="fas fa-times-circle" style="font-size: 50px;"></i><br>
+							<span style="font-weight:bold;">Danger</span>
+							</td>
+						</tr>
+						</c:when>
+						<c:when test="${incompleteAll / (incompleteAll + completeAll) <= 0.9}">
+						<tr>
+							<td style="color:orange">
+							<i class="fas fa-exclamation-triangle" style="font-size: 50px;"></i><br>
+							<span style="font-weight:bold;">Warning</span>
+							</td>
+						</tr>
+						</c:when>
+						<c:otherwise>
+						<tr>
+							<td style="color:green">
+							<i class="fas fa-thumbs-up" style="font-size: 50px;"></i><br>
+							<span style="font-weight:bold;">Safe</span>
+							</td>
+						</tr>
+						</c:otherwise>
+					</c:choose>
 				</table>
 			</div>
 		</div>

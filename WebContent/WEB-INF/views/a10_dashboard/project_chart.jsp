@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="dist/css/adminlte.min.css">
 <link rel="stylesheet" href="plugins/uplot/uPlot.min.css">
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
@@ -88,9 +87,9 @@
 							</thead>
 							<tbody>
 								<tr data-widget="expandable-table" aria-expanded="false">
-									<td>75</td>
-									<td>57</td>
-									<td>15</td>
+									<td>${incompleteAll + completeAll}</td>
+									<td>${incompleteAll}</td>
+									<td>${completeAll}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -132,9 +131,9 @@
 							</thead>
 							<tbody>
 								<tr data-widget="expandable-table" aria-expanded="false">
-									<td>6</td>
-									<td>4</td>
-									<td>2</td>
+									<td>${incompleteUser + completeUser}</td>
+									<td>${incompleteUser}</td>
+									<td>${completeUser}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -165,7 +164,7 @@
 	  ],
 	  datasets: [
 	    {
-	      data: [57, 15],
+	      data: [${incompleteAll}, ${completeAll}],
 	      backgroundColor : ['#f56954', '#00c0ef'],
 	    }
 	  ]
@@ -179,7 +178,7 @@
 	  ],
 	  datasets: [
 	    {
-	      data: [4, 2],
+	      data: [${incompleteUser}, ${completeUser}],
 	      backgroundColor : ['#f56954', '#00c0ef'],
 	    }
 	  ]
