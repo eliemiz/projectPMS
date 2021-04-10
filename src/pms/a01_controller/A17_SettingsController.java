@@ -29,7 +29,7 @@ public class A17_SettingsController {
 	// http://localhost:7080/projectPMS/settings.do?method=detail
 	@RequestMapping(params = "method=detail")
 	public String detail(@RequestParam("id") int id, Model d) {
-		System.out.println("id:"+id);
+		//System.out.println("id:"+id);
 		d.addAttribute("project", pservice.getProject(id));
 		
 		return "a17_settings\\a01_update";
