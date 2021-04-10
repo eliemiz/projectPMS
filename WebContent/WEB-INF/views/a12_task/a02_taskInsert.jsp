@@ -63,25 +63,29 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		
 		var proc = "${proc}";
 		$("#insBtn").on("click",function(){
 			if($("[name=project_id]").val()==""){
 				alert("프로젝트를 선택해주세요.");
+				return false;
 			} else if($("[name=tracker]").val()==""){
 				alert("유형을 선택해주세요");
+				return false;
 			} else if($("[name=subject]").val()==""){
 				alert("제목을 입력해주세요");
-			} else if($("[name=description]").val()==""){
-				alert("설명을 입력해주세요.");
+				return false;
 			} else if($("[name=priority]").val()==""){
 				alert("우선순위를 선택해주세요");
+				return false;
 			} else if($("[name=account_id]").val()==""){
 				alert("담당자를 선택해주세요");
+				return false;
 			} else if($("[name=start_date]").val()==""){
 				alert("시작일을 선택해주세요");
+				return false;
 			} else if($("[name=due_date]").val()==""){
 				alert("완료일을 선택해주세요");
+				return false;
 			} 
 			
 			$("form").submit();
@@ -179,9 +183,10 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <form:select path="status" class="form-control select2" disabled="disabled" style="width: 100%;">
+                  <form:input path="status" type="text" class="form-control" style="width:100%;" value="신규"/>
+<%--                   <form:select path="status" class="form-control select2" disabled="disabled" style="width: 100%;">
                     <form:option selected="selected" value="신규" label="신규"/>
-                  </form:select>
+                  </form:select> --%>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -233,7 +238,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>담당자</label>
+                  <label>담당자 *</label>
        <%-- TODO: account테이블 이용해서 담당자명(역할)형식으로 띄우기. value는 넘길 값에 따라서 설정 --%>
                   <form:select path="account_id" class="form-control select" style="width: 100%;">
                   	<option value="">담당자 선택</option>
@@ -252,7 +257,7 @@ html, body {
                 </div>
                 
                 <div class="form-group">
-                  <label>시작일</label><br>
+                  <label>시작일 *</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
                        <form:input path="start_date" type="date" class="form-control" style="width:100%;"/>
                     </div>
@@ -284,7 +289,7 @@ html, body {
               <div class="col-md-6">
                 <!-- Date -->
                 <div class="form-group">
-                  <label>완료일</label>
+                  <label>완료일 *</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
                        <form:input path="due_date" type="date" class="form-control" style="width:100%;"/>
                    </div><br>
