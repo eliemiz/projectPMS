@@ -41,8 +41,8 @@
 <script type="text/javascript">
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 $.widget.bridge('uibutton', $.ui.button)
-
-$(function () {
+/*
+ $(function () {
   // Summernote
   $('#summernote').summernote()
 
@@ -50,28 +50,28 @@ $(function () {
   CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
     mode: "htmlmixed",
     theme: "monokai"
-  }
-  });    
+  }  
+}); 
+ */
 
 
-  $(document).ready(function(){
-	  $("#Btn").click(function(){
+ $(document).ready(function(){
+	 
+			  var proc = "${proc}";
+			  if(proc=="insert"){
+				  $("[name=id]").val("0");
+				  $("[name=name]").val("");
+				  
+		      	  if(confirm("등록완료!\n프로젝트목록으로 이동하시겠습니까?")){
+		      		  location.href="${path}/project.do";
+		      	  }
+			  }
 		  
-	  var proc = "{proc}";
-	  if(proc=="insert"){
-		  
-		  $("[name=id]").val("0");
-		  $("[name=name]").val("");
-		//  alert("등록되었습니다");
-		//   $(location).attr("href", "${path}/project.do");
-	  }
-
-  });
-  
-  });
+ 	  
+ });
  
-  
-  
+
+    
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
