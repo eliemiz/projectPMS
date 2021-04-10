@@ -65,13 +65,33 @@ html, body {
 		$("#sb-task").addClass("active");
 		
 		var proc = "${proc}";
+		$("#insBtn").on("click",function(){
+			if($("[name=project_id]").val()==""){
+				alert("프로젝트를 선택해주세요.");
+			} else if($("[name=tracker]").val()==""){
+				alert("유형을 선택해주세요");
+			} else if($("[name=subject]").val()==""){
+				alert("제목을 입력해주세요");
+			} else if($("[name=description]").val()==""){
+				alert("설명을 입력해주세요.");
+			} else if($("[name=priority]").val()==""){
+				alert("우선순위를 선택해주세요");
+			} else if($("[name=account_id]").val()==""){
+				alert("담당자를 선택해주세요");
+			} else if($("[name=start_date]").val()==""){
+				alert("시작일을 선택해주세요");
+			} else if($("[name=due_date]").val()==""){
+				alert("완료일을 선택해주세요");
+			} 
+			
+			$("form").submit();
+		});			
 		if(proc=="ins"){
-			$("[name=subject]").val("");
-			$("[name=description]").val("");
 			if(!confirm("등록완료\n계속 등록하시겠습니까?")){
 				location.href = "${path}/task.do?method=list";
 			}
 		}
+	
 		/* 유효성 체크 */
 		/*
 		var projcet_id = $("[name=project_id]").val();
@@ -150,7 +170,7 @@ html, body {
                 <div class="form-group">
                   <label>프로젝트 *</label>
                   <form:select path="project_id" class="form-control select2" style="width: 100%;">
-                    <option value="0">프로젝트 선택</option>
+                    <option value="">프로젝트 선택</option>
                     <c:forEach var = "project" items="${projects}">
                     	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
@@ -291,7 +311,7 @@ html, body {
 			</div> 			
 			<!-- /.card-body -->
             <div class="card-footer">
-               <button type="submit" class="btn btn-primary">만들기</button>
+               <button type="button" class="btn btn-primary" id="insBtn">만들기</button>
                <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">취소</button>
             </div>
           <!--/.col (right) -->

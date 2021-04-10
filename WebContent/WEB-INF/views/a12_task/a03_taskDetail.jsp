@@ -69,7 +69,38 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		
+
+		$("#upt").click(function(){
+/* 			var projcet_id = $("[name=project_id]").val();
+			var status = $("[name=status]").val();
+			var tracker = $("#tracker").val();
+			var parent_id = $("[name=parent_id]").val();
+			var subject = $("[name=subject]").val();
+			var description = $("[name=description]").val();
+			var priority = $("[name=priority]").val();
+			var account_id = $("[name=account_id]").val();
+			var start_date = $("[name=start_date]").val();
+			var done_ratio = $("[name=done_ratio]").val();
+			var due_date = $("[name=due_date]").val();
+			var estimated = $("[name=estimated]").val();
+			alert("projcet_id "+projcet_id);
+			alert("status "+status);
+			alert("tracker "+tracker);
+			alert("parent_id "+parent_id);
+			alert("subject "+subject);
+			alert("description "+description);
+			alert("priority "+priority);
+			alert("account_id "+account_id);
+			alert("start_date "+start_date);
+			alert("done_ratio "+done_ratio);
+			alert("due_date "+due_date);
+			alert("estimated "+estimated);	 */
+			if(confirm("수정하시겠습니까?")){
+				$("[name=project_id]").val($("[name=project_id]").val());
+				$("form").attr("action","${path}/task.do?method=uptForm");
+				$("form").submit();
+			}			
+		});
 	});
 </script>
 </head>
@@ -103,11 +134,15 @@ html, body {
     <!-- Main content -->
     <section class="content">
       <!-- Default box -->
+        <form:form modelAttribute="task" action="" enctype="multipart/form-data" method="post">
       <div class="card">
-        
         <div class="card-header">
+        	<form:hidden path="project_id"/>
+        	<form:hidden path="created_on"/>
+        	<form:hidden path="updated_on"/>
+        	<form:hidden path="completed_on"/>
           <h3 class="card-title">
-          ${task.tracker}&nbsp;&nbsp;#${task.id}
+          	${task.tracker}&nbsp;&nbsp;#<span id="id" name="id" value="${task.id}">${task.id}</span>
           </h3>  
         </div> <!-- /.card-header -->
         
@@ -115,13 +150,12 @@ html, body {
           <div style="text-align:right;">
           <a href="${path}/task.do?method=list">
           <i class="fas fa-list"></i>목록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="${path}/task.do?method=update">
+          <a id="upt">
           <i class="fas fa-pen"></i>편집</a>
           </div>
           
           <div style="background-Color:lightyellow; textcolor:black;">
-                <h2 class="mb-0">${task.subject}
-                </h2>
+                <h2 class="mb-0" name="subject" value="${task.subject}">${task.subject}</h2>
                 <hr align="left" style="border: solid 1px gray; width: 90%;">
          	
           <div class="card-body">
@@ -130,13 +164,13 @@ html, body {
                 <div class="form-group">
                   <label>상태</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   ${task.status}
+                   <span name="status" value="${task.status}">${task.status}</span>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>우선순위</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   ${task.priority}
+                    <span name="priority" value="${task.priority}">${task.priority}</span>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -145,13 +179,13 @@ html, body {
                 <div class="form-group">
                   <label>완료기한</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   ${task.due_date}
+                   <span name="due_date" value="${task.due_date}">${task.due_date}</span>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>추정시간</label>
                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                  ${task.estimated}
+                  <span name="estimated" value="${task.estimated}">${task.estimated}</span>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -162,13 +196,13 @@ html, body {
                 <div class="form-group">
                   <label>담당자</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   ${task.account_id}
+                   <span name="account_id" value="${task.account_id}">${task.account_id}</span>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>시작시간</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   ${task.start_date}
+                   <span name="start_date" value="${task.start_date}">${task.start_date}</span>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -177,7 +211,7 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>진척도</label>
-                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${task.done_ratio}
+                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span name="done_ratio" value="${task.done_ratio}">${task.done_ratio}</span>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -187,7 +221,7 @@ html, body {
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>설명</label><br><br>
-            		${task.description}
+            		<span name="description" value="${task.description}">${task.description}</span>
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
@@ -196,9 +230,9 @@ html, body {
             		<label>첨부파일</label>
             		&nbsp;&nbsp;&nbsp;첨부파일명&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
-            		<label>상/하위 Task</label>
+            		<label>상위 Task</label>
             		&nbsp;&nbsp;&nbsp;
-						${task.parent_id}
+						<span name="parent_id" value="${task.parent_id}">${task.parent_id}</span>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>연결된 Task</label>
             		&nbsp;&nbsp;&nbsp;
@@ -207,6 +241,7 @@ html, body {
 	             
 	            </div>
 	        </div>
+	     
 	      <!-- /.card-body -->
 	      
             </div><br> <!-- /.yellowbox -->
@@ -251,7 +286,7 @@ html, body {
           </div>
          </div> 
         </div>  
-   
+    </form:form>
     </section>
     <!-- /.content -->
   </div>

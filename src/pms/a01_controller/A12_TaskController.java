@@ -61,7 +61,7 @@ public class A12_TaskController {
 
 		return "a12_task\\a02_taskInsert";
 	}
-
+	
 	// http://localhost:7080/projectPMS/task.do?method=detail
 	@RequestMapping(params = "method=detail")
 	public String detail(@RequestParam("id") int id, Model d) {
@@ -70,10 +70,18 @@ public class A12_TaskController {
 		
 		return "a12_task\\a03_taskDetail";
 	}
-
+	
+	// http://localhost:7080/projectPMS/task.do?method=uptForm
+	@RequestMapping(params = "method=uptForm")
+	public String uptForm(@ModelAttribute("task") Task task) {
+		return "a12_task\\a04_taskUpdate";
+	}
+	
 	// http://localhost:7080/projectPMS/task.do?method=update
 	@RequestMapping(params = "method=update")
-	public String update() {
+	public String update(Task upt, Model d) {
+		service.updateTask(upt);
+		d.addAttribute("proc", "upt");		
 		return "a12_task\\a04_taskUpdate";
 	}
 	

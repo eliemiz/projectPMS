@@ -64,7 +64,8 @@ html, body {
 		*/
 		
 		$(".data").dblclick(function(){
-    		var id = $(this).children().eq(0).text();
+//    		var id = $(this).children().eq(0).text();
+			var id = $(this).attr("id");
     		location.href="${path}/task.do?method=detail&id="+id;
     	});
 		
@@ -182,7 +183,7 @@ html, body {
                   </thead>
                   <tbody>
                   <c:forEach var="task" items="${tasklist}">
-                  <tr class="data">
+                  <tr class="data" id="${task.id}">
                   	<td>${task.id}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>

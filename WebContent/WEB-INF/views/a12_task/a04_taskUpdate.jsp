@@ -169,7 +169,7 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상위Task</label>
-                  <form:input path="parent_id" type="text" class="form-control" value="${task.parent_id} style="width: 100%;"/>
+                  <form:input path="parent_id" type="text" class="form-control" value="${task.parent_id}" style="width: 100%;"/>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -183,7 +183,7 @@ html, body {
             	</div>
             	<div class="form-group">
             		<label>설명</label>            	
-            		<form:textarea path="description" value="${task.description} class="form-control" style="width: 100%; height:300px;"/>
+            		<form:textarea path="description" value="${task.description}" class="form-control" style="width: 100%; height:300px;"/>
             	</div>
             </div>
             <div class="row">
@@ -211,13 +211,13 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>추정시간</label>
-                  <form:input path="estimated" value="${task.estimated} type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
+                  <form:input path="estimated" value="${task.estimated}" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
                 </div>
                 
                 <div class="form-group">
                   <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <form:input path="start_date" value="${task.start_date} type="date" class="form-control" style="width:100%;"/>
+                       <form:input path="start_date" value="${task.start_date}" type="date" class="form-control" style="width:100%;"/>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -228,7 +228,7 @@ html, body {
               <div class="col-md-6">                
                 <div class="form-group">
                   <label>진척도</label>
-                  <form:input path="done_ratio" value="${done_ratio} type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
+                  <form:input path="done_ratio" value="${done_ratio}" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
                 </div>
       <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
                 <!-- <div class="form-group">
@@ -248,7 +248,7 @@ html, body {
                 <div class="form-group">
                   <label>완료일</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <form:input path="due_date" value="${task.due_date} type="date" class="form-control" style="width:100%;"/>
+                       <form:input path="due_date" value="${task.due_date}" type="date" class="form-control" style="width:100%;"/>
                    </div><br>
                 </div>
                 <!-- /.form-group -->
