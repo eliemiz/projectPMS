@@ -9,7 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>프로젝트 설정-프로젝트</title>
+<title>프로젝트 설정</title>
 
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -76,7 +76,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">project</h1>
+            <h1 class="m-0">Project setting</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -105,32 +105,35 @@
               </div>
             </div>
             <div class="card-body">
-               <div class="form-group">
-               <label for="inputName">이름</label>
-                <input type="text" id="inputName" class="form-control" value="">
+              <div class="form-group">
+                <label for="inputName">이름</label>
+                <input name="name" class="form-control" value="${project.name}"/>
               </div>
-               <div class="form-group">
-            <label for="inputName">설명</label>
-            
-              <textarea id="summernote">
-              <!-- Place <em>some</em> <u>text</u> <strong>here</strong> -->
-              </textarea>
-          
-            </div>
+              <div class="form-group">
+                <label for="inputDescription">설명</label><br>
+                <textarea name="description" rows="8" cols="100" >${project.description}</textarea>
+              </div>
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
-                <input type="text" id="inputClientCompany" class="form-control" value="project" disabled>
+                <input name="identifier" class="form-control" value="${project.identifier}"/>
+                <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
+                * 식별자는 저장후에는 수정할 수 없습니다.</a>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>
-                <input type="text" id="inputProjectLeader" class="form-control" value="">
+                <input name="homepage" class="form-control" value="${project.homepage}"/>
               </div>
+
               <div class="form-group">
-	            <div class="form-row float-right">
-		          <button type="submit" class="btn btn-primary">저장</button>&nbsp;&nbsp;
-            	  <button type="submit" class="btn btn-default">취소</button>
-		        </div>
+               <div class="icheck-success d-inline">
+	           </div>
 	          </div> 
+               <div class="form-row float-right">
+          <!-- /.col -->
+            <button type="submit" class="btn btn-primary">설정</button>&nbsp;&nbsp;
+            <a href="${path}/settings.do?method=project" class="btn btn-default">취소</a>
+          <!-- /.col -->
+        </div>
             </div>
             <!-- /.card-body -->
           </div>

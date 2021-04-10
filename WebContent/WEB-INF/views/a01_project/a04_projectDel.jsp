@@ -45,13 +45,22 @@
   
   $(document).ready(function(){
 	  
-	  var proc = "${param.proc}";   	
-	   $("#delBtn").click(function(){
-		   if(proc=="del"){
-				 alert("삭제되었습니다");
-		   	   }
-	});		  
-
+	  var proc = "${param.proc}";   
+	  /*
+	  	   $("#delBtn").click(function(){
+			  if(confirm("삭제하시겠습니까?")){
+				  $("[name=proc]").val("del");
+				  $("form").attr("action", "${path}/project.do?method=delete");
+				  $("form").submit();
+			  
+			 }
+	  */
+			   if(proc=="del"){
+				   alert("삭제되었습니다");
+				   $(location).attr("href", "${path}/project.do");
+			   }
+	   
+  });
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -97,25 +106,24 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" enctype="multipart/form-data">
-              <form:hidden path="id"/>(${param.id})
+            <form:form modelAttribute="id" action="${path}/project.do?method=delete" 
+			 	enctype="multipart/form-data" 
+			 	method="post">
+ 			<form:hidden path="id"/>
+              <c:forEach var="project" items="${projectList}">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">이 프로젝트의 데이터를 지우시겠습니까?</label>
-                    
-                  </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <label for="exampleInputEmail1">${project.name} 프로젝트의 데이터를 지우시겠습니까?</label>
                   </div>
                 </div>
+                </c:forEach> 
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <input type="button" class="btn btn-danger" value="삭제" id="${project.id}"/>
+                  <input type="button" class="btn btn-danger" value="삭제" id="delBtn"/>
                   <a href="${path}/project.do"><button type="submit" class="btn btn-default">취소</button></a>
                 </div>
-              </form>
+              </form:form>
             </div>
             <!-- /.card -->
             </div>
