@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pms.a03_dao.A00_TempDao;
+import pms.a03_dao.A99_CommonDao;
 import pms.z01_vo.Temp;
 
 @Service
-public class A00_TempService {
+public class A99_CommonService {
 
 	@Autowired(required = false)
-	private A00_TempDao daoTemp;
+	private A99_CommonDao daoTemp;
 
 	public ArrayList<Temp> getTempList() {
 		return daoTemp.getTempList();

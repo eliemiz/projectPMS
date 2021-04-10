@@ -8,6 +8,25 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script type="text/javascript">
 	$(document).ready(function() {
+		$.ajax({
+			type: "get",
+			url: "${path}/jsonProject.do",
+			dataType: "json",
+			success: function(data){
+				
+				var projectList = data.projectList;
+				
+				$.each(projectList, function(idx, e, arr){
+					$("#hd-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				});
+				
+				$("#hd-project-list").val(data.projectId);
+			},
+			error: function(err){
+				alert("에러발생");
+			}
+		});
+		
 		$("#selectLang").val("<%= LocaleManager.getLang(request) %>");
 		$("#selectLang").change(function(){
 			var lang = $(this).val();
@@ -15,6 +34,10 @@
 				$("[name=lang]").val($(this).val());
 				$("#langForm").submit();
 			}
+		});
+		
+		$("#hd-project-list").change(function(){
+			location.href="${path}/dashboard.do?projectId="+$(this).val();
 		});
 	});
 </script>
@@ -35,7 +58,8 @@
       <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/admin.do" class="nav-link"><spring:message code="hd-admin"/></a>
+    	<select id="hd-project-list" class="form-control">
+    	</select>
     </li>
   </ul>
 

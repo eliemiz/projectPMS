@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,11 @@ public class A10_DashboardController {
 	@RequestMapping("dashboard.do")
 	public String dashboard(HttpServletRequest request, HttpServletResponse response, Model d) {
 
+		// get parameter
+		String projectId = request.getParameter("projectId");
+		HttpSession session = request.getSession();
+		session.setAttribute("projectId", projectId);
+		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
 			LocaleManager.setLang(request, response, localeResolver);

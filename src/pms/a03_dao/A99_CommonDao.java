@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import pms.z01_vo.Temp;
 
 @Repository
-public interface A00_TempDao {
+public interface A99_CommonDao {
 
 	public ArrayList<Temp> getTempList();
 }

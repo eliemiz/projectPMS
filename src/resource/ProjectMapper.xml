@@ -11,7 +11,7 @@
 		order by id desc
 	</select>
 	<select id="getProjectList" resultType="project">
-      SELECT * FROM PROJECT
+      SELECT * FROM PROJECT ORDER BY ID
     </select>
 	<select id="getProject" resultType="project" parameterType="int">
 		SELECT * FROM PROJECT
