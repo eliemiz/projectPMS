@@ -117,9 +117,8 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
-                      <a href="${path}/risk.do?method=insForm" 
-                      class="btn btn-primary">
-                      <i class="fas fa-pen">리스크 등록</i></a>
+                      <button type="button" onclick="location.href='${path}/risk.do?method=insForm'"
+                      class="btn btn-primary float-right">리스크 등록</button>          
                     </div>
                   </div>
                 </div>
