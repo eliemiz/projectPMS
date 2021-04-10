@@ -183,10 +183,9 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <form:input path="status" type="text" class="form-control" style="width:100%;" value="신규"/>
-<%--                   <form:select path="status" class="form-control select2" disabled="disabled" style="width: 100%;">
+	                <form:select path="status" class="form-control select" disabled="disabled" style="width: 100%;">
                     <form:option selected="selected" value="신규" label="신규"/>
-                  </form:select> --%>
+                  	</form:select> 
                 </div>
                 <!-- /.form-group -->
               </div>

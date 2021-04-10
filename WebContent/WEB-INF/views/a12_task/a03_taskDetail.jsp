@@ -69,8 +69,10 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-
-		$("#upt").click(function(){
+		$("#list").click(function(){
+			location.href="${path}/task.do?method=list";
+		});
+		$("#uptFrm").click(function(){
 /* 			var projcet_id = $("[name=project_id]").val();
 			var status = $("[name=status]").val();
 			var tracker = $("#tracker").val();
@@ -161,14 +163,13 @@ html, body {
         
         <div class="card-body">
           <div style="text-align:right;">
-          <a href="${path}/task.do?method=list">
-          <i class="fas fa-list"></i>목록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-          <a id="upt">
-          <i class="fas fa-pen"></i>편집</a>
+          <i class="fas fa-list"></i><label id="list" style="cursor:pointer;">목록</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fas fa-pen"></i><label id="uptFrm" style="cursor:pointer;">편집</label>
           </div>
           
           <div style="background-Color:lightyellow; textcolor:black;">
-                <h2 class="mb-0" name="subject" value="${task.subject}">${task.subject}</h2>
+                <h2 class="mb-0" name="subject" value="${task.subject}">${task.project_name} - ${task.subject}</h2>
                 <hr align="left" style="border: solid 1px gray; width: 90%;">
          	
           <div class="card-body">

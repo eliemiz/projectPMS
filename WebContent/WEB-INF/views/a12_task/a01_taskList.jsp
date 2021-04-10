@@ -62,6 +62,9 @@ html, body {
 	         location.href="${path}/task.do?method=detail&id=" + id;
 	      });
 		*/
+		$("#newTask").click(function(){
+			location.href = "${path}/task.do?method=insForm";
+		});
 		
 		$(".data").click(function(){
 //    		var id = $(this).children().eq(0).text();
@@ -107,11 +110,10 @@ html, body {
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">검색조건</h3><br><br>
-            	<a href="${path}/task.do?method=insForm">
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
-                	<label>새Task만들기</label>
-                </div></a>
+                	<label id="newTask" style="cursor:pointer;">새Task만들기</label>
+                </div>
                 <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
                   <select class="form-control select2">
@@ -164,33 +166,39 @@ html, body {
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
                 <col width="5%">
+                <col width="10%">
 			  	<col width="10%">
 			    <col width="10%">
 			    <col width="10%">
-			    <col width="40%">
+			    <col width="25%">
+			    <col width="10%">
 			    <col width="10%">
 			    <col width="10%">
                   <thead>
                   <tr>
                     <th>번호</th>
+                    <th>프로젝트 이름</th>
                     <th>유형</th>
                     <th>상태</th>
                     <th>우선순위</th>
                     <th>제목</th>
                     <th>담당자</th>
                     <th>시작날짜</th>
+                    <th>완료날짜</th>
                   </tr>
                   </thead>
                   <tbody>
                   <c:forEach var="task" items="${tasklist}">
-                  <tr class="data" id="${task.id}" style="cursor:pointer">
+                  <tr class="data" id="${task.id}" style="cursor:pointer;">
                   	<td>${task.id}</td>
+                  	<td>${task.project_name}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>
                   	<td>${task.priority}</td>
                   	<td>${task.subject}</td>
                   	<td>${task.name}</td>
                   	<td>${task.start_date}</td>
+                  	<td>${task.due_date}</td>
                   </tr>
                   </c:forEach>
                   </tbody>

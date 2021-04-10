@@ -27,10 +27,11 @@ CREATE SEQUENCE TASK_SEQ
 	CYCLE;
 
 SELECT * FROM task;
-SELECT * FROM (SELECT t.*, a.name name
-   FROM task t, account a
-   WHERE t.account_id = a.id)
-WHERE id = 51;
+SELECT t.*, a.name name, p.name project_name
+   FROM task t, account a, PROJECT p
+   WHERE t.account_id = a.id
+   AND t.PROJECT_ID = p.ID 
+	ORDER BY t.id desc;
 
 
 SELECT * FROM TASK WHERE ID = 1;
