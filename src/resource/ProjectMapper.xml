@@ -25,7 +25,7 @@
 	<!-- public void projectDel(int id); -->
 	<delete id="projectDel" parameterType="int">
    		DELETE FROM PROJECT 
-	   		 WHERE id = #{id} 
+   			 where id = #{id}
     </delete>
       <!-- public void projectUpt(Project upt); -->
    <update id="projectUpt" parameterType="project">

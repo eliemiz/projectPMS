@@ -47,6 +47,21 @@
       $("#regBtn").click(function(){
     	  location.href="${path}/project.do?method=insForm";
    });
+      $("#setBtn").click(function(){
+    	  location.href="${path}/settings.do?method=update";
+   });
+      $("#delBtn").click(function(){
+    	 //  location.href="${path}/project.do?method=delForm";
+		  if(confirm("삭제하시겠습니까?")){
+			  // var no = $("input[name=no]").val(); post방식 
+			  $("[name=proc]").val("del");
+			  $("form").attr("action", "${path}/project.do?method=delete");
+			  $("form").submit();
+		  }
+		 //}else{
+		//	  alert("삭제권한이 없습니다.\n작성자만 삭제가 가능합니다!");
+		//  }
+   });
    });
 
 </script>
@@ -92,13 +107,15 @@
 		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		     <div class="float-right">
 		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
-		     <a href="${path}/settings.do?method=update" class="btn btn-default"><i class="fas fa-cog">관리</i></a>
+		     <button class="btn btn-default" id="setBtn" type="button"><i class="fas fa-cog">관리</i></button>
 		     </div>
 		     </form:form>
 		  </div>
 		  </div>
-	
-			<c:forEach var="project" items="${projectList}">
+		 <form method="post" enctype="multipart/form-data">
+	     <input type="hidden" name="proc"/>
+	     <c:forEach var="project" items="${projectList}">
+	     <input type="hidden" name="id" value="${project.id}"/>
 			<div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">${project.name}</h5>
@@ -108,11 +125,12 @@
                 <p class="card-text"></p>
                 <a href="${path}/dashboard.do" class="btn btn-success">프로젝트 확인하기</a>
               <div class="form-row float-right">
-              	<a href="${path}/project.do?method=delete" class="btn btn-danger"><i class="fas fa-trash"></i>삭제</a>
+              	<button class="btn btn-danger" id="delBtn"><i class="fas fa-trash">삭제</i></button>
               </div>
               </div>
             </div>
             </c:forEach> 
+            </form>
    
     </section>
     <!-- /.content -->

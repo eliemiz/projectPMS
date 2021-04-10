@@ -33,6 +33,7 @@ public class A01_ProjectService {
 		dao.projectIns(insert);
 	}
 	public void projectDel(int id) {
+		
 		dao.projectDel(id);
 	}
 }
