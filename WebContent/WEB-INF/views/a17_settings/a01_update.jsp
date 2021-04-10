@@ -43,9 +43,8 @@
   $.widget.bridge('uibutton', $.ui.button)
 
 	$(document).ready(function(){
-		$("#sm-setting").addClass("menu-open");
-		$("#sb-setting").addClass("active");
-		$("#sb-setting-project").addClass("active");
+		$("#sb-project-setting").addClass("active");
+		
 	});
 
   $(function () {
