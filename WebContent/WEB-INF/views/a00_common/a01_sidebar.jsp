@@ -115,7 +115,15 @@
 						</p>
 					</a>
 				</li>
-				<li class="nav-item" id="sm-setting">
+				<li class="nav-item">
+					<a href="${path}/settings.do?method=project" class="nav-link" id="sb-project-setting">
+						<i class="nav-icon fas fa-tasks"></i>
+						<p>
+							Project Setting
+						</p>
+					</a>
+				</li>
+				<%-- <li class="nav-item" id="sm-setting">
 					<a href="#" class="nav-link" id="sb-setting">
 						<i class="nav-icon fas fa-cog"></i>
 						<p>
@@ -142,7 +150,7 @@
 							</a>
 						</li>
 					</ul>
-				</li>
+				</li> --%>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
