@@ -38,14 +38,18 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -62,6 +66,19 @@
 	});
 </script>
 <!-- Page specific script -->
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>  
 <script>
 $(function () {
   bsCustomFileInput.init();
@@ -104,47 +121,46 @@ $(function () {
     	<!-- 내용 -->
     	<!-- <div class="container-fluid">
           <div class="col-md-6"> -->
-  
-          <!--   </div>
-           </div> -->
-    	<!-- iCheck -->
-            <div class="card card-success">
-              <div class="card-header">
-                <h3 class="card-title">프로젝트</h3>
-              </div>
+  <!-- 검색 -->
+        <div class="card card-primary card-outline">
+	 <div class="card-header">
+	 <form:form modelAttribute="sch" class="form-inline" method="post">
+ 		<nav class="navbar navbar-expand-sm bg-white navbar-white">
+		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
+		       <button class="btn btn-primary" type="submit">검색</button>
+		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		     </form:form>
+		  </div>
+		  </div>
+       <!-- 검색 -->  
+        
+        
               <div class="card-body">
-                    
-                <!-- Minimal red style -->
-                <div class="row">
-                  <div class="col-sm-6">
-                    <!-- checkbox -->
-                    <div class="form-group clearfix">
-                     <div class="icheck-success d-inline">
-                        <input type="checkbox" id="checkboxSuccess1" value="">
-                        <label for="checkboxSuccess1">
-                       	프로젝트 이름
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /checkbox --> 
-                  <div class="col-sm-6">
-                    <!-- checkbox -->
-                    <div class="form-group clearfix">
-                     <div class="icheck-success d-inline">
-                        <input type="checkbox" id="checkboxSuccess3">
-                        <label for="checkboxSuccess3">
-                        	하위 프로젝트 만들기
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                 <!-- /checkbox --> 
+                <table id="example2" class="table table-bordered table-hover">
+              	<col width="5%">
+			    <col width="10%">
+			    <col width="40%">
+                  <thead>
+                  <tr>
+                   <th style="text-align:center;"></th>
+                    <th style="text-align:center;">프로젝트명</th>
+                    <th style="text-align:center;">프로젝트 설명</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach var="project" varStatus="sts" items="${projectList}">
+                  <tr class="data">
+                   <td style="text-align:center;">${sts.count}</td>
+                    <td>${project.name}</td>
+                    <td>${project.description}</td>
+                  </tr>
+                  </c:forEach>
+                  </tbody>
+                </table>
                 </div>
-              </div>
               <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+        
+        
     	
     	
     	
@@ -187,6 +203,19 @@ $(function () {
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->

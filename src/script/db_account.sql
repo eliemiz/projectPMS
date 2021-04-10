@@ -1,5 +1,5 @@
 
-INSERT INTO account values(100000,'himan','7777','이채영','메일','2021-04-08','2021-04-10','관리자');
+INSERT INTO account values(100000,'himan','7777','홍길동','adf@naver.com','2021-04-08','2021-04-10','Manager');
 SELECT * FROM account;
 
 SELECT * 
