@@ -45,7 +45,7 @@ public class A12_TaskService {
 	// task 삭제
 	public void deleteTask(int id) {
 		dao.deleteTask(id);
-		dao.deleteFile(id);
+//		dao.deleteFile(id);
 	}
 	
 	// 캘린더 목록

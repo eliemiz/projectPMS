@@ -91,9 +91,8 @@ html, body {
 			$("form").submit();
 		});			
 		if(proc=="ins"){
-			if(!confirm("등록완료\n계속 등록하시겠습니까?")){
-				location.href = "${path}/task.do?method=list";
-			}
+			alert("등록완료\n리스트로 이동합니다.")
+			location.href = "${path}/task.do?method=list";			
 		}
 	
 		/* 유효성 체크 */

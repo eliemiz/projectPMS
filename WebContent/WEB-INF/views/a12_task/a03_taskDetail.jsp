@@ -96,7 +96,6 @@ html, body {
 			alert("due_date "+due_date);
 			alert("estimated "+estimated);	 */
 			if(confirm("수정하시겠습니까?")){
-				$("[name=project_id]").val($("[name=project_id]").val());
 				$("form").attr("action","${path}/task.do?method=uptForm");
 				$("form").submit();
 			}			
@@ -137,10 +136,23 @@ html, body {
         <form:form modelAttribute="task" action="" enctype="multipart/form-data" method="post">
       <div class="card">
         <div class="card-header">
+        	<form:hidden path="id"/>
+        	<form:hidden path="parent_id"/>
         	<form:hidden path="project_id"/>
+        	<form:hidden path="account_id"/>        	
+        	<form:hidden path="subject"/>
+        	<form:hidden path="description"/>
+        	<form:hidden path="status"/>
+        	<form:hidden path="priority"/>
         	<form:hidden path="created_on"/>
         	<form:hidden path="updated_on"/>
+        	<form:hidden path="start_date"/>
+        	<form:hidden path="due_date"/>
+        	<form:hidden path="estimated"/>
+        	<form:hidden path="done_ratio"/>
         	<form:hidden path="completed_on"/>
+        	<form:hidden path="tracker"/>
+        	
           <h3 class="card-title">
           	${task.tracker}&nbsp;&nbsp;#<span id="id" name="id" value="${task.id}">${task.id}</span>
           </h3>  

@@ -63,34 +63,39 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		
+
+		var proc = "${param.proc}";
+
 		$("#gomain").click(function(){
 			$(location).attr("href","${path}/task.do?method=list");
 		});
+		
 		$("#uptBtn").on("click",function(){
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
-				$("form").submit();
-			}
-		});
-		$("#delBtn").on("click",function(){
-			if(confirm("삭제하시겠습니까?")){
-				$("[name=proc]").val("del");
+				$("form").attr("action","${path}/task.do?method=update");
 				$("form").submit();
 			}
 		});
 		
-		var proc = "${proc}";
+		$("#delBtn").on("click",function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("[name=proc]").val("del");
+				$("form").attr("action","${path}/task.do?method=delete");
+				$("form").submit();
+			}
+		});
+		
 		if(proc=="upt"){
-			if(!confirm("수정완료\n계속 수정하시겠습니까?")){
+			if(confirm("수정완료\n계속 수정하시겠습니까?")){
 				location.href = "${path}/task.do?method=list";
 			}
 		}
 		if(proc=="del"){
-			if(confirm("삭제완료\n리스트 페이지로 이동합니다")){
-				location.href = "${path}/task.do?method=list";
-			}
-		}
+			alert("삭제완료\n리스트 페이지로 이동합니다");
+			location.href = "${path}/task.do?method=list";			
+		}	
+		
 	});
 </script>
 </head>
@@ -123,17 +128,29 @@ html, body {
 
      <!-- Main content -->
     <section class="content">
-    <form:form modelAttribute="task" action="${path}/task.do?method=update"
-    	enctype="multipart/form-data" method="post">
-    	
+    <form:form modelAttribute="task" enctype="multipart/form-data" method="post">
+	<input type="hidden" name="proc"/>
       <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">${task.tracker}&nbsp;&nbsp;#${task.id}</h3>
-            <form:hidden path="created_on"/>
-            <form:hidden path="updated_on"/>
-            <form:hidden path="completed_on"/>
+        	<form:hidden path="id"/>
+        	<form:hidden path="parent_id"/>
+        	<form:hidden path="project_id"/>
+        	<form:hidden path="account_id"/>        	
+        	<form:hidden path="subject"/>
+        	<form:hidden path="description"/>
+        	<form:hidden path="status"/>
+        	<form:hidden path="priority"/>
+        	<form:hidden path="created_on"/>
+        	<form:hidden path="updated_on"/>
+        	<form:hidden path="start_date"/>
+        	<form:hidden path="due_date"/>
+        	<form:hidden path="estimated"/>
+        	<form:hidden path="done_ratio"/>
+        	<form:hidden path="completed_on"/>
+        	<form:hidden path="tracker"/>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -142,7 +159,7 @@ html, body {
                 <div class="form-group">
                   <label>프로젝트 *</label>
                   <form:select path="project_id" class="form-control select2" style="width: 100%;">
-                    <option value="0">프로젝트 선택</option>
+                    <option value="">프로젝트 선택</option>
                     <c:forEach var = "project" items="${projects}">
                     	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
@@ -191,8 +208,8 @@ html, body {
                 <div class="form-group">
                   <label>우선순위 *</label>
                   <form:select path="priority" class="form-control select" style="width: 100%;">
-                  	<option value="${task.priority}">우선순위</option>
-                    <%-- <form:option value="${task.priority}" label="${task.priority}"/> --%>
+                  	<option value="">우선순위</option>
+                    	<form:option value="${task.priority}" label="${task.priority}"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->

@@ -20,9 +20,9 @@ public interface A12_TaskDao {
 	public ArrayList<Attachment> fileInfo(int task_id); // 파일정보 조회
 	public void insertTask(Task ins); // task 등록
 	public void updateTask(Task upt); // task 수정
-	public void updateFile(HashMap<String, String> hs); // 파일 수정
+//	public void updateFile(HashMap<String, String> hs); // 파일 수정
 	public void deleteTask(int id); // task 삭제
-	public void deleteFile(int id);	 // 파일 삭제
+//	public void deleteFile(int id);	 // 파일 삭제
 	
 	// Calendar DAO
 	public ArrayList<Task> calenList();

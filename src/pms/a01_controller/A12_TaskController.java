@@ -64,32 +64,33 @@ public class A12_TaskController {
 	
 	// http://localhost:7080/projectPMS/task.do?method=detail
 	@RequestMapping(params = "method=detail")
-	public String detail(@RequestParam("id") int id, Model d) {
-		System.out.println("id:"+id);
-		d.addAttribute("task", service.getTask(id));
+	public String detail(@ModelAttribute("task") Task task, Model d) {
+		System.out.println("id:"+task.getId());
+		d.addAttribute("task", service.getTask(task.getId()));
 		
 		return "a12_task\\a03_taskDetail";
 	}
 	
 	// http://localhost:7080/projectPMS/task.do?method=uptForm
 	@RequestMapping(params = "method=uptForm")
-	public String uptForm(@ModelAttribute("task") Task task) {
+	public String uptForm(@RequestParam("id") int id, Model d) {
+		System.out.println("id@@: "+id);
+		d.addAttribute("task", service.getTask(id));
 		return "a12_task\\a04_taskUpdate";
 	}
 	
 	// http://localhost:7080/projectPMS/task.do?method=update
 	@RequestMapping(params = "method=update")
-	public String update(Task upt, Model d) {
-		service.updateTask(upt);
-		d.addAttribute("proc", "upt");		
-		return "a12_task\\a04_taskUpdate";
+	public String update(Task upt) {
+		service.updateTask(upt);		
+		return "forward:/task.do?method=uptForm";
 	}
 	
 	// http://localhost:7080/projectPMS/task.do?method=delete
 	@RequestMapping(params = "method=delete")
 	public String delete(@RequestParam("id") int id) {
 		service.deleteTask(id);
-		return "a12_task\\a03_taskDetail";
+		return "a12_task\\a04_taskUpdate";
 	}
 	
 	@ModelAttribute("projects")
