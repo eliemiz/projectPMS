@@ -130,10 +130,10 @@
 	        </div>
 	        <br><br><br>
 	      </form>
-	      <a href="${path}/loginSearch.do">
+	      <a href="${path}/account.do?method=loginSearch">
 		  <button type="button" class="btn btn-outline-info btn-block btn-flat">
           비밀번호 찾기</button></a>
-          <a href="${path}/signin.do">
+          <a href="${path}/account.do?method=signin">
     	  <button type="button" class="btn btn-outline-danger btn-block btn-sm">
     	  <i class="fa fa-book"></i> 새로 등록하기</button></a>
 	    </div>

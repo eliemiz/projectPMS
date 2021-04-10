@@ -159,7 +159,7 @@ $(document).ready(function(){
                   </thead>
                   <tbody>
                   <c:forEach var="project" varStatus="s" items="${projectList}">
-                  <tr class="data" id="${project.id}">
+                  <tr class="data" id="${project.id}" style="cursor: pointer;">
                    <td style="text-align:center;">${s.count}</td>
                     <td>${project.name}</td>
                     <td>${project.description}</td>
