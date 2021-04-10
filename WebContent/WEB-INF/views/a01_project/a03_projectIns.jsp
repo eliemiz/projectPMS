@@ -40,32 +40,37 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-      
+$.widget.bridge('uibutton', $.ui.button)
+
+$(function () {
+  // Summernote
+  $('#summernote').summernote()
+
+  // CodeMirror
+  CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+    mode: "htmlmixed",
+    theme: "monokai"
+  }
+  });    
+
+
   $(document).ready(function(){
+	  $("#Btn").click(function(){
+		  
 	  var proc = "{proc}";
 	  if(proc=="insert"){
+		  
 		  $("[name=id]").val("0");
 		  $("[name=name]").val("");
-		  
-		  if(!confirm("등록완료")){
-      		  location.href="${path}/project.do";
-      	  }
+		//  alert("등록되었습니다");
+		//   $(location).attr("href", "${path}/project.do");
 	  }
-  }
+
+  });
   
-
-  $.widget.bridge('uibutton', $.ui.button)
-
-  $(function () {
-    // Summernote
-    $('#summernote').summernote()
-
-    // CodeMirror
-    CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-      mode: "htmlmixed",
-      theme: "monokai"
-    });
-  })
+  });
+ 
+  
   
 </script>
 </head>
@@ -144,7 +149,7 @@
 	          </div> 
                <div class="form-row float-right">
           <!-- /.col -->
-            <button type="submit" class="btn btn-primary">만들기</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary" id="Btn">만들기</button>&nbsp;&nbsp;
             <a href="${path}/project.do" class="btn btn-default">취소</a>
           <!-- /.col -->
         </div>

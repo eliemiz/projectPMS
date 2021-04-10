@@ -48,7 +48,7 @@
     	  location.href="${path}/project.do?method=insForm";
    });
       $("#setBtn").click(function(){
-    	  location.href="${path}/settings.do?method=update";
+    	  location.href="${path}/settings.do?method=project";
    });
       $("#delBtn").click(function(){
     	 //  location.href="${path}/project.do?method=delForm";
@@ -107,7 +107,7 @@
 		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		     <div class="float-right">
 		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>&nbsp;&nbsp;
-		     <button class="btn btn-default" id="setBtn" type="button"><i class="fas fa-cog">관리</i></button>
+		     <button class="btn btn-default" id="setBtn" type="button"><i class="fas fa-cog">프로젝트 설정</i></button>
 		     </div>
 		     </form:form>
 		  </div>
