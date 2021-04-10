@@ -64,7 +64,7 @@ html, body {
 		*/
 		
 		$(".data").dblclick(function(){
-    		var id = $(this).attr("id");
+    		var id = $(this).children().eq(0).text();
     		location.href="${path}/task.do?method=detail&id="+id;
     	});
 		
