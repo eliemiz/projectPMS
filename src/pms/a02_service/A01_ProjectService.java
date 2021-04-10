@@ -25,8 +25,7 @@ public class A01_ProjectService {
 
 	public Project getProject(int id) {
 
-		Project project = dao.getProject(id);
-		return project;
+		return dao.getProject(id);
 	}
 	
 	public void projectIns(Project insert) {
