@@ -89,7 +89,7 @@ $(document).ready(function(){
 	
     $(".data").click(function(){
   	  var id = $(this).attr("id");
-  	  location.href="${path}/settings.do?method=update&id="+id;
+  	  location.href="${path}/settings.do?method=detail&id="+id;
     });
    
   });

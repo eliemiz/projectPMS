@@ -36,6 +36,7 @@
    homepage = #{homepage}
    WHERE id = #{id}
    </update>
+  
 </mapper>
 
 
