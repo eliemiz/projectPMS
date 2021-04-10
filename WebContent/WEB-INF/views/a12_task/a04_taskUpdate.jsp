@@ -63,6 +63,34 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
+		
+		$("#gomain").click(function(){
+			$(location).attr("href","${path}/task.do?method=list");
+		});
+		$("#uptBtn").on("click",function(){
+			if(confirm("수정하시겠습니까?")){
+				$("[name=proc]").val("upt");
+				$("form").submit();
+			}
+		});
+		$("#delBtn").on("click",function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("[name=proc]").val("del");
+				$("form").submit();
+			}
+		});
+		
+		var proc = "${proc}";
+		if(proc=="upt"){
+			if(!confirm("수정완료\n계속 수정하시겠습니까?")){
+				location.href = "${path}/task.do?method=list";
+			}
+		}
+		if(proc=="del"){
+			if(confirm("삭제완료\n리스트 페이지로 이동합니다")){
+				location.href = "${path}/task.do?method=list";
+			}
+		}
 	});
 </script>
 </head>
@@ -95,11 +123,17 @@ html, body {
 
      <!-- Main content -->
     <section class="content">
+    <form:form modelAttribute="task" action="${path}/task.do?method=update"
+    	enctype="multipart/form-data" method="post">
+    	
       <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">새기능&nbsp;&nbsp;#2</h3>
+            <h3 class="card-title">${task.tracker}&nbsp;&nbsp;#${task.id}</h3>
+            <form:hidden path="created_on"/>
+            <form:hidden path="updated_on"/>
+            <form:hidden path="completed_on"/>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -107,23 +141,19 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>프로젝트 *</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option>게시판 프로젝트</option>
-                    <option>화소반 프로젝트</option>
-                    <option selected>PMS 프로젝트</option>
-                  </select>
+                  <form:select path="project_id" class="form-control select2" style="width: 100%;">
+                    <option value="0">프로젝트 선택</option>
+                    <c:forEach var = "project" items="${projects}">
+                    	<form:option value="${project.id}">${project.name}</form:option>
+                    </c:forEach>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <select class="form-control select" style="width: 100%;">
-                    <option selected="selected">신규</option>
-                    <option>진행</option>
-                    <option>해결</option>
-                    <option>의견</option>
-                    <option>완료</option>
-                    <option>거절</option>
-                  </select>
+                  <form:select path="status" class="form-control select2" style="width: 100%;">
+                    <form:option selected="selected" value="${task.status}" label="${task.status}"/>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -131,53 +161,49 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>유형 *</label>
-                  <select class="form-control select" style="width: 100%;">
-                    <option>결함</option>
-                    <option selected>새기능</option>
-                    <option>지원</option>
-                  </select>
+                  <form:select path="tracker" class="form-control select" style="width: 100%;">
+                    <option value="">유형 선택</option>
+                    <form:option value="${task.tracker}" label="${task.tracker}"/>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상위Task</label>
-                  <input type="text" class="form-control" style="width: 100%;">
+                  <form:input path="parent_id" type="text" class="form-control" value="${task.parent_id} style="width: 100%;"/>
                 </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
             </div>
-            <%-- TODO: 제목, 설명 부분 화면에 꽉차게 하는 방법? --%>
+             <%-- TODO: 제목, 설명 부분 화면에 꽉차게 하는 방법? --%>
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>제목 *</label>
-            		<input type="text" class="form-control" style="width: 100%;" value="Task2">
+            		<form:input path="subject" value="${task.subject}" type="text" class="form-control" style="width: 100%;"/>
             	</div>
             	<div class="form-group">
             		<label>설명</label>            	
-            		<textarea class="form-control" style="width: 100%; height:300px;">projectPMS Front End 입니다.</textarea>
+            		<form:textarea path="description" value="${task.description} class="form-control" style="width: 100%; height:300px;"/>
             	</div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>우선순위 *</label>
-                  <select class="form-control select" style="width: 100%;">
-                    <option>낮음</option>
-                    <option selected>보통</option>
-                    <option>높음</option>
-                    <option>긴급</option>
-                    <option>즉시</option>
-                  </select>
+                  <form:select path="priority" class="form-control select" style="width: 100%;">
+                  	<option value="${task.priority}">우선순위</option>
+                    <%-- <form:option value="${task.priority}" label="${task.priority}"/> --%>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>담당자</label>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>담당자</option>
-                    <option>홍길동</option>
-                    <option selected>김철수</option>
-                    <option>이춘향</option>
-                  </select>
+                  <form:select path="account_id" class="form-control select" style="width: 100%;">
+                  	<option value="">담당자 선택</option>
+                  	<c:forEach var="account" items="${accounts}">
+	                    <form:option value="${account.id}">${account.name}</form:option>
+                    </c:forEach>
+                  </form:select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -185,13 +211,13 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>추정시간</label>
-                  <input type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)">
+                  <form:input path="estimated" value="${task.estimated} type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
                 </div>
                 
                 <div class="form-group">
-                  <label>시작시간</label><br>
+                  <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
-                       <input type="date" class="form-control"  disabled="disabled" value="2021-04-01" style="width:100%;">
+                       <form:input path="start_date" value="${task.start_date} type="date" class="form-control" style="width:100%;"/>
                     </div>
                 </div>
                 <!-- /.form-group -->
@@ -199,13 +225,13 @@ html, body {
               <!-- /.col -->
             </div>
             <div class="row">
-              <div class="col-md-6">
-                
+              <div class="col-md-6">                
                 <div class="form-group">
                   <label>진척도</label>
-                  <input name="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)">
+                  <form:input path="done_ratio" value="${done_ratio} type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
                 </div>
-                <div class="form-group">
+      <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
+                <!-- <div class="form-group">
                   <label>Task 관리자</label><br>
                   <select class="form-control select" style="width: 100%;">
                   	<option>관리자</option>
@@ -213,18 +239,18 @@ html, body {
                     <option>김철수</option>
                     <option>이춘향</option>
                   </select>
-                </div>
+                </div> -->
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
               <div class="col-md-6">
                 <!-- Date -->
                 <div class="form-group">
-                  <label>완료기한</label>
+                  <label>완료일</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <input type="date" class="form-control" value="2021-04-06" style="width:100%;">
+                       <form:input path="due_date" value="${task.due_date} type="date" class="form-control" style="width:100%;"/>
                    </div><br>
-                
+                </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label for="exampleInputFile">첨부파일</label> <!-- 첨부파일명 안뜸 -->
@@ -233,27 +259,27 @@ html, body {
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div><br><br>
                   <div class="form-group">
-                  <label>연결된 Task</label>
-                  <input type="text" class="form-control" style="width: 100%;">
-                </div>
+                  	<label>연결된 Task</label>
+                  	<input type="text" class="form-control" style="width: 100%;">
+                  </div>            
+                 </div>    
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
             </div>
             <!-- /.row -->
-			</div>   
-			
-				<!-- /.card-body -->
+			</div> 			
+			<!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">수정</button>
-                  <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">삭제</button>
-                  <button type="button" class="btn btn-primary" onclick="location.href='${path}/task.do?method=list'">취소</button>
+                  <input type="button" class="btn btn-primary" id="uptBtn" value="수정"/>
+                  <input type="button" class="btn btn-primary" id="delBtn" value="삭제"/>
+                  <input type="button" class="btn btn-primary" id="gomain" value="취소"/>
                 </div>
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-      </div>
+      </form:form>
     </section>
     <!-- /.content -->
   </div>

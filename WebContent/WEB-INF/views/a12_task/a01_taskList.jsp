@@ -56,6 +56,18 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
+		/*
+		$(".data").on("dblclick",function(){
+	           var id = $(this).find("[name=id]").text();
+	         location.href="${path}/task.do?method=detail&id=" + id;
+	      });
+		*/
+		
+		$(".data").dblclick(function(){
+    		var id = $(this).attr("id");
+    		location.href="${path}/task.do?method=detail&id="+id;
+    	});
+		
 	});
 </script>
 </head>
@@ -170,7 +182,7 @@ html, body {
                   </thead>
                   <tbody>
                   <c:forEach var="task" items="${tasklist}">
-                  <tr ondblclick="location.href='${path}/task.do?method=detail'">
+                  <tr class="data">
                   	<td>${task.id}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>

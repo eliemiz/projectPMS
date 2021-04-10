@@ -7,8 +7,8 @@
 		SELECT * FROM task
 	</select>
 	
-	<!--public Task getTask(int task_id) -->
-	<select id="getTask" parameterType="int">
+	<!--public Task getTask(int id) -->
+	<select id="getTask" resultType="task" parameterType="int">
 		SELECT * FROM TASK
 		WHERE ID = #{id}
 	</select>

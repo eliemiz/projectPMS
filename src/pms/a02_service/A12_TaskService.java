@@ -28,9 +28,10 @@ public class A12_TaskService {
 	}
 
 	// task 조회(id이용)
-	public Task getTask(int task_id) {
-
-		return dao.getTask(task_id);
+	public Task getTask(int id) {
+	Task task = dao.getTask(id);
+		//return dao.getTask(id);
+		 return task;
 	}
 
 	// task 등록
@@ -44,9 +45,9 @@ public class A12_TaskService {
 	}
 
 	// task 삭제
-	public void deleteTask(int task_id) {
-		dao.deleteTask(task_id);
-		dao.deleteFile(task_id);
+	public void deleteTask(int id) {
+		dao.deleteTask(id);
+		dao.deleteFile(id);
 	}
 
 }

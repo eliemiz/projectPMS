@@ -26,7 +26,8 @@ CREATE SEQUENCE TASK_SEQ
 	CYCLE;
 
 SELECT * FROM task;
-
+SELECT * FROM TASK WHERE ID = 1;
+DELETE FROM task WHERE id = 3;
 INSERT INTO task VALUES (10001, 10000, 11111, 12345, 'test용 TASK', '테스트용입니다.', '신규', 1, 
 						 '2021-04-08', '2021-04-08', '2021-04-08',
 						 '2021/04/30', 180, 30, '2021/04/30','새기능');

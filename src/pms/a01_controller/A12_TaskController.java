@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
@@ -25,14 +25,27 @@ public class A12_TaskController {
 	private A01_ProjectService serviceP;
 	@Autowired(required = false)
 	private A00_AccountService serviceA;
-
+	/*
+	@Autowired(required = false)
+	private LocaleResolver localeResolver;
+	*/
+	
+	
 	// http://localhost:7080/projectPMS/task.do?method=list
 	@RequestMapping(params = "method=list")
 	public String taskList(@ModelAttribute("sch") Task sch, Model d) {
 		d.addAttribute("tasklist", service.getTaskList(sch));
 		return "a12_task\\a01_taskList";
 	}
+	/*
+	public String taskList(HttpServletRequest request, HttpServletResponse response, Model d) {
 
+		// Set Locale 
+		if (request.getParameter("lang") != null) {
+			LocaleManager.setLang(request, response, localeResolver);
+		}
+	*/
+		
 	// http://localhost:7080/projectPMS/task.do?method=insForm
 	@RequestMapping(params = "method=insForm")
 	public String insForm(@ModelAttribute("task") Task task) {
@@ -51,7 +64,10 @@ public class A12_TaskController {
 
 	// http://localhost:7080/projectPMS/task.do?method=detail
 	@RequestMapping(params = "method=detail")
-	public String detail() {
+	public String detail(@RequestParam("id") int id, Model d) {
+		System.out.println("id:"+id);
+		d.addAttribute("task", service.getTask(id));
+		
 		return "a12_task\\a03_taskDetail";
 	}
 
@@ -59,6 +75,13 @@ public class A12_TaskController {
 	@RequestMapping(params = "method=update")
 	public String update() {
 		return "a12_task\\a04_taskUpdate";
+	}
+	
+	// http://localhost:7080/projectPMS/task.do?method=delete
+	@RequestMapping(params = "method=delete")
+	public String delete(@RequestParam("id") int id) {
+		service.deleteTask(id);
+		return "a12_task\\a03_taskDetail";
 	}
 	
 	@ModelAttribute("projects")

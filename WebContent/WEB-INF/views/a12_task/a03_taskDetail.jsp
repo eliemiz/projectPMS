@@ -69,6 +69,7 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
+		
 	});
 </script>
 </head>
@@ -103,9 +104,13 @@ html, body {
     <section class="content">
       <!-- Default box -->
       <div class="card">
+        
         <div class="card-header">
-          <h3 class="card-title">새기능&nbsp;&nbsp;#2</h3>
-        </div>
+          <h3 class="card-title">
+          ${task.tracker}&nbsp;&nbsp;#${task.id}
+          </h3>  
+        </div> <!-- /.card-header -->
+        
         <div class="card-body">
           <div style="text-align:right;">
           <a href="${path}/task.do?method=list">
@@ -113,23 +118,25 @@ html, body {
           <a href="${path}/task.do?method=update">
           <i class="fas fa-pen"></i>편집</a>
           </div>
+          
           <div style="background-Color:lightyellow; textcolor:black;">
-                <h2 class="mb-0">
-                  task2
+                <h2 class="mb-0">${task.subject}
                 </h2>
                 <hr align="left" style="border: solid 1px gray; width: 90%;">
-         	<!-- /.card-header -->
+         	
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>상태</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;신규
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   ${task.status}
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>우선순위</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;보통
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   ${task.priority}
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -137,27 +144,31 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>완료기한</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;2021-04-06
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   ${task.due_date}
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>추정시간</label>
-                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;140시간
+                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                  ${task.estimated}
                 </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
             </div>
-          <div class="row">
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>담당자/담당그룹</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;김철수
+                  <label>담당자</label>
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   ${task.account_id}
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>시작시간</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;2021-04-01
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   ${task.start_date}
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -166,36 +177,38 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>진척도</label>
-                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;85%
+                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;${task.done_ratio}
                 </div>
                 <!-- /.form-group -->
               </div>
-              
               <!-- /.row -->
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
             <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>설명</label><br><br>
-            		projectPMS Front End 입니다.
+            		${task.description}
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
-            <div class="bs-stepper-content">
+              <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>첨부파일</label>
             		&nbsp;&nbsp;&nbsp;첨부파일명&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>상/하위 Task</label>
-            		&nbsp;&nbsp;&nbsp;상/하위 Task명
+            		&nbsp;&nbsp;&nbsp;
+						${task.parent_id}
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>연결된 Task</label>
-            		&nbsp;&nbsp;&nbsp;연결된 Task명
-            	</div>
-            </div>
-        </div>
-        <!-- /.card-body -->
-        
+            		&nbsp;&nbsp;&nbsp;
+           
+	             </div>
+	             
+	            </div>
+	        </div>
+	      <!-- /.card-body -->
+	      
             </div><br> <!-- /.yellowbox -->
             <div class="row mt-4">
             <nav class="w-100">
@@ -236,12 +249,9 @@ html, body {
               </div>
             </div>
           </div>
-            
-            
-            
-            
-            
-          
+         </div> 
+        </div>  
+   
     </section>
     <!-- /.content -->
   </div>
