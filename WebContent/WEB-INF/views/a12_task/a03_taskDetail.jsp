@@ -163,9 +163,9 @@ html, body {
         
         <div class="card-body">
           <div style="text-align:right;">
-          <i class="fas fa-list"></i><label id="list" style="cursor:pointer;">목록</label>
+          <label id="list" style="cursor:pointer;"><i class="fas fa-list"></i>목록</label>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="fas fa-pen"></i><label id="uptFrm" style="cursor:pointer;">편집</label>
+          <label id="uptFrm" style="cursor:pointer;"><i class="fas fa-pen"></i>편집</label>
           </div>
           
           <div style="background-Color:lightyellow; textcolor:black;">
@@ -198,15 +198,15 @@ html, body {
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>완료기한</label>
+                   <label>시작시간</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   <span name="due_date" value="${task.due_date}">${task.due_date}</span>
+                   <span name="start_date" value="${task.start_date}">${task.start_date}</span>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>추정시간</label>
-                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                  <span name="estimated" value="${task.estimated}">${task.estimated}</span>
+                  <label>완료기한</label>
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                   <span name="due_date" value="${task.due_date}">${task.due_date}</span>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -220,15 +220,16 @@ html, body {
                    <span name="account_id" value="${task.account_id}">${task.name}</span>                            
                 </div>
                 <!-- /.form-group -->
-                <div class="form-group">
-                  <label>시작시간</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   <span name="start_date" value="${task.start_date}">${task.start_date}</span>
-                </div>
-                <!-- /.form-group -->
+                <!-- 추가사항 예비자리 -->
               </div>
               <!-- /.col -->
               <div class="col-md-6">
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>추정시간</label>
+                  &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+                  <span name="estimated" value="${task.estimated}">${task.estimated}</span>
+                </div>
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>진척도</label>

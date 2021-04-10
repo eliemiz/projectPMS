@@ -225,7 +225,6 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>우선순위 *</label>
-       <%-- TODO: 우선순위 varchar2로 변경할건지? --%>
                   <form:select path="priority" class="form-control select" style="width: 100%;">
                   	<option value="">우선순위</option>
                     <form:option value="1" label="낮음"/>
@@ -267,7 +266,6 @@ html, body {
             </div>
             <div class="row">
               <div class="col-md-6">              
-     <%-- TODO: 진척도 대신 다른 용어 선택하거나, 없애기 --%>  
                 <div class="form-group">
                   <label>진척도</label>
                   <form:input path="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
