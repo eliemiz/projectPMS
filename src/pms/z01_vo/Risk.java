@@ -8,41 +8,19 @@ public class Risk {
 	private String description;
 	private String status;
 	private String category;
-	
 	private String created_on;
-	
 	private String updated_on;
-	
 	private String start_date;
-	
 	private String end_date;
 	private int probability;
 	private int impact;
 	private String strategy;
 	private String treatment;
+	private String account_name;
+	private String project_name;
 	public Risk() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public Risk(int id, int project_id, int account_id, String subject, String description, String status,
-			String category, String created_on, String updated_on, String start_date, String end_date, int probability,
-			int impact, String strategy, String treatment) {
-		super();
-		this.id = id;
-		this.project_id = project_id;
-		this.account_id = account_id;
-		this.subject = subject;
-		this.description = description;
-		this.status = status;
-		this.category = category;
-		this.created_on = created_on;
-		this.updated_on = updated_on;
-		this.start_date = start_date;
-		this.end_date = end_date;
-		this.probability = probability;
-		this.impact = impact;
-		this.strategy = strategy;
-		this.treatment = treatment;
 	}
 	public int getId() {
 		return id;
@@ -134,7 +112,16 @@ public class Risk {
 	public void setTreatment(String treatment) {
 		this.treatment = treatment;
 	}
-	
-	
-	
+	public String getAccount_name() {
+		return account_name;
+	}
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+	public String getProject_name() {
+		return project_name;
+	}
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
+	}	
 }

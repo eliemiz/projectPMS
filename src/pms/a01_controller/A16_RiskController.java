@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pms.a02_service.A00_AccountService;
+import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A16_RiskService;
 import pms.z01_vo.Account;
+import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
 
 @Controller
@@ -22,6 +24,8 @@ public class A16_RiskController {
 	private A16_RiskService service;
 	@Autowired(required = false)
 	private A00_AccountService service2;
+	@Autowired(required = false)
+	private A01_ProjectService service3;
 	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
@@ -81,5 +85,9 @@ public class A16_RiskController {
 	@ModelAttribute("accounts")
 	public ArrayList<Account> getAccountList(){
 		return service2.getAccountList();
+	}
+	@ModelAttribute("projects")
+	public ArrayList<Project> getProjectList(){
+		return service3.getProjectList();
 	}
 }

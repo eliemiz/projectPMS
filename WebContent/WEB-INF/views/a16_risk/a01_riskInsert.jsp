@@ -77,8 +77,8 @@
 			if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
 				return false;
-			}else if($("[name=description]").val()==""){
-				alert("상세설명을 입력하세요.");
+			}else if($("[name=project_id]").val()==""){
+				alert("프로젝트를 선택하세요.");
 				return false;
 			}else if($("[name=account_id]").val()==""){
 				alert("담당자를 선택하세요.");
@@ -103,7 +103,6 @@
 		});
 		  if(proc=="ins"){
 			  $("[name=subject]").val("");
-			  $("[name=description]").val("");
 			  if(confirm("등록완료")){
 	      		  location.href="${path}/risk.do?method=list";
 	      	  }
@@ -151,10 +150,10 @@
       <div class="card-header">
        <h3 class="card-title">리스크 등록</h3>
        	<form:hidden path="id"/>
-       	<form:hidden path="project_id"/>
        	<form:hidden path="status" value="open"/>
-       	<form:hidden path="strategy"/>
-       	<form:hidden path="treatment"/>
+       	<form:hidden path="strategy" value="-"/>
+       	<form:hidden path="treatment" value="-"/>
+       	<form:hidden path="description"/>
        	<form:hidden path="created_on"/>
     	<form:hidden path="updated_on"/>
          </div>
@@ -164,18 +163,15 @@
                     <label for="exampleInputEmail1">제목</label>
                     <form:input path="subject" type="text" class="form-control" placeholder="제목을 입력해주세요"/>
                   </div>
-<!--                   <div class="form-group">
-                    <label for="exampleInputEmail1">상태</label>
-	                  <div class="col-sm-6">
-	                      select
-	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>open</option>       
-	                          <option>close</option>
-	                        </select>
-	                      </div>
-	                    </div>
-	              </div> -->
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">프로젝트</label>
+                    <form:select path="project_id" class="form-control select2" style="width: 100%;">
+	                    <option value="">프로젝트</option>
+	                    <c:forEach var = "project" items="${projects}">
+	                    	<form:option value="${project.id}">${project.name}</form:option>
+	                    </c:forEach>
+                  	</form:select>
+                  </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">상세설명</label>
                     <form:textarea path="description" class="form-control" rows="3"/>
@@ -207,11 +203,11 @@
                     <label for="exampleInputEmail1">발생가능성</label>
 						<div class="form-group">
 	                      <form:select path="probability" class="form-control select2">
-	                        <form:option value="1" label=" 1 "/>
-	                        <form:option value="2" label=" 2 "/>
-	                        <form:option value="3" label=" 3 "/>
-	                        <form:option value="4" label=" 4 "/>
-	                        <form:option value="5" label=" 5 "/>
+	                        <form:option value="1" label=" Unlikely "/>
+	                        <form:option value="2" label=" Low "/>
+	                        <form:option value="3" label=" Medium "/>
+	                        <form:option value="4" label=" High "/>
+	                        <form:option value="5" label=" Expected "/>
 	                      </form:select>
 	                    </div>
                   </div>
@@ -219,21 +215,23 @@
                     <label for="exampleInputEmail1">영향도</label>
                     <div class="form-group">
 	                      <form:select path="impact" class="form-control select2">
-	                        <form:option value="1" label=" 1 "/>
-	                        <form:option value="2" label=" 2 "/>
-	                        <form:option value="3" label=" 3 "/>
-	                        <form:option value="4" label=" 4 "/>
-	                        <form:option value="5" label=" 5 "/>
+	                        <form:option value="1" label=" Negligible "/>
+	                        <form:option value="2" label=" Minor "/>
+	                        <form:option value="3" label=" Moderate "/>
+	                        <form:option value="4" label=" Significant "/>
+	                        <form:option value="5" label=" Severe "/>
 	                      </form:select>
 	                    </div>
                   </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">예상시작일</label>
-                    <form:input path="start_date" class="form-control"/>
+                    <form:input path="start_date" type="date"
+                     style="width:300px" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">예상종료일</label>
-                    <form:input path="end_date" class="form-control"/>
+                    <form:input path="end_date" type="date"
+                     style="width:300px"	class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>

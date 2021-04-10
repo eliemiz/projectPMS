@@ -4,19 +4,28 @@
 <mapper namespace="pms.a03_dao.A16_RiskDao">
 	<resultMap type="risk" id="riskList"/>
 	<select id="getRiskList" resultMap="riskList" parameterType="risk">
-		SELECT * FROM RISK
+		SELECT r.*, a.name account_name,
+					p.name project_name
+		FROM RISK r, ACCOUNT a, PROJECT p
+		WHERE r.ACCOUNT_ID = a.ID
+		AND r.PROJECT_ID = p.ID
+		ORDER BY r.ID DESC
 	</select>
 	<!--public Risk getRask(int id) -->
 	<select id="getRisk" resultType="risk" parameterType="int">
-		SELECT * FROM RISK
-		WHERE ID = #{id}
+		SELECT r.*, a.name account_name,
+					p.name project_name
+		FROM RISK r, ACCOUNT a, PROJECT p
+		WHERE r.ACCOUNT_ID = a.ID 
+		AND r.PROJECT_ID = p.ID
+		AND r.id = #{id}
 	</select>
 	<!-- public void inertRisk(Risk ins); -->
 	<insert id="insertRisk" parameterType="risk">
 		INSERT INTO RISK 
 		VALUES (RISK_seq.nextval, #{project_id}, #{account_id},
 				#{subject}, #{description}, #{status}, #{category},
-				#{created_on}, #{updated_on}, #{start_date}, #{end_date},
+				sysdate, sysdate, #{start_date}, #{end_date},
 				#{probability}, #{impact},
 				#{strategy}, #{treatment})
 	</insert>
@@ -32,6 +41,7 @@
 			strategy = #{strategy},
 			start_date = #{start_date},
 			end_date = #{end_date},
+			updated_on = sysdate,
 			treatment = #{treatment}
 		WHERE ID = #{id}
 	</update>

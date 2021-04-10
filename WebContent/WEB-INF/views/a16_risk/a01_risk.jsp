@@ -130,6 +130,7 @@
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
+                      <th>프로젝트명</th>
                       <th>상태</th>
                       <th>범주</th>
                       <th>발생도</th>
@@ -145,11 +146,12 @@
                     <tr class="detail" style="cursor:pointer">
                       <td>${risk.id}</td>
                       <td>${risk.subject}</td>
+                      <td>${risk.project_name}</td>
                       <td>${risk.status}</td>
                       <td>${risk.category}</td>
                       <td>${risk.probability}</td>
                       <td>${risk.impact}</td>
-                      <td>${risk.account_id}</td>
+                      <td>${risk.account_name}</td>
                       <td>${risk.start_date}</td> 
                       <td>${risk.end_date}</td> 
                       <td>${risk.updated_on}</td>

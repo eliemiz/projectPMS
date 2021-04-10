@@ -124,6 +124,7 @@
             
             <div class="col-12 col-lg-12 col-lg-4 order-1 order-md-2">
               <h3 class="text-primary"><i class="fas fa-paint-stamp"></i>${risk.id}&nbsp;${risk.subject}</h3>
+              <h5 class="text-secondary">수정일 ${risk.updated_on}</h5>
               &nbsp;&nbsp;&nbsp;
               
                <p>
@@ -136,10 +137,10 @@
                   <b class="d-block">${risk.status}</b>
                 </p>
                 <p class="text-sm">담당자
-                  <b class="d-block">${risk.account_id}</b>
+                  <b class="d-block">${risk.account_name}</b>
                 </p>
                 <p class="text-sm">연결 프로젝트
-                  <b class="d-block">${risk.project_id}</b>
+                  <b class="d-block">${risk.project_name}</b>
                 </p>
                 <p class="text-sm">범주
                   <b class="d-block">${risk.category}</b>
