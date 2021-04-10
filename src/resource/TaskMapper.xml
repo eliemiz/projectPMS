@@ -45,6 +45,11 @@
  	 		CONNECT BY PRIOR ID = PARENT_ID
  	 	) 
 	</delete>
+	
+	<!-- public ArrayList<Task> calenList() -->
+	<select id="calenList" resultMap="taskList">
+		select * from task
+	</select>
 </mapper>
 
 

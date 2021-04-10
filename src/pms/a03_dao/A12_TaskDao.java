@@ -24,4 +24,6 @@ public interface A12_TaskDao {
 	public void deleteTask(int id); // task 삭제
 	public void deleteFile(int id);	 // 파일 삭제
 	
+	// Calendar DAO
+	public ArrayList<Task> calenList();
 }

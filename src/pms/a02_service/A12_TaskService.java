@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pms.a03_dao.A01_ProjectDao;
 import pms.a03_dao.A12_TaskDao;
-import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 
 @Service
@@ -48,6 +46,11 @@ public class A12_TaskService {
 	public void deleteTask(int id) {
 		dao.deleteTask(id);
 		dao.deleteFile(id);
+	}
+	
+	// 캘린더 목록
+	public ArrayList<Task> calenList(){
+		return dao.calenList();
 	}
 
 }

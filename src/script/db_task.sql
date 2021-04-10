@@ -17,6 +17,7 @@ CREATE TABLE task(
    completed_on CHAR(24), -- 완료일자
    tracker varchar2(30) -- 유형(새기능, 결함, 지원 등)
 );
+
 -- TASK id 시퀀스
 CREATE SEQUENCE TASK_SEQ 
 	START WITH 1
@@ -35,3 +36,4 @@ INSERT INTO task VALUES (10002, 10002, 11112, 12346, 'test용 TASK222', '테스�
 						 sysdate, sysdate, sysdate,
 						 '2021/04/30', 185, 25, '2021/04/30','결함');		
 SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t;
+

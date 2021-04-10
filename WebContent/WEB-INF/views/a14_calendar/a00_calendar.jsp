@@ -34,13 +34,11 @@
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 <link rel='stylesheet' href='a00_com/lib/main.css'/>
 <style>
-
-#calendar {
-	background-color:white;
-	max-width: 100%;
-	margin: 0 auto;
-}
-
+	#calendar {
+		background-color:white;
+		max-width: 100%;
+		margin: 0 auto;
+	}
 </style>
 <script src='a00_com/lib/main.js'></script>
 <!-- jQuery -->
@@ -48,168 +46,44 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+	var date = {};
 	
-	$("#sb-calendar").addClass("active");
-	  
-    var calendarEl = document.getElementById('calendar');
+	document.addEventListener('DOMContentLoaded', function() {
+		var calendarEl = document.getElementById('calendar');
+		// new FullCalendar.Calendar(대상 DOM객체, {속성:속성값, 속성2:속성값2...}
+//		alert(new Date().toISOString());
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			headerToolbar : {
+				left : 'prevYear prev today next nextYear',
+				center : 'title',
+				right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+			},
+			themeSystem: 'bootstrap',
+			initialDate : new Date().toISOString(),
+			navLinks : true,
+			selectable : true,
+			selectMirror : true,
+			editable : true,
+			dayMaxEvents : true,
+			events :function(info, successCallback, failureCallback){
+				$.ajax({
+					type:"get",
+					url:"${path}/calendar.do?method=data",
+					dataType:"json",
+					success:function(data){
+						console.log(data.list);
+						successCallback(data.list);
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			}
+		});
 
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-      initialDate: '2021-04-12',
-      navLinks: true, // can click day/week names to navigate views
-      selectable: true,
-      selectMirror: true,
-      select: function(arg) {
-        var title = prompt('Event Title:');
-        if (title) {
-          calendar.addEvent({
-            title: title,
-            start: arg.start,
-            end: arg.end,
-            allDay: arg.allDay
-          })
-        }
-        calendar.unselect()
-      },
-      eventClick: function(arg) {
-        if (confirm('Are you sure you want to delete this event?')) {
-          arg.event.remove()
-        }
-      },
-      editable: true,
-      dayMaxEvents: true, // allow "more" link when too many events
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2021-04-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2021-04-07',
-          end: '2021-04-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2021-04-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2021-04-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2021-04-11',
-          end: '2021-04-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2021-04-12T10:30:00',
-          end: '2021-04-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2021-04-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2021-04-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2021-04-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2021-04-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2021-04-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2021-04-28'
-        }
-      ]
-    });
-
-    calendar.render();
-  });
-  function addFilter(field, operator, values) {
-	  var fieldId = field.replace('.', '_');
-	  var tr = $('#tr_'+fieldId);
-
-	  var filterOptions = availableFilters[field];
-	  if (!filterOptions) return;
-
-	  if (filterOptions['remote'] && filterOptions['values'] == null) {
-	    $.getJSON(filtersUrl, {'name': field}).done(function(data) {
-	      filterOptions['values'] = data;
-	      addFilter(field, operator, values) ;
-	    });
-	    return;
-	  }
-
-	  if (tr.length > 0) {
-	    tr.show();
-	  } else {
-	    buildFilterRow(field, operator, values);
-	  }
-	  $('#cb_'+fieldId).prop('checked', true);
-	  toggleFilter(field);
-	  $('#add_filter_select').val('').find('option').each(function() {
-	    if ($(this).attr('value') == field) {
-	      $(this).attr('disabled', true);
-	    }
-	  });
-	}
-  function initFilters() {
-	  $('#add_filter_select').change(function() {
-	    addFilter($(this).val(), '', []);
-	  });
-	  $('#filters-table td.field input[type=checkbox]').each(function() {
-	    toggleFilter($(this).val());
-	  });
-	  $('#filters-table').on('click', 'td.field input[type=checkbox]', function() {
-	    toggleFilter($(this).val());
-	  });
-	  $('#filters-table').on('click', '.toggle-multiselect', function() {
-	    toggleMultiSelect($(this).siblings('select'))
-	    $(this).toggleClass('icon-toggle-plus icon-toggle-minus')
-	  });
-	  $('#filters-table').on('keypress', 'input[type=text]', function(e) {
-	    if (e.keyCode == 13) $(this).closest('form').submit();
-	  });
-	}
-  function toggleFieldset(el) {
-	  var fieldset = $(el).parents('fieldset').first();
-	  fieldset.toggleClass('collapsed');
-	  fieldset.children('legend').toggleClass('icon-expended icon-collapsed');
-	  fieldset.children('div').toggle();
-	}
-	//<![CDATA[
-	
-	var operatorLabels = {"=":"is","!":"is not","o":"open","c":"closed","!*":"none","*":"any","\u003e=":"\u003e=","\u003c=":"\u003c=","\u003e\u003c":"between","\u003ct+":"in less than","\u003et+":"in more than","\u003e\u003ct+":"in the next","t+":"in","nd":"tomorrow","t":"today","ld":"yesterday","nw":"next week","w":"this week","lw":"last week","l2w":"last 2 weeks","nm":"next month","m":"this month","lm":"last month","y":"this year","\u003et-":"less than days ago","\u003ct-":"more than days ago","\u003e\u003ct-":"in the past","t-":"days ago","~":"contains","!~":"doesn't contain","^":"starts with","$":"ends with","=p":"any issues in project","=!p":"any issues not in project","!p":"no issues in project","*o":"any open issues","!o":"no open issues"};
-	var operatorByType = {"list":["=","!"],"list_status":["o","=","!","c","*"],"list_optional":["=","!","!*","*"],"list_subprojects":["*","!*","=","!"],"date":["=","\u003e=","\u003c=","\u003e\u003c","\u003ct+","\u003et+","\u003e\u003ct+","t+","nd","t","ld","nw","w","lw","l2w","nm","m","lm","y","\u003et-","\u003ct-","\u003e\u003ct-","t-","!*","*"],"date_past":["=","\u003e=","\u003c=","\u003e\u003c","\u003et-","\u003ct-","\u003e\u003ct-","t-","t","ld","w","lw","l2w","m","lm","y","!*","*"],"string":["~","=","!~","!","^","$","!*","*"],"text":["~","!~","^","$","!*","*"],"integer":["=","\u003e=","\u003c=","\u003e\u003c","!*","*"],"float":["=","\u003e=","\u003c=","\u003e\u003c","!*","*"],"relation":["=","!","=p","=!p","!p","*o","!o","!*","*"],"tree":["=","~","!*","*"]};
-	var availableFilters = {"status_id":{"type":"list_status","name":"Status","remote":true,"values":[["신규","1"],["진행","2"],["해결","3"],["의견","4"],["완료","5"],["거절","6"]]},"project_id":{"type":"list","name":"Project","remote":true},"tracker_id":{"type":"list","name":"Tracker","values":[["결함","1"],["새기능","2"],["지원","3"]]},"priority_id":{"type":"list","name":"Priority","values":[["낮음","1"],["보통","2"],["높음","3"],["긴급","4"],["즉시","5"]]},"author_id":{"type":"list","name":"Author","remote":true},"assigned_to_id":{"type":"list_optional","name":"Assignee","remote":true},"member_of_group":{"type":"list_optional","name":"Assignee's group","remote":true},"assigned_to_role":{"type":"list_optional","name":"Assignee's role","remote":true},"fixed_version_id":{"type":"list_optional","name":"Target version","remote":true},"fixed_version.due_date":{"type":"date","name":"Target version's Due date","values":null},"fixed_version.status":{"type":"list","name":"Target version's Status","values":[["open","open"],["locked","locked"],["closed","closed"]]},"subject":{"type":"text","name":"Subject","values":null},"description":{"type":"text","name":"Description","values":null},"created_on":{"type":"date_past","name":"Created","values":null},"updated_on":{"type":"date_past","name":"Updated","values":null},"closed_on":{"type":"date_past","name":"Closed","values":null},"start_date":{"type":"date","name":"Start date","values":null},"due_date":{"type":"date","name":"Due date","values":null},"estimated_hours":{"type":"float","name":"Estimated time","values":null},"spent_time":{"type":"float","name":"Spent time","values":null},"done_ratio":{"type":"integer","name":"% Done","values":null},"attachment":{"type":"text","name":"File","values":null},"updated_by":{"type":"list","name":"Updated by","remote":true},"last_updated_by":{"type":"list","name":"Last updated by","remote":true},"project.status":{"type":"list","name":"Project's Status","remote":true},"relates":{"type":"relation","name":"Related to","remote":true},"duplicates":{"type":"relation","name":"Is duplicate of","remote":true},"duplicated":{"type":"relation","name":"Has duplicate","remote":true},"blocks":{"type":"relation","name":"Blocks","remote":true},"blocked":{"type":"relation","name":"Blocked by","remote":true},"precedes":{"type":"relation","name":"Precedes","remote":true},"follows":{"type":"relation","name":"Follows","remote":true},"copied_to":{"type":"relation","name":"Copied to","remote":true},"copied_from":{"type":"relation","name":"Copied from","remote":true},"parent_id":{"type":"tree","name":"Parent task","values":null},"child_id":{"type":"tree","name":"Subtasks","values":null},"issue_id":{"type":"integer","name":"Issue","values":null}};
-	var labelDayPlural = "days";
-	
-	var filtersUrl = "";
-	
-	$(document).ready(function(){
-	  initFilters();
-	  addFilter("status_id", "o", [""]);
+		calendar.render();
 	});
-	
-	//]]>
+
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
