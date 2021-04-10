@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
+import pms.a02_service.A01_ProjectService;
 import pms.z01_vo.AccountTask;
+import pms.z01_vo.Project;
 import pms.z02_util.LocaleManager;
 
 @Controller
@@ -21,6 +23,9 @@ public class A10_DashboardController {
 
 	@Autowired(required = false)
 	private A00_AccountService serviceAccount;
+	
+	@Autowired(required = false) 
+	private A01_ProjectService serviceProject;
 
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
@@ -29,10 +34,22 @@ public class A10_DashboardController {
 	@RequestMapping("dashboard.do")
 	public String dashboard(HttpServletRequest request, HttpServletResponse response, Model d) {
 
-		// get parameter
-		String projectId = request.getParameter("projectId");
 		HttpSession session = request.getSession();
-		session.setAttribute("projectId", projectId);
+
+		/* Set Project Id */
+		String projectIdReq = request.getParameter("projectId");
+		if (projectIdReq != null) {
+			session.setAttribute("projectId", projectIdReq);
+		}
+		
+		Object project_id_s = session.getAttribute("projectId");
+		int project_id;
+		if (project_id_s == null) {
+			ArrayList<Project> projectList = serviceProject.getProjectList();
+			project_id = projectList.get(0).getId();
+		} else {
+			project_id = Integer.parseInt(project_id_s.toString());
+		}
 		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
@@ -42,6 +59,8 @@ public class A10_DashboardController {
 		/* Get Model */
 		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskList();
 		d.addAttribute("accountList", accountList);
+		
+		
 
 		return "a10_dashboard\\dashboard";
 	}

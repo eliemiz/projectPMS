@@ -16,5 +16,6 @@ public interface A16_RiskDao {
 	public void insertRisk(Risk ins);
 	
 	public void updateRisk(Risk upt);
-	
+
+	public ArrayList<Risk> getRecentRiskListByProject(int projectId); // 최근 5개 리스크 조회
 }

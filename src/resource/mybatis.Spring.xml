@@ -10,6 +10,7 @@
 		<typeAlias alias="task" type="pms.z01_vo.Task"/>
 		<typeAlias alias="taskSch" type="pms.z01_vo.TaskSch"/>
 		<typeAlias alias="taskRelation" type="pms.z01_vo.TaskRelation"/>
+		<typeAlias alias="taskResult" type="pms.z01_vo.TaskResult"/>
 		<typeAlias alias="timeEntry" type="pms.z01_vo.TimeEntry"/>
 		
 		<typeAlias alias="notice" type="pms.z01_vo.Notice"/>
