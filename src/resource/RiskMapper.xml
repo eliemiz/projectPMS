@@ -4,6 +4,6 @@
 <mapper namespace="pms.a03_dao.A16_RiskDao">
 	<resultMap type="risk" id="riskList"/>
 	<select id="getRiskList" resultMap="riskList" parameterType="risk">
-		SELECT * FROM risk;
+		SELECT * FROM risk
 	</select>
 </mapper>

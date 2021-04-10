@@ -2,10 +2,13 @@ package pms.a01_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A16_RiskService;
+import pms.z01_vo.Risk;
 
 @Controller
 @RequestMapping("risk.do")
@@ -15,8 +18,9 @@ public class A16_RiskController {
 	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
-	@GetMapping(params="method=list")
-	public String RiskList() {
+	@RequestMapping(params="method=list")
+	public String RiskList(@ModelAttribute("sch") Risk sch, Model d) {
+		d.addAttribute("riskList", service.getRiskList(sch));
 		return "a16_risk\\a01_risk";
 	}
 	
