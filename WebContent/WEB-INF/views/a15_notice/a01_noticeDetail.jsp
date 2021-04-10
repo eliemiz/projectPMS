@@ -105,7 +105,7 @@
      <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">상세 내용</h3>
+          <h3 class="card-title">공지 상세</h3>
 
           <div class="card-tools">
             <div class="input-group input-group-sm">
@@ -123,19 +123,18 @@
           <div class="row">
             
             <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fas fa-paint-brush"></i> 공지사항 제목</h3>
+              <h3 class="text-primary"><i class="fas fa-paint-brush"></i>${notice.id}&nbsp;${notice.subject}</h3>
               &nbsp;&nbsp;&nbsp;
               <p class="text-muted">
-              공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용
-              공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용             
+              ${notice.content}
               </p>
               <br>
               <div class="text-muted">
                 <p class="text-sm">작성자
-                  <b class="d-block">홍길동</b>
+                  <b class="d-block">${notice.account_id}</b>
                 </p>
                 <p class="text-sm">등록일
-                  <b class="d-block">2021-04-02</b>
+                  <b class="d-block">${notice.created_on}</b>
                 </p>
               </div>
 

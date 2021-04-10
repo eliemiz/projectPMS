@@ -69,7 +69,46 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
-	})
+		// subject description account_id
+		// category probability impact
+		// start_date end_date
+		var proc = "${proc}";
+		$("#insBut").on("click",function(){
+			if($("[name=subject]").val()==""){
+				alert("제목을 입력하세요.");
+				return false;
+			}else if($("[name=description]").val()==""){
+				alert("상세설명을 입력하세요.");
+				return false;
+			}else if($("[name=account_id]").val()==""){
+				alert("담당자를 선택하세요.");
+				return false;
+			}else if($("[name=category]").val()==""){
+				alert("범주를 선택하세요.");
+				return false;
+			}else if($("[name=probability]").val()==""){
+				alert("발생도를 선택하세요.");
+				return false;
+			}else if($("[name=impact]").val()==""){
+				alert("영향도를 선택하세요.");
+				return false;
+			}else if($("[name=start_date]").val()==""){
+				alert("예상시작일을 입력하세요.");
+				return false;
+			}else if($("[name=end_date]").val()==""){
+				alert("예상종료일을 입력하세요.");
+				return false;
+			}
+			$("form").submit();
+		});
+		  if(proc=="ins"){
+			  $("[name=subject]").val("");
+			  $("[name=description]").val("");
+			  if(confirm("등록완료")){
+	      		  location.href="${path}/risk.do?method=list";
+	      	  }
+		  }
+	});
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -100,19 +139,30 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    
     <!-- Main content -->
     <section class="content">
+    <form:form 
+    	modelAttribute="risk"
+    	action="${path}/risk.do?method=insert"
+    	enctype="multipart/form-data"
+    	method="post">
      <div class="card card-primary">
       <div class="card-header">
        <h3 class="card-title">리스크 등록</h3>
+       	<form:hidden path="id"/>
+       	<form:hidden path="project_id"/>
+       	<form:hidden path="status" value="open"/>
+       	<form:hidden path="strategy"/>
+       	<form:hidden path="treatment"/>
+       	<form:hidden path="created_on"/>
+    	<form:hidden path="updated_on"/>
          </div>
            <!-- /.card-header -->
-           <!-- form start -->
-             <form>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해주세요">
+                    <form:input path="subject" type="text" class="form-control" placeholder="제목을 입력해주세요"/>
                   </div>
 <!--                   <div class="form-group">
                     <label for="exampleInputEmail1">상태</label>
@@ -128,42 +178,62 @@
 	              </div> -->
                   <div class="form-group">
                     <label for="exampleInputEmail1">상세설명</label>
-                    <textarea class="form-control" id="exampleInputEmail1" rows="3" placeholder="설명을 입력해주세요">
-                    </textarea>
+                    <form:textarea path="description" class="form-control" rows="3"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">담당자</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">               
+                    <form:select path="account_id" class="form-control select" style="width: 100%;">
+	                 <option value="">담당자 선택</option>
+	                  	<c:forEach var="account" items="${accounts}">
+		                    <form:option value="${account.id}">${account.name}</form:option>
+	                    </c:forEach>
+                 	</form:select>	            
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">범주</label>
 	                  <div class="col-sm-6">
 	                      <!-- select -->
 	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>Internal</option>
-	                          <option>External</option>
-	                          <option>Technical</option>
-	                          <option>Unforeseeable</option>
-	                        </select>
+	                        <form:select path="category" class="form-control select2">
+	                          <form:option value="Internal" label="Internal"/>
+	                          <form:option value="External" label="External"/>
+	                          <form:option value="Technical" label="Technical"/>
+	                          <form:option value="Unforeseeable" label="Unforeseeable"/>
+	                        </form:select>
 	                      </div>
 	                    </div>
 	              </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">발생가능성</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+						<div class="form-group">
+	                      <form:select path="probability" class="form-control select2">
+	                        <form:option value="1" label=" 1 "/>
+	                        <form:option value="2" label=" 2 "/>
+	                        <form:option value="3" label=" 3 "/>
+	                        <form:option value="4" label=" 4 "/>
+	                        <form:option value="5" label=" 5 "/>
+	                      </form:select>
+	                    </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">영향도</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <div class="form-group">
+	                      <form:select path="impact" class="form-control select2">
+	                        <form:option value="1" label=" 1 "/>
+	                        <form:option value="2" label=" 2 "/>
+	                        <form:option value="3" label=" 3 "/>
+	                        <form:option value="4" label=" 4 "/>
+	                        <form:option value="5" label=" 5 "/>
+	                      </form:select>
+	                    </div>
                   </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">예상시작일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <form:input path="start_date" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">예상종료일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <form:input path="end_date" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
@@ -184,10 +254,10 @@
                 </div>
                 <!-- /.card-body -->
             <div class="card-footer">
-          <button type="submit" class="btn btn-primary float-right">등록</button>
+          <button type="button" id="insBut" class="btn btn-primary float-right">등록</button>
          </div>
-        </form>
-      </div>	
+      </div>
+      </form:form>	
     </section>
     <!-- /.content -->
   </div>

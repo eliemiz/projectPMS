@@ -69,6 +69,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
+		$(".detail").click(function(){
+    		var id = $(this).children().eq(0).text();
+    		location.href="${path}/risk.do?method=detail&id="+id;
+    	});
 	})
 </script>
 </head>
@@ -113,8 +117,9 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
-                      <button type="button" onclick="location.href='${path}/risk.do?method=insert'"
-                      class="btn btn-primary float-right">리스크 등록</button>
+                      <a href="${path}/risk.do?method=insForm" 
+                      class="btn btn-primary">
+                      <i class="fas fa-pen">리스크 등록</i></a>
                     </div>
                   </div>
                 </div>
@@ -136,9 +141,9 @@
                       <th>변경일자</th>
                     </tr>
                   </thead>
-                  <tbody onclick="location.href='${path}/risk.do?method=detail'">
+                  <tbody>
                   <c:forEach var="risk" items="${riskList}">
-                    <tr>
+                    <tr class="detail" style="cursor:pointer">
                       <td>${risk.id}</td>
                       <td>${risk.subject}</td>
                       <td>${risk.status}</td>

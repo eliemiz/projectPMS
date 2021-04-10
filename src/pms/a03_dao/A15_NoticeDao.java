@@ -13,4 +13,7 @@ public interface A15_NoticeDao {
 	public ArrayList<Notice> getNoticeList(Notice sch);
 	
 	public Notice getNotice(int id);
+	
+	public void insertNotice(Notice ins);
+	
 }

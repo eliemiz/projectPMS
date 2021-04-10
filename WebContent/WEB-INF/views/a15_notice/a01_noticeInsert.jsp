@@ -69,7 +69,29 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-notice").addClass("active");
-	})
+		//제목작성자설명
+		var proc = "${proc}";
+		$("#insBut").on("click",function(){
+			if($("[name=subject]").val()==""){
+				alert("제목을 입력하세요.");
+				return false;
+			}else if($("[name=account_id]").val()==""){
+				alert("작성자를 선택하세요.");
+				return false;
+			}else if($("[name=content]").val()==""){
+				alert("내용을 입력하세요.");
+				return false;
+			}
+			$("form").submit();
+		});
+		  if(proc=="ins"){
+			  $("[name=subject]").val("");
+			  $("[name=description]").val("");
+			  if(confirm("등록완료")){
+	      		  location.href="${path}/notice.do?method=list";
+	      	  }
+		  }
+	});
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -102,22 +124,37 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
+    <form:form 
+    	modelAttribute="notice"
+    	action="${path}/notice.do?method=insert"
+    	enctype="multipart/form-data"
+    	method="post">
      <div class="card card-primary">
       <div class="card-header">
        <h3 class="card-title">공지사항 등록</h3>
+       	<form:hidden path="id"/>
+       	<form:hidden path="project_id"/>
+       	<form:hidden path="created_on"/>
+    	<form:hidden path="updated_on"/>
          </div>
            <!-- /.card-header -->
-           <!-- form start -->
-             <form>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해주세요">
+                    <form:input path="subject" type="text" class="form-control" placeholder="제목을 입력해주세요"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">작성자</label>
+                    <form:select path="account_id" class="form-control select" style="width: 100%;">
+	                 <option value="">작성자 선택</option>
+	                  	<c:forEach var="account" items="${accounts}">
+		                    <form:option value="${account.id}">${account.name}</form:option>
+	                    </c:forEach>
+                 	</form:select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">설명</label>
-                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
-                    </textarea>
+                    <form:textarea path="content" class="form-control" rows="3"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
@@ -138,10 +175,10 @@
                 </div>
                 <!-- /.card-body -->
             <div class="card-footer">
-          <button type="submit" class="btn btn-primary float-right">등록</button>
+          <button id="insBut" type="button" class="btn btn-primary float-right">등록</button>
          </div>
-        </form>
       </div>	
+      </form:form>
     </section>
     <!-- /.content -->
   </div>

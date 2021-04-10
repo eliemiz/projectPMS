@@ -11,9 +11,17 @@ import pms.z01_vo.Notice;
 @Service
 public class A15_NoticeService {
 	@Autowired(required = false)
-	private A15_NoticeDao daoNotice;
+	private A15_NoticeDao dao;
 
 	public ArrayList<Notice> getNoticeList(Notice sch) {
-		return daoNotice.getNoticeList(sch);
+		return dao.getNoticeList(sch);
+	}
+	public void insertNotice(Notice ins) {
+		dao.insertNotice(ins);
+	}
+	
+	public Notice getNotice(int id) {
+		Notice notice = dao.getNotice(id);
+		return notice;
 	}
 }

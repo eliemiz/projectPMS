@@ -16,4 +16,18 @@ public class A16_RiskService {
 	public ArrayList<Risk> getRiskList(Risk sch){
 		return dao.getRiskList();
 	}
+	
+	public void insertRisk(Risk ins) {
+		dao.insertRisk(ins);
+	}
+	
+	public Risk getRisk(int id) {
+		Risk risk = dao.getRisk(id);
+		return risk;
+	}
+	
+	public void updateRisk(Risk upt) {
+		dao.updateRisk(upt);
+	}
+	
 }

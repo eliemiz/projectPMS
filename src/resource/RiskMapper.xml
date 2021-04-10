@@ -4,6 +4,35 @@
 <mapper namespace="pms.a03_dao.A16_RiskDao">
 	<resultMap type="risk" id="riskList"/>
 	<select id="getRiskList" resultMap="riskList" parameterType="risk">
-		SELECT * FROM risk
+		SELECT * FROM RISK
 	</select>
+	<!--public Risk getRask(int id) -->
+	<select id="getRisk" resultType="risk" parameterType="int">
+		SELECT * FROM RISK
+		WHERE ID = #{id}
+	</select>
+	<!-- public void inertRisk(Risk ins); -->
+	<insert id="insertRisk" parameterType="risk">
+		INSERT INTO RISK 
+		VALUES (RISK_seq.nextval, #{project_id}, #{account_id},
+				#{subject}, #{description}, #{status}, #{category},
+				#{created_on}, #{updated_on}, #{start_date}, #{end_date},
+				#{probability}, #{impact},
+				#{strategy}, #{treatment})
+	</insert>
+	<!-- public void updateRisk(Risk upt) -->
+	<update id="updateRisk" parameterType="risk">
+		UPDATE RISK
+		SET status = #{status},
+			description = #{description},
+			account_id = #{account_id},
+			category = #{category},
+			probability = #{probability},
+			impact = #{impact},
+			strategy = #{strategy},
+			start_date = #{start_date},
+			end_date = #{end_date},
+			treatment = #{treatment}
+		WHERE ID = #{id}
+	</update>
 </mapper>

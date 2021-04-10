@@ -3,6 +3,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A15_NoticeDao">
 	<select id="getNoticeList" resultType="notice">
-		SELECT * FROM notice
+		SELECT * FROM NOTICE
 	</select>
+	<select id="getNotice" resultType="notice" parameterType="int">
+		SELECT * FROM NOTICE
+		WHERE ID = #{id}
+	</select>
+	<insert id="insertNotice" parameterType="notice">
+		INSERT INTO notice values(
+			notice_seq.nextval,	#{project_id}, #{account_id},
+			#{subject}, #{content}, sysdate, #{updated_on}
+		)
+	</insert>
 </mapper>

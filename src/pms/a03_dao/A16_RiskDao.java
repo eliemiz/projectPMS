@@ -12,4 +12,9 @@ public interface A16_RiskDao {
 	public ArrayList<Risk> getRiskList();
 	
 	public Risk getRisk(int id);
+	
+	public void insertRisk(Risk ins);
+	
+	public void updateRisk(Risk upt);
+	
 }

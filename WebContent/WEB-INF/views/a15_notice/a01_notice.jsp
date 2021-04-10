@@ -69,6 +69,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-notice").addClass("active");
+		$(".detail").click(function(){
+    		var id = $(this).children().eq(0).text();
+    		location.href="${path}/notice.do?method=detail&id="+id;
+    	});
 	})
 </script>
 </head>
@@ -113,7 +117,7 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
-                      <button type="button" onclick="location.href='${path}/notice.do?method=insert'"
+                      <button type="button" onclick="location.href='${path}/notice.do?method=insForm'"
                       class="btn btn-primary float-right">공지사항 등록</button>
                     </div>
                   </div>
@@ -126,15 +130,17 @@
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
+                      <th>작성자</th>
                       <th>등록일</th>
                       <th>변경일</th>
                     </tr>
                   </thead>
-                  <tbody onclick="location.href='${path}/notice.do?method=detail'">
+                  <tbody>
                   <c:forEach var="notice" items="${noticeList}">
-                    <tr>
+                    <tr class="detail" style="cursor:pointer">
                       <td>${notice.id}</td>
                       <td>${notice.subject}</td>
+                      <td>${notice.account_id}</td>
                       <td>${notice.created_on}</td>
                       <td>${notice.updated_on}</td>
                     </tr>

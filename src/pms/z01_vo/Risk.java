@@ -1,10 +1,9 @@
 package pms.z01_vo;
 
-import java.util.Date;
-
 public class Risk {
 	private int id;
-	private int Account_id;
+	private int project_id;
+	private int account_id;
 	private String subject;
 	private String description;
 	private String status;
@@ -25,12 +24,13 @@ public class Risk {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Risk(int id, int account_id, String subject, String description, String status, String category,
-			String created_on, String updated_on, String start_date, String end_date, int probability, int impact,
-			String strategy, String treatment) {
+	public Risk(int id, int project_id, int account_id, String subject, String description, String status,
+			String category, String created_on, String updated_on, String start_date, String end_date, int probability,
+			int impact, String strategy, String treatment) {
 		super();
 		this.id = id;
-		Account_id = account_id;
+		this.project_id = project_id;
+		this.account_id = account_id;
 		this.subject = subject;
 		this.description = description;
 		this.status = status;
@@ -50,11 +50,17 @@ public class Risk {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getProject_id() {
+		return project_id;
+	}
+	public void setProject_id(int project_id) {
+		this.project_id = project_id;
+	}
 	public int getAccount_id() {
-		return Account_id;
+		return account_id;
 	}
 	public void setAccount_id(int account_id) {
-		Account_id = account_id;
+		this.account_id = account_id;
 	}
 	public String getSubject() {
 		return subject;
