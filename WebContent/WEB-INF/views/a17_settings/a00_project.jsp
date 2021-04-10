@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>프로젝트 설정-프로젝트</title>
+  <title>프로젝트 설정</title>
 
 
 <!-- Google Font: Source Sans Pro -->
@@ -84,6 +84,16 @@ $(function () {
   bsCustomFileInput.init();
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+    $(".data").click(function(){
+  	  var id = $(this).attr("id");
+  	  location.href="${path}/settings.do?method=update&id="+id;
+    });
+   
+  });
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -101,7 +111,7 @@ $(function () {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">project</h1>
+            <h1 class="m-0">Project setting</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -148,9 +158,9 @@ $(function () {
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach var="project" varStatus="sts" items="${projectList}">
-                  <tr class="data">
-                   <td style="text-align:center;">${sts.count}</td>
+                  <c:forEach var="project" varStatus="s" items="${projectList}">
+                  <tr class="data" id="${project.id}">
+                   <td style="text-align:center;">${s.count}</td>
                     <td>${project.name}</td>
                     <td>${project.description}</td>
                   </tr>
