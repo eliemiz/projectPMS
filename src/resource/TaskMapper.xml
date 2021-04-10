@@ -4,13 +4,17 @@
 	<!-- public ArrayList<Task> getTaskList(Task sch) -->
 	<resultMap type="task" id="taskList"/>
 	<select id="getTaskList" resultMap="taskList" parameterType="task">
-		SELECT * FROM task
+		SELECT t.*, a.name name
+		FROM task t, account a
+		WHERE t.account_id = a.id
 	</select>
 	
 	<!--public Task getTask(int id) -->
 	<select id="getTask" resultType="task" parameterType="int">
-		SELECT * FROM TASK
-		WHERE ID = #{id}
+		SELECT t.*, a.name name
+		FROM task t, account a
+		WHERE t.account_id = a.id
+		AND t.id = #{id}
 	</select>
 	
 	<!-- public void insertTask(Task ins) -->
@@ -25,13 +29,15 @@
 	<!-- public void updateTask(Task upt) -->
 	<update id="updateTask" parameterType="task">
 		UPDATE TASK
-			SET subject = #{subject},
+			SET project_id = #{project_id},
+				account_id = #{account_id},
+				subject = #{subject},
 				description = #{description},
 				status = #{status},
 				priority = #{priority},
 				start_date = #{start_date},
 				due_date = #{due_date},
-				updated_on = #{updated_on},
+				estimated = #{estimated},
 				done_ratio = #{done_ratio},
 				tracker = #{tracker}
 			WHERE ID = #{id}

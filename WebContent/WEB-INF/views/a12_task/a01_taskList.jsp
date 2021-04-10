@@ -189,7 +189,7 @@ html, body {
                   	<td>${task.status}</td>
                   	<td>${task.priority}</td>
                   	<td>${task.subject}</td>
-                  	<td>${task.account_id}</td>
+                  	<td>${task.name}</td>
                   	<td>${task.start_date}</td>
                   </tr>
                   </c:forEach>

@@ -59,13 +59,23 @@ html, body {
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
+	var proc = "${param.proc}";
+	
+	if(proc=="upt"){
+		alert("수정완료\n리스트 페이지로 이동합니다");
+		location.href = "${path}/task.do?method=list";			
+	}
+	
+	if(proc=="del"){
+		alert("삭제완료\n리스트 페이지로 이동합니다");
+		location.href = "${path}/task.do?method=list";			
+	}
+	
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-
-		var proc = "${param.proc}";
-
+		
 		$("#gomain").click(function(){
 			$(location).attr("href","${path}/task.do?method=list");
 		});
@@ -84,18 +94,7 @@ html, body {
 				$("form").attr("action","${path}/task.do?method=delete");
 				$("form").submit();
 			}
-		});
-		
-		if(proc=="upt"){
-			if(confirm("수정완료\n계속 수정하시겠습니까?")){
-				location.href = "${path}/task.do?method=list";
-			}
-		}
-		if(proc=="del"){
-			alert("삭제완료\n리스트 페이지로 이동합니다");
-			location.href = "${path}/task.do?method=list";			
-		}	
-		
+		});		
 	});
 </script>
 </head>
@@ -136,21 +135,9 @@ html, body {
           <div class="card-header">
             <h3 class="card-title">${task.tracker}&nbsp;&nbsp;#${task.id}</h3>
         	<form:hidden path="id"/>
-        	<form:hidden path="parent_id"/>
-        	<form:hidden path="project_id"/>
-        	<form:hidden path="account_id"/>        	
-        	<form:hidden path="subject"/>
-        	<form:hidden path="description"/>
-        	<form:hidden path="status"/>
-        	<form:hidden path="priority"/>
-        	<form:hidden path="created_on"/>
+ <%--        	<form:hidden path="created_on"/> --%>
         	<form:hidden path="updated_on"/>
-        	<form:hidden path="start_date"/>
-        	<form:hidden path="due_date"/>
-        	<form:hidden path="estimated"/>
-        	<form:hidden path="done_ratio"/>
-        	<form:hidden path="completed_on"/>
-        	<form:hidden path="tracker"/>
+  <%--       	<form:hidden path="completed_on"/> --%>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -168,8 +155,14 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
                   <label>상태 *</label>
-                  <form:select path="status" class="form-control select2" style="width: 100%;">
-                    <form:option selected="selected" value="${task.status}" label="${task.status}"/>
+                  <form:select path="status" class="form-control select" style="width: 100%;">
+                     <option value="">상태 선택</option>
+                     <form:option value="신규" label="신규"/>
+                     <form:option value="진행" label="진행"/>
+                     <form:option value="해결" label="해결"/>
+                     <form:option value="의견" label="의견"/>
+                     <form:option value="완료" label="완료"/>
+                     <form:option value="거절" label="거절"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->
@@ -180,7 +173,9 @@ html, body {
                   <label>유형 *</label>
                   <form:select path="tracker" class="form-control select" style="width: 100%;">
                     <option value="">유형 선택</option>
-                    <form:option value="${task.tracker}" label="${task.tracker}"/>
+                    <form:option value="결함" label="결함"/>
+                    <form:option value="새기능" label="새기능"/>
+                    <form:option value="지원" label="지원"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->
@@ -209,7 +204,11 @@ html, body {
                   <label>우선순위 *</label>
                   <form:select path="priority" class="form-control select" style="width: 100%;">
                   	<option value="">우선순위</option>
-                    	<form:option value="${task.priority}" label="${task.priority}"/>
+                    <form:option value="1" label="낮음"/>
+                    <form:option value="2" label="보통"/>
+                   	<form:option value="3" label="높음"/>
+                    <form:option value="4" label="긴급"/>
+                    <form:option value="5" label="즉시"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->

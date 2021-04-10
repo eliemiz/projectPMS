@@ -59,11 +59,16 @@ html, body {
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
+	var proc = "${proc}";
+	if(proc=="ins"){
+		alert("등록완료\n리스트로 이동합니다.")
+		location.href = "${path}/task.do?method=list";			
+	}
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		var proc = "${proc}";
+
 		$("#insBtn").on("click",function(){
 			if($("[name=project_id]").val()==""){
 				alert("프로젝트를 선택해주세요.");
@@ -89,11 +94,7 @@ html, body {
 			} 
 			
 			$("form").submit();
-		});			
-		if(proc=="ins"){
-			alert("등록완료\n리스트로 이동합니다.")
-			location.href = "${path}/task.do?method=list";			
-		}
+		});
 	
 		/* 유효성 체크 */
 		/*

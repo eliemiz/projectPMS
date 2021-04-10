@@ -15,82 +15,87 @@ public class Task {
 	private String description;
 	private String status;
 	private int priority;
-//	private Date created_on;
 	private String created_on;
-//	private Date updated_on;
 	private String updated_on;
-//	private Date start_date;
 	private String start_date;
-//	private Date due_date;
 	private String due_date;
 	private int estimated;
 	private int done_ratio;
-//	private Date completed_on;
 	private String completed_on;
 	private String tracker; // 유형 추가
+	private String name; // 어카운트 이름 불러오기
 //	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
 //	private String[] filename; // 파일 수정시 사용
 //	private ArrayList<Attachment> fileInfo;
+
 	public Task() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getParent_id() {
 		return parent_id;
 	}
+
 	public void setParent_id(int parent_id) {
 		this.parent_id = parent_id;
 	}
+
 	public int getProject_id() {
 		return project_id;
 	}
+
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
 	}
-	public int getaccount_id() {
+
+	public int getAccount_id() {
 		return account_id;
 	}
-	public void setaccount_id(int account_id) {
+
+	public void setAccount_id(int account_id) {
 		this.account_id = account_id;
 	}
+
 	public String getSubject() {
 		return subject;
 	}
+
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public int getPriority() {
 		return priority;
 	}
+
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
-	/*
-	public Date getCreated_on() {
-		return created_on;
-	}
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
-	}
-	*/
 
 	public String getCreated_on() {
 		return created_on;
@@ -99,83 +104,71 @@ public class Task {
 	public void setCreated_on(String created_on) {
 		this.created_on = created_on;
 	}
- /*
-	public Date getUpdated_on() {
-		return updated_on;
-	}
-	public void setUpdated_on(Date updated_on) {
-		this.updated_on = updated_on;
-	}
-	*/
 
 	public String getUpdated_on() {
 		return updated_on;
 	}
+
 	public void setUpdated_on(String updated_on) {
 		this.updated_on = updated_on;
 	}
- /*
-	public Date getStart_date() {
-		return start_date;
-	}
-	public void setStart_date(Date start_date) {
-		this.start_date = start_date;
-	}
-*/
+
 	public String getStart_date() {
 		return start_date;
 	}
+
 	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
- /*
-	public Date getDue_date() {
-		return due_date;
-	}
-	public void setDue_date(Date due_date) {
-		this.due_date = due_date;
-	}
-*/
+
 	public String getDue_date() {
 		return due_date;
 	}
+
 	public void setDue_date(String due_date) {
 		this.due_date = due_date;
 	}
- 
+
 	public int getEstimated() {
 		return estimated;
 	}
+
 	public void setEstimated(int estimated) {
 		this.estimated = estimated;
 	}
+
 	public int getDone_ratio() {
 		return done_ratio;
 	}
+
 	public void setDone_ratio(int done_ratio) {
 		this.done_ratio = done_ratio;
 	}
-	/*
-	public Date getCompleted_on() {
-		return completed_on;
-	}
-	public void setCompleted_on(Date completed_on) {
-		this.completed_on = completed_on;
-	}
-*/
+
 	public String getCompleted_on() {
 		return completed_on;
 	}
+
 	public void setCompleted_on(String completed_on) {
 		this.completed_on = completed_on;
 	}
- 
+
 	public String getTracker() {
 		return tracker;
 	}
+
 	public void setTracker(String tracker) {
 		this.tracker = tracker;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/*
 	public MultipartFile[] getReport() {
 		return report;
@@ -196,5 +189,4 @@ public class Task {
 		this.fileInfo = fileInfo;
 	}
 	 */
-	
 }

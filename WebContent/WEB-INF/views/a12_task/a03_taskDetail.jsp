@@ -155,6 +155,7 @@ html, body {
         	
           <h3 class="card-title">
           	${task.tracker}&nbsp;&nbsp;#<span id="id" name="id" value="${task.id}">${task.id}</span>
+          	<span ></span>
           </h3>  
         </div> <!-- /.card-header -->
         
@@ -182,7 +183,14 @@ html, body {
                 <div class="form-group">
                   <label>우선순위</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                    <span name="priority" value="${task.priority}">${task.priority}</span>
+                   <c:choose>
+                   	<c:when test="${task.priority==1}">낮음</c:when>
+                   	<c:when test="${task.priority==2}">보통</c:when>
+                   	<c:when test="${task.priority==3}">높음</c:when>
+                   	<c:when test="${task.priority==4}">긴급</c:when>
+                   	<c:when test="${task.priority==5}">즉시</c:when>
+                   </c:choose>
+                    <%-- <span name="priority" value="${task.priority}">${task.priority}</span> --%>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -207,8 +215,8 @@ html, body {
               <div class="col-md-6">
                 <div class="form-group">
                   <label>담당자</label>
-                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   <span name="account_id" value="${task.account_id}">${task.account_id}</span>
+                   &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;                   
+                   <span name="account_id" value="${task.account_id}">${task.name}</span>                            
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
