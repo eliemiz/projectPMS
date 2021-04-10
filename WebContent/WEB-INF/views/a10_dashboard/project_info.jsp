@@ -24,19 +24,19 @@
 					</colgroup>
 					<tr>
 						<th>프로젝트명</th>
-						<td>projectPMS</td>
+						<td>${project.name}</td>
 						<th>프로젝트 매니저(PM)</th>
-						<td>홍길동</td>
+						<td>홍길동(임시)</td>
 					</tr>
 					<tr>
-						<th>기간</th>
-						<td>2021-02-17 ~ 2021-04-30</td>
-						<th>담당부서</th>
-						<td>개발팀</td>
-					</tr>
-					<tr>
+						<th>프로젝트 설명</th>
+						<td>${project.description}</td>
 						<th>참여 인원 수</th>
 						<td>6명</td>
+					</tr>
+					<tr>
+						<th>홈페이지</th>
+						<td>${project.homepage}</td>
 						<th></th>
 						<td></td>
 					</tr>

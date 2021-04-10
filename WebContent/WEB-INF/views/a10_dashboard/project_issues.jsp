@@ -25,51 +25,17 @@
 		</tr>
 	</thead>
 	<tbody>
+		<c:forEach var="task" items="${taskList}">
 		<tr>
-			<td>5</td>
+			<td>${task.id}</td>
 			<td>
-				<a href="${path}/task.do?method=detail">동료검토결과보고서</a>
+				<a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a>
 			</td>
-			<td>김철수</td>
-			<td>2021-04-01</td>
-			<td>2021-03-27</td>
+			<td>${task.name}</td>
+			<td>${task.dueDate}</td>
+			<td>${task.completedOn}</td>
 		</tr>
-		<tr>
-			<td>4</td>
-			<td>
-				<a href="${path}/task.do?method=detail">PDF 파일 미리보기</a>
-			</td>
-			<td>김피엠</td>
-			<td>2021-03-30</td>
-			<td>2021-03-27</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>
-				<a href="${path}/task.do?method=detail">사용자를 위한 이용 매뉴얼을 작성합시다</a>
-			</td>
-			<td>오재복</td>
-			<td>2021-04-01</td>
-			<td>2021-04-01</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>
-				<a href="${path}/task.do?method=detail">테스트결과서가이드</a>
-			</td>
-			<td>이점검</td>
-			<td>2021-04-01</td>
-			<td>2021-03-27</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>
-				<a href="${path}/task.do?method=detail">SW아키텍처</a>
-			</td>
-			<td>김희종</td>
-			<td>2021-04-12</td>
-			<td>2021-04-11</td>
-		</tr>
+		</c:forEach>
 	</tbody>
 	<tfoot>
 		<tr>

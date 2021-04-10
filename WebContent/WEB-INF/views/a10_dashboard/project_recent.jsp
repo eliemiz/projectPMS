@@ -31,13 +31,24 @@
 							<th>제목</th>
 							<th>상태</th>
 							<th>발생 가능성</th>
-							<th>유형</th>
+							<th>영향도</th>
 							<th>예상 시작일자</th>
 							<th>예상 완료일자</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="risk" items="${riskList}">
 						<tr>
+							<td>${risk.id}</td>
+							<td><a href="${path}/risk.do?method=detail&id=${risk.id}">${risk.subject}</a></td>
+							<td>${risk.status}</td>
+							<td>${risk.probability}</td>
+							<td>${risk.impact}</td>
+							<td>${risk.start_date}</td>
+							<td>${risk.end_date}</td>
+						</tr>
+						</c:forEach>
+						<%-- <tr>
 	                      <td>5</td>
 	                      <td><a href="${path}/risk.do?method=detail">개발일정 연장 고려</a></td>
 	                      <td>open</td>
@@ -81,7 +92,7 @@
 	                      <td>delay</td>
 	                      <td>2021-03-01</td>
 	                      <td>2021-04-01</td>
-	                    </tr>
+	                    </tr> --%>
 						
 					</tbody>
 				</table>
@@ -90,8 +101,8 @@
 		</div>
 		<!-- /.card-body -->
 		<div class="card-footer clearfix">
-			<a href="${path}/risk.do?method=insert" class="btn btn-sm btn-info float-left">Create New Risk</a>
-			<a href="${path}/risk.do?method=list" class="btn btn-sm btn-secondary float-right">View All Risks</a>
+			<a href="${path}/risk.do?method=insForm" class="btn btn-sm btn-info float-left">Create New Risk</a>
+			<a href="${path}/risk.do?method=list&projectId=${project.id}" class="btn btn-sm btn-secondary float-right">View All Risks</a>
 		</div>
 		<!-- /.card-footer -->
 	</div>
@@ -124,41 +135,15 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="task" items="${taskList}">
 						<tr>
-		                    <td>5</td>
-		                    <td><a href="${path}/task.do?method=detail">동료검토결과보고서</a></td>
-		                    <td>김철수</td>
-		                    <td>2021-04-01</td>
-		                    <td>2021-03-27</td>
+		                    <td>${task.id}</td>
+		                    <td><a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a></td>
+		                    <td>${task.name}</td>
+		                    <td>${task.dueDate}</td>
+		                    <td>${task.completedOn}</td>
 						</tr>
-						<tr>
-		                    <td>4</td>
-		                    <td><a href="${path}/task.do?method=detail">PDF 파일 미리보기</a></td>
-		                    <td>김피엠</td>
-		                    <td>2021-03-30</td>
-		                    <td>2021-03-27</td>
-						</tr>
-						<tr>
-		                    <td>3</td>
-		                    <td><a href="${path}/task.do?method=detail">사용자를 위한 이용 매뉴얼을 작성합시다</a></td>
-		                    <td>오재복</td>
-		                    <td>2021-04-01</td>
-		                    <td>2021-04-01</td>
-						</tr>
-						<tr>
-		                    <td>2</td>
-		                    <td><a href="${path}/task.do?method=detail">테스트결과서가이드</a></td>
-		                    <td>이점검</td>
-		                    <td>2021-04-01</td>
-		                    <td>2021-03-27</td>
-						</tr>
-						<tr>
-		                    <td>1</td>
-		                    <td><a href="${path}/task.do?method=detail">SW아키텍처</a></td>
-		                    <td>김희종</td>
-		                    <td>2021-04-12</td>
-		                    <td>2021-04-11</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

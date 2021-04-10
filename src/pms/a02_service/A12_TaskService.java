@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Task;
+import pms.z01_vo.TaskResult;
 
 @Service
 public class A12_TaskService {
@@ -51,6 +52,11 @@ public class A12_TaskService {
 	// 캘린더 목록
 	public ArrayList<Task> calenList(){
 		return dao.calenList();
+	}
+	
+	// 산출물 리스트 조회
+	public ArrayList<TaskResult> getTaskResult(int projectId) {
+		return dao.getTaskResult(projectId);
 	}
 
 }
