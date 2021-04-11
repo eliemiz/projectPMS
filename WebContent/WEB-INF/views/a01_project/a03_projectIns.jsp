@@ -135,8 +135,9 @@ $.widget.bridge('uibutton', $.ui.button)
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
                 <form:input path="identifier" class="form-control"/>
-                <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
-                * 식별자는 저장후에는 수정할 수 없습니다.</a>
+                <!-- <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
+                * 식별자는 저장후에는 수정할 수 없습니다.</a> -->
+                
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>
