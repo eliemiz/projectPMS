@@ -43,6 +43,13 @@
 
   $.widget.bridge('uibutton', $.ui.button)
   
+  var proc = "${param.proc}";
+  
+  if(proc=="del"){
+		alert("삭제완료");
+		location.href = "${path}/project.do";			
+	}
+  
    $(document).ready(function(){
       $("#regBtn").click(function(){
     	  location.href="${path}/project.do?method=insForm";
@@ -112,10 +119,11 @@
 		     </form:form>
 		  </div>
 		  </div>
-		 <form method="post" enctype="multipart/form-data">
+		  <!--		 <form method="post" enctype="multipart/form-data">
 	     <input type="hidden" name="proc"/>
+	     <input type="hidden" id="id" name="id" value="${project.id}"/> -->
+
 	     <c:forEach var="project" items="${projectList}">
-	     <input type="hidden" name="id" value="${project.id}"/>
 			<div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="m-0">${project.name}</h5>
@@ -130,7 +138,6 @@
               </div>
             </div>
             </c:forEach> 
-            </form>
    
     </section>
     <!-- /.content -->
