@@ -26,13 +26,13 @@
 						<th>프로젝트명</th>
 						<td>${project.name}</td>
 						<th>프로젝트 매니저(PM)</th>
-						<td>홍길동(임시)</td>
+						<td>홍길동</td>
 					</tr>
 					<tr>
 						<th>프로젝트 설명</th>
 						<td>${project.description}</td>
 						<th>참여 인원 수</th>
-						<td>6명</td>
+						<td>5명</td>
 					</tr>
 					<tr>
 						<th>홈페이지</th>
@@ -50,7 +50,7 @@
 						<th>프로젝트 상태</th>
 					</tr>
 					<c:choose>
-						<c:when test="${incompleteAll / (incompleteAll + completeAll) <= 0.7}">
+						<c:when test="${completeAll / (incompleteAll + completeAll) <= 0.7}">
 						<tr>
 							<td style="color:red">
 							<i class="fas fa-times-circle" style="font-size: 50px;"></i><br>
@@ -58,7 +58,7 @@
 							</td>
 						</tr>
 						</c:when>
-						<c:when test="${incompleteAll / (incompleteAll + completeAll) <= 0.9}">
+						<c:when test="${completeAll / (incompleteAll + completeAll) <= 0.9}">
 						<tr>
 							<td style="color:orange">
 							<i class="fas fa-exclamation-triangle" style="font-size: 50px;"></i><br>
