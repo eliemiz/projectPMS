@@ -152,7 +152,6 @@
        	<form:hidden path="status" value="open"/>
        	<form:hidden path="strategy" value="-"/>
        	<form:hidden path="treatment" value="-"/>
-       	<form:hidden path="description"/>
        	<form:hidden path="created_on"/>
     	<form:hidden path="updated_on"/>
          </div>
@@ -173,7 +172,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">상세설명</label>
-                    <form:textarea path="description" class="form-control" rows="3"/>
+                    <form:textarea path="description" class="form-control" rows="3" value=""/>
                     </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">담당자</label>
