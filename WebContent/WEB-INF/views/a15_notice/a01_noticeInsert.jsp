@@ -67,30 +67,28 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->  
 <script type="text/javascript">
+	var proc = "${proc}";
+		if(proc=="ins"){
+			  $("[name=subject]").val("");
+			  alert("등록완료");
+		  	  location.href="${path}/notice.do?method=list";
+	}
 	$(document).ready(function(){
 		$("#sb-notice").addClass("active");
 		//제목작성자설명
-		var proc = "${proc}";
 		$("#insBut").on("click",function(){
 			if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
 				return false;
+			}else if($("[name=project_id]").val()==""){
+				alert("프로젝트를 선택하세요.");
+				return false;
 			}else if($("[name=account_id]").val()==""){
 				alert("작성자를 선택하세요.");
 				return false;
-			}else if($("[name=content]").val()==""){
-				alert("내용을 입력하세요.");
-				return false;
 			}
 			$("form").submit();
-		});
-		  if(proc=="ins"){
-			  $("[name=subject]").val("");
-			  $("[name=description]").val("");
-			  if(confirm("등록완료")){
-	      		  location.href="${path}/notice.do?method=list";
-	      	  }
-		  }
+		});	  
 	});
 </script>
 </head>
@@ -133,7 +131,6 @@
       <div class="card-header">
        <h3 class="card-title">공지사항 등록</h3>
        	<form:hidden path="id"/>
-       	<form:hidden path="project_id"/>
        	<form:hidden path="created_on"/>
     	<form:hidden path="updated_on"/>
          </div>
@@ -153,8 +150,17 @@
                  	</form:select>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">프로젝트</label>
+                    <form:select path="project_id" class="form-control select2" style="width: 100%;">
+	                    <option value="">프로젝트</option>
+	                    <c:forEach var = "project" items="${projects}">
+	                    	<form:option value="${project.id}">${project.name}</form:option>
+	                    </c:forEach>
+                  	</form:select>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">설명</label>
-                    <form:textarea path="content" class="form-control" rows="3"/>
+                    <form:textarea path="content" class="form-control" rows="3" value=""/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>

@@ -130,6 +130,7 @@
                     <tr>
                       <th>번호</th>
                       <th>제목</th>
+                      <th>프로젝트</th>
                       <th>작성자</th>
                       <th>등록일</th>
                       <th>변경일</th>
@@ -140,7 +141,8 @@
                     <tr class="detail" style="cursor:pointer">
                       <td>${notice.id}</td>
                       <td>${notice.subject}</td>
-                      <td>${notice.account_id}</td>
+                      <td>${notice.project_name}</td>
+                      <td>${notice.account_name}</td>
                       <td>${notice.created_on}</td>
                       <td>${notice.updated_on}</td>
                     </tr>

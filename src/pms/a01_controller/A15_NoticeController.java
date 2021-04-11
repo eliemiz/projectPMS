@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pms.a02_service.A00_AccountService;
+import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A15_NoticeService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Notice;
+import pms.z01_vo.Project;
 
 
 @Controller
@@ -24,6 +26,8 @@ public class A15_NoticeController {
 	private A15_NoticeService service;
 	@Autowired(required = false)
 	private A00_AccountService service2;
+	@Autowired(required = false)
+	private A01_ProjectService service3;
 	
 	// http://localhost:6080/projectPMS/notice.do?method=list
 	// http://localhost:7080/projectPMS/notice.do?method=list
@@ -64,5 +68,9 @@ public class A15_NoticeController {
 	@ModelAttribute("accounts")
 	public ArrayList<Account> getAccountList(){
 		return service2.getAccountList();
+	}
+	@ModelAttribute("projects")
+	public ArrayList<Project> getProjectList(){
+		return service3.getProjectList();
 	}
 }

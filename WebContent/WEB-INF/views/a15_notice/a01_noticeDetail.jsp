@@ -130,8 +130,11 @@
               </p>
               <br>
               <div class="text-muted">
+              	<p class="text-sm">프로젝트
+                  <b class="d-block">${notice.project_name}</b>
+                </p>
                 <p class="text-sm">작성자
-                  <b class="d-block">${notice.account_id}</b>
+                  <b class="d-block">${notice.account_name}</b>
                 </p>
                 <p class="text-sm">등록일
                   <b class="d-block">${notice.created_on}</b>

@@ -1,17 +1,15 @@
 package pms.z01_vo;
 
-import java.util.Date;
-
 public class Notice {
 	private int id;
 	private int project_id;
 	private int account_id;
 	private String subject;
 	private String content;
-	
 	private String created_on;
-
 	private String updated_on;
+	private String account_name;
+	private String project_name;
 
 	public Notice() {
 		super();
@@ -85,5 +83,21 @@ public class Notice {
 	public void setUpdated_on(String updated_on) {
 		this.updated_on = updated_on;
 	}
-	
+
+	public String getAccount_name() {
+		return account_name;
+	}
+
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+
+	public String getProject_name() {
+		return project_name;
+	}
+
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
+	}
+
 }
