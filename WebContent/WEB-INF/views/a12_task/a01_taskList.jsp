@@ -194,7 +194,15 @@ html, body {
                   	<td>${task.project_name}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>
-                  	<td>${task.priority}</td>
+                  	<td>
+	                  	<c:choose>
+		                   	<c:when test="${task.priority==1}">낮음</c:when>
+		                   	<c:when test="${task.priority==2}">보통</c:when>
+		                   	<c:when test="${task.priority==3}">높음</c:when>
+		                   	<c:when test="${task.priority==4}">긴급</c:when>
+		                   	<c:when test="${task.priority==5}">즉시</c:when>
+		                    </c:choose>
+                  	</td>
                   	<td>${task.subject}</td>
                   	<td>${task.name}</td>
                   	<td>${task.start_date}</td>

@@ -270,6 +270,10 @@ html, body {
                   <label>진척도</label>
                   <form:input path="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
                 </div>
+                  <div class="form-group">
+                  	<label>연결된 Task</label>
+                  	<input type="text" class="form-control" style="width: 100%;">
+                  </div>   
       <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
                 <!-- <div class="form-group">
                   <label>Task 관리자</label><br>
@@ -289,7 +293,7 @@ html, body {
                   <label>완료일 *</label>
                    <div class="input-group date" id="enddate" data-target-input="nearest">
                        <form:input path="due_date" type="date" class="form-control" style="width:100%;"/>
-                   </div><br>
+                   </div>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -299,11 +303,13 @@ html, body {
                         <input type="file" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                   </div><br><br>
+                  <%--
                   <div class="form-group">
                   	<label>연결된 Task</label>
-        <%-- TODO: task_relation 이용해서 select로 할 지 입력으로 할 지 결정 --%>
+         TODO: task_relation 이용해서 select로 할 지 입력으로 할 지 결정 
                   	<input type="text" class="form-control" style="width: 100%;">
-                  </div>            
+                  </div>       
+                     --%>     
                  </div>    
                 <!-- /.form-group -->
               </div>

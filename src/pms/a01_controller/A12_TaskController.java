@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
+import pms.a02_service.A18_AttachmentService;
 import pms.z01_vo.Account;
+import pms.z01_vo.Attachment;
 import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 
@@ -25,6 +27,10 @@ public class A12_TaskController {
 	private A01_ProjectService serviceP;
 	@Autowired(required = false)
 	private A00_AccountService serviceA;
+	/*
+	@Autowired(required = false)
+	private A18_AttachmentService serviceF;
+	*/
 	/*
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
@@ -56,6 +62,9 @@ public class A12_TaskController {
 	@RequestMapping(params = "method=insert")
 	public String insertTask(Task ins, Model d) {
 		System.out.println("등록:" + ins.getSubject());
+		/*
+		System.out.println("파일:"+insert.getReport()[0].getOriginalFilename()); 
+		 */
 		service.insertTask(ins);
 		d.addAttribute("proc", "ins");
 
@@ -101,5 +110,10 @@ public class A12_TaskController {
 	public ArrayList<Account> getAccountList(){
 		return serviceA.getAccountList();
 	}
-	
+	/*
+	@ModelAttribute("attachments")
+	public ArrayList<Attachment> getAttachmentList(){
+		return serviceF.getAttachmentList();
+	}
+	*/
 }

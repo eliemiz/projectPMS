@@ -25,9 +25,9 @@ public class Task {
 	private String tracker; // 유형 추가
 	private String name; // 어카운트 이름 불러오기
 	private String project_name;
-//	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
-//	private String[] filename; // 파일 수정시 사용
-//	private ArrayList<Attachment> fileInfo;
+	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
+	private String[] filename; // 파일 수정시 사용
+	private ArrayList<Attachment> fileInfo;
 
 	public Task() {
 		super();
@@ -178,7 +178,7 @@ public class Task {
 		this.project_name = project_name;
 	}
 
-	/*
+	
 	public MultipartFile[] getReport() {
 		return report;
 	}
@@ -197,5 +197,5 @@ public class Task {
 	public void setFileInfo(ArrayList<Attachment> fileInfo) {
 		this.fileInfo = fileInfo;
 	}
-	 */
+	 
 }
