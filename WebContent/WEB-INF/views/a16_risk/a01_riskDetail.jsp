@@ -146,10 +146,28 @@
                   <b class="d-block">${risk.category}</b>
                 </p>
                 <p class="text-sm">발생도
-                  <b class="d-block">${risk.probability}</b>
+                  <b class="d-block">
+                  <c:choose>
+					<c:when test="${risk.probability==1}"> Unlikely </c:when>
+					<c:when test="${risk.probability==2}"> Low </c:when>
+					<c:when test="${risk.probability==3}"> Medium </c:when>
+					<c:when test="${risk.probability==4}"> High </c:when>
+					<c:when test="${risk.probability==5}"> Expected </c:when>
+					<c:otherwise> Error </c:otherwise>
+				  </c:choose>
+                  </b>
                 </p>
                 <p class="text-sm">영향도
-                  <b class="d-block">${risk.impact}</b>
+                  <b class="d-block">
+                  <c:choose>
+					<c:when test="${risk.impact==1}"> Negligible </c:when>
+					<c:when test="${risk.impact==2}"> Minor </c:when>
+					<c:when test="${risk.impact==3}"> Moderate </c:when>
+					<c:when test="${risk.impact==4}"> Significant </c:when>
+					<c:when test="${risk.impact==5}"> Severe </c:when>
+					<c:otherwise> Error </c:otherwise>
+				  </c:choose>
+                  </b>
                 </p>
                 <p class="text-sm">예상시작일
                   <b class="d-block">${risk.start_date}</b>

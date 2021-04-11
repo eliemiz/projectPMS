@@ -67,12 +67,17 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->  
 <script type="text/javascript">
+	var proc = "${proc}";
+		if(proc=="ins"){
+			  $("[name=subject]").val("");
+			  alert("등록완료");
+			  location.href="${path}/risk.do?method=list";
+	}
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
 		// subject description account_id
 		// category probability impact
 		// start_date end_date
-		var proc = "${proc}";
 		$("#insBut").on("click",function(){
 			if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
@@ -101,12 +106,6 @@
 			}
 			$("form").submit();
 		});
-		  if(proc=="ins"){
-			  $("[name=subject]").val("");
-			  if(confirm("등록완료")){
-	      		  location.href="${path}/risk.do?method=list";
-	      	  }
-		  }
 	});
 </script>
 </head>
@@ -175,7 +174,7 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">상세설명</label>
                     <form:textarea path="description" class="form-control" rows="3"/>
-                  </div>
+                    </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">담당자</label>
                     <form:select path="account_id" class="form-control select" style="width: 100%;">

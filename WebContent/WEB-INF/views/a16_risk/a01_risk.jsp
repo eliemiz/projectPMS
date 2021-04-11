@@ -149,8 +149,26 @@
                       <td>${risk.project_name}</td>
                       <td>${risk.status}</td>
                       <td>${risk.category}</td>
-                      <td>${risk.probability}</td>
-                      <td>${risk.impact}</td>
+                      <td>
+                      <c:choose>
+						<c:when test="${risk.probability==1}"> Unlikely </c:when>
+						<c:when test="${risk.probability==2}"> Low </c:when>
+						<c:when test="${risk.probability==3}"> Medium </c:when>
+						<c:when test="${risk.probability==4}"> High </c:when>
+						<c:when test="${risk.probability==5}"> Expected </c:when>
+						<c:otherwise> Error </c:otherwise>
+					  </c:choose>
+                      </td>
+                      <td>
+                      <c:choose>
+						<c:when test="${risk.impact==1}"> Negligible </c:when>
+						<c:when test="${risk.impact==2}"> Minor </c:when>
+						<c:when test="${risk.impact==3}"> Moderate </c:when>
+						<c:when test="${risk.impact==4}"> Significant </c:when>
+						<c:when test="${risk.impact==5}"> Severe </c:when>
+						<c:otherwise> Error </c:otherwise>
+					  </c:choose>
+                      </td>
                       <td>${risk.account_name}</td>
                       <td>${risk.start_date}</td> 
                       <td>${risk.end_date}</td> 
