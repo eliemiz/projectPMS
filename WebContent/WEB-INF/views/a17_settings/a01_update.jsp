@@ -42,8 +42,23 @@
 
   $.widget.bridge('uibutton', $.ui.button)
 
+  var proc = "${param.proc}";
+	
+	if(proc=="upt"){
+		alert("설정완료!!\설정 목록 페이지로 이동합니다");
+		location.href = "${path}/settings.do?method=project";			
+	}
+  
 	$(document).ready(function(){
 		$("#sb-project-setting").addClass("active");
+		
+		$("#uptBtn").on("click",function(){
+			if(confirm("수정하시겠습니까?")){
+				$("[name=proc]").val("upt");
+				$("form").attr("action","${path}/settings.do?method=update");
+				$("form").submit();
+			}
+		});
 		
 	});
 
@@ -103,6 +118,9 @@
                 </button>
               </div>
             </div>
+             <form method="post" >
+   				<input type="hidden" name="proc"/>
+   				<input type="hidden" name="id" value="${project.id}"/>
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">이름</label>
@@ -129,12 +147,13 @@
 	          </div> 
                <div class="form-row float-right">
           <!-- /.col -->
-            <button type="submit" class="btn btn-primary">설정</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary" id="uptBtn">설정</button>&nbsp;&nbsp;
             <a href="${path}/settings.do?method=project" class="btn btn-default">취소</a>
           <!-- /.col -->
         </div>
             </div>
             <!-- /.card-body -->
+           </form>
           </div>
           <!-- /.card -->
         </div>

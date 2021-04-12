@@ -36,8 +36,9 @@ public class A17_SettingsController {
 	}
 	// http://localhost:7080/projectPMS/settings.do?method=update
 	@RequestMapping( params = "method=update")
-	public String update() {
-		return "";
+	public String update(Project upt) {
+		service.projectUpt(upt);
+		return "forward:/settings.do?method=detail";
 	}
 	
 	
