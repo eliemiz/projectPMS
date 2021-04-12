@@ -56,10 +56,17 @@
  	 		CONNECT BY PRIOR ID = PARENT_ID
  	 	) 
 	</delete>
-	
-	<!-- public ArrayList<Task> calenList() -->
-	<select id="calenList" resultMap="taskList">
-		select * from task
+
+	<!-- Calendar -->	
+	<resultMap type="calen" id="calMap">
+		<result property="start" column="start1"/>
+		<result property="end" column="end1"/>
+	</resultMap>
+	<!-- public ArrayList<Calendar> calenList() -->
+	<select id="calenList" resultMap="calMap">
+		SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
+				t.start_date start1, t.due_date end1
+		FROM task t, account a
 	</select>
 	
 	<!-- public ArrayList<TaskResult> getTaskResult(int projectId); -->

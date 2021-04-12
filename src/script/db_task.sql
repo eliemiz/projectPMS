@@ -44,3 +44,7 @@ INSERT INTO task VALUES (10002, 10002, 11112, 12346, 'test용 TASK222', '테스�
 						 '2021/04/30', 185, 25, '2021/04/30','결함');		
 SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t;
 
+-- Calendar 조회용
+SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
+		t.start_date start1, t.due_date end1
+FROM task t, account a;

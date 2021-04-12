@@ -21,6 +21,8 @@
 		<typeAlias alias="journal" type="pms.z01_vo.Journal"/>
 		<typeAlias alias="journalDetail" type="pms.z01_vo.JournalDetail"/>
 		<typeAlias alias="comment" type="pms.z01_vo.Comment"/>
+		
+		<typeAlias alias="calen" type="pms.z01_vo.Calendar"/>
 
 		<typeAlias alias="temp" type="pms.z01_vo.Temp"/>
 		

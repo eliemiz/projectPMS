@@ -7,6 +7,7 @@ import java.util.HashMap;
 import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Attachment;
+import pms.z01_vo.Calendar;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z01_vo.TaskSch;
@@ -26,7 +27,7 @@ public interface A12_TaskDao {
 	public void deleteFile(int id);	 // 파일 삭제
 	
 	// Calendar DAO
-	public ArrayList<Task> calenList();
+	public ArrayList<Calendar> calenList();
 	
 	public ArrayList<TaskResult> getTaskResult(int projectId); // 산출물 리스트 조회
 }

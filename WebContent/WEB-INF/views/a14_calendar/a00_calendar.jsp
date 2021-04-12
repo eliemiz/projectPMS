@@ -46,12 +46,19 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
+	// 전역변수로 날짜 데이터를 가져오기 위한 선언
 	var date = {};
-	
+
 	document.addEventListener('DOMContentLoaded', function() {
+		var opts = {
+				autoOpen:false, // 초기에 로딩하지 않게 false 설정
+				width:"350px",
+				modal:true
+		}
+		// Dialogue를 사용할 준비
+		$("#schDialog").dialog(opts);
 		var calendarEl = document.getElementById('calendar');
-		// new FullCalendar.Calendar(대상 DOM객체, {속성:속성값, 속성2:속성값2...}
-//		alert(new Date().toISOString());
+		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			headerToolbar : {
 				left : 'prevYear prev today next nextYear',
@@ -59,10 +66,65 @@
 				right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 			},
 			themeSystem: 'bootstrap',
-			initialDate : new Date().toISOString(),
+			initialDate : new Date().toISOString(), // 현재날짜로 초기 로딩 날짜 설정
 			navLinks : true,
 			selectable : true,
 			selectMirror : true,
+			// 이벤트명:function(){}: 각 날짜에 대한 이벤트를 통해 처리할 내용
+			// 등록처리할 때, 등록 버튼이 추가된 dialogue 설정 및 open
+			select : function(arg) {
+				// 등록 시, 기존 내용 로딩 방지 및 초기화
+				$("#schDialog>form")[0].reset();
+				// 화면에 보이는 형식 설정
+				// 클릭한 날짜를 전역변수에 할당 / 시작일과 마지막날을 date형식으로 할당
+				date.start = arg.start;
+				date.end = arg.end;
+				opts.buttons={
+					"등록":function(){
+						var sch = callSch(); // 리턴값이 입력된 객체데이터
+						/* 데이터 확인 */
+						console.log("### 등록할 데이터 ###");
+						console.log(sch);
+						
+						/* 화면에 출력 */
+						if(sch.title){
+							// 화면에 처리할 이벤트 할당 
+							calendar.addEvent(sch);
+							calendar.unselect();
+						}
+						// ajax 처리(DB등록)
+						$.ajax({
+							type:"post",
+							url:"${path}/calendar.do?method=insert",
+							dataType:"json",
+							data:sch, // 요청값을 json객체로 전달 가능
+							success:function(data){
+								// data.모델명
+								if(data.success=="Y"){
+									alert("등록 성공");
+								}
+							},
+							error:function(err){
+								console.log(err);
+							}
+						});
+						$("#schDialog").dialog("close"); // dialogue 창닫기
+					}
+				};
+				
+				// console.log("# 매개변수 arg의 속성 #");
+				// console.log(arg); // console을 통해 해당 속성 확인
+				// alert("시작일: "+arg.start.toISOString());
+				// $("#btn01").click();
+				
+				// 화면에 보이는 날짜를 한국 표현식으로 처리
+				$("[name=start]").val(arg.start.toLocaleString());
+				$("[name=end]").val(arg.end.toLocaleString());
+				// allDay는 boolean값이므로 select의 형식에 맞게 처리하려면 ""+형식으로 문자열 처리가 필요
+				$("[name=allDay]").val(""+arg.allDay);
+				$("#schDialog").dialog(opts);
+				$("#schDialog").dialog("open");
+			},
 			editable : true,
 			dayMaxEvents : true,
 			events :function(info, successCallback, failureCallback){
@@ -301,6 +363,69 @@
 		</p>-->
 		</div>
     	<div id='calendar'></div>
+    	
+		<div id="schDialog" title="일정"> 
+			<form id="frm">
+				<input name="id" type="hidden" value="0"/>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">제목</span>
+					</div>
+					<input class="form-control" name="title" type="text"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">작성자</span>
+					</div>
+					<input class="form-control" name="writer" type="text"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">내용</span>
+					</div>
+					<textarea rows="5" class="form-control" cols="20" name="content"></textarea>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">종일여부</span>
+					</div>
+					<select name="allDay" class="form-control">
+						<option value="true"> 종 일 </option>
+						<option value="false"> 시 간 </option>
+					</select>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">시작일</span>
+					</div>
+					<input class="form-control" name="start" type="text"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">종료일</span>
+					</div>
+					<input class="form-control" name="end" type="text"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">배경색상</span>
+					</div>
+					<input name="backgroundColor" class="form-control" type="color" value="#0099cc"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">보드색상</span>
+					</div>
+					<input name="borderColor" class="form-control" type="color" value="#0099ff"/>
+				</div>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text">글자색상</span>
+					</div>
+					<input name="textColor" class="form-control" type="color" value="#ccffff"/>
+				</div>
+			</form>
+		</div>    	
     </section>
     <!-- /.content -->
   </div>

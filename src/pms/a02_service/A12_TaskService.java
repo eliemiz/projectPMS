@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import pms.a03_dao.A12_TaskDao;
+import pms.z01_vo.Calendar;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 
@@ -99,7 +100,7 @@ public class A12_TaskService {
 	}
 	
 	// 캘린더 목록
-	public ArrayList<Task> calenList(){
+	public ArrayList<Calendar> calenList(){
 		return dao.calenList();
 	}
 	
