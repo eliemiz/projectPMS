@@ -123,6 +123,7 @@ html, body {
 		alert("due_date "+due_date);
 		alert("estimated "+estimated);
 		*/
+		
 	});
 </script>
 </head>
@@ -166,6 +167,7 @@ html, body {
             <form:hidden path="created_on"/>
             <form:hidden path="updated_on"/>
             <form:hidden path="completed_on"/>
+            <input type="hidden" name="document_id" value="Task"/>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -298,10 +300,10 @@ html, body {
                 <!-- /.form-group -->
                 <div class="form-group">
        <%-- TODO: fileUpload 완성 후 수정 --%>
-                  <label for="exampleInputFile">첨부파일</label> <!-- 첨부파일명 안뜸 -->
+                  <label for="exampleInputFile">첨부파일</label> 
                   <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <input type="file" class="custom-file-label" name="report" style="width:100%;" onclick="fileCheck(this.form.file)"/>
+                        <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                   </div><br><br>
                   <%--
                   <div class="form-group">

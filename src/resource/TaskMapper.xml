@@ -28,6 +28,13 @@
 				#{created_on}, #{updated_on}, #{start_date}, #{due_date},
 				#{estimated}, #{done_ratio}, #{completed_on}, #{tracker})
 	</insert>
+
+	<!-- public void uploadFile(Attachment ins) : 파일 업로드 -->
+	<insert id="uploadFile" parameterType="attachment">
+		INSERT INTO attachment VALUES (
+			ATTACHMENT_SEQ.nextval,#{document_type},task_seq.currval,#{filename},
+			#{disk_filename},#{pathname},#{filesize},#{created_on})
+	</insert>
 	
 	<!-- public void updateTask(Task upt) -->
 	<update id="updateTask" parameterType="task">
@@ -56,6 +63,13 @@
  	 		CONNECT BY PRIOR ID = PARENT_ID
  	 	) 
 	</delete>
+
+
+
+
+
+
+
 
 	<!-- Calendar -->	
 	<resultMap type="calen" id="calMap">

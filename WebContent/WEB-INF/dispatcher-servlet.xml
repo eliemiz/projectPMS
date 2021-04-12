@@ -70,5 +70,8 @@
    			</list>
    		</property>
    	</bean>
-	<!-- 다운로드 작성 예정--> 
+   
+    <!-- 파일다운로드뷰 viewer -->
+	<bean id="downloadviewer" class="pms.z02_util.FileDownloadViewer"/>
+	
 </beans>

@@ -29,10 +29,6 @@ public class A12_TaskController {
 	private A00_AccountService serviceA;
 	/*
 	@Autowired(required = false)
-	private A18_AttachmentService serviceF;
-	*/
-	/*
-	@Autowired(required = false)
 	private LocaleResolver localeResolver;
 	*/
 	
@@ -61,10 +57,8 @@ public class A12_TaskController {
 	// http://localhost:7080/projectPMS/task.do?method=insert
 	@RequestMapping(params = "method=insert")
 	public String insertTask(Task ins, Model d) {
-		System.out.println("등록:" + ins.getSubject());
-		/*
-		System.out.println("파일:"+insert.getReport()[0].getOriginalFilename()); 
-		 */
+		System.out.println("등록:" + ins.getSubject());		
+		System.out.println("파일:"+ins.getReport()[0].getOriginalFilename()); 
 		service.insertTask(ins);
 		d.addAttribute("proc", "ins");
 

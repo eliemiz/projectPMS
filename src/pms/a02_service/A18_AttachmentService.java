@@ -18,12 +18,13 @@ import pms.z01_vo.Attachment;
 public class A18_AttachmentService {
 	@Autowired(required = false)
 	private A18_AttachmentDao dao;
+	
 	/*
-	@Value("${upload}")
-	private String upload;
-	@Value("${uploadTmp}")
-	private String uploadTmp;
-	*/
+	 * @Value("${upload}") private String upload;
+	 * 
+	 * @Value("${uploadTmp}") private String uploadTmp;
+	 */
+	
 	
 	public ArrayList<Attachment> getAttachmentList(){
 		return dao.getAttachmentList();

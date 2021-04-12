@@ -11,7 +11,6 @@ public class Attachment {
 	private String disk_filename;
 	private String pathname;
 	private String filesize;
-	private String content; // 게시글제목 컬럼 추가
 //	private Date created_on;
 	private String created_on;
 	public Attachment() {
@@ -19,11 +18,10 @@ public class Attachment {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Attachment(String filename, String pathname, String content) {
+	public Attachment(String filename, String pathname) {
 		super();
 		this.filename = filename;
 		this.pathname = pathname;
-		this.content = content;
 	}
 
 
@@ -84,13 +82,4 @@ public class Attachment {
 		this.created_on = created_on;
 	}
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	
 }
