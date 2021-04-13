@@ -33,8 +33,8 @@ SELECT t.*, a.name name, p.name project_name
    AND t.PROJECT_ID = p.ID 
 	ORDER BY t.id desc;
 UPDATE TASK 
-	SET backgroundcolor='red'
-WHERE tracker='결함';
+	SET backgroundcolor='orange'
+WHERE tracker='지원';
 
 
 SELECT * FROM TASK WHERE ID = 1;
@@ -53,6 +53,6 @@ SELECT t.PROJECT_ID, p.id, p.name FROM task t, project p WHERE t.PROJECT_ID=p.id
 DELETE FROM task 
 SELECT * FROM PROJECT;
 SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
-		t.start_date start1, t.due_date end1, t.tracker
+		t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
 FROM task t, account a, project p
 WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;
