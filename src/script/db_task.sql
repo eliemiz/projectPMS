@@ -33,9 +33,14 @@ SELECT t.*, a.name name, p.name project_name
    AND t.PROJECT_ID = p.ID 
 	ORDER BY t.id desc;
 UPDATE TASK 
-	SET backgroundcolor='orange'
+	SET backgroundcolor='#439981'
 WHERE tracker='지원';
-
+UPDATE TASK 
+	SET backgroundcolor='#4f5fd4'
+WHERE tracker='새기능';
+UPDATE TASK 
+	SET backgroundcolor='#fc987d'
+WHERE tracker='결함';
 
 SELECT * FROM TASK WHERE ID = 1;
 DELETE FROM task WHERE id = 10001;
