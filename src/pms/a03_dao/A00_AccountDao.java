@@ -15,4 +15,6 @@ public interface A00_AccountDao {
 	public Account Login(Account log);
 	
 	public ArrayList<AccountTask> getAccountTaskList(int projectId);
+	
+	public void signinIns(Account insert);
 }

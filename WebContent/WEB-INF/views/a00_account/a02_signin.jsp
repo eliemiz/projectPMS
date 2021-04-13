@@ -77,6 +77,8 @@
     
      <!-- Main content -->
     <section class="content">
+
+    
 	<div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
 	<div class="register-box">
 	  <div class="card card-outline card-primary">
@@ -86,7 +88,9 @@
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
 	
-	      <form action="../../index.html" method="post">
+	          <form:form modelAttribute="account" action="${path}/account.do?method=insert"
+    	enctype="multipart/form-data" method="post">
+    	<form:hidden path="created_on"/>
 	       <div class="input-group mb-3">
 	          <input type="text" class="form-control" placeholder="아이디">
 	          <div class="input-group-append">
@@ -118,7 +122,7 @@
 	        </div>
 	         <br>  
 	          <div class="input-group mb-3">
-	          <input type="text" class="form-control" placeholder="이름">
+	          <form:input type="text" class="form-control" placeholder="이름"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -127,11 +131,20 @@
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <input type="email" class="form-control" placeholder="Email">
+	          <form:input path="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
-	              <span class="fas fa-envelope"></span>
+	              <span class="fas fa-envelope"></span>s
 	            </div>
+	          </div>
+	        </div>
+	        <br>
+	        <div class="input-group mb-3">
+	        <div class="input-group-append">
+	          <form:select path="auth" class="form-control">
+	          	<option value="Manager" name="Manager">권한 선택</option>
+	          	<form:option value="Developer" name="Developer"></form:option>
+	          </form:select>
 	          </div>
 	        </div>
 	        <div class="form-row float-right">
@@ -140,7 +153,7 @@
 	            </a>
 	          <!-- /.col -->
 	        </div>
-	      </form>
+	      </form:form>
 	
 	      <div class="social-auth-links text-center">
 

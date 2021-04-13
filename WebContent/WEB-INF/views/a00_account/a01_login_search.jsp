@@ -42,6 +42,14 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
+  
+     $(document).ready(function(){
+      $("h2").text("메일발송");
+      var subject="${param.subject}";
+      if(subject!=""){
+    	  alert("메일발송성공");
+      }
+   });
 
 </script>
 </head>
@@ -86,15 +94,17 @@
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg">이메일주소를 입력하세요.</p>
-	      <form action="recover-password.html" method="post">
+	      <form method="post" action="${path}/account1.do?method=send">
+	      <input type="hidden" name="subject" value="비밀번호 찾기"/>
 	        <div class="input-group mb-3">
-	          <input type="email" class="form-control" placeholder="Email">
+	          <input name="receiver" type="email" class="form-control" placeholder="Email">
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
 	            </div>
 	          </div>
 	        </div>
+	        <input name="content" type="hidden" value="1234">
 	        <div class="row">
 	          <div class="col-12">
 	           <a href="${path}/login.do">

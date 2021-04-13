@@ -28,4 +28,8 @@ public class A00_AccountService {
 
 		return dao.getAccountTaskList(projectId);
 	}
+	
+	public void signinIns(Account insert) {
+		dao.signinIns(insert);
+	}
 }
