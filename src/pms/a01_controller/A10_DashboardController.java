@@ -20,7 +20,7 @@ import pms.z01_vo.AccountTask;
 import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
 import pms.z01_vo.TaskResult;
-import pms.z02_util.LocaleManager;
+import pms.z02_util.SessionManager;
 
 @Controller
 public class A10_DashboardController {
@@ -44,26 +44,27 @@ public class A10_DashboardController {
 	@RequestMapping("dashboard.do")
 	public String dashboard(HttpServletRequest request, HttpServletResponse response, Model d) {
 
-		HttpSession session = request.getSession();
-
 		/* Set Project Id */
+		HttpSession session = request.getSession();
 		String projectIdReq = request.getParameter("projectId");
 		if (projectIdReq != null) {
 			session.setAttribute("projectId", projectIdReq);
 		}
-		
+
+		/* Get Project Id */
 		Object projectIdObj = session.getAttribute("projectId");
 		int projectId;
 		if (projectIdObj == null) {
 			ArrayList<Project> projectList = serviceProject.getProjectList();
 			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
 		} else {
 			projectId = Integer.parseInt(projectIdObj.toString());
 		}
 		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
-			LocaleManager.setLang(request, response, localeResolver);
+			SessionManager.setLang(request, response, localeResolver);
 		}
 
 		/* Get Model */
