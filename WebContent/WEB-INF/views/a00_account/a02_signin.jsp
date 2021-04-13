@@ -42,6 +42,27 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
+  
+  var proc = "${proc}";
+	if(proc=="insert"){
+		alert("등록완료\n로그인페이지로 이동합니다.")
+		location.href = "${path}/account.do?method=login";			
+	}
+  
+  $(function(){
+
+//비밀번호 확인
+	$('#password2').blur(function(){
+	   if($('#password').val() != $('#password2').val()){
+	    	if($('#password2').val()!=''){
+		    alert("비밀번호가 일치하지 않습니다.");
+	    	    $('#password2').val('');
+	          $('#password2').focus();
+	       }
+	    }
+	})  	   
+});
+
 
 </script>
 </head>
@@ -90,9 +111,11 @@
 	
 	          <form:form modelAttribute="account" action="${path}/account.do?method=insert"
     	enctype="multipart/form-data" method="post">
+    	<form:hidden path="id"/>
     	<form:hidden path="created_on"/>
+    	<form:hidden path="last_login_on"/>
 	       <div class="input-group mb-3">
-	          <input type="text" class="form-control" placeholder="아이디">
+	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -101,7 +124,7 @@
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <input type="password" class="form-control" placeholder="비밀번호">
+	          <form:input path="password" class="form-control" placeholder="비밀번호"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-lock"></span>
@@ -113,7 +136,7 @@
              </a>
              <br>
 	        <div class="input-group mb-3">
-	          <input type="password" class="form-control" placeholder="비밀번호 재확인">
+	          <input id="password2" type="password" class="form-control" placeholder="비밀번호 재확인">
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-lock"></span>
@@ -122,7 +145,7 @@
 	        </div>
 	         <br>  
 	          <div class="input-group mb-3">
-	          <form:input type="text" class="form-control" placeholder="이름"/>
+	          <form:input path="name" class="form-control" placeholder="이름"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -142,8 +165,9 @@
 	        <div class="input-group mb-3">
 	        <div class="input-group-append">
 	          <form:select path="auth" class="form-control">
-	          	<option value="Manager" name="Manager">권한 선택</option>
+	          	<option value="">권한 선택</option>
 	          	<form:option value="Developer" name="Developer"></form:option>
+	          	<form:option value="Manager" name="Manager"></form:option>
 	          </form:select>
 	          </div>
 	        </div>
