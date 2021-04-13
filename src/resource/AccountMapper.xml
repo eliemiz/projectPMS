@@ -23,5 +23,11 @@
 			FROM ACCOUNT A, TASK T WHERE T.PROJECT_ID = #{projectId}
 			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
 	</select>
-
+	<!-- public void signinIns(Account insert); -->
+	<insert id="signinIns" parameterType="account">
+		INSERT INTO ACCOUNT
+		VALUES (ACCOUNT_seq.nextval, #{user_id}, #{password}, #{name},
+		        #{mail}, #{created_on}, #{last_login_on}, #{auth})
+	
+	</insert>
 </mapper>
