@@ -59,12 +59,18 @@ html, body {
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
+	
 	var proc = "${proc}";
 	if(proc=="ins"){
 		alert("등록완료\n리스트로 이동합니다.")
 		location.href = "${path}/task.do?method=list";			
 	}
 	$(document).ready(function(){
+		$('#ifile').bind('change', function(){
+			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024/1024,-2)+"MB)");
+			/* alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024/1024,-2)+"MB)"); */
+		});
+		
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
@@ -302,7 +308,7 @@ html, body {
        <%-- TODO: fileUpload 완성 후 수정 --%>
                   <label for="exampleInputFile">첨부파일</label> 
                   <div class="custom-file">
-                        <input type="file" class="custom-file-label" name="report" style="width:100%;" onclick="fileCheck(this.form.file)"/>
+                        <input type="file" id="ifile" class="custom-file-label" name="report" style="width:100%;"/>
                         <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                   </div><br><br>
                   <%--
