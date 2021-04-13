@@ -1,4 +1,4 @@
-<%@page import="pms.z02_util.LocaleManager"%>
+<%@page import="pms.z02_util.SessionManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,7 +13,6 @@
 			url: "${path}/jsonProject.do",
 			dataType: "json",
 			success: function(data){
-				
 				var projectList = data.projectList;
 				
 				$.each(projectList, function(idx, e, arr){
@@ -27,7 +26,7 @@
 			}
 		});
 		
-		$("#selectLang").val("<%= LocaleManager.getLang(request) %>");
+		$("#selectLang").val("<%=SessionManager.getLang(request)%>");
 		$("#selectLang").change(function(){
 			var lang = $(this).val();
 			if (lang != "") {
