@@ -66,9 +66,9 @@ html, body {
 		location.href = "${path}/task.do?method=list";			
 	}
 	$(document).ready(function(){
-		$('#ifile').bind('change', function(){
-			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024/1024,-2)+"MB)");
-			/* alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024/1024,-2)+"MB)"); */
+		$('#filesize').bind('change', function(){
+			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
+			
 		});
 		
 		$("#sm-dashboard").addClass("menu-open");
@@ -98,6 +98,14 @@ html, body {
 				alert("완료일을 선택해주세요");
 				return false;
 			} 
+			// 달력 색깔 추가
+			if($("[name=tracker]").val()=='새기능'){
+				$("[name=backgroundColor]").val("blue");
+			} else if($("[name=tracker]").val()=='결함'){
+				$("[name=backgroundColor]").val("red");
+			} else if($("[name=tracker]").val()=='지원'){
+				$("[name=backgroundColor]").val("orange");
+			}
 			
 			$("form").submit();
 		});
@@ -173,6 +181,7 @@ html, body {
             <form:hidden path="created_on"/>
             <form:hidden path="updated_on"/>
             <form:hidden path="completed_on"/>
+            <form:hidden path="backgroundColor"/>
             <input type="hidden" name="document_id" value="Task"/>
           </div>
           <!-- /.card-header -->
@@ -308,7 +317,7 @@ html, body {
        <%-- TODO: fileUpload 완성 후 수정 --%>
                   <label for="exampleInputFile">첨부파일</label> 
                   <div class="custom-file">
-                        <input type="file" id="ifile" class="custom-file-label" name="report" style="width:100%;"/>
+                        <input type="file" id="filesize" class="custom-file-label" name="report" style="width:100%;"/>
                         <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                   </div><br><br>
                   <%--

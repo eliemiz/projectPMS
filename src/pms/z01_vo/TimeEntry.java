@@ -10,29 +10,12 @@ public class TimeEntry {
 	private String comments;
 	private int spent_hours;
 	private Date created_on;
-	private String created_on_s;
+//	private String created_on_s;
 	public TimeEntry() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public TimeEntry(int id, int task_id, int account_id, String comments, int spent_hours, Date created_on) {
-		super();
-		this.id = id;
-		this.task_id = task_id;
-		this.account_id = account_id;
-		this.comments = comments;
-		this.spent_hours = spent_hours;
-		this.created_on = created_on;
-	}
-	public TimeEntry(int id, int task_id, int account_id, String comments, int spent_hours, String created_on_s) {
-		super();
-		this.id = id;
-		this.task_id = task_id;
-		this.account_id = account_id;
-		this.comments = comments;
-		this.spent_hours = spent_hours;
-		this.created_on_s = created_on_s;
-	}
+	
 	public int getId() {
 		return id;
 	}
@@ -69,11 +52,12 @@ public class TimeEntry {
 	public void setCreated_on(Date created_on) {
 		this.created_on = created_on;
 	}
+	/*
 	public String getCreated_on_s() {
 		return created_on_s;
 	}
 	public void setCreated_on_s(String created_on_s) {
 		this.created_on_s = created_on_s;
 	}
-	
+	*/
 }

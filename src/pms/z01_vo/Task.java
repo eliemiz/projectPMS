@@ -15,14 +15,15 @@ public class Task {
 	private String description;
 	private String status;
 	private int priority;
-	private String created_on;
-	private String updated_on;
+	private Date created_on;
+	private Date updated_on;
 	private String start_date;
 	private String due_date;
 	private int estimated;
 	private int done_ratio;
-	private String completed_on;
+	private Date completed_on;
 	private String tracker; // 유형 추가
+	private String backgroundColor; // 캘린더 색깔 추가 
 	private String name; // 어카운트 이름 불러오기
 	private String project_name;
 	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
@@ -98,19 +99,19 @@ public class Task {
 		this.priority = priority;
 	}
 
-	public String getCreated_on() {
+	public Date getCreated_on() {
 		return created_on;
 	}
 
-	public void setCreated_on(String created_on) {
+	public void setCreated_on(Date created_on) {
 		this.created_on = created_on;
 	}
 
-	public String getUpdated_on() {
+	public Date getUpdated_on() {
 		return updated_on;
 	}
 
-	public void setUpdated_on(String updated_on) {
+	public void setUpdated_on(Date updated_on) {
 		this.updated_on = updated_on;
 	}
 
@@ -146,11 +147,11 @@ public class Task {
 		this.done_ratio = done_ratio;
 	}
 
-	public String getCompleted_on() {
+	public Date getCompleted_on() {
 		return completed_on;
 	}
 
-	public void setCompleted_on(String completed_on) {
+	public void setCompleted_on(Date completed_on) {
 		this.completed_on = completed_on;
 	}
 
@@ -160,6 +161,14 @@ public class Task {
 
 	public void setTracker(String tracker) {
 		this.tracker = tracker;
+	}
+
+	public String getBackgroundColor() {
+		return backgroundColor;
+	}
+
+	public void setBackgroundColor(String backgroundColor) {
+		this.backgroundColor = backgroundColor;
 	}
 
 	public String getName() {

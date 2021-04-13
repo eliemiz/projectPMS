@@ -46,6 +46,7 @@ public class A12_TaskController {
 		if (request.getParameter("lang") != null) {
 			LocaleManager.setLang(request, response, localeResolver);
 		}
+	}
 	*/
 		
 	// http://localhost:7080/projectPMS/task.do?method=insForm

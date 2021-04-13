@@ -11,8 +11,8 @@ public class Attachment {
 	private String disk_filename;
 	private String pathname;
 	private String filesize;
-//	private Date created_on;
-	private String created_on;
+	private Date created_on;
+//	private String created_on;
 	public Attachment() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -67,19 +67,20 @@ public class Attachment {
 	public void setFilesize(String filesize) {
 		this.filesize = filesize;
 	}
-/*
+
 	public Date getCreated_on() {
 		return created_on;
 	}
 	public void setCreated_on(Date created_on) {
 		this.created_on = created_on;
 	}
-*/
+
+/*
 	public String getCreated_on() {
 		return created_on;
 	}
 	public void setCreated_on(String created_on) {
 		this.created_on = created_on;
 	}
-
+*/
 }
