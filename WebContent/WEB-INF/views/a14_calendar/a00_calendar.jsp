@@ -69,7 +69,9 @@
 				console.log("# 등록된 일정 클릭 #");
 				console.log(arg.event);
 				console.log(arg.event.id);
+				console.log(arg.event.extendedProps);
 				location.href = "${path}/task.do?method=detail&id="+arg.event.id;
+				
 			},
 			events :function(info, successCallback, failureCallback){
 				$.ajax({

@@ -32,6 +32,9 @@ SELECT t.*, a.name name, p.name project_name
    WHERE t.account_id = a.id
    AND t.PROJECT_ID = p.ID 
 	ORDER BY t.id desc;
+UPDATE TASK 
+	SET backgroundcolor='red'
+WHERE tracker='결함';
 
 
 SELECT * FROM TASK WHERE ID = 1;
