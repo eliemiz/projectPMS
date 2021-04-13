@@ -26,7 +26,7 @@ CREATE SEQUENCE TASK_SEQ
 	MAXVALUE 9999999
 	CYCLE;
 
-SELECT * FROM task;
+SELECT * FROM task ORDER BY PROJECT_ID;
 SELECT t.*, a.name name, p.name project_name
    FROM task t, account a, PROJECT p
    WHERE t.account_id = a.id
@@ -45,6 +45,11 @@ INSERT INTO task VALUES (10002, 10002, 11112, 12346, 'test용 TASK222', '테스�
 SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t;
 
 -- Calendar 조회용
+SELECT t.PROJECT_ID, p.id, p.name FROM task t, project p WHERE t.PROJECT_ID=p.id;
+-- 49, 45, 48, 121, 86
+DELETE FROM task 
+SELECT * FROM PROJECT;
 SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
-		t.start_date start1, t.due_date end1
-FROM task t, account a;
+		t.start_date start1, t.due_date end1, t.tracker
+FROM task t, account a, project p
+WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;

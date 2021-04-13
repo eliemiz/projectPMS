@@ -11,6 +11,7 @@ public class Calendar {
 	private String textColor;
 	private String backgroundColor;
 	private String borderColor;
+	private String tracker;
 
 	public int getId() {
 		return id;
@@ -90,6 +91,14 @@ public class Calendar {
 
 	public void setBorderColor(String borderColor) {
 		this.borderColor = borderColor;
+	}
+
+	public String getTracker() {
+		return tracker;
+	}
+
+	public void setTracker(String tracker) {
+		this.tracker = tracker;
 	}
 
 }

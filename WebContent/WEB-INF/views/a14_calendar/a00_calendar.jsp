@@ -68,7 +68,8 @@
 			eventClick : function(arg){
 				console.log("# 등록된 일정 클릭 #");
 				console.log(arg.event);
-				location.href = "${path}/task.do?method=detail&id="+id;
+				console.log(arg.event.id);
+				location.href = "${path}/task.do?method=detail&id="+arg.event.id;
 			},
 			events :function(info, successCallback, failureCallback){
 				$.ajax({
@@ -305,7 +306,7 @@
 			<a class="icon icon-reload" href="/redmine/issues/calendar?set_filter=1">Clear</a> 
 		</p>-->
 		</div>
-    	<div id='calendar'></div>
+    		<div id='calendar'></div>
     </section>
     <!-- /.content -->
   </div>
