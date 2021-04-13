@@ -306,8 +306,6 @@
 		</p>-->
 		</div>
     	<div id='calendar'></div>
-    	<c:set ></c:set>
-    	<input type="hidden" name="id" value="${task.id}"/>
     </section>
     <!-- /.content -->
   </div>
