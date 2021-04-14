@@ -178,9 +178,11 @@ html, body {
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">새 Task 만들기</h3>
+            <%-- 
             <form:hidden path="created_on"/>
             <form:hidden path="updated_on"/>
             <form:hidden path="completed_on"/>
+            --%>
             <form:hidden path="backgroundColor"/>
             <input type="hidden" name="document_id" value="Task"/>
           </div>
