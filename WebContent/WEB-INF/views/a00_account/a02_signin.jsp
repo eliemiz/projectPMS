@@ -43,12 +43,7 @@
 
   $.widget.bridge('uibutton', $.ui.button)
   
-  var proc = "${proc}";
-	if(proc=="insert"){
-		alert("등록완료\n로그인페이지로 이동합니다.")
-		location.href = "${path}/account.do?method=login";			
-	}
-  
+
   $(function(){
 
 //비밀번호 확인
@@ -62,7 +57,26 @@
 	    }
 	})  	   
 });
+  /*
+   function chkPW(){
 
+	  var pw = $("#password").val();
+	 
+	  if(pw.length < 4 || pw.length > 8){
+
+	   alert("4자리 ~ 8자리 이내로 입력해주세요.");
+	   return false;
+	  }
+
+	 }
+  
+  */
+
+  var proc = "${proc}";
+	if(proc=="insert"){
+		alert("등록완료\n로그인페이지로 이동합니다.")
+		location.href = "${path}/account.do?method=login";			
+	}
 
 </script>
 </head>
@@ -109,11 +123,11 @@
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
 	
-	          <form:form modelAttribute="account" action="${path}/account.do?method=insert"
+	    <form:form modelAttribute="account" action="${path}/account.do?method=insert"
     	enctype="multipart/form-data" method="post">
     	<form:hidden path="id"/>
-    	<form:hidden path="created_on"/>
-    	<form:hidden path="last_login_on"/>
+    	<!-- <form:hidden path="created_on"/>
+    	<form:hidden path="last_login_on"/> -->
 	       <div class="input-group mb-3">
 	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
@@ -132,7 +146,7 @@
 	          </div>
 	        </div>
 	         <a class="h7">
-                 *최소한 8 글자 이상이어야 합니다.
+                 *최소한 4 글자 이상이어야 합니다.
              </a>
              <br>
 	        <div class="input-group mb-3">
@@ -173,7 +187,7 @@
 	        </div>
 	        <div class="form-row float-right">
 	        	<a href="${path}/login.do">
-	            <button type="submit" class="btn btn-primary btn-block">등록</button>
+	            <button type="submit" class="btn btn-primary btn-block" onclick="chkPW()">등록</button>
 	            </a>
 	          <!-- /.col -->
 	        </div>
