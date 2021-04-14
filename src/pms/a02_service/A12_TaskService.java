@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
+import pms.z01_vo.GanttChart;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 
@@ -139,9 +140,14 @@ public class A12_TaskService {
 //		dao.deleteFile(id);
 	}
 	
-	// 캘린더 목록
+	// Calendar List
 	public ArrayList<Calendar> calenList(){
 		return dao.calenList();
+	}
+	
+	// Gantt List
+	public ArrayList<GanttChart> ganttList(){
+		return dao.ganttList();
 	}
 	
 	// 산출물 리스트 조회

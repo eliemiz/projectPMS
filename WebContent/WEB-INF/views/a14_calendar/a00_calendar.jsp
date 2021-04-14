@@ -46,9 +46,6 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
-	// 전역변수로 날짜 데이터를 가져오기 위한 선언
-	var date = {};
-
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 		

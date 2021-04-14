@@ -61,3 +61,10 @@ SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content
 		t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
 FROM task t, account a, project p
 WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;
+
+-- Gantt
+SELECT t.id, t.TRACKER "type", t.subject text, t.START_DATE, substr(t.due_date,9,2)-substr(t.start_date,9,2) duration,
+		t.PARENT_ID parent, t.DONE_RATIO/100 progress 		
+FROM task t, project p
+WHERE t.PROJECT_ID = p.ID
+ORDER BY t.id;

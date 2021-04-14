@@ -34,11 +34,11 @@
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 <!-- Gantt chart -->
 <script src="gantt/codebase/dhtmlxgantt.js?v=7.0.13"></script>
-<script src="gantt/codebase/locale/locale.js?v=7.0.13"></script>
+<!-- <script src="gantt/codebase/locale/locale.js?v=7.0.13"></script> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:regular,medium,thin,bold">
 <link rel="stylesheet" href="gantt/codebase/skins/dhtmlxgantt_material.css?v=7.0.13">
 <link rel="stylesheet" href="gantt/samples/common/controls_styles.css?v=7.0.13">
-<script src="gantt/samples/common/testdata.js?v=7.0.13"></script>
+<!-- <script src="gantt/samples/common/testdata.js?v=7.0.13"></script> -->
 <style>
 
 .main-content {
@@ -54,6 +54,98 @@
 $(document).ready(function(){
 	$("#sb-gantt").addClass("active");
 });
+	var projects_milestones_critical = {
+		data: [/* 
+			{ id: 1, text: "hi^^", type: "project", progress: 0.4, open: true, start_date: "02-05-2021 00:00", duration: 17, parent: 0 },
+			{ id: 2, text: "Office facing", type: "project", start_date: "02-05-2021 00:00", duration: 5, progress: 0.6, parent: 1, open: true},
+			{ id: 5, text: "Interior office", type: "task", start_date: "02-05-2021 00:00", duration: 3, parent: 2, progress: 0.6, open: true},
+			{ id: 6, text: "Air conditioners check", type: "task",  start_date: "05-05-2021 00:00", duration: 2, parent: 2, progress: 0.29, open: true},
+			{ id: 3, text: "Furniture installation", type: "project", start_date: "08-05-2021 00:00", duration: 2, parent: 1, progress: 0.6, open: false},
+			{ id: 7, text: "Workplaces preparation", type: "task",  start_date: "08-05-2021 00:00", duration: 2, parent: 3, progress: 0.6, open: true},
+			{ id: 4, text: "The employee relocation", type: "project", start_date: "10-05-2021 00:00", duration: 9, parent: 1, progress: 0.5, open: true},
+			{ id: 8, text: "Preparing workplaces", type: "task",  start_date: "10-05-2021 00:00", duration: 3, parent: 4, progress: 0.5, open: true},
+			{ id: 9, text: "Workplaces importation", type: "task",  start_date: "13-05-2021 00:00", duration: 3, parent: 4, progress: 0.5, open: true},
+			{ id: 10, text: "Workplaces exportation", type: "task",  start_date: "16-05-2021 00:00", duration: 3, parent: 4, progress: 0.5, open: true},
+			{ id: 11, text: "Product launch", type: "project", progress: 0.6, open: true, start_date: "02-05-2021 00:00", duration: 17, parent: 0 },
+			{ id: 12, text: "Perform Initial testing", type: "task",  start_date: "02-05-2021 00:00", duration: 5, parent: 11, progress: 1, open: true},
+			{ id: 13, text: "Development", type: "project", start_date: "03-05-2021 00:00", duration: 16, parent: 11, progress: 0.5, open: true},
+			{ id: 17, text: "Develop System", type: "task",  start_date: "03-05-2021 00:00", duration: 5, parent: 13, progress: 1, open: true},
+			{ id: 25, text: "Beta Release", type: "milestone", start_date: "08-05-2021 00:00", duration: 0, parent: 13, progress: 0, open: true},
+			{ id: 18, text: "Integrate System", type: "task",  start_date: "08-05-2021 00:00", duration: 4, parent: 13, progress: 0.8, open: true},
+			{ id: 19, text: "Test", type: "task",  start_date: "12-05-2021 00:00", duration: 3, parent: 13, progress: 0.2, open: true},
+			{ id: 20, text: "Marketing", type: "task",  start_date: "15-05-2021 00:00", duration: 4, parent: 13, progress: 0, open: true},
+			{ id: 14, text: "Analysis", type: "task",  start_date: "02-05-2021 00:00", duration: 4, parent: 11, progress: 0.8, open: true},
+			{ id: 15, text: "Design", type: "project", start_date: "06-05-2021 00:00", duration: 6, parent: 11, progress: 0.2, open: true},
+			{ id: 21, text: "Design database", type: "task",  start_date: "06-05-2021 00:00", duration: 4, parent: 15, progress: 0.5, open: true},
+			{ id: 22, text: "Software design", type: "task",  start_date: "08-05-2021 00:00", duration: 4, parent: 15, progress: 0.1, open: true},
+			{ id: 16, text: "Documentation creation", type: "task",  start_date: "11-05-2021 00:00", duration: 5, parent: 11, progress: 0, open: true},
+			{ id: 24, text: "Release v1.0", type: "milestone",  start_date: "19-05-2021 00:00", duration: 0, parent: 11, progress: 0, open: true} */
+			$.ajax({
+				type:"get",
+				url:"${path}/gantt.do?method=data",
+				dataType:"json",
+				success:function(data){
+					console.log(data.data);
+					//successCallback(data.list);
+				},
+				error:function(err){
+					console.log(err);
+				}
+			})
+		],
+		links: [
+			{ id: 1, source: "2", target: "3", type: "0"},
+			{ id: 2, source: "3", target: "4", type: "0"},
+			{ id: 3, source: "17", target: "25", type: "0"},
+			{ id: 4, source: "18", target: "19", type: "0"},
+			{ id: 5, source: "19", target: "20", type: "0"},
+			{ id: 6, source: "13", target: "24", type: "0"},
+			{ id: 7, source: "25", target: "18", type: "0"},
+			{ id: 8, source: "5", target: "6", type: "0"},
+			{ id: 9, source: "8", target: "9", type: "0"},
+			{ id: 10, source: "9", target: "10", type: "0"},
+			{ id: 11, source: "16", target: "24", type: "0"},
+			{ id: 12, source: "14", target: "15", type: "0"}
+		]
+	};
+	function generateData(count, dateFrom, dateTo){
+		var tasks =  {
+			data:[],
+			links:[]
+		};
+
+		count = parseInt(count, 10) || 100;
+
+		var date = new Date(dateFrom.getFullYear(),5,1);
+		var project_id = 1;
+		tasks.data.push({
+			id:  project_id,
+			text: "Project1",
+			start_date: date,
+			type: gantt.config.types.project,
+			open:true
+		});
+		for (var i = 1; i < count; i++) {
+			date = gantt.date.add(date, 1, "day");
+			var task = {
+				id: i + 1,
+				start_date: date,
+				text: "Task " + (i + 1),
+				duration: 8,
+				parent: project_id
+			};
+
+			if(gantt.date.add(date, 8, "day").valueOf() > dateTo.valueOf()){
+				date = new Date(dateFrom);
+				project_id = i + 1;
+				delete task.parent;
+				task.open = true;
+			}
+			tasks.data.push(task);
+
+		}
+		return tasks;
+	}
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -124,8 +216,8 @@ $(document).ready(function(){
 		{name: "wbs", label: "WBS", width: 40, template: gantt.getWBSCode, resize: true},
 		{name: "text", label: "Task name", tree: true, width: 170, resize: true, min_width: 10},
 		{name: "start_date", align: "center", width: 90, resize: true},
-		{name: "duration", align: "center", width: 80, resize: true},
-		{name: "add", width: 40}
+		{name: "duration", align: "center", width: 80, resize: true}/* ,
+		{name: "add", width: 40} */
 	];
 
 	gantt.templates.rightside_text = function (start, end, task) {
