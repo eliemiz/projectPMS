@@ -55,7 +55,7 @@ $(document).ready(function(){
 	$("#sb-gantt").addClass("active");
 });
 	var projects_milestones_critical = {
-		data: [/* 
+		data: [ 
 			{ id: 1, text: "hi^^", type: "project", progress: 0.4, open: true, start_date: "02-05-2021 00:00", duration: 17, parent: 0 },
 			{ id: 2, text: "Office facing", type: "project", start_date: "02-05-2021 00:00", duration: 5, progress: 0.6, parent: 1, open: true},
 			{ id: 5, text: "Interior office", type: "task", start_date: "02-05-2021 00:00", duration: 3, parent: 2, progress: 0.6, open: true},
@@ -79,21 +79,10 @@ $(document).ready(function(){
 			{ id: 21, text: "Design database", type: "task",  start_date: "06-05-2021 00:00", duration: 4, parent: 15, progress: 0.5, open: true},
 			{ id: 22, text: "Software design", type: "task",  start_date: "08-05-2021 00:00", duration: 4, parent: 15, progress: 0.1, open: true},
 			{ id: 16, text: "Documentation creation", type: "task",  start_date: "11-05-2021 00:00", duration: 5, parent: 11, progress: 0, open: true},
-			{ id: 24, text: "Release v1.0", type: "milestone",  start_date: "19-05-2021 00:00", duration: 0, parent: 11, progress: 0, open: true} */
-			$.ajax({
-				type:"get",
-				url:"${path}/gantt.do?method=data",
-				dataType:"json",
-				success:function(data){
-					console.log(data.list);
-					//successCallback(data.list);
-				},
-				error:function(err){
-					console.log(err);
-				}
-			})
+			{ id: 24, text: "Release v1.0", type: "milestone",  start_date: "19-05-2021 00:00", duration: 0, parent: 11, progress: 0, open: true} 
+			
 		],
-		links: [
+/* 		links: [
 			{ id: 1, source: "2", target: "3", type: "0"},
 			{ id: 2, source: "3", target: "4", type: "0"},
 			{ id: 3, source: "17", target: "25", type: "0"},
@@ -106,7 +95,7 @@ $(document).ready(function(){
 			{ id: 10, source: "9", target: "10", type: "0"},
 			{ id: 11, source: "16", target: "24", type: "0"},
 			{ id: 12, source: "14", target: "15", type: "0"}
-		]
+		] */
 	};
 /* 	function generateData(count, dateFrom, dateTo){
 		var tasks =  {
@@ -242,7 +231,21 @@ $(document).ready(function(){
 	gantt.init("gantt_here");
 	gantt.message({text: "Some text", expire: -1});
 	gantt.message({text: "Some text", type: "error", expire: -1});
-	gantt.parse(projects_milestones_critical);
+	$.ajax({
+		type:"get",
+		url:"${path}/gantt.do?method=data",
+		dataType:"json",
+		success:function(te){
+			console.log(te.list);
+			gantt.parse({
+				data: te.list
+			})
+		},
+		error:function(err){
+			console.log(err);
+		}
+	})
+//	gantt.parse(projects_milestones_critical);
 </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>

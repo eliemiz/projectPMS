@@ -63,8 +63,9 @@ FROM task t, account a, project p
 WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;
 
 -- Gantt
-SELECT t.id, t.TRACKER "type", t.subject text, t.START_DATE, substr(t.due_date,9,2)-substr(t.start_date,9,2) duration,
-		t.PARENT_ID parent, t.DONE_RATIO/100 progress 		
-FROM task t, project p
-WHERE t.PROJECT_ID = p.ID
+SELECT t.id, t.TRACKER "type", t.subject text, t.start_date start_date, 
+		substr(t.due_date,9,2)-substr(t.start_date,9,2) duration,
+		t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"	
+FROM task t
 ORDER BY t.id;
+SELECT substr(start_date,9,2) start_date FROM task;
