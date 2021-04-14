@@ -27,6 +27,8 @@ public class A12_TaskController {
 	private A01_ProjectService serviceP;
 	@Autowired(required = false)
 	private A00_AccountService serviceA;
+	@Autowired(required = false)
+	private A18_AttachmentService serviceT;
 	/*
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
@@ -62,7 +64,10 @@ public class A12_TaskController {
 		System.out.println("파일:"+ins.getReport()[0].getOriginalFilename()); 
 		service.insertTask(ins);
 		d.addAttribute("proc", "ins");
-
+	//	Attachment t = new Attachment();
+	//	t.set document_type = "task";
+		
+	//	serviceT.insertAttachment(t);
 		return "a12_task\\a02_taskInsert";
 	}
 	
