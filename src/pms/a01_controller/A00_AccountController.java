@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A00_AccountService;
 import pms.z01_vo.Account;
+import pms.z02_util.SessionManager;
 
 @Controller
 @RequestMapping("account.do")
@@ -48,6 +49,7 @@ public class A00_AccountController {
 				HttpSession session = request.getSession();
 				session.setAttribute("login", ac);
 				request.setAttribute("loginSucc", "Y");
+				SessionManager.setAccount(request, ac);
 			}else {
 				request.setAttribute("loginSucc", "N");
 			}
@@ -56,8 +58,8 @@ public class A00_AccountController {
 	}
 	@RequestMapping(params = "method=logout")
 	public String logout(HttpServletRequest request){
-	request.getSession().invalidate();
-	return "redirect:/dashboard.do";
+		SessionManager.clearSession(request);
+		return "redirect:/account.do?method=login";
 	}
 	
 

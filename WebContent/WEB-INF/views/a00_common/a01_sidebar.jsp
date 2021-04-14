@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!-- Main Sidebar Container -->
@@ -63,7 +64,7 @@
 					<a href="${path}/dashboard.do" class="nav-link" id="sb-dashboard">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
-							Dashboard
+							<spring:message code="sb-dashboard"/>
 						</p>
 					</a>
 				</li>
@@ -71,7 +72,7 @@
 					<a href="${path}/activity.do" class="nav-link" id="sb-activity">
 						<i class="nav-icon far fa-edit"></i>
 						<p>
-							Activity
+							<spring:message code="sb-activity"/>
 						</p>
 					</a>
 				</li>
@@ -79,7 +80,7 @@
 					<a href="${path}/task.do?method=list" class="nav-link" id="sb-task">
 						<i class="nav-icon fas fa-tasks"></i>
 						<p>
-							Task
+							<spring:message code="sb-task"/>
 						</p>
 					</a>
 				</li>
@@ -87,7 +88,7 @@
 					<a href="${path}/gantt.do?method=list" class="nav-link" id="sb-gantt">
 						<i class="nav-icon far fa-chart-bar"></i>
 						<p>
-							Gantt Chart
+							<spring:message code="sb-gantt-chart"/>
 						</p>
 					</a>
 				</li>
@@ -95,15 +96,7 @@
 					<a href="${path}/calendar.do?method=list" class="nav-link" id="sb-calendar">
 						<i class="nav-icon far fa-calendar-alt"></i>
 						<p>
-							Calendar
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="${path}/notice.do?method=list" class="nav-link" id="sb-notice">
-						<i class="nav-icon fas fa-thumbtack"></i>
-						<p>
-							Notice
+							<spring:message code="sb-calendar"/>
 						</p>
 					</a>
 				</li>
@@ -111,7 +104,7 @@
 					<a href="${path}/risk.do?method=list" class="nav-link" id="sb-risk">
 						<i class="nav-icon fas fa-exclamation-circle"></i>
 						<p>
-							Risk
+							<spring:message code="sb-risk"/>
 						</p>
 					</a>
 				</li>
@@ -119,38 +112,10 @@
 					<a href="${path}/settings.do?method=project" class="nav-link" id="sb-project-setting">
 						<i class="nav-icon fas fa-tasks"></i>
 						<p>
-							Project Setting
+							<spring:message code="sb-project-setting"/>
 						</p>
 					</a>
 				</li>
-				<%-- <li class="nav-item" id="sm-setting">
-					<a href="#" class="nav-link" id="sb-setting">
-						<i class="nav-icon fas fa-cog"></i>
-						<p>
-							Setting <i class="right fas fa-angle-left"></i>
-						</p>
-					</a>
-					<ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="${path}/settings.do?method=project" class="nav-link" id="sb-setting-project">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Project</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="${path}/settings2.do?method=pUserList" class="nav-link" id="sb-setting-members">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Members</p>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a href="${path}/settings2.do?method=task" class="nav-link" id="sb-setting-tracker">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Tracker</p>
-							</a>
-						</li>
-					</ul>
-				</li> --%>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

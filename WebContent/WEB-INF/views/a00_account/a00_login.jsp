@@ -66,7 +66,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <jsp:include page="../a00_common/a00_header.jsp"/>
+  <jsp:include page="../a00_common/a00_header_nl.jsp"/>
 
   <!-- Main Sidebar Container -->
   <jsp:include page="../a00_common/a01_sidebar.jsp"/>  

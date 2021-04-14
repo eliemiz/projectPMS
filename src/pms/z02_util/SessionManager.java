@@ -79,4 +79,9 @@ public class SessionManager {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectId", projectId);
 	}
+	
+	public static void clearSession(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+	}
 }

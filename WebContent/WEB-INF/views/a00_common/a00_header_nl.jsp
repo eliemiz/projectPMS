@@ -7,11 +7,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script type="text/javascript">
-	/* 로그인 화면 귀찮으면 주석처리 */
-	if (${empty account}) {
-		alert("로그인이 필요합니다.");
-		location.href="${path}/account.do?method=login";
-	}
 	
 	$(document).ready(function() {
 		$.ajax({
@@ -57,7 +52,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="${path}/account.do?method=logout" class="nav-link"><spring:message code="hd-logout"/></a>
+      <a href="${path}/account.do?method=login" class="nav-link"><spring:message code="hd-login"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
@@ -65,9 +60,6 @@
     <li class="nav-item d-none d-sm-inline-block">
     	<select id="hd-project-list" class="form-control">
     	</select>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-    	<div class="nav-link">${account.name} 님 환영합니다.</div>
     </li>
   </ul>
 
