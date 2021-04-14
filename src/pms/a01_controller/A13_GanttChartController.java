@@ -23,7 +23,7 @@ public class A13_GanttChartController {
 	// http://localhost:7080/projectPMS/gantt.do?method=data
 	@GetMapping(params = "method=data")
 	public String data(Model d) {
-		d.addAttribute("data", service.ganttList());
+		d.addAttribute("list", service.ganttList());
 		return "pageJsonReport";
 	}
 }

@@ -85,7 +85,7 @@ $(document).ready(function(){
 				url:"${path}/gantt.do?method=data",
 				dataType:"json",
 				success:function(data){
-					console.log(data.data);
+					console.log(data.list);
 					//successCallback(data.list);
 				},
 				error:function(err){
@@ -108,7 +108,7 @@ $(document).ready(function(){
 			{ id: 12, source: "14", target: "15", type: "0"}
 		]
 	};
-	function generateData(count, dateFrom, dateTo){
+/* 	function generateData(count, dateFrom, dateTo){
 		var tasks =  {
 			data:[],
 			links:[]
@@ -145,7 +145,7 @@ $(document).ready(function(){
 
 		}
 		return tasks;
-	}
+	} */
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

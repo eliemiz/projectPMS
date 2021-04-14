@@ -8,6 +8,7 @@ public class GanttChart {
 	private int duration;
 	private int parent;
 	private double progress;
+	private boolean open;
 
 	public int getId() {
 		return id;
@@ -63,6 +64,14 @@ public class GanttChart {
 
 	public void setProgress(double progress) {
 		this.progress = progress;
+	}
+
+	public boolean isOpen() {
+		return true;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = true;
 	}
 
 }
