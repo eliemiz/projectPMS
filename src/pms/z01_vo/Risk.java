@@ -1,5 +1,7 @@
 package pms.z01_vo;
 
+import java.util.Date;
+
 public class Risk {
 	private int id;
 	private int project_id;
@@ -8,8 +10,8 @@ public class Risk {
 	private String description;
 	private String status;
 	private String category;
-	private String created_on;
-	private String updated_on;
+	private Date created_on;
+	private Date updated_on;
 	private String start_date;
 	private String end_date;
 	private int probability;
@@ -64,16 +66,16 @@ public class Risk {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getCreated_on() {
+	public Date getCreated_on() {
 		return created_on;
 	}
-	public void setCreated_on(String created_on) {
+	public void setCreated_on(Date created_on) {
 		this.created_on = created_on;
 	}
-	public String getUpdated_on() {
+	public Date getUpdated_on() {
 		return updated_on;
 	}
-	public void setUpdated_on(String updated_on) {
+	public void setUpdated_on(Date updated_on) {
 		this.updated_on = updated_on;
 	}
 	public String getStart_date() {
@@ -123,5 +125,6 @@ public class Risk {
 	}
 	public void setProject_name(String project_name) {
 		this.project_name = project_name;
-	}	
+	}
+	
 }
