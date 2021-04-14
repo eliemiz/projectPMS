@@ -10,7 +10,27 @@
 		AND t.PROJECT_ID = p.ID
 		ORDER BY t.id desc
 	</select>
+	<!-- 
+	원래
+	<select id="getTaskList" resultMap="taskList" parameterType="task">
+		SELECT t.*, a.name name, p.name project_name
+		FROM task t, account a, PROJECT p
+		WHERE t.account_id = a.id
+		AND t.PROJECT_ID = p.ID
+		ORDER BY t.id desc
+	</select>
 	
+	검색용 >> 상태, tracker도 추가해야함
+	<select id="getTaskList" resultMap="taskList" parameterType="tasksch">
+		SELECT t.*, a.name name, p.name project_name
+		FROM task t, account a, PROJECT p
+		WHERE subject like '%'||#{subject}||'%'
+		and description like '%'||#{description}||'%'
+		and t.account_id = a.id
+		AND t.PROJECT_ID = p.ID
+		ORDER BY t.id desc
+	</select>
+	 -->
 	<!--public Task getTask(int id) -->
 	<select id="getTask" resultType="task" parameterType="int">
 		SELECT t.*, a.name name, p.name project_name

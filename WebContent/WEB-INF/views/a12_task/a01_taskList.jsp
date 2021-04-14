@@ -109,7 +109,7 @@ html, body {
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-              <form>
+              
                 <h3 class="card-title">검색조건</h3><br><br>
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
@@ -125,7 +125,7 @@ html, body {
                     <option>설명</option>
                   </select>
                 </div><br>
-                  
+                  <form:form modelAttribute="sch" method="post">
                   <div class="input-group input-group-m" style="width: 200px;">
                   <input type="checkbox" name="tracker" id="tracker" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>유형</label>&nbsp;&nbsp;
@@ -155,17 +155,17 @@ html, body {
                   <input type="text" class="form-control">
                   </div><br> --%>
                   <div class="input-group input-group-m" style="width: 600px;">
-                  <input type="checkbox" name="subject" id="subject" checked id="checkboxSuccess1">
+                  <input type="checkbox" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
-                  <input type="text" class="form-control">
+                  <input type="text" name="subject" id="subject" value="${task.subject}" class="form-control">
                   </div><br>
                   <div class="input-group input-group-m" style="width: 600px;">
                   <input type="checkbox" name="description" id="description" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>설명</label>&nbsp;&nbsp;
-                  <input type="text" class="form-control">
+                  <input type="text" name="description" id="description" value="${task.description}" class="form-control">
                   </div><br>
-                  <button class="btn btn-success" type="submit" style="align:right;">검색</button>
-                </form>
+                  <button class="btn btn-success" type="submit" >검색</button>
+                </form:form>
               </div>
               
               <!-- /.card-header -->
