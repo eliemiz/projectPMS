@@ -25,18 +25,20 @@
 		INSERT INTO TASK
 		VALUES (TASK_seq.nextval, #{parent_id}, #{project_id}, #{account_id},
 				#{subject}, #{description}, #{status}, #{priority}, 
-				#{created_on}, #{updated_on}, #{start_date}, #{due_date},
-				#{estimated}, #{done_ratio}, #{completed_on}, #{tracker})
+				SYSDATE, SYSDATE, #{start_date}, #{due_date},
+				#{estimated}, #{done_ratio}, SYSDATE, #{tracker}, #{backgroundColor})
 	</insert>
 
 	<!-- public void uploadFile(Attachment ins) : 파일 업로드 -->
 	<insert id="uploadFile" parameterType="attachment">
 		INSERT INTO attachment VALUES (
 			ATTACHMENT_SEQ.nextval,#{document_type},task_seq.currval,#{filename},
-			#{disk_filename},#{pathname},#{filesize},#{created_on})
+			#{disk_filename},#{pathname},#{filesize},sysdate)
 	</insert>
 	
-	<!-- public void updateTask(Task upt) -->
+	<!-- public void updateTask(Task upt) 
+	updated_on 추가함
+	-->
 	<update id="updateTask" parameterType="task">
 		UPDATE TASK
 			SET project_id = #{project_id},
@@ -45,6 +47,7 @@
 				description = #{description},
 				status = #{status},
 				priority = #{priority},
+				updated_on = sysdate,
 				start_date = #{start_date},
 				due_date = #{due_date},
 				estimated = #{estimated},

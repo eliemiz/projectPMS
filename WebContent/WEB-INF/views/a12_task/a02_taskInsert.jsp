@@ -100,11 +100,11 @@ html, body {
 			} 
 			// 달력 색깔 추가
 			if($("[name=tracker]").val()=='새기능'){
-				$("[name=backgroundColor]").val("blue");
+				$("[name=backgroundColor]").val("#4f5fd4");
 			} else if($("[name=tracker]").val()=='결함'){
-				$("[name=backgroundColor]").val("red");
+				$("[name=backgroundColor]").val("#439981");
 			} else if($("[name=tracker]").val()=='지원'){
-				$("[name=backgroundColor]").val("orange");
+				$("[name=backgroundColor]").val("#fc987d");
 			}
 			
 			$("form").submit();
