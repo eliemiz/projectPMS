@@ -44,7 +44,6 @@
   $.widget.bridge('uibutton', $.ui.button)
   
      $(document).ready(function(){
-      $("h2").text("메일발송");
       var subject="${param.subject}";
       if(subject!=""){
     	  alert("메일발송성공");
@@ -94,7 +93,7 @@
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg">이메일주소를 입력하세요.</p>
-	      <form method="post" action="${path}/account1.do?method=send">
+	      <form method="post" action="${path}/account.do?method=send">
 	      <input type="hidden" name="subject" value="비밀번호 찾기"/>
 	        <div class="input-group mb-3">
 	          <input name="receiver" type="email" class="form-control" placeholder="Email">

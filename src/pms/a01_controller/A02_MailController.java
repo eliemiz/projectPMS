@@ -10,11 +10,11 @@ import pms.a02_service.A02_MailService;
 import pms.z01_vo.Email;
 
 @Controller
-@RequestMapping("account1.do")
+@RequestMapping("account.do")
 public class A02_MailController {
 	
 	
-	// http://localhost:7080/projectPMS/account1.do?method=loginSearch
+	// http://localhost:7080/projectPMS/account.do?method=loginSearch
 	@RequestMapping(params = "method=loginSearch")
 	public String loginSearch() {
 		
@@ -24,7 +24,7 @@ public class A02_MailController {
 	@Autowired(required=false)
 	private A02_MailService service;
 	// 메일발송
-	// http://localhost:7080/projectPMS/account1.do?method=send
+	// http://localhost:7080/projectPMS/account.do?method=send
 	@RequestMapping(params="method=send")
 	public String send(Email send) throws MessagingException{
 		System.out.println(send.getSubject());
