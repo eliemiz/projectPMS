@@ -109,6 +109,7 @@ html, body {
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+              <form>
                 <h3 class="card-title">검색조건</h3><br><br>
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
@@ -118,30 +119,33 @@ html, body {
                   <label>검색조건</label>&nbsp;&nbsp;
                   <select class="form-control select2">
                     <option>유형</option>
-                    <option selected>상태</option>
+                    <option>상태</option>
                     <option>담당자</option>
                     <option>제목</option>
                     <option>설명</option>
                   </select>
                 </div><br>
-                  <%--
+                  
                   <div class="input-group input-group-m" style="width: 200px;">
-                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <input type="checkbox" name="tracker" id="tracker" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>유형</label>&nbsp;&nbsp;
                   <select class="form-control select2">
-                    <option>결함</option>
-                    <option>새기능</option>
-                    <option>지원</option>
+                    <option value="결함">결함</option>
+                    <option value="새기능">새기능</option>
+                    <option value="지원">지원</option>
                   </select>
                    </div><br>
-                   --%>
+                   
                 <div class="input-group input-group-m" style="width: 200px;">
-                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <input type="checkbox" name="status" id="status" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>상태</label>&nbsp;&nbsp;
                   <select class="form-control select2">
-                    <option>진행중</option>
-                    <option>완료</option>
-                    <option selected>모두</option>
+                    <option value="신규">신규</option>
+                    <option value="진행">진행</option>
+                    <option value="해결">해결</option>
+                    <option value="의견">의견</option>
+                    <option value="완료">완료</option>
+                    <option value="거절">거절</option>
                   </select>
                 </div><br>
                   <%--
@@ -149,19 +153,21 @@ html, body {
                   <input type="checkbox" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>담당자</label>&nbsp;&nbsp;
                   <input type="text" class="form-control">
-                  </div><br>
+                  </div><br> --%>
                   <div class="input-group input-group-m" style="width: 600px;">
-                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <input type="checkbox" name="subject" id="subject" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
                   <input type="text" class="form-control">
                   </div><br>
                   <div class="input-group input-group-m" style="width: 600px;">
-                  <input type="checkbox" checked id="checkboxSuccess1">
+                  <input type="checkbox" name="description" id="description" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>설명</label>&nbsp;&nbsp;
                   <input type="text" class="form-control">
                   </div><br>
-                 --%>
+                  <button class="btn btn-success" type="submit" style="align:right;">검색</button>
+                </form>
               </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">

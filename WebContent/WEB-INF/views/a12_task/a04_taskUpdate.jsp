@@ -136,7 +136,7 @@ html, body {
             <h3 class="card-title">${task.tracker}&nbsp;&nbsp;#${task.id}</h3>
         	<form:hidden path="id"/>
  <%--        	<form:hidden path="created_on"/> --%>
-        	<form:hidden path="updated_on"/>
+  <%--       	<form:hidden path="updated_on"/> --%>
   <%--       	<form:hidden path="completed_on"/> --%>
           </div>
           <!-- /.card-header -->

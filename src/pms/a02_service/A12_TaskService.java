@@ -31,12 +31,20 @@ public class A12_TaskService {
 	
 	// task 리스트 조회
 	public ArrayList<Task> getTaskList(Task sch) {
+		// 검색
+		if(sch.getSubject()==null) sch.setSubject("");
+		if(sch.getDescription()==null) sch.setDescription("");
+		if(sch.getTracker()==null) sch.setTracker("");
+		if(sch.getStatus()==null) sch.setStatus("");
+		
+		
 		return dao.getTaskList(sch);
 	}
 
 	// task 조회(id이용)
 	public Task getTask(int id) {
 	Task task = dao.getTask(id);
+	// task.setFileInfo(dao.fileInfo(id));
 		//return dao.getTask(id);
 		 return task;
 	}

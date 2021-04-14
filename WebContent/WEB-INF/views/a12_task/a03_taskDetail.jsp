@@ -247,10 +247,13 @@ html, body {
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
+   <%--         <c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">  --%>
               <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>첨부파일</label>
-            		&nbsp;&nbsp;&nbsp;첨부파일명&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
+            		&nbsp;&nbsp;&nbsp;
+            			<span name="filename" value="${finf.filename}">${attachment.filename}</span>
+            		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>상위 Task</label>
             		&nbsp;&nbsp;&nbsp;
@@ -263,7 +266,7 @@ html, body {
 	             
 	            </div>
 	        </div>
-	     
+	 <%--     </c:forEach> --%>
 	      <!-- /.card-body -->
 	      
             </div><br> <!-- /.yellowbox -->
@@ -277,7 +280,7 @@ html, body {
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
               	<br>
-              	<div>
+              	<div><!-- journal 작업이력 -->
               	첨부파일&nbsp;삭제&nbsp;&nbsp;&nbsp;2021-04-03
               	</div><br>
               	<div>
@@ -292,16 +295,25 @@ html, body {
                           	<input type = "button" class="btn btn-success" value="등록"/>
                             <input type = "button" class="btn btn-danger" value="취소"/>
                     </div><br>
-                </form>
+                </form><!-- 댓글 -->
                 <div align="center">2021-04-03</div>
               	<div class="form-group" style="width:700px;"><br>
-              		<%-- 시간도 추가여부 확인 --%>
+              		
               		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;">
               		김철수&nbsp;&nbsp;팀장<br>수정사항 확인 바랍니다
               		</div><br><br><br>
               		<div class="form control" id="round1" style="padding:10px; background-Color:lightpink; float:left;">
               		홍길동&nbsp;&nbsp;사원<br>확인했습니다
               		</div>
+              		
+              		<!-- 
+              		
+              		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;">
+	              		<span name="content" value="${conmeents.content}"></span>
+	              		<span name="account_id" value="${conmeents.account_id}"></span>
+	              		<span name="created_on" value="${conmeents.created_on}"></span>
+              		</div><br>
+              		 -->
               	</div>
               </div>
             </div>

@@ -16,12 +16,17 @@ public class A19_CommentService {
 	public ArrayList<Comment> getCommentList(Comment sch){
 		return dao.getCommentList(sch);
 	}
+	public Comment getComment(int document_id) {
+		return dao.getComment(document_id);
+	}
+	
 	/*
 	// 등록
 	public void insComment(Comment ins); {
 		dao.insComment(ins);
 	}
 	*/
+		
 	// 수정
 	public void updateComment(Comment upt) {
 		dao.updateComment(upt);

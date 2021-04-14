@@ -9,7 +9,7 @@
 	<!-- 댓글 조회 -->
 	<select id="CommentInfo" resultType="comment" parameterType="int">
 		select * from comments
-		where id = #{id}
+		where document_id = #{document_id}
 	</select>
 	<!-- 댓글 수정 -->
 	<update id="updateComment" parameterType="hashmap">

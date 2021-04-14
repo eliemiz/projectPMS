@@ -102,6 +102,14 @@ public class A12_TaskController {
 		return "a12_task\\a04_taskUpdate";
 	}
 	
+	// 화면단 클릭시 다운로드
+	@RequestMapping(params="method=download")
+	public String download(@RequestParam("filename") String filename, Model d) {
+		System.out.println("파일명:"+filename);
+		d.addAttribute("downloadFile", filename); 
+		return "downloadviewer";
+	}
+	
 	@ModelAttribute("projects")
 	public ArrayList<Project> getProjectList(){
 		return serviceP.getProjectList();
@@ -113,7 +121,8 @@ public class A12_TaskController {
 	/*
 	@ModelAttribute("attachments")
 	public ArrayList<Attachment> getAttachmentList(){
-		return serviceF.getAttachmentList();
+		return serviceT.getAttachmentList();
 	}
+	
 	*/
 }
