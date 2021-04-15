@@ -51,7 +51,7 @@ public class A12_TaskService {
 	// task 조회(id이용)
 	public Task getTask(int id) {
 		Task task = dao.getTask(id);
-		// task.setFileInfo(dao.fileInfo(id));
+		 task.setFileInfo(dao.fileInfo(id));
 		// return dao.getTask(id);
 		return task;
 	}
@@ -63,6 +63,7 @@ public class A12_TaskService {
 		dao.insertTask(ins);
 
 		String filename = null;
+		long filesize = 0;
 		File tmpFile = null;
 		File orgFile = null;
 		File pathFile = new File(uploadTmp);
@@ -72,13 +73,15 @@ public class A12_TaskService {
 		}
 		for (MultipartFile mpf : ins.getReport()) {
 			filename = mpf.getOriginalFilename();
+			filesize = mpf.getSize()/1024;
 			if (filename != null && !filename.trim().equals("")) {
 				tmpFile = new File(uploadTmp + filename);
 				try {
 					mpf.transferTo(tmpFile);
 					orgFile = new File(upload + filename);
 					Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-					dao.uploadFile(new Attachment());
+					/* ToDo: filename이 중복되면 문자열(예-123)을 넣을건데, 중복될 때에만 넣으려면? (if문을 어떻게 써야할까요?) */								
+					dao.uploadFile(new Attachment("Task",filename, filename+"123", upload, filesize+"KB"));
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -6,7 +6,7 @@ CREATE TABLE attachment(
 	filename varchar2(300), -- 파일 이름
 	disk_filename varchar2(300), -- 파일 저장 이름
 	pathname varchar2(300), -- 파일 경로 이름
-	filesize varchar2(30), -- 파일 사이즈
+	filesize varchar2(30), -- 파일 사이즈 *0415 number(38,0)로 수정
 	created_on DATE -- 파일 생성일자
 );
 
@@ -18,4 +18,5 @@ CREATE SEQUENCE ATTACHMENT_SEQ
 	MAXVALUE 9999999
 	CYCLE;
 SELECT * FROM attachment;
-INSERT INTO attachment VALUES (ATTACHMENT_SEQ,'TASK',10002,'파일.jpg','파일저장.jpg','파일경로','파일사이즈',SYSDATE);
+SELECT * FROM task;
+INSERT INTO attachment VALUES (ATTACHMENT_SEQ.nextval,'TASK',59,'파일.jpg','파일저장.jpg','파일경로',256||'KB',SYSDATE);

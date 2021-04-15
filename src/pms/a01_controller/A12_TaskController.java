@@ -63,11 +63,9 @@ public class A12_TaskController {
 		System.out.println("등록:" + ins.getSubject());		
 		System.out.println("파일:"+ins.getReport()[0].getOriginalFilename()); 
 		service.insertTask(ins);
-		d.addAttribute("proc", "ins");
-	//	Attachment t = new Attachment();
-	//	t.set document_type = "task";
 		
-	//	serviceT.insertAttachment(t);
+		d.addAttribute("proc", "ins");
+	
 		return "a12_task\\a02_taskInsert";
 	}
 	
@@ -102,7 +100,8 @@ public class A12_TaskController {
 		return "a12_task\\a04_taskUpdate";
 	}
 	
-	// 화면단 클릭시 다운로드
+	// 파일 다운로드
+	// http://localhost:7080/projectPMS/task.do?method=download&filename=파일명
 	@RequestMapping(params="method=download")
 	public String download(@RequestParam("filename") String filename, Model d) {
 		System.out.println("파일명:"+filename);

@@ -18,6 +18,8 @@
 		FROM task t, account a, PROJECT p
 		WHERE t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
+		
+		
 		ORDER BY t.id desc
 	</select>
 	
@@ -40,6 +42,12 @@
 		AND t.PROJECT_ID = p.ID 
 		AND t.id = #{id}
 	</select>
+	<!-- 파일 public ArrayList<Attachment> fileInfo(int document_id); -->
+	<select id="fileInfo" resultType="attachment" parameterType="int">
+		select *
+		from attachment
+		where document_id = #{document_id}
+	</select>
 	
 	<!-- public void insertTask(Task ins) -->
 	<insert id="insertTask" parameterType="task">
@@ -50,7 +58,7 @@
 				#{estimated}, #{done_ratio}, SYSDATE, #{tracker}, #{backgroundColor})
 	</insert>
 
-	<!-- public void uploadFile(Attachment ins) : 파일 업로드 -->
+	<!-- public void uploadFile(Attachment atins) : 파일 업로드 -->
 	<insert id="uploadFile" parameterType="attachment">
 		INSERT INTO attachment VALUES (
 			ATTACHMENT_SEQ.nextval,#{document_type},task_seq.currval,#{filename},

@@ -4,27 +4,29 @@ package pms.z01_vo;
 import java.util.Date;
 
 public class Attachment {
-	private int id;
+	private int id;//
 	private String document_type;
-	private int document_id;
+	private int document_id;//
 	private String filename;
-	private String disk_filename;
+	private String disk_filename; // filename+"123"
 	private String pathname;
 	private String filesize;
-	private Date created_on;
+	private Date created_on;//
 //	private String created_on;
 	public Attachment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Attachment(String filename, String pathname) {
+	public Attachment(String document_type, String filename, String disk_filename, String pathname, String filesize) {
 		super();
+		this.document_type = document_type;
 		this.filename = filename;
+		this.disk_filename = disk_filename;
 		this.pathname = pathname;
+		this.filesize = filesize;
 	}
-
-
+	
 	public int getId() {
 		return id;
 	}

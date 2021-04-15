@@ -72,6 +72,12 @@ html, body {
 		$("#list").click(function(){
 			location.href="${path}/task.do?method=list";
 		});
+		$("#fileInfo").click(function(){
+			var filename=$(this).text();
+			if(confirm("다운로드할래?"+filename)){
+				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
+			}
+		});
 		$("#uptFrm").click(function(){
 /* 			var projcet_id = $("[name=project_id]").val();
 			var status = $("[name=status]").val();
@@ -247,12 +253,12 @@ html, body {
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
-   <%--         <c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">  --%>
+           <c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">  
               <div class="bs-stepper-content">
             	<div class="form-group">
             		<label>첨부파일</label>
             		&nbsp;&nbsp;&nbsp;
-            			<span name="filename" value="${finf.filename}">${attachment.filename}</span>
+            			<span id="fileInfo" name="filename" value="${finf.filename}">${finf.filename}</span>
             		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>상위 Task</label>
@@ -266,7 +272,7 @@ html, body {
 	             
 	            </div>
 	        </div>
-	 <%--     </c:forEach> --%>
+	      </c:forEach> 
 	      <!-- /.card-body -->
 	      
             </div><br> <!-- /.yellowbox -->
