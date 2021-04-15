@@ -6,7 +6,8 @@
 	<select id="getTaskList" resultMap="taskList" parameterType="task">
 		SELECT t.*, a.name name, p.name project_name
 		FROM task t, account a, PROJECT p
-		WHERE t.account_id = a.id
+		WHERE subject LIKE '%'||#{subject}||'%' 
+		AND t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
 		ORDER BY t.id desc
 	</select>

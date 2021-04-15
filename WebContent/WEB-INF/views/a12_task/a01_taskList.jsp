@@ -115,6 +115,7 @@ html, body {
                 	<i class="fas fa-pen"></i>
                 	<label id="newTask" style="cursor:pointer;">새Task만들기</label>
                 </div>
+                <%--
                 <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
                   <select class="form-control select2">
@@ -125,7 +126,9 @@ html, body {
                     <option>설명</option>
                   </select>
                 </div><br>
+                 --%>
                   <form:form modelAttribute="sch" method="post">
+                  <%--
                   <div class="input-group input-group-m" style="width: 200px;">
                   <input type="checkbox" name="tracker" id="tracker" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>유형</label>&nbsp;&nbsp;
@@ -148,6 +151,7 @@ html, body {
                     <option value="거절">거절</option>
                   </select>
                 </div><br>
+                 --%>
                   <%--
                   <div class="input-group input-group-m" style="width: 600px;">
                   <input type="checkbox" checked id="checkboxSuccess1">
@@ -155,15 +159,19 @@ html, body {
                   <input type="text" class="form-control">
                   </div><br> --%>
                   <div class="input-group input-group-m" style="width: 600px;">
+                  <%--
                   <input type="checkbox" checked id="checkboxSuccess1">
+                  --%>
                   &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
                   <input type="text" name="subject" id="subject" value="${task.subject}" class="form-control">
                   </div><br>
+                   <%--
                   <div class="input-group input-group-m" style="width: 600px;">
                   <input type="checkbox" name="description" id="description" checked id="checkboxSuccess1">
                   &nbsp;&nbsp;<label>설명</label>&nbsp;&nbsp;
                   <input type="text" name="description" id="description" value="${task.description}" class="form-control">
                   </div><br>
+                   --%>
                   <button class="btn btn-success" type="submit" >검색</button>
                 </form:form>
               </div>

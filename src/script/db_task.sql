@@ -41,7 +41,12 @@ WHERE tracker='새기능';
 UPDATE TASK 
 	SET backgroundcolor='#fc987d'
 WHERE tracker='결함';
-
+SELECT t.*, a.name name, p.name project_name
+		FROM task t, account a, PROJECT p
+		WHERE subject LIKE '%'||'테스트'||'%' 
+		AND t.account_id = a.id
+		AND t.PROJECT_ID = p.ID
+		ORDER BY t.id DESC;
 SELECT * FROM TASK WHERE ID = 1;
 DELETE FROM task WHERE id = 10001;
 INSERT INTO task VALUES (10001, 10000, 11111, 12345, 'test용 TASK', '테스트용입니다.', '신규', 1, 
