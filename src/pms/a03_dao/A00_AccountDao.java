@@ -20,7 +20,7 @@ public interface A00_AccountDao {
 
 	public void update_pw(Account upt);
 
-	public void find_pw(Account find);
+	public Account find_pw(Account find);
 	
 	
 
