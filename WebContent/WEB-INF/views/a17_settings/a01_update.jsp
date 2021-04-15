@@ -48,6 +48,10 @@
 		alert("설정완료!!\설정 목록 페이지로 이동합니다");
 		location.href = "${path}/settings.do?method=project";			
 	}
+	if(proc=="del"){
+		alert("삭제완료\n설정 목록 페이지로 이동합니다");
+		location.href = "${path}/settings.do?method=project";			
+	}
   
 	$(document).ready(function(){
 		$("#sb-project-setting").addClass("active");
@@ -59,7 +63,13 @@
 				$("form").submit();
 			}
 		});
-		
+		$("#delBtn").on("click",function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("[name=proc]").val("del");
+				$("form").attr("action","${path}/settings.do?method=delete");
+				$("form").submit();
+			}
+		});	
 	});
 
   $(function () {
@@ -148,6 +158,7 @@
                <div class="form-row float-right">
           <!-- /.col -->
             <button type="submit" class="btn btn-primary" id="uptBtn">설정</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-danger" id="delBtn">삭제</button>&nbsp;&nbsp;
             <a href="${path}/settings.do?method=project" class="btn btn-default">취소</a>
           <!-- /.col -->
         </div>

@@ -15,4 +15,8 @@ public class A17_SettingsService {
 	public void projectUpt(Project upt) {
 		 dao.projectUpt(upt);
 	}
+	public void projectDel(int id) {
+		
+		dao.projectDel(id);
+	}
 }

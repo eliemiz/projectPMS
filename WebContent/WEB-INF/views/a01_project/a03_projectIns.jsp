@@ -57,18 +57,25 @@ $.widget.bridge('uibutton', $.ui.button)
 
  $(document).ready(function(){
 	 
-			  var proc = "${proc}";
-			  if(proc=="insert"){
-				  $("[name=id]").val("0");
-				  $("[name=name]").val("");
-				  
-		      	  if(confirm("등록완료!\n프로젝트목록으로 이동하시겠습니까?")){
-		      		  location.href="${path}/project.do";
-		      	  }
-			  }
+	  var proc = "${proc}";
+	  if(proc=="insert"){
+		  $("[name=id]").val("0");
+		  $("[name=name]").val("");
 		  
+      	  if(confirm("등록완료!\n프로젝트목록으로 이동하시겠습니까?")){
+      		  location.href="${path}/project.do";
+      	  }
+	  }
+	  $("#Btn").on("click",function(){
+		  
+			if($("[name=name]").val()==""){
+				alert("제목을 입력해주세요");
+				return false;
+			}
+			$("form").submit();
  	  
- });
+       });
+ });  
  
 
     
@@ -135,9 +142,6 @@ $.widget.bridge('uibutton', $.ui.button)
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
                 <form:input path="identifier" class="form-control"/>
-                <!-- <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
-                * 식별자는 저장후에는 수정할 수 없습니다.</a> -->
-                
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>

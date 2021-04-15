@@ -43,32 +43,15 @@
 
   $.widget.bridge('uibutton', $.ui.button)
   
-  var proc = "${param.proc}";
-  
-  if(proc=="del"){
-		alert("삭제완료");
-		location.href = "${path}/project.do";			
-	}
-  
    $(document).ready(function(){
+	   
       $("#regBtn").click(function(){
     	  location.href="${path}/project.do?method=insForm";
    });
       $("#setBtn").click(function(){
     	  location.href="${path}/settings.do?method=project";
    });
-      $("#delBtn").click(function(){
-    	 //  location.href="${path}/project.do?method=delForm";
-		  if(confirm("삭제하시겠습니까?")){
-			  // var no = $("input[name=no]").val(); post방식 
-			  $("[name=proc]").val("del");
-			  $("form").attr("action", "${path}/project.do?method=delete");
-			  $("form").submit();
-		  }
-		 //}else{
-		//	  alert("삭제권한이 없습니다.\n작성자만 삭제가 가능합니다!");
-		//  }
-   });
+      
    });
 
 </script>
@@ -119,10 +102,6 @@
 		     </form:form>
 		  </div>
 		  </div>
-		  <!--		 <form method="post" enctype="multipart/form-data">
-	     <input type="hidden" name="proc"/>
-	     <input type="hidden" id="id" name="id" value="${project.id}"/> -->
-
 	     <c:forEach var="project" items="${projectList}">
 			<div class="card card-primary card-outline">
               <div class="card-header">
@@ -131,9 +110,8 @@
               <div class="card-body">
                 <h6 class="card-title">${project.description}</h6>
                 <p class="card-text"></p>
-                <a href="${path}/dashboard.do?projectId=${project.id}" class="btn btn-success">프로젝트 확인하기</a>
               <div class="form-row float-right">
-              	<button class="btn btn-danger" id="delBtn"><i class="fas fa-trash">삭제</i></button>
+              	<a href="${path}/dashboard.do?projectId=${project.id}" class="btn btn-success">프로젝트 확인하기</a>
               </div>
               </div>
             </div>

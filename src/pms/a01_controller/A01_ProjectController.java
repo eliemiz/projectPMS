@@ -39,27 +39,8 @@ public class A01_ProjectController {
 		d.addAttribute("proc", "insert");		
 		return "a01_project\\a03_projectIns";
 	}
-	/*
-	 	// http://localhost:7080/projectPMS/project.do?method=delForm
-	@RequestMapping(params = "method=delForm")
-	public String delForm(@ModelAttribute("id") int id) {
-		return "a01_project\\a04_projectDel";
-	}
-	// http://localhost:7080/projectPMS/project.do?method=delete
-	@RequestMapping(params = "method=delete")
-	public String projectDel(Project delete, Model d) {
-		service.projectDel(delete);
-		d.addAttribute("proc", "delete");
-		return "a01_project\\a04_projectDel";
-	} 
-	 */
-	// http://localhost:7080/board/board.do?method=delete
-	   @RequestMapping(params="method=delete")
-	   public String projectDel(@RequestParam("id") int id) {
-		   service.projectDel(id);
-		   return "a01_project\\a00_projects";
-	   }
-
+	
+	
 
 	
 }

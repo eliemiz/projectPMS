@@ -41,5 +41,11 @@ public class A17_SettingsController {
 		return "forward:/settings.do?method=detail";
 	}
 	
-	
+	// http://localhost:7080/projectPMS/settings.do?method=delete
+	   @RequestMapping(params="method=delete")
+	   public String delete(@RequestParam("id") int id) {
+		   service.projectDel(id);
+		   return "a17_settings\\a01_update";
+	   }
+
 }
