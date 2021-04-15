@@ -163,17 +163,21 @@
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
         <i class="fas fa-th-large"></i>
       </a>
+    </li> -->
+    <li class="nav-item">
+    	<div class="nav-link">
+			<i class="fas fa-globe-asia"></i>    		
+    	</div>
     </li>
     <li class="nav-item">
-    	<i class="fas fa-globe-asia"></i>
 		<select class="form-control" id="selectLang">
-			<option value="">none</option>
-			<option value="ko">ko</option>
-			<option value="en">en</option>
+			<option value=""><spring:message code="lang-none"/></option>
+			<option value="ko"><spring:message code="lang-ko"/></option>
+			<option value="en"><spring:message code="lang-en"/></option>
 		</select>
     </li>
   </ul>
