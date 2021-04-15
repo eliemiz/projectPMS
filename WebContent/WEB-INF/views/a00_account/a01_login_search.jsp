@@ -42,14 +42,22 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-  
-     $(document).ready(function(){
-      var subject="${param.subject}";
+  /*
+   $(document).ready(function(){
+     var subject="${param.subject}";
       if(subject!=""){
     	  alert("메일발송성공");
       }
    });
-
+  */
+    
+  $("#Btn").click(function(){
+	  var mail = $("#mail").val();
+	  var name = $("#name").val();
+	  
+	  $("form").submit();
+  });
+s
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -92,22 +100,22 @@
 	      <a href="../../index2.html" class="h1">비밀번호 찾기</a>
 	    </div>
 	    <div class="card-body">
-	      <p class="login-box-msg">이메일주소를 입력하세요.</p>
+	      <p class="login-box-msg">메일 주소를 입력하세요.</p>
 	      <form method="post" action="${path}/account.do?method=send">
 	      <input type="hidden" name="subject" value="비밀번호 찾기"/>
-	        <div class="input-group mb-3">
-	          <input name="receiver" type="email" class="form-control" placeholder="Email">
+	          <input name="receiver" id="mail" type="email" class="form-control" placeholder="Email">
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
 	            </div>
 	          </div>
-	        </div>
-	        <input name="content" type="hidden" value="1234">
+	          <p class="login-box-msg">이름을 입력하세요.</p>
+	          <input name="name" id="name" type="text" class="form-control" placeholder="이름">
+	        <input name="content" type="hidden" value="">
 	        <div class="row">
 	          <div class="col-12">
 	           <a href="${path}/login.do">
-	            <button type="submit" class="btn btn-primary btn-block">확인</button>
+	            <button type="submit" class="btn btn-primary btn-block" id="Btn">확인</button>
 	           </a> 
 	          </div>
 	          <!-- /.col -->

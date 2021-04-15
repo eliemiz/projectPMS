@@ -30,6 +30,23 @@ public class A00_AccountService {
 	}
 	
 	public void signinIns(Account insert) {
+		
 		dao.signinIns(insert);
+	}
+	public void find_pw(Account find) {
+		
+	//	Account account = A00_AccountService.find_pw();
+		
+	//	      if(account!=null && account.getName().equals(name)) {
+	//            return true;
+	//        }
+	//        else {
+	//            return false;
+	//        }
+		dao.find_pw(find);
+	}
+	public void update_pw(Account upt) {
+		
+		dao.update_pw(upt);
 	}
 }

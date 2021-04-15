@@ -42,7 +42,12 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-  
+    var proc = "${proc}";
+	if(proc=="insert"){
+		alert("등록완료\n로그인페이지로 이동합니다.")
+		location.href = "${path}/account.do?method=login";			
+	}
+	
 
   $(function(){
 
@@ -72,11 +77,23 @@
   
   */
 
-  var proc = "${proc}";
-	if(proc=="insert"){
-		alert("등록완료\n로그인페이지로 이동합니다.")
-		location.href = "${path}/account.do?method=login";			
-	}
+  /*
+  $(".mail_check_input").blur(function(){
+	    
+	    var inputCode = $(".mail_check_input").val();        // 입력코드    
+	    var checkResult = $("#mail_check_input_box_warn");    // 비교 결과     
+	    
+	    if(inputCode == code){                            // 일치할 경우
+	        checkResult.html("인증번호가 일치합니다.");
+	        checkResult.attr("class", "correct");        
+	    } else {                                            // 일치하지 않을 경우
+	        checkResult.html("인증번호를 다시 확인해주세요.");
+	        checkResult.attr("class", "incorrect");
+	    }    
+	    
+	});
+  */
+	
 
 </script>
 </head>
@@ -171,7 +188,7 @@
 	          <form:input path="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
-	              <span class="fas fa-envelope"></span>s
+	              <span class="fas fa-envelope"></span>
 	            </div>
 	          </div>
 	        </div>
