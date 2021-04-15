@@ -7,7 +7,8 @@
 	<select id="getJournalList" parameterType="journal" resultType="journal">
 	SELECT * 
 	FROM journal
-	WHERE document_type=#{document_type}
+	WHERE document_type like '%'||#{document_type}||'%'
+		order by created_on desc
 	</select>
 </mapper>
 

@@ -15,6 +15,7 @@ public class A11_ActivityService {
 	private A11_JournalDao dao;
 	
 	public ArrayList<Journal> getJournalList(Journal jr){
+		 if(jr.getDocument_type()==null) jr.setDocument_type(""); 
 		return dao.getJournalList(jr);
 	}
 }

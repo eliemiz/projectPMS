@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<!-- vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -43,6 +45,23 @@
 
   $.widget.bridge('uibutton', $.ui.button)
 
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    var vm = new Vue({
+       el:".content-wrapper",
+       data:{
+          type:''
+       }
+    });  
+    
+   
+    $(".type").click(function(){
+    	  var ty = $(this).attr("id");
+    	  location.href="${path}/activity.do?&document_type="+ty;
+      });
+    
+ });
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -85,29 +104,34 @@
           </div>
           
           <div class="card-body">
-            <div class="card card-info card-outline">
+            <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">작업내역 선택 보기</h5>
+                <h5 class="card-title">작업내역 선택</h5>
               </div>
               <div class="card-body">
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="customCheckbox1" >
-                  <label for="customCheckbox1" class="custom-control-label">일감</label>
+              <div class="input-group input-group-m" style="width: 250px;">
+                  <label>검색조건</label>&nbsp;&nbsp;
+                  <select class="form-control select2"  v-model="type" >
+                    <option value=''>작업유형 선택</option>
+                    <option>risk</option>
+                    <option>task</option>
+                  </select>
+                </div>
+                <!-- <div class="custom-control custom-checkbox">
+                  <input class="custom-control-input" type="checkbox" id="task" >
+                  <label for="task" class="custom-control-label">Task</label>
                 </div>
                 <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="customCheckbox2" >
-                  <label for="customCheckbox2" class="custom-control-label">공지</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="customCheckbox3" >
-                  <label for="customCheckbox3" class="custom-control-label">Risks</label>
-                </div>
+                  <input class="custom-control-input" type="checkbox" id="risk" >
+                  <label for="risk" class="custom-control-label">Risk</label>
+                </div> -->
                <div class="form-row float-left">
-              <button type="submit" class="btn btn-primary btn-block">적용</button>
+            <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type">적용</button> 
               </div>
               </div>
             </div>
-            
+           <%--  <input type="hidden" name="document_type" value="${jr.document_type}"> --%>
+            <div>{{type}}</div>
        <div class="row">
           <div class="col-12">
             <div class="card">
@@ -117,69 +141,35 @@
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
+                <col width="5%">
+			    <col width="5%">
+			    <col width="80%">
+			    <col width="10%">
                   <thead>
-                    <tr>
-                      <th>프로젝트명</th>
-                      <th>유형</th>
-                      <th>번호</th>
-                      <th>상태</th>
+                    <tr style="text-align:center;">
+                      <th>작업번호</th>
+                      <th>작업유형</th>
                       <th>내용</th>
-                      <th>작성자</th>
+                      <th>작성일자</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>새작업</td>
-                      <td>#1</td>
-                      <td>신규</td>
-                      <td>테스트</td>
-                      <td>홍길동</td>
-                    </tr>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>이길동</td>
-                    </tr>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>이길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>새작업</td>
-                      <td>#1</td>
-                      <td>신규</td>
-                      <td>테스트</td>
-                      <td>이길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>이길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>이길동</td>
-                    </tr>
+                   <c:forEach var="act" items="${activity}">
+	                    <tr style="text-align:center;">
+	                      <td>${act.document_id}</td>
+	                      <td>${act.document_type}</td>
+	                      <td>${act.content}</td>
+	                      <td>${act.created_on}</td>
+	                    </tr>
+                    </c:forEach>
                   </tbody>
                 </table>
-              </div>
+              </div> 
               <!-- /.card-body -->
+              
+              
+              
+              
             </div>
             <!-- /.card -->
           </div>
