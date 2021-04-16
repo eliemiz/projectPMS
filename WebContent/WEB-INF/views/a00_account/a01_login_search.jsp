@@ -63,8 +63,14 @@
 	 
 	 $(document).ready(function(){
 	 	$("#Btn").click(function() {
-	 		/* 추가 유효성 체크 */
-	 		
+	 		if($("[name=mail]").val()==""){
+				alert("이메일을 입력해주세요");
+				return false;
+				
+			}else if($("[name=name]").val()==""){
+				alert("이름을 입력해주세요");
+				return false;
+			} 
 			$("form").submit();
 		}); 	
 	 });
@@ -119,7 +125,7 @@
 								<form method="post" action="${path}/account.do?method=send">
 									<p class="login-box-msg">메일 주소를 입력하세요.</p>
 									<div class="input-group mb-3">
-										<input name="receiver" id="mail" type="email" class="form-control" placeholder="Email 입력">
+										<input name="mail" id="mail" type="email" class="form-control" placeholder="Email 입력">
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-envelope"></span>
@@ -129,7 +135,12 @@
 									<p class="login-box-msg">이름을 입력하세요.</p>
 									<div class="input-group mb-3">
 										<input name="name" id="name" type="text" class="form-control" placeholder="이름 입력">
-									</div>
+										 <div class="input-group-append">
+							            	<div class="input-group-text">
+							             		 <span class="fas fa-user"></span>
+							           		</div>
+							          	</div>
+							        </div>
 									<div class="row">
 										<div class="col-12">
 											<button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>

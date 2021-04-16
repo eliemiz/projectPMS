@@ -5,6 +5,7 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A02_MailService;
@@ -30,6 +31,22 @@ public class A02_MailController {
        return "forward:/account.do?method=login";
     } // 수정 후, 다시 조회 처리할 수 있게 하기 위하여 forward로
       // 해당 controller 기능 메서드 호출
+    
+ // http://localhost:7080/projectPMS/account.do?method=signin
+ 		@RequestMapping(params = "method=signin")
+ 		public String signin(@ModelAttribute("account") Account a) {
+ 			
+ 			return "a00_account\\a02_signin";
+ 		}
+ 		// http://localhost:7080/projectPMS/account.do?method=insert
+ 		@RequestMapping(params = "method=insert")
+ 		public String signinIns(Account insert, Model d) {
+ 			service.signinIns(insert);
+ 			
+ 			d.addAttribute("proc", "insert");
+ 			
+ 			return "forward:/account.do?method=login";
+ 		}
    
    
 	@Autowired(required=false)
@@ -52,7 +69,16 @@ public class A02_MailController {
 		// 메일 전송을 service단에서 처리
 		return "a00_account\\a01_login_search";
 	}
-	 
+	
+		
+		// http://localhost:7080/projectPMS/account.do?method=send2
+		@RequestMapping(params="method=send2")
+		public String send2(Email send) throws MessagingException{
+				System.out.println(send.getSubject());
+				service.sendMail2(send);
+				// 메일 전송을 service단에서 처리
+			return "a00_account\\a02_signin";
+		}	
 
 	
 }

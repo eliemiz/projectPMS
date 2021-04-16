@@ -37,20 +37,16 @@ public class A02_MailService {
 			str += charSet[idx];
 		}
 		return str;
-		// dao.update_pw(upt);
 	}
 
 	public void find_pw(Account find) {
 		dao.find_pw(find);
 	}
+	public void signinIns(Account insert) {
+		dao.signinIns(insert);
+	}
+
 		
-	/*
-	 if(password!=null) {
-		
-		email.setContent("비밀번호는 "+password+" 입니다."); // 이메일로 보낼 메시지
-		email.setReceiver(mail); // 받는이의 이메일 주소
-		email.setSubject(name+"님 비밀번호 찾기 메일입니다."); // 이메일로 보낼 제목 
-	 */
 		
 	public int sendMail(String name, Email email) throws MessagingException {
 
@@ -62,33 +58,71 @@ public class A02_MailService {
 		if (find == null) {
 			return -1; // 해당 계정 없음
 		}
-
-		/* 1.멀티미디어형 메일데이터 전송 */
-		MimeMessage msg = sender.createMimeMessage();
-
-		/* 2. 제목 설정 */
-		msg.setSubject("PMS 비밀번호 찾기 안내 메일입니다.");
-
-		/* 3. 수신자 설정 */
-		msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
-
-		/* 4. 내용 설정 */
-		// 임시 비밀번호 생성
-		String pass = PasswordManager.getInstance().createPassword();
-		StringBuilder sb = new StringBuilder();
-		sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
-		sb.append("새 비밀번호 : " + pass);
-		// 계정 비밀번호 변경
-		find.setPassword(pass);
-		dao.update_pw(find);
-
-		// 내용 설정
-		msg.setText(sb.toString());
-
-		// 5. 발송 처리
-		sender.send(msg);
-
-		return 1;
-	}
 		
+		try {
+			/* 1.멀티미디어형 메일데이터 전송 */
+			MimeMessage msg = sender.createMimeMessage();
+		
+			/* 2. 제목 설정 */
+			msg.setSubject("PMS 비밀번호 안내 메일입니다.");
+		
+			/* 3. 수신자 설정 */
+			msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
+		
+			/* 4. 내용 설정 */
+			// 임시 비밀번호 생성
+			String pass = PasswordManager.getInstance().createPassword();
+			StringBuilder sb = new StringBuilder();
+			//sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
+			sb.append("새 비밀번호는 : " + pass + " 입니다.");
+			// 계정 비밀번호 변경
+			find.setPassword(pass);
+			dao.update_pw(find);
+		
+			// 내용 설정
+			msg.setText(sb.toString());
+		
+			// 5. 발송 처리
+			sender.send(msg);
+			} catch(MessagingException e) {
+				System.out.println("MessagingException");
+				e.printStackTrace();
+				
+				return -2;
+			}
+			
+				return 1;
+			}
+	
+	public void sendMail2(Email email) throws MessagingException {
+
+		
+			/* 1.멀티미디어형 메일데이터 전송 */
+			MimeMessage msg = sender.createMimeMessage();
+		
+			/* 2. 제목 설정 */
+			msg.setSubject("PMS 비밀번호 안내 메일입니다.");
+		
+			/* 3. 수신자 설정 */
+			msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
+		
+			/* 4. 내용 설정 */
+			// 임시 비밀번호 생성
+			String password = PasswordManager.getInstance().createPassword();
+			StringBuilder sb = new StringBuilder();
+			//sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
+			sb.append("새 비밀번호는 : " + password + " 입니다.");
+			
+			
+			// 회원등록
+			Account insert = new Account(password);
+			dao.signinIns(insert);
+		
+			// 내용 설정
+			msg.setText(sb.toString());
+		
+			// 5. 발송 처리
+			sender.send(msg);
+			
+			}
 }

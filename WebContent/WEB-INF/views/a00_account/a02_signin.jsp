@@ -42,57 +42,26 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-    var proc = "${proc}";
-	if(proc=="insert"){
-		alert("등록완료\n로그인페이지로 이동합니다.")
-		location.href = "${path}/account.do?method=login";			
-	}
-	
-
+   
   $(function(){
 
-//비밀번호 확인
-	$('#password2').blur(function(){
-	   if($('#password').val() != $('#password2').val()){
-	    	if($('#password2').val()!=''){
-		    alert("비밀번호가 일치하지 않습니다.");
-	    	    $('#password2').val('');
-	          $('#password2').focus();
-	       }
-	    }
-	})  	   
-});
-  /*
-   function chkPW(){
-
-	  var pw = $("#password").val();
-	 
-	  if(pw.length < 4 || pw.length > 8){
-
-	   alert("4자리 ~ 8자리 이내로 입력해주세요.");
-	   return false;
-	  }
-
-	 }
   
-  */
-
-  /*
-  $(".mail_check_input").blur(function(){
-	    
-	    var inputCode = $(".mail_check_input").val();        // 입력코드    
-	    var checkResult = $("#mail_check_input_box_warn");    // 비교 결과     
-	    
-	    if(inputCode == code){                            // 일치할 경우
-	        checkResult.html("인증번호가 일치합니다.");
-	        checkResult.attr("class", "correct");        
-	    } else {                                            // 일치하지 않을 경우
-	        checkResult.html("인증번호를 다시 확인해주세요.");
-	        checkResult.attr("class", "incorrect");
-	    }    
-	    
-	});
-  */
+$(document).ready(function(){
+  $("#Btn").click(function(){
+	    if($("[name=user_id]").val()==""){
+			alert("아이디를 입력해주세요");
+			return false;
+			
+		}else if($("[name=mail]").val()==""){
+			alert("이메일을 입력해주세요");
+			return false;
+			
+		}else if($("[name=name]").val()==""){
+			alert("이름을 입력해주세요");
+			return false;
+		} 
+  });
+}); 
 	
 
 </script>
@@ -140,28 +109,17 @@
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
 	
-	    <form:form modelAttribute="account" action="${path}/account.do?method=insert"
-    	enctype="multipart/form-data" method="post">
-    	<form:hidden path="id"/>
-    	<!-- <form:hidden path="created_on"/>
-    	<form:hidden path="last_login_on"/> -->
+	    <form action="${path}/account.do?method=send2" method="post">
+    	<input type="hidden" name="id" id="id"/>
 	       <div class="input-group mb-3">
-	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
+	          <input name="user_id" id="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
 	            </div>
 	          </div>
 	        </div>
-	        <br>
-	        <div class="input-group mb-3">
-	          <form:input path="password" class="form-control" placeholder="비밀번호"/>
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div>
+	        <!-- 
 	         <a class="h7">
                  *최소한 4 글자 이상이어야 합니다.
              </a>
@@ -173,10 +131,10 @@
 	              <span class="fas fa-lock"></span>
 	            </div>
 	          </div>
-	        </div>
+	        </div> -->
 	         <br>  
 	          <div class="input-group mb-3">
-	          <form:input path="name" class="form-control" placeholder="이름"/>
+	          <input name="name" id="name" class="form-control" placeholder="이름"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -185,7 +143,7 @@
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <form:input path="mail" class="form-control" placeholder="Email"/>
+	          <input name="mail" id="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
@@ -195,20 +153,20 @@
 	        <br>
 	        <div class="input-group mb-3">
 	        <div class="input-group-append">
-	          <form:select path="auth" class="form-control">
+	          <select name="auth" id="auth" class="form-control">
 	          	<option value="">권한 선택</option>
-	          	<form:option value="Developer" name="Developer"></form:option>
-	          	<form:option value="Manager" name="Manager"></form:option>
-	          </form:select>
+	          	<option value="Developer" name="Developer">Developer</option>
+	          	<option value="Manager" name="Manager">Manager</option>
+	          </select>
 	          </div>
 	        </div>
 	        <div class="form-row float-right">
 	        	<a href="${path}/login.do">
-	            <button type="submit" class="btn btn-primary btn-block" onclick="chkPW()">등록</button>
+	            <button type="submit" class="btn btn-primary btn-block" id="Btn">등록</button>
 	            </a>
 	          <!-- /.col -->
 	        </div>
-	      </form:form>
+	      </form>
 	
 	      <div class="social-auth-links text-center">
 
