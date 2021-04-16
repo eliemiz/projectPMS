@@ -1,9 +1,9 @@
 # Database Connect Info
 driver=oracle.jdbc.driver.OracleDriver
-dburl=jdbc:oracle:thin:@39.117.21.102:21521:xe
-user=pms
-pass=pms
+dburl=jdbc:oracle:thin:@localhost:1521:xe
+user=scott
+pass=tiger
 
 # File Server Info
-upload=C:/a02_javaexp/eclipse-workspace/board/WebContent/z01_upload
-uploadTmp=C:/a02_javaexp/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp2/wtpwebapps/board/z01_upload
+# upload=C:/Users/ELIE/eclipse/workspace/board/WebContent/z01_upload/
+# uploadTmp=C:/Users/ELIE/eclipse/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/board/z01_upload/

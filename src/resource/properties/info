@@ -5,5 +5,5 @@ user=pms
 pass=pms
 
 # File Server Info
-upload=C:/a02_javaexp/eclipse-workspace/board/WebContent/z01_upload
-uploadTmp=C:/a02_javaexp/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp2/wtpwebapps/board/z01_upload
+# upload=C:/Users/ELIE/eclipse/workspace/board/WebContent/z01_upload/
+# uploadTmp=C:/Users/ELIE/eclipse/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/board/z01_upload/
