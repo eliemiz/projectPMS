@@ -56,4 +56,10 @@ public class A99_CommonController {
 		
 		return "pageJsonReport";
 	}
+	
+	@RequestMapping("chatting.do")
+	public String chatting() {
+		
+		return "a00_common\\a03_chatting";
+	}
 }

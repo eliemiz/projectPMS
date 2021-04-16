@@ -22,7 +22,7 @@
 		http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 	
 	<context:property-placeholder location="classpath:resource/properties/info"/>
-	
+
 	<context:component-scan base-package="pms">
 		<context:include-filter type="annotation" 
 			expression="org.springframework.stereotype.Controller"/>
@@ -61,14 +61,13 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	</bean>
 	
-	
  	<!-- SMTP 서버 설정 -->
-   <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
    		<property name="host" value="smtp.gmail.com"/>
    		<property name="port" value="587"/>
    		<property name="username" value="projectmgtsystem1"/>
    		<property name="password" value="pmspms1!"/>
-   <!-- 보안 관련 설정 -->		
+		<!-- 보안 관련 설정 -->		
    		<property name="javaMailProperties">
    			<props>
    				<prop key="mail.smtp.auth">true</prop>
@@ -89,5 +88,19 @@
    
     <!-- 파일다운로드뷰 viewer -->
 	<bean id="downloadviewer" class="pms.z02_util.FileDownloadViewer"/>
+	
+   	<!-- Websocket Chatting -->
+   	<!-- 1. 요청 핸들러 매핑 클래스와 어댑터 선언 -->
+   	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+   	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+   	<!-- 2. servlet handler를 선언하여 사용할 수 있게 선언 -->
+   	<mvc:default-servlet-handler/>
+   	<!-- 3. 소켓통신 handler 클래스 연동 처리 
+   	ws://localhost:7080
+   	/springweb/chat-ws.do로 호출하면 
+   	해당 핸들러가 호출되어 사용될 수 있게 처리 -->
+   	<websocket:handlers>
+   		<websocket:mapping handler="chatHandler" path="/chat-ws.do"/>
+   	</websocket:handlers>
 	
 </beans>

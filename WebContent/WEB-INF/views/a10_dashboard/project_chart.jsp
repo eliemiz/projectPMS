@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="dist/css/adminlte.min.css">
 <link rel="stylesheet" href="plugins/uplot/uPlot.min.css">
@@ -61,7 +61,7 @@
 			<!-- DONUT CHART -->
 			<div class="card card-danger">
 				<div class="card-header">
-					<h3 class="card-title">프로젝트 업무 상태별 현황</h3>
+					<h3 class="card-title"><spring:message code="dash-chart-per-project"/></h3>
 					<div class="card-tools">
 						<button type="button" class="btn btn-tool"
 							data-card-widget="collapse">
@@ -104,7 +104,7 @@
 		<div class="col-md-4">
 			<div class="card card-danger">
 				<div class="card-header">
-					<h3 class="card-title">개인 업무 상태별 현황</h3>
+					<h3 class="card-title"><spring:message code="dash-chart-per-person"/></h3>
 
 					<div class="card-tools">
 						<button type="button" class="btn btn-tool"
@@ -124,9 +124,9 @@
 						<table class="table table-bordered table-hover text-center">
 							<thead>
 								<tr>
-									<th>전체</th>
-									<th>진행</th>
-									<th>완료</th>
+									<th><spring:message code="dash-chart-total"/></th>
+									<th><spring:message code="dash-chart-progress"/></th>
+									<th><spring:message code="dash-chart-done"/></th>
 								</tr>
 							</thead>
 							<tbody>

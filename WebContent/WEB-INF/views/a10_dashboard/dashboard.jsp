@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <fmt:requestEncoding value="UTF-8" />
 <!DOCTYPE html>
@@ -78,13 +79,19 @@ html, body {
 	              <div class="card-header p-0 pt-1 border-bottom-0">
 	                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
 	                  <li class="nav-item">
-	                    <a class="nav-link active" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">정보</a>
+	                    <a class="nav-link active" id="info-tab" data-toggle="pill" href="#info" role="tab" aria-controls="info" aria-selected="true">
+	                    	<spring:message code="dash-info"/>
+	                    </a>
 	                  </li>
 	                  <li class="nav-item">
-	                    <a class="nav-link" id="members-tab" data-toggle="pill" href="#members" role="tab" aria-controls="members" aria-selected="false">구성원</a>
+	                    <a class="nav-link" id="members-tab" data-toggle="pill" href="#members" role="tab" aria-controls="members" aria-selected="false">
+	                    	<spring:message code="dash-members"/>
+	                    </a>
 	                  </li>
 	                  <li class="nav-item">
-	                    <a class="nav-link" id="issues-tab" data-toggle="pill" href="#issues" role="tab" aria-controls="issues" aria-selected="false">산출물</a>
+	                    <a class="nav-link" id="issues-tab" data-toggle="pill" href="#issues" role="tab" aria-controls="issues" aria-selected="false">
+	                    	<spring:message code="dash-issues"/>
+	                    </a>
 	                  </li>
 	                </ul>
 	              </div>
