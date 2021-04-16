@@ -47,6 +47,10 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
+		$("#hd-project-list").change(function(){
+			location.href="${path}/calendar.do?method=list&projectId="+$(this).val();
+		});
+		
 		var calendarEl = document.getElementById('calendar');
 		
 		var calendar = new FullCalendar.Calendar(calendarEl, {

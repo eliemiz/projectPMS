@@ -52,6 +52,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#sb-gantt").addClass("active");
+	$("#hd-project-list").change(function(){
+		location.href="${path}/gantt.do?method=list&projectId="+$(this).val();
+	});
 });
 </script>
 </head>

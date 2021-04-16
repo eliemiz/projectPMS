@@ -123,18 +123,22 @@
 		SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
 				t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
 		FROM task t, account a, project p
-		WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID
+		WHERE t.PROJECT_ID = p.ID 
+		AND t.ACCOUNT_ID = a.ID
+		AND p.id = #{p.id}
 	</select>
 	
 	<!-- Gantt -->
 	<resultMap type="gantt" id="ganttMap"/>
-	<!-- public ArrayList<GanttChart> ganttList() -->
+	<!-- public ArrayList<GanttChart> ganttList(int id) -->
 <!-- TODO: duration 달이 넘어갈 경우 해결방법,, -->
 	<select id="ganttList" resultMap="ganttMap">
 		SELECT t.id, t.TRACKER "type", t.subject text, t.start_date||'T00:00:00.000Z' start_date,
 				to_date(DUE_DATE)-to_date(start_date) duration,
-				t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"	
-		FROM task t
+				t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"
+		FROM task t, project p
+		where p.id = t.project_id
+		and p.id = #{p.id}
 		ORDER BY t.id	
 	</select>
 	

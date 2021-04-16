@@ -188,18 +188,18 @@ public class A12_TaskService {
 	}
 
 	// Calendar List
-	public ArrayList<Calendar> calenList() {
-		return dao.calenList();
+	public ArrayList<Calendar> calenList(int projectId) {
+		return dao.calenList(projectId);
 	}
 
 	// Gantt List
-	public ArrayList<GanttChart> ganttList() {
+	public ArrayList<GanttChart> ganttList(int projectId) {
 		/* ISOString, GanttChart DateType */
 		SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		isoFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // 해당 시간이 UTC 시간임을 나타냄
 		SimpleDateFormat ganttFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
-		ArrayList<GanttChart> list = dao.ganttList();
+		ArrayList<GanttChart> list = dao.ganttList(projectId);
 		for (GanttChart gc : list) {
 			/* 날짜 포맷 변환 */
 			try {

@@ -28,10 +28,10 @@ public interface A12_TaskDao {
 	public void deleteFile(int id);	 // 파일 삭제
 	
 	// Calendar DAO
-	public ArrayList<Calendar> calenList();
+	public ArrayList<Calendar> calenList(int projectId);
 	
 	// Gantt Chart DAO
-	public ArrayList<GanttChart> ganttList();
+	public ArrayList<GanttChart> ganttList(int projectId);
 	
 	public ArrayList<TaskResult> getTaskResult(int projectId); // 산출물 리스트 조회
 }
