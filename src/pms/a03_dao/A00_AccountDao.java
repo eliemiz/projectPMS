@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
+import pms.z01_vo.Email;
 
 @Repository
 public interface A00_AccountDao {
