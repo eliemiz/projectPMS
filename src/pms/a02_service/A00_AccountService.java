@@ -35,14 +35,6 @@ public class A00_AccountService {
 	}
 	public void find_pw(Account find) {
 		
-	//	Account account = A00_AccountService.find_pw();
-		
-	//	      if(account!=null && account.getName().equals(name)) {
-	//            return true;
-	//        }
-	//        else {
-	//            return false;
-	//        }
 		dao.find_pw(find);
 	}
 	public void update_pw(Account upt) {

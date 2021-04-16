@@ -41,27 +41,27 @@
 <script type="text/javascript">
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-	$.widget.bridge('uibutton', $.ui.button)
-	/*
-	 $(document).ready(function(){
-	   var subject="${param.subject}";
-	    if(subject!=""){
-	  	  alert("메일발송성공");
-	    }
-	 });
-	 */
+   $.widget.bridge('uibutton', $.ui.button)
+   /*
+    $(document).ready(function(){
+      var subject="${param.subject}";
+       if(subject!=""){
+          alert("메일발송성공");
+       }
+    });
+    */
 
-	 var result = "${result}";
-	 if (${not empty result}) {
-		 if (result == "success") {
-			 alert("성공");
-			 location.href = "${path}/account.do?method=login";
-		 } else if (result == "failToFind") {
-			 alert("유저 없음");
-		 }
-	 }
-	 
-	 $(document).ready(function(){
+    var result = "${result}";
+    if (${not empty result}) {
+       if (result == "success") {
+          alert("성공");
+          location.href = "${path}/account.do?method=login";
+       } else if (result == "failToFind") {
+          alert("유저 없음");
+       }
+    }
+    
+    $(document).ready(function(){
 	 	$("#Btn").click(function() {
 	 		if($("[name=mail]").val()==""){
 				alert("이메일을 입력해주세요");
@@ -74,94 +74,89 @@
 			$("form").submit();
 		}); 	
 	 });
-	
+   
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-	<div class="wrapper">
-		<!-- Navbar -->
-		<jsp:include page="../a00_common/a00_header_nl.jsp" />
+   <div class="wrapper">
+      <!-- Navbar -->
+      <jsp:include page="../a00_common/a00_header_nl.jsp" />
 
-		<!-- Main Sidebar Container -->
-		<jsp:include page="../a00_common/a01_sidebar.jsp" />
+      <!-- Main Sidebar Container -->
+      <jsp:include page="../a00_common/a01_sidebar.jsp" />
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
-			<!-- Content Header (Page header) -->
-			<div class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1 class="m-0">Password Search</h1>
-						</div>
-						<!-- /.col -->
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item">
-									<a href="#">Home</a>
-								</li>
-								<li class="breadcrumb-item active">password search</li>
-							</ol>
-						</div>
-						<!-- /.col -->
-					</div>
-					<!-- /.row -->
-				</div>
-				<!-- /.container-fluid -->
-			</div>
-			<!-- /.content-header -->
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+         <!-- Content Header (Page header) -->
+         <div class="content-header">
+            <div class="container-fluid">
+               <div class="row mb-2">
+                  <div class="col-sm-6">
+                     <h1 class="m-0">Password Search</h1>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item">
+                           <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">password search</li>
+                     </ol>
+                  </div>
+                  <!-- /.col -->
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+         </div>
+         <!-- /.content-header -->
 
-			<!-- Main content -->
-			<section class="content">
+         <!-- Main content -->
+         <section class="content">
 
-				<div class="hold-transition login-page"
-					style="background-color: inherit; height: inherit;">
-					<div class="login-box">
-						<div class="card card-outline card-primary">
-							<div class="card-header text-center">
-								<a href="../../index2.html" class="h1">비밀번호 찾기</a>
-							</div>
-							<div class="card-body">
-								<form method="post" action="${path}/account.do?method=send">
-									<p class="login-box-msg">메일 주소를 입력하세요.</p>
-									<div class="input-group mb-3">
-										<input name="mail" id="mail" type="email" class="form-control" placeholder="Email 입력">
-										<div class="input-group-append">
-											<div class="input-group-text">
-												<span class="fas fa-envelope"></span>
-											</div>
-										</div>
-									</div>
-									<p class="login-box-msg">이름을 입력하세요.</p>
-									<div class="input-group mb-3">
-										<input name="name" id="name" type="text" class="form-control" placeholder="이름 입력">
-										 <div class="input-group-append">
-							            	<div class="input-group-text">
-							             		 <span class="fas fa-user"></span>
-							           		</div>
-							          	</div>
-							        </div>
-									<div class="row">
-										<div class="col-12">
-											<button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>
-										</div>
-									</div>
-								</form>
-							</div>
-							<!-- /.login-card-body -->
-						</div>
-					</div>
-					<!-- /.login-box -->
-				</div>
-			</section>
-			<!-- /.content -->
-		</div>
-		<!-- /.content-wrapper -->
+            <div class="hold-transition login-page"
+               style="background-color: inherit; height: inherit;">
+               <div class="login-box">
+                  <div class="card card-outline card-primary">
+                     <div class="card-header text-center">
+                        <a href="../../index2.html" class="h1">비밀번호 찾기</a>
+                     </div>
+                     <div class="card-body">
+                        <form method="post" action="${path}/account.do?method=send">
+                           <p class="login-box-msg">메일 주소를 입력하세요.</p>
+                           <div class="input-group mb-3">
+                              <input name="receiver" id="mail" type="email" class="form-control" placeholder="Email 입력">
+                              <div class="input-group-append">
+                                 <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <p class="login-box-msg">이름을 입력하세요.</p>
+                           <div class="input-group mb-3">
+                              <input name="name" id="name" type="text" class="form-control" placeholder="이름 입력">
+                           </div>
+                           <div class="row">
+                              <div class="col-12">
+                                 <button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                     <!-- /.login-card-body -->
+                  </div>
+               </div>
+               <!-- /.login-box -->
+            </div>
+         </section>
+         <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
 
-		<!-- Footer -->
-		<jsp:include page="../a00_common/a02_footer.jsp" />
-	</div>
-	<!-- ./wrapper -->
+      <!-- Footer -->
+      <jsp:include page="../a00_common/a02_footer.jsp" />
+   </div>
+   <!-- ./wrapper -->
 
 
 <!-- Bootstrap 4 -->

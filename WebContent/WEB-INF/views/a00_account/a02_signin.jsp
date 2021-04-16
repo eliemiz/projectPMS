@@ -42,7 +42,26 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-   
+  
+   var proc = "${proc}";
+	if(proc=="insert"){
+		alert("등록완료\n로그인페이지로 이동합니다.")
+		location.href = "${path}/account.do?method=login";			
+	}
+	
+$(function(){
+
+//비밀번호 확인
+	$('#password2').blur(function(){
+	   if($('#password').val() != $('#password2').val()){
+	    	if($('#password2').val()!=''){
+		    alert("비밀번호가 일치하지 않습니다.");
+	    	    $('#password2').val('');
+	          $('#password2').focus();
+	       }
+	    }
+	})  	   
+});
 
 
   
@@ -108,32 +127,13 @@ $(document).ready(function(){
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
-	      <!-- <input type="hidden" name="password" id="password" value="A1234"/> -->
-	    <form action="${path}/account.do?method=send2" method="post">
+	      <!-- <input type="hidden" name="password" id="password" value="A1234"/>
+	      <form action="${path}/account.do?method=send2" method="post">  -->
+	       <form:form modelAttribute="account" action="${path}/account.do?method=insert" 
+				 	enctype="multipart/form-data" 
+				 	method="post">
 	       <div class="input-group mb-3">
-	          <input name="user_id" id="user_id" class="form-control" placeholder="아이디"/>
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-user"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <!-- 
-	         <a class="h7">
-                 *최소한 4 글자 이상이어야 합니다.
-             </a>
-             <br>
-	        <div class="input-group mb-3">
-	          <input id="password2" type="password" class="form-control" placeholder="비밀번호 재확인">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div> -->
-	         <br>  
-	          <div class="input-group mb-3">
-	          <input name="name" id="name" class="form-control" placeholder="이름"/>
+	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -142,7 +142,34 @@ $(document).ready(function(){
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <input name="mail" id="mail" class="form-control" placeholder="Email"/>
+	          <form:input path="password" class="form-control" placeholder="비밀번호"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-lock"></span>
+	            </div>
+	          </div>
+	        </div>
+             <br>
+	        <div class="input-group mb-3">
+	          <input id="password2" type="password" class="form-control" placeholder="비밀번호 재확인"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-lock"></span>
+	            </div>
+	          </div>
+	        </div> 
+	         <br>  
+	          <div class="input-group mb-3">
+	          <form:input path="name" class="form-control" placeholder="이름"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-user"></span>
+	            </div>
+	          </div>
+	        </div>
+	        <br>
+	        <div class="input-group mb-3">
+	          <form:input path="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
@@ -152,11 +179,11 @@ $(document).ready(function(){
 	        <br>
 	        <div class="input-group mb-3">
 	        <div class="input-group-append">
-	          <select name="auth" id="auth" class="form-control">
+	          <form:select path="auth" class="form-control">
 	          	<option value="">권한 선택</option>
-	          	<option value="Developer" name="Developer">Developer</option>
-	          	<option value="Manager" name="Manager">Manager</option>
-	          </select>
+	          	<form:option value="Developer" name="Developer"/>
+	          	<form:option value="Manager" name="Manager"/>
+	          </form:select>
 	          </div>
 	        </div>
 	        <div class="form-row float-right">
@@ -165,7 +192,7 @@ $(document).ready(function(){
 	            </a>
 	          <!-- /.col -->
 	        </div>
-	      </form>
+	      </form:form>
 	
 	      <div class="social-auth-links text-center">
 
