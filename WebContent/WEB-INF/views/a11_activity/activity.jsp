@@ -48,6 +48,38 @@
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+<%-- 	$.ajax({
+		type: "get",
+		url: "${path}/jsonProject.do",
+		dataType: "json",
+		success: function(data){
+			var projectList = data.projectList;
+			
+			$.each(projectList, function(idx, e, arr){
+				$("#hd-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+			});
+			
+			$("#hd-project-list").val(data.projectId);
+		},
+		error: function(err){
+			alert("에러발생");
+		}
+	});
+	
+	$("#selectLang").val("<%=SessionManager.getLang(request)%>");
+	$("#selectLang").change(function(){
+		var lang = $(this).val();
+		if (lang != "") {
+			$("[name=lang]").val($(this).val());
+			$("#langForm").submit();
+		}
+	});
+	
+	$("#hd-project-list").change(function(){
+		location.href="${path}/activity.do?projectId="+$(this).val();
+	}); --%>
+	
     var vm = new Vue({
        el:".content-wrapper",
        data:{
@@ -58,7 +90,7 @@ $(document).ready(function(){
    
     $(".type").click(function(){
     	  var ty = $(this).attr("id");
-    	  location.href="${path}/activity.do?&document_type="+ty;
+    	  location.href="${path}/activity.do?document_type="+ty;
       });
     
  });
@@ -115,6 +147,7 @@ $(document).ready(function(){
                     <option value=''>작업유형 선택</option>
                     <option>risk</option>
                     <option>task</option>
+                    <option value=''>모두</option>
                   </select>
                 </div>
                 <!-- <div class="custom-control custom-checkbox">
@@ -127,11 +160,10 @@ $(document).ready(function(){
                 </div> -->
                <div class="form-row float-left">
             <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type">적용</button> 
+            <!-- <div>{{type}}</div> -->
               </div>
               </div>
             </div>
-           <%--  <input type="hidden" name="document_type" value="${jr.document_type}"> --%>
-            <div>{{type}}</div>
        <div class="row">
           <div class="col-12">
             <div class="card">

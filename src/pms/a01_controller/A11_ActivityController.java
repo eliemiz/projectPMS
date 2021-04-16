@@ -37,6 +37,27 @@ public class A11_ActivityController {
 	@RequestMapping("activity.do")
 	public String Activity(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jr") Journal jr, Model d) {
 		
+		/* Set Project Id */
+		HttpSession session = request.getSession();
+		String projectIdReq = request.getParameter("projectId");
+		if (projectIdReq != null) {
+			session.setAttribute("projectId", projectIdReq);
+		}
+		
+
+		/* Get Project Id */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = serviceProject.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		
+		
+		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
