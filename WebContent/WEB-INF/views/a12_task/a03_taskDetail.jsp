@@ -74,7 +74,7 @@ html, body {
 		});
 		$("#fileInfo").click(function(){
 			var filename=$(this).text();
-			if(confirm("다운로드할래?"+filename)){
+			if(confirm("다운로드하시겠습니까?"+filename)){
 				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
 			}
 		});

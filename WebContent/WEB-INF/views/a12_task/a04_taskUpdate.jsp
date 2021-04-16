@@ -75,7 +75,13 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		
+		// TODO: 다운로드 ㄴ
+		$(".fileInfo").click(function(){
+			var filename=$(this).text();
+			if(confirm("다운로드하시겠습니까?"+filename)){
+				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
+			}
+		});
 		$('#filesize').bind('change', function(){
 			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
 			
@@ -284,14 +290,17 @@ html, body {
      			<c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">
                 <div class="form-group">
                   <label for="exampleInputFile">첨부파일</label> 
-                  
+                    <!-- 파일 다운로드  -->   
+                  <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
                   <div class="custom-file">
-                        <!-- 파일 다운로드 -->
-                        <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
+                    <!-- TODO: 파일변경값 넘기기 -->     
                         <!-- 파일 변경 정보 -->
                         <input type="file" id="file01" class="custom-file-input" name="report" />
-                        <label class="custom-file-label" for="file01">${finf.filename}</label>
+                  <!-- <input type="file" id="filesize" class="custom-file-input" name="report" />
+                   -->      
+                   <label class="custom-file-label" for="file01">${finf.filename}</label>       
                         <!-- <label class="custom-file-label" for="report">Choose file</label> -->
+                        <!-- style="width:100%;" -->
                   </div><br><br>
                   <%--
                   <div class="form-group">
