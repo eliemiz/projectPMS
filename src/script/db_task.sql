@@ -49,28 +49,18 @@ SELECT t.*, a.name name, p.name project_name
 		ORDER BY t.id DESC;
 SELECT * FROM TASK WHERE ID = 1;
 DELETE FROM task WHERE id = 10001;
-INSERT INTO task VALUES (10001, 10000, 11111, 12345, 'test용 TASK', '테스트용입니다.', '신규', 1, 
-						 '2021-04-08', '2021-04-08', '2021-04-08',
-						 '2021/04/30', 180, 30, '2021/04/30','새기능');
-INSERT INTO task VALUES (10002, 10002, 11112, 12346, 'test용 TASK222', '테스트용입니다.222', '신규', 1, 
-						 sysdate, sysdate, sysdate,
-						 '2021/04/30', 185, 25, '2021/04/30','결함');		
-SELECT t.*, to_date(due_date,'YYYY/MM/DD')-to_date(start_date,'YYYY/MM/DD') duration FROM task t;
+
 
 -- Calendar 조회용
-SELECT t.PROJECT_ID, p.id, p.name FROM task t, project p WHERE t.PROJECT_ID=p.id;
--- 49, 45, 48, 121, 86
-DELETE FROM task 
-SELECT * FROM PROJECT;
 SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
 		t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
 FROM task t, account a, project p
 WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;
 
 -- Gantt
-SELECT t.id, t.TRACKER "type", t.subject text, t.start_date start_date, 
-		substr(t.due_date,9,2)-substr(t.start_date,9,2) duration,
+SELECT t.id, t.TRACKER "type", t.subject text, t.start_date||'T00:00:00.000Z' start_date, 
+		t.due_date||'T00:00:00.000Z' due_date,
+		to_date(t.due_date)-to_date(t.start_date) duration,
 		t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"	
 FROM task t
 ORDER BY t.id;
-SELECT substr(start_date,9,2) start_date FROM task;

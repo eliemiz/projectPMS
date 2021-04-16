@@ -53,7 +53,7 @@
 			headerToolbar : {
 				left : 'prevYear prev today next nextYear',
 				center : 'title',
-				right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+				/* right : 'dayGridMonth,timeGridWeek,timeGridDay,listWeek' */
 			},
 			themeSystem: 'bootstrap',
 			initialDate : new Date().toISOString(), // 현재날짜로 초기 로딩 날짜 설정
