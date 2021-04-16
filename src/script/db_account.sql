@@ -17,4 +17,4 @@ WHERE document_type='task';
 
 
 
-INSERT INTO JOURNAL values(journal_seq.nextval,'task',100002,100012,sysdate,'제목 수정, 댓글 추가');
+INSERT INTO JOURNAL values(journal_seq.nextval,'risk',1000,1001,sysdate,'제목 수정, 댓글 추가');
