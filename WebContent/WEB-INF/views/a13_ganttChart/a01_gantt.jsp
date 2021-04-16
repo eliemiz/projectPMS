@@ -147,8 +147,8 @@ $(document).ready(function(){
 	];
 
 	gantt.init("gantt_here");
-	gantt.message({text: "Some text", expire: -1});
-	gantt.message({text: "Some text", type: "error", expire: -1});
+/* 	gantt.message({text: "Some text", expire: -1});
+	gantt.message({text: "Some text", type: "error", expire: -1}); */
 	$.ajax({
 		type:"get",
 		url:"${path}/gantt.do?method=data",
