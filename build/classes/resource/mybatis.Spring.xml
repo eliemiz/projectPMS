@@ -4,8 +4,41 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="project" type="pms.z01_vo.Project"/>
+		<typeAlias alias="account" type="pms.z01_vo.Account"/>
+		<typeAlias alias="accountTask" type="pms.z01_vo.AccountTask"/>
+		
+		<typeAlias alias="task" type="pms.z01_vo.Task"/>
+		<typeAlias alias="taskSch" type="pms.z01_vo.TaskSch"/>
+		<typeAlias alias="taskRelation" type="pms.z01_vo.TaskRelation"/>
+		<typeAlias alias="taskResult" type="pms.z01_vo.TaskResult"/>
+		<typeAlias alias="timeEntry" type="pms.z01_vo.TimeEntry"/>
+		
+		<typeAlias alias="notice" type="pms.z01_vo.Notice"/>
+		<typeAlias alias="risk" type="pms.z01_vo.Risk"/>
+		<typeAlias alias="riskSch" type="pms.z01_vo.RiskSch"/>
+		<typeAlias alias="riskRelation" type="pms.z01_vo.RiskRelation"/>
+		
+		<typeAlias alias="attachment" type="pms.z01_vo.Attachment"/>
+		<typeAlias alias="journal" type="pms.z01_vo.Journal"/>
+		<typeAlias alias="journalDetail" type="pms.z01_vo.JournalDetail"/>
+		<typeAlias alias="comment" type="pms.z01_vo.Comment"/>
+		
+		<typeAlias alias="calen" type="pms.z01_vo.Calendar"/>
+		<typeAlias alias="gantt" type="pms.z01_vo.GanttChart"/>
+
+		<typeAlias alias="temp" type="pms.z01_vo.Temp"/>
+		
 	</typeAliases>
 	<mappers>
 		<mapper resource="resource/ProjectMapper.xml"/>
+		<mapper resource="resource/AccountMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
+		<mapper resource="resource/NoticeMapper.xml"/>
+		<mapper resource="resource/RiskMapper.xml"/>
+		<mapper resource="resource/AttachmentMapper.xml"/>
+		<mapper resource="resource/JournalMapper.xml"/>
+		<mapper resource="resource/CommentMapper.xml"/>
+
+		<mapper resource="resource/TempMapper.xml"/>
 	</mappers>
 </configuration>
