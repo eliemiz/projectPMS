@@ -67,8 +67,31 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->  
 <script type="text/javascript">
+	var proc = "${param.proc}";
+	if(proc=="upt"){
+		alert("수정 완료");
+		location.href = "${path}/risk.do?method=list";			
+	}
+	if(proc=="del"){
+		alert("삭제 완료");
+		location.href = "${path}/risk.do?method=list";			
+	}
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
+		$("#uptBtu").on("click",function(){
+			if(confirm("수정하시겠습니까?")){
+				$("[name=proc]").val("upt");
+				$("form").attr("action","${path}/risk.do?method=update");
+				$("form").submit();
+			}
+		});
+		$("#delBtu").on("click",function(){
+			if(confirm("삭제하시겠습니까?")){
+				$("[name=proc]").val("del");
+				$("form").attr("action","${path}/risk.do?method=delete");
+				$("form").submit();
+			}
+		});		
 	})
 </script>
 </head>
@@ -102,87 +125,114 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
+    <form:form modelAttribute="risk"
+    	enctype="multipart/form-data" method="post">
+     <input type="hidden" name="proc"/>
      <div class="card card-primary">
       <div class="card-header">
        <h3 class="card-title">리스크 수정</h3>
          </div>
            <!-- /.card-header -->
            <!-- form start -->
-             <form>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" disabled>
+                    <form:hidden path="id"/>
+                    <form:hidden path="subject"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">상태</label>
 	                  <div class="col-sm-6">
 	                      <!-- select -->
 	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>open</option>       
-	                          <option>close</option>
-	                        </select>
+	                        <form:select path="status" class="form-control select2">
+	                          <form:option value="Open" label="Open"/>
+	                          <form:option value="Discuss" label="Discuss"/>
+	                          <form:option value="Close" label="Close"/>  
+	                        </form:select>
 	                      </div>
 	                    </div>
 	              </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">상세설명</label>
-                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
+                    <form:textarea path="description" class="form-control" rows="3" value=""/>
                     </textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">담당자</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">               
+                    <form:select path="account_id" class="form-control select" style="width: 100%;">
+	                 <option value="">담당자 선택</option>
+	                  	<c:forEach var="account" items="${accounts}">
+		                    <form:option value="${account.id}">${account.name}</form:option>
+	                    </c:forEach>
+                 	</form:select>              
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">범주</label>
 	                  <div class="col-sm-6">
 	                      <!-- select -->
 	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>Internal</option>
-	                          <option>External</option>
-	                          <option>Technical</option>
-	                          <option>Unforeseeable</option>
-	                        </select>
+	                        <form:select path="category" class="form-control select2">
+	                          <form:option value="Internal" label="Internal"/>
+	                          <form:option value="External" label="External"/>
+	                          <form:option value="Technical" label="Technical"/>
+	                          <form:option value="Unforeseeable" label="Unforeseeable"/>
+	                        </form:select>
 	                      </div>
 	                    </div>
 	              </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">발생가능성</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <div class="form-group">
+	                      <form:select path="probability" class="form-control select2">
+	                        <form:option value="1" label=" Unlikely "/>
+	                        <form:option value="2" label=" Low "/>
+	                        <form:option value="3" label=" Medium "/>
+	                        <form:option value="4" label=" High "/>
+	                        <form:option value="5" label=" Expected "/>
+	                      </form:select>
+	                    </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">영향도</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <div class="form-group">
+	                      <form:select path="impact" class="form-control select2">
+	                        <form:option value="1" label=" Negligible "/>
+	                        <form:option value="2" label=" Minor "/>
+	                        <form:option value="3" label=" Moderate "/>
+	                        <form:option value="4" label=" Significant "/>
+	                        <form:option value="5" label=" Severe "/>
+	                      </form:select>
+	                    </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">전략</label>
 	                  <div class="col-sm-6">
 	                      <!-- select -->
 	                      <div class="form-group">
-	                        <select class="form-control">
-	                          <option>Accept</option>
-	                          <option>Mitigate</option>
-	                          <option>Transfer</option>
-	                          <option>Eliminate</option>
-	                        </select>
-	                      </div>
+	                        <form:select path="strategy" class="form-control select2">
+	                          <form:option value="Accept" label="Accept"/>
+	                          <form:option value="Mitigate" label="Mitigate"/>
+	                          <form:option value="Transfer" label="Transfer"/>
+	                          <form:option value="Eliminate" label="Eliminate"/>
+	                        </form:select>
+	                      </div>	                      
 	                    </div>
 	              </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">예상시작일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <form:input path="start_date" type="date"
+                     style="width:300px" class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">예상종료일</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <form:input path="end_date" type="date"
+                     style="width:300px"	class="form-control"/>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">해결방안</label>
-                    <textarea class="form-control" id="exampleInputPassword1" rows="3" placeholder="설명을 입력해주세요">
-                    </textarea>
+                    <form:textarea path="treatment" class="form-control" rows="3" value=""/>            
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
@@ -203,13 +253,15 @@
                 </div>
                 <!-- /.card-body -->
             <div class="card-footer">
-          <button type="button" onclick="location.href='${path}/risk.do?method=detail'"
+          <button type="button" onclick="location.href='${path}/risk.do?method=list'"
            class="btn btn-secondary float-right">취소</button>
-           <button type="button" onclick="location.href='${path}/risk.do?method=list'"
+          <button type="button" id="uptBtu"
            class="btn btn-primary float-right">수정</button>
-         </div>
-        </form>
+          <button type="button" id="delBtu"
+           class="btn btn-primary float-right">삭제</button> 
+         </div>      
       </div>	
+      </form:form>
     </section>
     <!-- /.content -->
   </div>

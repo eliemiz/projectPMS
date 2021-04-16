@@ -70,7 +70,7 @@
 	var proc = "${proc}";
 		if(proc=="ins"){
 			  $("[name=subject]").val("");
-			  alert("등록완료");
+			  alert("등록 완료");
 			  location.href="${path}/risk.do?method=list";
 	}
 	$(document).ready(function(){
@@ -152,8 +152,6 @@
        	<form:hidden path="status" value="open"/>
        	<form:hidden path="strategy" value="-"/>
        	<form:hidden path="treatment" value="-"/>
-       	<form:hidden path="created_on"/>
-    	<form:hidden path="updated_on"/>
          </div>
            <!-- /.card-header -->
                 <div class="card-body">

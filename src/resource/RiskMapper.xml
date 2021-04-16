@@ -45,6 +45,10 @@
 			treatment = #{treatment}
 		WHERE ID = #{id}
 	</update>
+	<delete id="deleteRisk" parameterType="int" >
+		DELETE FROM RISK
+			WHERE id = #{id}
+	</delete>
 	
 	<!-- public ArrayList<Risk> getRecentRiskListByProject(int projectId); -->
 	<select id="getRecentRiskListByProject" resultType="risk" parameterType="int">

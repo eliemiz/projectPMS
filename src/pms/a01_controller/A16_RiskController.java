@@ -77,9 +77,24 @@ public class A16_RiskController {
 	
 	// http://localhost:6080/projectPMS/risk.do?method=update
 	// http://localhost:7080/projectPMS/risk.do?method=update
-	@GetMapping(params="method=update")
-	public String RiskUpdate() {
+	@RequestMapping(params="method=update")
+	public String RiskUpdate(Risk upt) {
+		service.updateRisk(upt);
+		return "forward:/risk.do?method=uptForm";			
+	}
+	// http://localhost:6080/projectPMS/risk.do?method=uptForm
+	// http://localhost:7080/projectPMS/risk.do?method=uptForm
+	@RequestMapping(params="method=uptForm")
+	public String RiskUptForm(@RequestParam("id") int id, Model d) {
+		System.out.println("#### id확인: "+id);
+		d.addAttribute("risk", service.getRisk(id));
 		return "a16_risk\\a01_riskUpdate";			
+	}
+	
+	@RequestMapping(params = "method=delete")
+	public String Riskdelete(@RequestParam("id") int id) {
+		service.deleteRisk(id);
+		return "a16_risk\\a01_riskUpdate";
 	}
 	
 	@ModelAttribute("accounts")

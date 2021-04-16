@@ -70,7 +70,8 @@
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
 		$(".detail").click(function(){
-    		var id = $(this).children().eq(0).text();
+    		//var id = $(this).children().eq(0).text();
+    		var id = $(this).attr("id");
     		location.href="${path}/risk.do?method=detail&id="+id;
     	});
 	})
@@ -143,7 +144,7 @@
                   </thead>
                   <tbody>
                   <c:forEach var="risk" items="${riskList}">
-                    <tr class="detail" style="cursor:pointer">
+                    <tr class="detail" id="${risk.id}" style="cursor:pointer">
                       <td>${risk.id}</td>
                       <td>${risk.subject}</td>
                       <td>${risk.project_name}</td>

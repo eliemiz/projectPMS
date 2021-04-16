@@ -69,7 +69,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
-	})
+		$("#upt").click(function(){
+			$("form").attr("action","${path}/risk.do?method=uptForm");
+			$("form").submit();
+		});
+	});
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -103,18 +107,37 @@
     <!-- Main content -->
     <section class="content">
      <!-- Default box -->
+     	<form:form modelAttribute="risk" method="post"
+     	action="" enctype="multipart/form-data">
       <div class="card">
         <div class="card-header">
+	        <form:hidden path="id"/>
+	    	<form:hidden path="project_id"/>
+	    	<form:hidden path="account_id"/>
+	    	<form:hidden path="subject"/>
+	    	<form:hidden path="description"/>
+	    	<form:hidden path="status"/>
+	    	<form:hidden path="category"/>
+	    	<form:hidden path="created_on"/>
+	    	<form:hidden path="updated_on"/>
+	    	<form:hidden path="start_date"/>
+	    	<form:hidden path="end_date"/>
+	    	<form:hidden path="probability"/>
+	    	<form:hidden path="impact"/>
+	    	<form:hidden path="strategy"/>
+	    	<form:hidden path="treatment"/>
+	    	<form:hidden path="account_name"/>
+	    	<form:hidden path="project_name"/>
           <h3 class="card-title">상세 내용</h3>
 
           <div class="card-tools">
             <div class="input-group input-group-sm">
               <div class="input-group-append">
-                <button type="button" onclick="location.href='${path}/risk.do?method=update'"
-                 class="btn btn-primary float-right">수정</button>
+                <button type="button" id="upt"
+                 	class="btn btn-primary float-right">수정</button>
                 &nbsp;&nbsp;&nbsp;
-                <button type="button" onclick="location.href='${path}/risk.do?method=list'"
-                 class="btn btn-secondary float-right">삭제</button> 
+         <%--        <button type="button" onclick="location.href='${path}/risk.do?method=list'"
+                 class="btn btn-secondary float-right">삭제</button>  --%>
               </div>
             </div>
           </div>
@@ -279,6 +302,7 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
+     </form:form>
     </section>
     <!-- /.content -->
   </div>

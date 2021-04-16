@@ -30,6 +30,10 @@ public class A16_RiskService {
 		dao.updateRisk(upt);
 	}
 	
+	public void deleteRisk(int id) {
+		dao.deleteRisk(id);
+	}
+	
 	public ArrayList<Risk> getRecentRiskListByProject(int projectId) {
 		return dao.getRecentRiskListByProject(projectId);
 	}

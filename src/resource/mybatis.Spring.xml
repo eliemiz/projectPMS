@@ -15,6 +15,7 @@
 		
 		<typeAlias alias="notice" type="pms.z01_vo.Notice"/>
 		<typeAlias alias="risk" type="pms.z01_vo.Risk"/>
+		<typeAlias alias="riskSch" type="pms.z01_vo.RiskSch"/>
 		<typeAlias alias="riskRelation" type="pms.z01_vo.RiskRelation"/>
 		
 		<typeAlias alias="attachment" type="pms.z01_vo.Attachment"/>
