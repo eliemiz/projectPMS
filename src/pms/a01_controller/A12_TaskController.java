@@ -83,6 +83,7 @@ public class A12_TaskController {
 	public String uptForm(@RequestParam("id") int id, Model d) {
 		System.out.println("id@@: "+id);
 		d.addAttribute("task", service.getTask(id));
+		
 		return "a12_task\\a04_taskUpdate";
 	}
 	

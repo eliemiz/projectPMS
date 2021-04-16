@@ -27,7 +27,7 @@ public class Task {
 	private String name; // 어카운트 이름 불러오기
 	private String project_name;
 	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
-	private String[] filename; // 파일 수정시 사용
+	private String[] filenames; // 파일 수정시 사용
 	private ArrayList<Attachment> fileInfo;
 
 	public Task() {
@@ -194,11 +194,11 @@ public class Task {
 	public void setReport(MultipartFile[] report) {
 		this.report = report;
 	}
-	public String[] getFilename() {
-		return filename;
+	public String[] getFilenames() {
+		return filenames;
 	}
-	public void setFilename(String[] filename) {
-		this.filename = filename;
+	public void setFilename(String[] filenames) {
+		this.filenames = filenames;
 	} 
 	public ArrayList<Attachment> getFileInfo() {
 		return fileInfo;

@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -124,13 +125,66 @@ public class A12_TaskService {
 	 */
 	// task 수정
 	public void updateTask(Task upt) {
+		int id = upt.getId();
+		if(upt.getFilenames()!=null && upt.getFilenames().length>0) {
+			String filename = null;
+			String orgFilename = null;
+			File tmpFile = null;
+			File orgFile = null;
+			Attachment uptFile = null;
+			MultipartFile mpf = null;
+			File pathFile = new File(uploadTmp);
+			for(File f:pathFile.listFiles()) {
+				System.out.println("삭제할 파일:"+f.getName());
+				f.delete();
+			}
+			for(int idx=0;idx<upt.getReport().length;idx++) {
+				mpf = upt.getReport()[idx];
+				filename = mpf.getOriginalFilename();
+				orgFilename = upt.getFilenames()[idx];
+				if(filename!=null && !filename.trim().equals("")) {
+					tmpFile = new File(uploadTmp+orgFilename);
+					if(tmpFile.exists()) {
+						tmpFile.delete();
+					}
+					orgFile = new File(upload+orgFilename);
+					if(orgFile.exists()) {
+						orgFile.delete();
+					}
+					tmpFile = new File(uploadTmp+filename);
+					orgFile = new File(upload+filename);
+					try {
+						mpf.transferTo(tmpFile);
+						
+						Files.copy(tmpFile.toPath(), orgFile.toPath(),
+								StandardCopyOption.REPLACE_EXISTING);
+						
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("# 상태 에러"+e.getMessage());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("# 파일 에러:"+e.getMessage());
+					} catch(Exception e) {
+						System.out.println("# 기타 에러:"+e.getMessage());
+					}
+					HashMap<String, String> hs = new HashMap<String, String>();
+					hs.put("id", ""+id);
+					hs.put("filename", filename);
+					hs.put("orgFilename", upt.getFilenames()[idx]);
+					dao.updateFile(hs);		
+				}
+			}
+		}
 		dao.updateTask(upt);
 	}
 
 	// task 삭제
 	public void deleteTask(int id) {
 		dao.deleteTask(id);
-//		dao.deleteFile(id);
+		dao.deleteFile(id);
 	}
 
 	// Calendar List

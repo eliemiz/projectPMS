@@ -76,6 +76,11 @@ html, body {
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
 		
+		$('#filesize').bind('change', function(){
+			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
+			
+		});
+		
 		$("#gomain").click(function(){
 			$(location).attr("href","${path}/task.do?method=list");
 		});
@@ -86,6 +91,9 @@ html, body {
 				$("form").attr("action","${path}/task.do?method=update");
 				$("form").submit();
 			}
+		});
+		$(".custom-file-input").on("change",function(){
+			$(this).next(".custom-file-label").text($(this).val());
 		});
 		
 		$("#delBtn").on("click",function(){
@@ -272,11 +280,18 @@ html, body {
                    </div>
                 </div>
                 <!-- /.form-group -->
+                <c:set var="fcnt" value="${task.fileInfo.size()}"/>
+     			<c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">
                 <div class="form-group">
-                  <label for="exampleInputFile">첨부파일</label> <!-- 첨부파일명 안뜸 -->
+                  <label for="exampleInputFile">첨부파일</label> 
+                  
                   <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <!-- 파일 다운로드 -->
+                        <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
+                        <!-- 파일 변경 정보 -->
+                        <input type="file" id="file01" class="custom-file-input" name="report" />
+                        <label class="custom-file-label" for="file01">${finf.filename}</label>
+                        <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                   </div><br><br>
                   <%--
                   <div class="form-group">
@@ -284,9 +299,11 @@ html, body {
                   	<input type="text" class="form-control" style="width: 100%;">
                   </div>    
                    --%>        
-                 </div>    
+                 </div>   
+                 
                 <!-- /.form-group -->
               </div>
+              </c:forEach> 
               <!-- /.col -->
             </div>
             <!-- /.row -->

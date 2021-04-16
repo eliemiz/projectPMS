@@ -84,6 +84,14 @@
 				tracker = #{tracker}
 			WHERE ID = #{id}
 	</update>
+	<!-- public void updateFile(HashMap<String, String> hs) -->
+	<update id="updateFile" parameterType="hashMap">
+		update ATTACHMENT
+			set filename = #{filename},
+				filesize = #{filesize}
+		where id=#{id}
+			and filename=#{orgFilename}
+	</update>
 	
 	<!-- public void deleteTask(int task_id) -->
 	<delete id="deleteTask" parameterType="int">
@@ -96,8 +104,10 @@
  	 	) 
 	</delete>
 
-
-
+	<!-- public void deleteFile(int id); -->
+	<delete id="deleteFile" parameterType="int">
+		delete from ATTACHMENT where id=#{id}
+	</delete>
 
 
 
