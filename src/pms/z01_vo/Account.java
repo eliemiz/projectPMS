@@ -29,12 +29,6 @@ public class Account {
 		this.auth = auth;
 	}
 	
-
-	public Account(String password) {
-		super();
-		this.password = password;
-	}
-
 	public int getId() {
 		return id;
 	}

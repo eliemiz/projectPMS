@@ -38,17 +38,17 @@ public class A02_MailController {
  			
  			return "a00_account\\a02_signin";
  		}
- 		// http://localhost:7080/projectPMS/account.do?method=insert
+ 		
+ 		   // http://localhost:7080/projectPMS/account.do?method=insert
  		@RequestMapping(params = "method=insert")
- 		public String signinIns(Account insert, Model d) {
+ 		public String signinIns(Account insert) {
  			service.signinIns(insert);
  			
- 			d.addAttribute("proc", "insert");
- 			
  			return "forward:/account.do?method=login";
- 		}
-   
-   
+ 		} 
+ 	
+ 		
+ 		
 	@Autowired(required=false)
 	private A02_MailService service;
 	// 메일발송
@@ -73,9 +73,8 @@ public class A02_MailController {
 		
 		// http://localhost:7080/projectPMS/account.do?method=send2
 		@RequestMapping(params="method=send2")
-		public String send2(Email send) throws MessagingException{
-				System.out.println(send.getSubject());
-				service.sendMail2(send);
+		public String send2(Account account, Email send) throws MessagingException{
+				service.sendMail2(account, send);
 				// 메일 전송을 service단에서 처리
 			return "a00_account\\a02_signin";
 		}	
