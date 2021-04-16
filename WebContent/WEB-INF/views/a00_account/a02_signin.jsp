@@ -43,7 +43,7 @@
 
   $.widget.bridge('uibutton', $.ui.button)
    
-
+  $(function(){
 
   
 $(document).ready(function(){
@@ -108,8 +108,9 @@ $(document).ready(function(){
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
-	      <!-- <input type="hidden" name="password" id="password" value="A1234"/> -->
+	
 	    <form action="${path}/account.do?method=send2" method="post">
+    	<input type="hidden" name="id" id="id"/>
 	       <div class="input-group mb-3">
 	          <input name="user_id" id="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
