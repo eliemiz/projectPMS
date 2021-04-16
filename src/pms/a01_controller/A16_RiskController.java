@@ -70,6 +70,15 @@ public class A16_RiskController {
 		System.out.println("등록:" + ins.getImpact());
 		System.out.println("등록:" + ins.getStrategy());
 		System.out.println("등록:" + ins.getTreatment());
+		
+		/*
+		System.out.println("파일:"+
+		insert.getReport()[0].getOriginalFilename());
+		service.insertBoard(insert);
+		d.addAttribute("proc", "insert");
+		return "a02_boardInsert";*/
+		
+		
 		service.insertRisk(ins);
 		d.addAttribute("proc", "ins");
 		return "a16_risk\\a01_riskInsert";
