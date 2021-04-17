@@ -68,11 +68,11 @@ $(document).ready(function(){
 	  	  var id = $(this).attr("id");
 	  	  var type = $(this).attr("data-id");
 	  	  
-	  	  if(type==risk){
+	  	  if(type=="risk"){
 	  	  location.href="${path}/risk.do?method=detail&id="+id;
-	  	  	}
+	  	  	}else if(type=="task"){
 	  	  location.href="${path}/task.do?method=detail&id="+id;
-	  	  	
+	  	  	}
 	    });
     
  });
