@@ -41,4 +41,9 @@ public class A00_AccountService {
 		
 		dao.update_pw(upt);
 	}
+	
+	public Account getAccount(int accountId) {
+		
+		return dao.getAccount(accountId);
+	}
 }

@@ -23,6 +23,8 @@ public interface A00_AccountDao {
 
 	public Account find_pw(Account find);
 	
+	public Account getAccount(int accountId);
+	
 	
 
 }
