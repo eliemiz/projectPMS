@@ -54,10 +54,10 @@
     var result = "${result}";
     if (${not empty result}) {
        if (result == "success") {
-          alert("성공");
+          alert("메일이 발송되었습니다.");
           location.href = "${path}/account.do?method=login";
        } else if (result == "failToFind") {
-          alert("유저 없음");
+          alert("해당하는 사용자가 없습니다.");
        }
     }
     
