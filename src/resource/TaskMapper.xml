@@ -4,44 +4,30 @@
 	<!-- public ArrayList<Task> getTaskList(Task sch) -->
 	<resultMap type="task" id="taskList"/>
 	<select id="getTaskList" resultMap="taskList" parameterType="task">
-		SELECT t.*, a.name name, p.name project_name
+		SELECT t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
+				substr(t.start_date,0,10) start_date, substr(t.due_date,0,10) due_date
 		FROM task t, account a, PROJECT p
-		WHERE subject LIKE '%'||#{subject}||'%' 
+		WHERE t.subject LIKE '%'||#{subject}||'%'
 		AND t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
 		ORDER BY t.id desc
 	</select>
-	<!-- 
-	원래
-	<select id="getTaskList" resultMap="taskList" parameterType="task">
-		SELECT t.*, a.name name, p.name project_name
-		FROM task t, account a, PROJECT p
-		WHERE t.account_id = a.id
-		AND t.PROJECT_ID = p.ID
-		
-		
-		ORDER BY t.id desc
-	</select>
-	
-	검색용 >> 상태, tracker도 추가해야함
-	<select id="getTaskList" resultMap="taskList" parameterType="tasksch">
-		SELECT t.*, a.name name, p.name project_name
-		FROM task t, account a, PROJECT p
-		WHERE subject like '%'||#{subject}||'%'
-		and description like '%'||#{description}||'%'
-		and t.account_id = a.id
-		AND t.PROJECT_ID = p.ID
-		ORDER BY t.id desc
-	</select>
-	 -->
+
 	<!--public Task getTask(int id) -->
 	<select id="getTask" resultType="task" parameterType="int">
-		SELECT t.*, a.name name, p.name project_name
+		SELECT t.id, t.PARENT_ID, t.PROJECT_ID, t.ACCOUNT_ID,
+				t.SUBJECT, t.DESCRIPTION, t.STATUS, t.PRIORITY, 
+				t.CREATED_ON, t.UPDATED_ON,
+				substr(t.start_date,0,10) start_date, 
+				substr(t.due_date,0,10) due_date,
+				t.ESTIMATED, t.DONE_RATIO, t.COMPLETED_ON,
+				t.TRACKER, a.name name, p.name project_name
 		FROM task t, account a, PROJECT p
 		WHERE t.account_id = a.id
-		AND t.PROJECT_ID = p.ID 
+		AND t.PROJECT_ID = p.ID
 		AND t.id = #{id}
 	</select>
+	
 	<!-- 파일 public ArrayList<Attachment> fileInfo(int document_id); -->
 	<select id="fileInfo" resultType="attachment" parameterType="int">
 		select *

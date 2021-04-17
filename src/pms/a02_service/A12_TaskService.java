@@ -102,31 +102,6 @@ public class A12_TaskService {
 		}
 	}
 
-	/*
-	 * 파일 등록 관련 // task 조회(id이용) public Task getTask(int id) { Task task =
-	 * dao.getTask(id); //return dao.getTask(id);
-	 * task.setFileInfo(dao.fileInfo(id)); return task; }
-	 * 
-	 * // task 등록 public void insertTask(Task ins) { dao.insertTask(ins);
-	 * System.out.println("upload:"+upload);
-	 * System.out.println("uploadTmp:"+uploadTmp);
-	 * 
-	 * String filename = null; File tmpFile = null; File orgFile = null; File
-	 * pathFile = new File(uploadTmp); for(File f:pathFile.listFiles()) {
-	 * System.out.println("삭제할 파일:"+f.getName()); f.delete(); } for(MultipartFile
-	 * mpf:ins.getReport()) { filename = mpf.getOriginalFilename();
-	 * if(filename!=null&& !filename.trim().equals("")) { tmpFile = new
-	 * File(uploadTmp+filename); try { mpf.transferTo(tmpFile); orgFile = new
-	 * File(upload+filename); Files.copy(tmpFile.toPath(), orgFile.toPath(),
-	 * StandardCopyOption.REPLACE_EXISTING); dao.uploadFile(new Attachment(filename,
-	 * upload, ins.getSubject())); catch (IllegalStateException e) { // TODO
-	 * Auto-generated catch block e.printStackTrace();
-	 * System.out.println("#상태 예외 발생:"+e.getMessage()); } catch (IOException e) { //
-	 * TODO Auto-generated catch block e.printStackTrace();
-	 * System.out.println("#파일 생성 에러:"+e.getMessage()); } catch(Exception e) {
-	 * System.out.println("#기타 에러:"+e.getMessage()); } } } }
-	 * 
-	 */
 	// task 수정
 	public void updateTask(Task upt) {
 		upt.setStart_date(TimeManager.getInstance().SimpleToIso(upt.getStart_date()));

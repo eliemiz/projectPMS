@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
+import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
@@ -26,6 +27,12 @@ public interface A12_TaskDao {
 	public ArrayList<Attachment> fileInfo(int document_id); // 파일정보 조회
 	public void updateFile(HashMap<String, String> hs); // 파일 수정
 	public void deleteFile(int id);	 // 파일 삭제
+	/*
+	public void insertComment(Comment ins); // 댓글 입력
+	public ArrayList<Comment> commentInfo(int document_id); // 댓글 조회
+	public void updateComment(Comment upt); // 댓글 수정
+	public void deleteComment(int id); // 댓글 삭제
+	*/
 	
 	// Calendar DAO
 	public ArrayList<Calendar> calenList(int projectId);

@@ -277,7 +277,7 @@ html, body {
             		&nbsp;&nbsp;&nbsp;
            
 	             </div>
-	             
+	            
 	            </div>
 	        </div>
 	      </c:forEach> 
