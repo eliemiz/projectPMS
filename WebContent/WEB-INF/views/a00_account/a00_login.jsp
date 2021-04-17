@@ -49,6 +49,8 @@
 	$(document).ready(function(){
 
 		var loginSucc="${loginSucc}";
+	
+
 	     // alert(loginSucc);
 	      if(loginSucc=="Y"){
 	    	  alert("로그인성공\nDashboard로 이동합니다.");
@@ -162,6 +164,20 @@
 <!-- ./wrapper -->
 
 <script type="text/javascript">
+
+$("[name=user_id],[name=password]").keyup(function(){
+    if(event.keyCode==13){
+    	if ($("[name=user_id]").val() == "") {
+	 		alert("아이디를 입력해주세요.");
+	 		return false;
+	 	} else if ($("[name=password]").val() == "") {
+	 		alert("패스워드를 입력해주세요.");
+	 		return false;
+	 	}
+    		$("#login-form").submit();
+    }
+ });
+ 
  	$("#loginBtn").on("click", function(){
  		
  		// 유효성 체크

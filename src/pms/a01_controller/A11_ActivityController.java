@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
+import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A11_ActivityService;
+import pms.z01_vo.Account;
+import pms.z01_vo.AccountTask;
 import pms.z01_vo.Journal;
 import pms.z01_vo.Project;
 import pms.z02_util.SessionManager;
@@ -30,12 +33,16 @@ public class A11_ActivityController {
 	private A01_ProjectService serviceProject;
 	
 	@Autowired(required = false)
+	private A00_AccountService serviceAccount;
+	
+	@Autowired(required = false)
 	private LocaleResolver localeResolver;
 	
 	
 	// http://localhost:7080/projectPMS/activity.do
 	@RequestMapping("activity.do")
-	public String Activity(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jr") Journal jr, Model d) {
+	public String Activity(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jr") Journal jr,
+			/* @ModelAttribute("accountId") int accountId, */ Model d) {
 		
 		/* Set Project Id */
 		HttpSession session = request.getSession();
@@ -63,8 +70,16 @@ public class A11_ActivityController {
 			SessionManager.setLang(request, response, localeResolver);
 		}
 		
+		
 		d.addAttribute("activity", service.getJournalList(jr));
+		/*
+		d.addAttribute("activity", service.getJournalList1(jr));
+		d.addAttribute("activity", service.getJournalList2(jr));
+		d.addAttribute("activity", service.getJournalList3(jr));
+		*/
 
-		return "a11_activity\\activity";
+		return "a11_activity\\activity2";
 	}
+	
+	
 }

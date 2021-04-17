@@ -50,7 +50,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-
 	
     var vm = new Vue({
        el:".content-wrapper",
@@ -59,17 +58,22 @@ $(document).ready(function(){
        }
     });  
     
-     $("#hd-project-list").change(function(){
-   	 $(".type").click(function(){
-    	  var ty = $(this).attr("id");
-    	  location.href="${path}/activity.do?projectId="+$(this).val()+"&document_type="+ty;
-      	});
-    });
-    
-   	/*  $(".type").click(function(){
+   
+    $(".type").click(function(){
     	  var ty = $(this).attr("id");
     	  location.href="${path}/activity.do?document_type="+ty;
-      	}); */
+      });
+    
+    $(".data").click(function(){
+	  	  var id = $(this).attr("id");
+	  	  var type = $(this).attr("data-id");
+	  	  
+	  	  if(type==risk){
+	  	  location.href="${path}/risk.do?method=detail&id="+id;
+	  	  	}else{
+	  	  location.href="${path}/task.do?method=detail&id="+id;
+	  	  	}
+	    });
     
  });
 </script>
@@ -121,18 +125,16 @@ $(document).ready(function(){
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
-                  <select class="form-control select2"  v-model="type" style="width:200px;">
-               <!--      <option value=''>작업유형 선택</option> -->
-                   <option value=""><spring:message code="all"/></option>
-                   <option value="task"><spring:message code="task"/></option> 
+                  <select class="form-control select2"  v-model="type">
+                   <!--      <option value=''>작업유형 선택</option> -->
+                    <option value=""><spring:message code="all"/></option>
+                    <option value="task"><spring:message code="task"/></option> 
                     <option value="risk"><spring:message code="risk"/></option>
-                    
-               <!--      <option value="">모두</option>
-                    <option value="task">업무</option>
-                    <option value="risk">리스크</option> -->
+                    <!-- <option value=''>모두</option>
+                    <option value='task' >업무</option>
+                    <option value='risk'>리스크</option> -->
                   </select>
                 </div>
-                <div>{{type}}</div>
                 <!-- <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" id="task" >
                   <label for="task" class="custom-control-label">Task</label>
@@ -143,7 +145,8 @@ $(document).ready(function(){
                 </div> -->
                <div class="form-row float-left">
             <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type">적용</button> 
-            <!-- <div>{{type}}</div> -->
+<%--              <div>{{type}}</div> 
+              <div><spring:message code="all"/></div> --%>
               </div>
               </div>
             </div>
@@ -165,17 +168,15 @@ $(document).ready(function(){
                       <th>작업번호</th>
                       <th>작업유형</th>
                       <th>내용</th>
-                      <th>작성자</th>
                       <th>작성일자</th>
                     </tr>
                   </thead>
                   <tbody>
                    <c:forEach var="act" items="${activity}">
-	                    <tr style="text-align:center;">
+	                    <tr style="text-align:center;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
 	                      <td>${act.document_type}</td>
 	                      <td>${act.content}</td>
-	                      <td>${act.account_name}</td>
 	                      <td>${act.created_on}</td>
 	                    </tr>
                     </c:forEach>
