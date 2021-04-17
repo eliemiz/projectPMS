@@ -46,7 +46,6 @@ public class A12_TaskService {
 			sch.setTracker("");
 		if (sch.getStatus() == null)
 			sch.setStatus("");
-
 		return dao.getTaskList(sch);
 	}
 
@@ -64,6 +63,7 @@ public class A12_TaskService {
 		System.out.println("uploadTmp:" + uploadTmp);
 		
 		ins.setStart_date(TimeManager.getInstance().SimpleToIso(ins.getStart_date()));
+		ins.setDue_date(TimeManager.getInstance().SimpleToIso(ins.getDue_date()));
 		
 		dao.insertTask(ins);
 
@@ -129,6 +129,8 @@ public class A12_TaskService {
 	 */
 	// task 수정
 	public void updateTask(Task upt) {
+		upt.setStart_date(TimeManager.getInstance().SimpleToIso(upt.getStart_date()));
+		upt.setDue_date(TimeManager.getInstance().SimpleToIso(upt.getDue_date()));
 		int id = upt.getId();
 		if(upt.getFilenames()!=null && upt.getFilenames().length>0) {
 			String filename = null;
@@ -198,24 +200,12 @@ public class A12_TaskService {
 
 	// Gantt List
 	public ArrayList<GanttChart> ganttList(int projectId) {
-		/* ISOString, GanttChart DateType */
-		SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-		isoFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // 해당 시간이 UTC 시간임을 나타냄
-		SimpleDateFormat ganttFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-
 		ArrayList<GanttChart> list = dao.ganttList(projectId);
 		for (GanttChart gc : list) {
-			/* 날짜 포맷 변환 */
-			try {
-				System.out.println(gc.getStart_date());
-				Date isoDate = isoFormat.parse(gc.getStart_date());
-				String ganttDate = ganttFormat.format(isoDate);
-				gc.setStart_date(ganttDate);
-				System.out.println(gc.getStart_date());
-			} catch (ParseException e) {
-				System.out.println("Parse 에러발생: " + e.getMessage());
-				e.printStackTrace();
-			}
+			/* String > ISO */
+			gc.setStart_date(TimeManager.getInstance().SimpleToIso(gc.getStart_date()));
+			/* ISO > UTC */
+			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
 		}
 		return list;
 	}

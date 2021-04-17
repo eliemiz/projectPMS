@@ -118,7 +118,7 @@
 		<result property="start" column="start1"/>
 		<result property="end" column="end1"/>
 	</resultMap>
-	<!-- public ArrayList<Calendar> calenList() -->
+	<!-- public ArrayList<Calendar> calenList(int projectId) -->
 	<select id="calenList" resultMap="calMap">
 		SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
 				t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
@@ -130,11 +130,10 @@
 	
 	<!-- Gantt -->
 	<resultMap type="gantt" id="ganttMap"/>
-	<!-- public ArrayList<GanttChart> ganttList(int id) -->
-<!-- TODO: duration 달이 넘어갈 경우 해결방법,, -->
+	<!-- public ArrayList<GanttChart> ganttList(int projectId) -->
 	<select id="ganttList" resultMap="ganttMap">
-		SELECT t.id, t.TRACKER "type", t.subject text, t.start_date||'T00:00:00.000Z' start_date,
-				to_date(DUE_DATE)-to_date(start_date) duration,
+		SELECT t.id, t.TRACKER "type", t.subject text, t.start_date start_date,
+				to_date(SUBSTR(t.due_date,0,10))-to_date(SUBSTR(t.START_DATE,0,10)) duration,
 				t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"
 		FROM task t, project p
 		where p.id = t.project_id
