@@ -61,10 +61,16 @@
 html, body {
 	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
 }
+#download:hover{
+	color: #3e2cff;
+	cursor:pointer;
+	font-weight:bold;
+}
 </style>
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
@@ -74,10 +80,11 @@ html, body {
 		});
 		$("#fileInfo").click(function(){
 			var filename=$(this).text();
-			if(confirm("다운로드하시겠습니까?"+filename)){
+			if(confirm("다운로드하시겠습니까?\n"+filename)){
 				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
 			}
 		});
+		
 		$("#uptFrm").click(function(){
 /* 			var projcet_id = $("[name=project_id]").val();
 			var status = $("[name=status]").val();
@@ -258,8 +265,9 @@ html, body {
             	<div class="form-group">
             		<label>첨부파일</label>
             		&nbsp;&nbsp;&nbsp;
+            			<div id="download">
             			<span id="fileInfo" name="filename" value="${finf.filename}">${finf.filename}</span>
-            		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
+            		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i></div>
             		<hr align="left" style="border: solid 1px gray; width: 90%;">
             		<label>상위 Task</label>
             		&nbsp;&nbsp;&nbsp;
