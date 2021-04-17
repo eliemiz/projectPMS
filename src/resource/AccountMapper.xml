@@ -42,4 +42,11 @@
 	FROM account
 	WHERE id=#{id}
 	</select>
+	
+	<!-- public void loginDate(Account log); -->
+	<update id="loginDate" parameterType="account">
+		update account 
+		set last_login_on = sysdate 
+		where user_id = #{user_id}
+	</update>
 </mapper>

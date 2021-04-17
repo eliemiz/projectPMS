@@ -53,7 +53,7 @@ public class A00_AccountController {
 			}else {
 				request.setAttribute("loginSucc", "N");
 			}
-	
+			 service.loginDate(log); 
 		return "a00_account\\a00_login";
 	}
 	@RequestMapping(params = "method=logout")

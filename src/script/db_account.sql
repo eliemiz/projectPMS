@@ -41,9 +41,7 @@ SELECT j.*, a.name account_name
 			order by created_on DESC
 			
 			
-			
-
-
+SELECT * FROM account;
 
 
 

@@ -25,6 +25,6 @@ public interface A00_AccountDao {
 	
 	public Account getAccount(int accountId);
 	
-	
+	public void loginDate(Account log);
 
 }

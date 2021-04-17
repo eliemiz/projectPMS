@@ -46,4 +46,8 @@ public class A00_AccountService {
 		
 		return dao.getAccount(accountId);
 	}
+	
+	public void loginDate(Account log) {
+		dao.loginDate(log);
+	}
 }
