@@ -26,31 +26,41 @@ CREATE SEQUENCE TASK_SEQ
 	MAXVALUE 9999999
 	CYCLE;
 
-SELECT * FROM task ORDER BY PROJECT_ID;
+SELECT * FROM task ORDER BY iD;
+
 SELECT t.*, a.name name, p.name project_name
    FROM task t, account a, PROJECT p
    WHERE t.account_id = a.id
    AND t.PROJECT_ID = p.ID 
 	ORDER BY t.id desc;
+
 UPDATE TASK 
 	SET backgroundcolor='#439981'
 WHERE tracker='지원';
+
 UPDATE TASK 
 	SET backgroundcolor='#4f5fd4'
 WHERE tracker='새기능';
+
 UPDATE TASK 
 	SET backgroundcolor='#fc987d'
 WHERE tracker='결함';
+
 SELECT t.*, a.name name, p.name project_name
 		FROM task t, account a, PROJECT p
 		WHERE subject LIKE '%'||'테스트'||'%' 
 		AND t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
 		ORDER BY t.id DESC;
+	
 SELECT * FROM TASK WHERE ID = 1;
+
 DELETE FROM task WHERE id = 10001;
 
-
+UPDATE TASK 
+	SET start_date = '2021-04-22T15:00:00.000Z',
+		due_date = '2021-04-30T15:00:00.000Z'
+WHERE PARENT_ID = 0;
 -- Calendar 조회용
 SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
 		t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
@@ -58,9 +68,10 @@ FROM task t, account a, project p
 WHERE t.PROJECT_ID = p.ID AND t.ACCOUNT_ID = a.ID;
 
 -- Gantt
-SELECT t.id, t.TRACKER "type", t.subject text, t.start_date||'T00:00:00.000Z' start_date, 
-		t.due_date||'T00:00:00.000Z' due_date,
-		to_date(t.due_date)-to_date(t.start_date) duration,
+SELECT t.id, t.TRACKER "type", t.subject text, t.start_date start_date, 
+		t.due_date due_date,
+		to_date(SUBSTR(t.due_date,0,10)),
 		t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"	
 FROM task t
 ORDER BY t.id;
+--		to_date(SUBSTR(t.due_date,0,10))-to_date(SUBSTR(t.START_DATE,0,10)) duration,
