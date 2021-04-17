@@ -2,13 +2,17 @@ package pms.a01_controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
@@ -16,6 +20,7 @@ import pms.a02_service.A16_RiskService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
+import pms.z02_util.SessionManager;
 
 @Controller
 @RequestMapping("risk.do")
@@ -26,12 +31,17 @@ public class A16_RiskController {
 	private A00_AccountService service2;
 	@Autowired(required = false)
 	private A01_ProjectService service3;
+	@Autowired(required = false)
+	private LocaleResolver localeResolver;
 	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
 	@RequestMapping(params="method=list")
-	public String RiskList(@ModelAttribute("sch") Risk sch, Model d) {
+	public String RiskList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Risk sch, Model d) {
 		d.addAttribute("riskList", service.getRiskList(sch));
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
 		return "a16_risk\\a01_risk";
 	}
 	
@@ -114,4 +124,5 @@ public class A16_RiskController {
 	public ArrayList<Project> getProjectList(){
 		return service3.getProjectList();
 	}
+	
 }

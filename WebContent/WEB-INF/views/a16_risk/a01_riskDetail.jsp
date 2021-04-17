@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>RiskDetail</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -69,6 +69,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
+		
+		$("#hd-project-list").change(function(){
+			location.href="${path}/risk.do?projectId="+$(this).val();
+		});
+		
 		$("#upt").click(function(){
 			$("form").attr("action","${path}/risk.do?method=uptForm");
 			$("form").submit();
@@ -152,22 +157,36 @@
               
                <p>
                	${risk.description}
-        	   </p>
-              
+        	   </p>  
               <br>
               <div class="text-muted">
-                <p class="text-sm">상태
-                  <b class="d-block">${risk.status}</b>
-                </p>
-                <p class="text-sm">담당자
-                  <b class="d-block">${risk.account_name}</b>
-                </p>
-                <p class="text-sm">연결 프로젝트
-                  <b class="d-block">${risk.project_name}</b>
-                </p>
-                <p class="text-sm">범주
-                  <b class="d-block">${risk.category}</b>
-                </p>
+               <div class="row">
+                <div class="col-md-6">
+                
+                 <div class="form-group">
+	                <p class="text-sm">상태
+	                  <b class="d-block">${risk.status}</b>
+                	</p>
+                 </div>
+                 <div class="form-group">
+	                <p class="text-sm">담당자
+	                  <b class="d-block">${risk.account_name}</b>
+	                </p>
+	             </div>
+	             <div class="form-group">
+	                <p class="text-sm">연결 프로젝트
+	                  <b class="d-block">${risk.project_name}</b>
+	                </p>
+	             </div>
+	             <div class="form-group">
+	                <p class="text-sm">범주
+	                  <b class="d-block">${risk.category}</b>
+	                </p>
+                </div>
+                </div>
+                
+                <div class="col-md-6">
+                <div class="form-group">
                 <p class="text-sm">발생도
                   <b class="d-block">
                   <c:choose>
@@ -180,6 +199,8 @@
 				  </c:choose>
                   </b>
                 </p>
+                </div>
+                <div class="form-group">
                 <p class="text-sm">영향도
                   <b class="d-block">
                   <c:choose>
@@ -192,19 +213,36 @@
 				  </c:choose>
                   </b>
                 </p>
+                </div>
+                <div class="form-group">
                 <p class="text-sm">예상시작일
                   <b class="d-block">${risk.start_date}</b>
                 </p>
+                </div>
+                <div class="form-group">
                 <p class="text-sm">예상종료일
                   <b class="d-block">${risk.end_date}</b>
                 </p>
-                <p class="text-sm">전략
+                </div>
+                </div>
+                </div>
+                <br>
+                
+                <div class="form-group">
+                <p class="text-md">전략
                   <b class="d-block">${risk.strategy}</b>
                 </p>
+                </div>
+                <div class="form-group">
                 <p class="text-md">해결방안
                   <b class="d-block">${risk.treatment}</b>
                 </p>
-              </div>
+                </div>
+                
+                
+                
+                
+              
 
               <h5 class="mt-5 text-muted">첨부파일</h5>
               <ul class="list-unstyled">

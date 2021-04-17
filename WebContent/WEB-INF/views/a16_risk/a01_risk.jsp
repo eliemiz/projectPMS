@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <fmt:requestEncoding value="UTF-8" />
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>RiskList</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -69,6 +70,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#sb-risk").addClass("active");
+		
+		
+		
 		$(".detail").click(function(){
     		//var id = $(this).children().eq(0).text();
     		var id = $(this).attr("id");
@@ -113,13 +117,13 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">리스크</h3>
+                <h3 class="card-title"><spring:message code="risk"/></h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
                       <button type="button" onclick="location.href='${path}/risk.do?method=insForm'"
-                      class="btn btn-primary float-right">리스크 등록</button>          
+                      class="btn btn-primary float-right"><spring:message code="risk-insert"/></button>          
                     </div>
                   </div>
                 </div>
@@ -129,17 +133,17 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>제목</th>
-                      <th>프로젝트명</th>
-                      <th>상태</th>
-                      <th>범주</th>
-                      <th>발생도</th>
-                      <th>영향도</th>
-                      <th>담당자</th>  
-                      <th>예상시작일</th> 
-                      <th>예상종료일</th> 
-                      <th>변경일자</th>
+                      <th><spring:message code="risk-id"/></th>
+                      <th><spring:message code="risk-subject"/></th>
+                      <th><spring:message code="risk-projectname"/></th>
+                      <th><spring:message code="risk-status"/></th>
+                      <th><spring:message code="risk-category"/></th>
+                      <th><spring:message code="risk-probability"/></th>
+                      <th><spring:message code="risk-impact"/></th>
+                      <th><spring:message code="risk-accountname"/></th>  
+                      <th><spring:message code="risk-startdate"/></th> 
+                      <th><spring:message code="risk-enddate"/></th> 
+                      <th><spring:message code="risk-updated"/></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -152,21 +156,21 @@
                       <td>${risk.category}</td>
                       <td>
                       <c:choose>
-						<c:when test="${risk.probability==1}"> Unlikely </c:when>
-						<c:when test="${risk.probability==2}"> Low </c:when>
-						<c:when test="${risk.probability==3}"> Medium </c:when>
-						<c:when test="${risk.probability==4}"> High </c:when>
-						<c:when test="${risk.probability==5}"> Expected </c:when>
+						<c:when test="${risk.probability==1}"> <spring:message code="risk-unlikely"/> </c:when>
+						<c:when test="${risk.probability==2}"> <spring:message code="risk-low"/> </c:when>
+						<c:when test="${risk.probability==3}"> <spring:message code="risk-medium"/> </c:when>
+						<c:when test="${risk.probability==4}"> <spring:message code="risk-high"/> </c:when>
+						<c:when test="${risk.probability==5}"> <spring:message code="risk-expected"/> </c:when>
 						<c:otherwise> Error </c:otherwise>
 					  </c:choose>
                       </td>
                       <td>
                       <c:choose>
-						<c:when test="${risk.impact==1}"> Negligible </c:when>
-						<c:when test="${risk.impact==2}"> Minor </c:when>
-						<c:when test="${risk.impact==3}"> Moderate </c:when>
-						<c:when test="${risk.impact==4}"> Significant </c:when>
-						<c:when test="${risk.impact==5}"> Severe </c:when>
+						<c:when test="${risk.impact==1}"><spring:message code="risk-negligible"/></c:when>
+						<c:when test="${risk.impact==2}"><spring:message code="risk-minor"/></c:when>
+						<c:when test="${risk.impact==3}"><spring:message code="risk-moderate"/></c:when>
+						<c:when test="${risk.impact==4}"><spring:message code="risk-significant"/></c:when>
+						<c:when test="${risk.impact==5}"><spring:message code="risk-severe"/></c:when>
 						<c:otherwise> Error </c:otherwise>
 					  </c:choose>
                       </td>
