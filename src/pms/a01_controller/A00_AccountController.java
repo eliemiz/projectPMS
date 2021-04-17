@@ -62,7 +62,7 @@ public class A00_AccountController {
 		return "redirect:/account.do?method=login";
 	}
 	
-
+/*
 	// http://localhost:7080/projectPMS/account.do?method=signin
 	@RequestMapping(params = "method=signin")
 	public String signin(@ModelAttribute("account") Account a) {
@@ -78,7 +78,7 @@ public class A00_AccountController {
 		
 		return "a00_account\\a02_signin";
 	}
-	
+*/	
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
 	@RequestMapping(params = "method=info")
