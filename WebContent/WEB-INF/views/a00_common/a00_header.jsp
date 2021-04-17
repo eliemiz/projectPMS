@@ -41,9 +41,6 @@
 			}
 		});
 		
-		$("#hd-project-list").change(function(){
-			location.href="${path}/dashboard.do?projectId="+$(this).val();
-		});
 	});
 </script>
 <form action="" id="langForm" method="post">

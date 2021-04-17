@@ -37,7 +37,10 @@ html, body {
 		
 		/* sidebar */
 		$("#sb-dashboard").addClass("active");
-		
+
+		$("#hd-project-list").change(function(){
+			location.href="${path}/dashboard.do?projectId="+$(this).val();
+		});
 	});
 
 </script>
