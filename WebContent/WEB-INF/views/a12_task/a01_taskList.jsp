@@ -163,7 +163,7 @@ html, body {
                   <input type="checkbox" checked id="checkboxSuccess1">
                   --%>
                   &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
-                  <input type="text" name="subject" id="subject" value="${task.subject}" class="form-control">
+                  <form:input path="subject" class="form-control"/>
                   </div><br>
                    <%--
                   <div class="input-group input-group-m" style="width: 600px;">
