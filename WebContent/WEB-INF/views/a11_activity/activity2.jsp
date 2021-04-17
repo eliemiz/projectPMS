@@ -70,9 +70,9 @@ $(document).ready(function(){
 	  	  
 	  	  if(type==risk){
 	  	  location.href="${path}/risk.do?method=detail&id="+id;
-	  	  	}else{
-	  	  location.href="${path}/task.do?method=detail&id="+id;
 	  	  	}
+	  	  location.href="${path}/task.do?method=detail&id="+id;
+	  	  	
 	    });
     
  });
