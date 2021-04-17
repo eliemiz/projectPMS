@@ -159,8 +159,7 @@
        	<form:hidden path="treatment" value="-"/>
          </div>
            <!-- /.card-header -->
-                <div class="card-body">
-                <div class="col-md-6">               
+                <div class="card-body">                              
                   <div class="form-group">
                     <label for="exampleInputEmail1">프로젝트</label>
                     <form:select path="project_id" class="form-control select2" style="width: 100%;">
@@ -171,6 +170,13 @@
                   	</form:select>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">제목</label>
+                    <form:input path="subject" type="text" class="form-control" style="width: 100%;"/>
+                  </div>
+                  
+                  <div class="row">
+                  <div class="col-md-6">
+                  <div class="form-group">
                     <label for="exampleInputEmail1">범주</label>
 	                   <div class="form-group">
 	                     <form:select path="category" class="form-control select2">
@@ -180,17 +186,21 @@
 	                        <form:option value="Unforeseeable" label="Unforeseeable"/>
 	                      </form:select>
 	                      </div>
-	                   </div>
-	                <div class="form-group">
-                    <label for="exampleInputEmail1">담당자</label>
-                    <form:select path="account_id" class="form-control select" style="width: 100%;">
-	                 <option value="">담당자 선택</option>
-	                  	<c:forEach var="account" items="${accounts}">
-		                    <form:option value="${account.id}">${account.name}</form:option>
-	                    </c:forEach>
-                 	</form:select>	            
-                  </div>   
-	              </div>
+	               </div>
+	               </div>
+	      			<div class="col-md-6">	
+		                <div class="form-group">
+	                    <label for="exampleInputEmail1">담당자</label>
+	                    <form:select path="account_id" class="form-control select" style="width: 100%;">
+		                 <option value="">담당자 선택</option>
+		                  	<c:forEach var="account" items="${accounts}">
+			                    <form:option value="${account.id}">${account.name}</form:option>
+		                    </c:forEach>
+	                 	</form:select>	            
+	                  </div> 
+	                  </div>
+                  </div>  
+	             
 	              <div class="bs-stepper-content">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
