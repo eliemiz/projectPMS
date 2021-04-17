@@ -30,7 +30,7 @@ public class TimeManager {
 		return LazyHolder.INSTANCE;
 	}
 	
-	public String isoToGantt(String date) {
+	public String IsoToGantt(String date) {
 		
 		String ganttDate = null;
 		
@@ -49,7 +49,7 @@ public class TimeManager {
 	public String SimpleToIso(String date) {
 
 		// simpleFormat.setTimeZone(TimeZone.getTimeZone("Pacific/Nauru"));
-		
+		simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String iso = null;
 		try {
 			Date simple;
@@ -62,6 +62,22 @@ public class TimeManager {
 		}
 
 		return iso;
+	}
+	
+	public String SimpleToLocal(String date) {
+		isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+		simpleFormat.setTimeZone(TimeZone.getTimeZone("UTC+9"));
+		String localDate = null;
+		try {
+			Date iso;
+			iso = simpleFormat.parse(date);
+			System.out.println(iso);
+			localDate = isoFormat.format(iso);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return localDate;
 	}
 
 }

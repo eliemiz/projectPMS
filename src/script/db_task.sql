@@ -26,14 +26,6 @@ CREATE SEQUENCE TASK_SEQ
 	MAXVALUE 9999999
 	CYCLE;
 
-SELECT * FROM task ORDER BY iD;
-SELECT * FROM JOURNAL;
-SELECT * FROM ATTACHMENT;
-SELECT * FROM TASK_RELATION;
-SELECT * FROM ACCOUNT;
-
-SELECT substr(start_date,0,10) FROM task;
-
 -- getTaskList(Task sch) 전체 리스트
 SELECT t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
 		substr(t.start_date,0,10) start_date, substr(t.due_date,0,10) due_date
@@ -43,7 +35,7 @@ AND t.account_id = a.id
 AND t.PROJECT_ID = p.ID
 ORDER BY t.id desc;
 
--- getTask(int id)
+-- getTask(int id) 상세내용 이동
 SELECT t.id, t.PARENT_ID, t.PROJECT_ID, t.ACCOUNT_ID,
 		t.SUBJECT, t.DESCRIPTION, t.STATUS, t.PRIORITY, 
 		t.CREATED_ON, t.UPDATED_ON,
