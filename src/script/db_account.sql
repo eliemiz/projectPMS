@@ -9,11 +9,24 @@ WHERE user_id='아이디' AND password='비밀번호';
 
 DELETE FROM account 
 WHERE id=100000;
+SELECT * FROM account;
+
+DELETE FROM ACCOUNT
+WHERE id=86;
 SELECT * FROM journal;
+SELECT * FROM risk;
+SELECT * FROM task;
+INSERT INTO account values(account_seq.nextval,'himan','7777','김나리','asdf@naver.com',sysdate,sysdate,'Manager');
+INSERT INTO JOURNAL values(journal_seq.nextval,'task',1,1,sysdate,'제목 수정, 댓글 추가');
 SELECT * 
 FROM journal
 WHERE document_type='task';
 
+CREATE SEQUENCE ACCOUNT_SEQ
+START WITH 1
+MINVALUE 1
+INCREMENT BY 1
+MAXVALUE 9999999;
 
 		
 SELECT j.*, a.name account_name
@@ -41,8 +54,7 @@ SELECT j.*, a.name account_name
 			order by created_on DESC
 			
 			
-SELECT * FROM account;
+SELECT * FROM journal;
 
 
 
-INSERT INTO JOURNAL values(journal_seq.nextval,'risk',1000,1001,sysdate,'제목 수정, 댓글 추가');

@@ -173,9 +173,15 @@ $(document).ready(function(){
                   </thead>
                   <tbody>
                    <c:forEach var="act" items="${activity}">
-	                    <tr style="text-align:center;" class="data" id="${act.document_id}" data-id="${act.document_type}">
+	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
-	                      <td>${act.document_type}</td>
+	                      <td>
+	                      <c:choose>
+							<c:when test="${act.document_type=='risk'}"> <spring:message code="risk"/> </c:when>
+							<c:when test="${act.document_type=='task'}"> <spring:message code="task"/> </c:when>
+							<c:otherwise> Error </c:otherwise>
+					  	 </c:choose>
+					  	 </td>
 	                      <td>${act.content}</td>
 	                      <td>${act.created_on}</td>
 	                    </tr>

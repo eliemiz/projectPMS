@@ -70,6 +70,16 @@ $(document).ready(function(){
     	  var ty = $(this).attr("id");
     	  location.href="${path}/activity.do?document_type="+ty;
       	}); */
+     $(".data").click(function(){
+	  	  var id = $(this).attr("id");
+	  	  var type = $(this).attr("data-id");
+	  	  
+	  	  if(type=="risk"){
+	  	  location.href="${path}/risk.do?method=detail&id="+id;
+	  	  	}else if(type=="task"){
+	  	  location.href="${path}/task.do?method=detail&id="+id;
+	  	  	}
+	    });
     
  });
 </script>
@@ -171,9 +181,15 @@ $(document).ready(function(){
                   </thead>
                   <tbody>
                    <c:forEach var="act" items="${activity}">
-	                    <tr style="text-align:center;">
+	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
-	                      <td>${act.document_type}</td>
+	                      <td>
+	                      <c:choose>
+							<c:when test="${act.document_type=='risk'}"> <spring:message code="risk"/> </c:when>
+							<c:when test="${act.document_type=='task'}"> <spring:message code="task"/> </c:when>
+							<c:otherwise> Error </c:otherwise>
+					  	 </c:choose>
+					  	 </td>
 	                      <td>${act.content}</td>
 	                      <td>${act.account_name}</td>
 	                      <td>${act.created_on}</td>
