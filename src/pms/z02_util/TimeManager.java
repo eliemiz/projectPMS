@@ -11,7 +11,8 @@ import org.springframework.stereotype.Controller;
 public class TimeManager {
 	
 	private static SimpleDateFormat isoFormat;
-	SimpleDateFormat ganttFormat;
+	private static SimpleDateFormat ganttFormat;
+	private static SimpleDateFormat simpleFormat;
 	
 	/* Singleton */
 	private static class LazyHolder {
@@ -22,6 +23,7 @@ public class TimeManager {
 		isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		isoFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		ganttFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+		simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
 	}
 
 	public static TimeManager getInstance() {
@@ -42,6 +44,24 @@ public class TimeManager {
 		}
 		
 		return ganttDate;
+	}
+	
+	public String SimpleToIso(String date) {
+
+		// simpleFormat.setTimeZone(TimeZone.getTimeZone("Pacific/Nauru"));
+		
+		String iso = null;
+		try {
+			Date simple;
+			simple = simpleFormat.parse(date);
+			System.out.println(simple);
+			iso = isoFormat.format(simple); 
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return iso;
 	}
 
 }

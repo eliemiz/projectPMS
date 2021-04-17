@@ -22,6 +22,7 @@ import pms.z01_vo.Calendar;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
+import pms.z02_util.TimeManager;
 
 @Service
 public class A12_TaskService {
@@ -61,6 +62,9 @@ public class A12_TaskService {
 	public void insertTask(Task ins) {
 		System.out.println("upload:" + upload);
 		System.out.println("uploadTmp:" + uploadTmp);
+		
+		ins.setStart_date(TimeManager.getInstance().SimpleToIso(ins.getStart_date()));
+		
 		dao.insertTask(ins);
 
 		String filename = null;
