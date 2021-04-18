@@ -25,5 +25,7 @@ public interface A00_AccountDao {
 	public Account getAccount(int accountId);
 	
 	public void loginDate(Account log);
+	
+	public int schMember(String user_id);
 
 }

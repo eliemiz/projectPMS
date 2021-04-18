@@ -46,58 +46,89 @@ html, body {
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-  /*
-     $(document).ready(function(){
-     
-  
-   
-	
-    	 var receiver="${param.receiver}";
-         if(receiver!=""){
-       	  alert("");
-         }
-      });
-	$(function(){
-		//아이디 중복체크
-		    $('#user_id').blur(function(){
-		        $.ajax({
-			     type:"POST",
-			     url:"",
-			     data:{
-			            "user_id":$('#user_id').val()
-			     },
-			     success:function(data){	
-			            if($.trim(data)=="YES"){
-			               if($('#user_id').val()!=''){ 
-			               	alert("사용가능한 아이디입니다.");
-			               }
-			           	}else{
-			               if($('#user_id').val()!=''){
-			                  alert("중복된 아이디입니다.");
-			                  $('#user_id').val('');
-			                  $('#user_id').focus();
-			               }
-			            }
-			         }
-			    }) 
-		     })
 
-		});
+/*
+//아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
+	  var checkbtn = 0;
+      var user_id =  $("#user_id").val(); 
+      $(document).ready(function(){ 
+    	  $('#checkbtn').on('click', function(){
 
-$(function(){
+		      $.ajax({
+		          async: true,
+		          type : 'POST',
+		          data : user_id,
+		          url : "",
+		          dataType : "json",
+		          success : function(data) {
+		              if (data.cnt > 0) {
+		                  
+		                  alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
+		                  //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+		                  $("#divInputId").addClass("has-error")
+		                  $("#divInputId").removeClass("has-success")
+		                  $("#user_id").focus();
+		                  
+		              
+		              } else {
+		                  alert("사용가능한 아이디입니다.");
+		                  //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
+		                  $("#divInputId").addClass("has-success")
+		                  $("#divInputId").removeClass("has-error")
+		                  $("#password").focus();
+		                  //아이디가 중복하지 않으면  idck = 1 
+		                  idck = 1;
+		                  
+		              }
+		          },
+		          error : function(error) {
+		              
+		              alert("error : " + error);
+		          }
+		      }  
+		      });
+	      
+     	 });
+      });*/
 
-//비밀번호 확인
-	$('#password2').blur(function(){
-	   if($('#password').val() != $('#password2').val()){
-	    	if($('#password2').val()!=''){
-		    alert("비밀번호가 일치하지 않습니다.");
-	    	    $('#password2').val('');
-	          $('#password2').focus();
-	       }
-	    }
-	})  	   
-});
-*/
+      $(document).ready(function(){
+   	   $("form").submit(function(e){
+   		  e.preventDefault(); 
+   	   });
+   	   $("#user_id").keyup(function(e){
+   		   if(e.keyCode==13){ // 입력할 항목에 enter키를 입력시 처리
+   			   ckId();
+   		   }
+   	   });
+         $("#ckIdBtn").click(function(){ // 등록여부확인 버튼 클릭 시
+       	  ckId();
+         });
+       });
+        function ckId(){
+        	//var params = $("#ajax").serialize();
+        	// alert($("form").serialize());
+        	var data = $("form").serialize(); 
+        	$.ajax({
+        		type:"post",
+        		url:"${path}/hasMember.do",
+        		data:$("form").serialize(),
+        		dataType:"json",
+        		success:function(data){
+        			// alert(data.mCnt);
+        			if(data.mCnt==1){
+        				alert("등록된 아이디가 있습니다.")
+        				$("#user_id").val("").focus();
+        			}else{
+        				alert("등록 가능합니다.")
+        			}
+        		},
+        		error:function(err){
+        			console.log(err);
+        		}
+        	});
+        }	
+
+
 
 	var result = "${result}";
 	if (result == "success") {
@@ -107,6 +138,8 @@ $(function(){
   
 	$(document).ready(function(){
 	  $("#Btn").click(function(){
+		  
+		  
 		    if($("[name=user_id]").val()==""){
 				alert("아이디를 입력해주세요");
 				return false;
@@ -177,12 +210,15 @@ $(function(){
 									enctype="multipart/form-data" method="post">
 									<form:hidden path="auth" class="form-control" value="Developer" />
 									<div class="input-group mb-5">
+									<form name="ajax" class="form-inline" method="post">
 										<form:input path="user_id" class="form-control" placeholder="아이디" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
 											</div>
 										</div>
+										<button type="button" id="ckIdBtn" class="btn btn-default">중복확인</button>
+  									</form>
 									</div>
 									<div class="input-group mb-5">
 										<form:input path="name" class="form-control" placeholder="이름" />

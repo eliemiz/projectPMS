@@ -71,7 +71,7 @@ public class A02_MailService {
 	      // 임시 비밀번호 생성
 	      String pass = PasswordManager.getInstance().createPassword();
 	      StringBuilder sb = new StringBuilder();
-	      sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
+	      //sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
 	      sb.append("새 비밀번호 : " + pass);
 	      // 계정 비밀번호 변경
 	      find.setPassword(pass);

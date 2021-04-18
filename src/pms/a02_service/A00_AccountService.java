@@ -50,4 +50,8 @@ public class A00_AccountService {
 	public void loginDate(Account log) {
 		dao.loginDate(log);
 	}
+	
+	public int schMember(String user_id) {
+		return dao.schMember(user_id);
+	}
 }
