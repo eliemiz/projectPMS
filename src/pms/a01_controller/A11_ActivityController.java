@@ -44,6 +44,7 @@ public class A11_ActivityController {
 	public String Activity(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jr") Journal jr,
 			/* @ModelAttribute("accountId") int accountId, */ Model d) {
 		
+		
 		/* Set Project Id */
 		HttpSession session = request.getSession();
 		String projectIdReq = request.getParameter("projectId");
@@ -71,7 +72,7 @@ public class A11_ActivityController {
 		}
 		
 		
-		d.addAttribute("activity", service.getJournalList(jr));
+		 d.addAttribute("activity", service.getJournalList(jr)); 
 		/*
 		d.addAttribute("activity", service.getJournalList1(jr));
 		d.addAttribute("activity", service.getJournalList2(jr));

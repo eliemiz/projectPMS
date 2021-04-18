@@ -173,7 +173,8 @@ $(document).ready(function(){
                   </thead>
                   <tbody>
                    <c:forEach var="act" items="${activity}">
-	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
+	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" 
+	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
 	                      <td>
 	                      <c:choose>
@@ -183,7 +184,7 @@ $(document).ready(function(){
 					  	 </c:choose>
 					  	 </td>
 	                      <td>${act.content}</td>
-	                      <td>${act.created_on}</td>
+	                      <td><fmt:formatDate value="${act.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></td>
 	                    </tr>
                     </c:forEach>
                   </tbody>

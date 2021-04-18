@@ -1,5 +1,6 @@
 package pms.a02_service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ public class A11_ActivityService {
 	public ArrayList<Journal> getJournalList(Journal jr){
 		if(jr.getDocument_type()==null) jr.setDocument_type(""); 
 		
-		
 		return dao.getJournalList(jr);
 	}
+	
+	
 	/*
 	public ArrayList<Journal> getJournalList1(Journal jr){
 		 if(jr.getDocument_type()==null) jr.setDocument_type(""); 
@@ -34,4 +36,10 @@ public class A11_ActivityService {
 		return dao.getJournalList3(jr);
 	}
 	*/
+	
+	/*
+	HashMap<String, Object> map = new HashMap<String, Object>();
+	map.put("document_type",document_type);
+	map.put("projectId",projectId);
+*/
 }

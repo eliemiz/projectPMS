@@ -5,50 +5,52 @@
 	
 	<!-- public ArrayList<Journal> getJournalList(Journal jr); -->
 	
-	<!--  
-	<select id="getJournalList1" parameterType="journal" resultType="journal">
-			SELECT j.*, a.name account_name, t.project_id project_id 
+	<!-- 
+	<select id="getJournalList1" parameterType="hashMap" resultType="journal">
+			SELECT j.*, a.name account_name, t.project_id projectId 
 			FROM journal j, account a, task t
 			WHERE document_type like '%'||#{document_type}||'%'
-			AND project_id = #{projectId}
+			AND projectId = #{projectId}
 			AND j.document_id = t.id
 			AND j.account_id = a.id 
 			order by created_on DESC
 				UNION 
-			SELECT j.*, a.name account_name, r.project_id project_id 
-			
+			SELECT j.*, a.name account_name, r.project_id projectId 
 			FROM journal j, account a, risk r
 			WHERE document_type like '%'||#{document_type}||'%'
-			AND project_id = #{projectId}
+			AND projectId = #{projectId}
 			AND j.document_id = r.id
 			AND j.account_id = a.id 
 			order by created_on DESC
 	</select>
-	<select id="getJournalList2" parameterType="journal" resultType="journal">
-			SELECT j.*, a.name account_name, t.project_id project_id 
+	<select id="getJournalList2" parameterType="hashMap" resultType="journal">
+			SELECT j.*, a.name account_name, t.project_id projectId 
 			FROM journal j, account a, task t
 			WHERE document_type like '%'||#{document_type}||'%'
-			AND project_id = #{projectId}
+			AND projectId = #{projectId}
 			AND j.document_id = t.id
 			AND j.account_id = a.id 
 			order by created_on DESC
 	</select>
-	<select id="getJournalList3" parameterType="journal" resultType="journal">
-			SELECT j.*, a.name account_name, r.project_id project_id 
+	<select id="getJournalList3" parameterType="hashMap" resultType="journal">
+			SELECT j.*, a.name account_name, r.project_id projectId 
 			FROM journal j, account a, risk r
 			WHERE document_type like '%'||#{document_type}||'%'
-			AND project_id = #{projectId}
+			AND projectId = #{projectId}
 			AND j.document_id = r.id
 			AND j.account_id = a.id 
 			order by created_on DESC
 	</select>
-	-->
+	 --> 
+	 
+ 
 	<select id="getJournalList" parameterType="journal" resultType="journal">
 	SELECT * 
 	FROM journal
 	WHERE document_type like '%'||#{document_type}||'%'
 		order by created_on desc
 	</select>
+	
 </mapper>
 
 
