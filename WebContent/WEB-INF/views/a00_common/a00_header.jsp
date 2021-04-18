@@ -71,10 +71,10 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Messages Dropdown Menu -->
-    <li class="nav-item dropdown">
-      <a class="nav-link" onclick="openChat()">
-        <i class="far fa-comments"></i>
-      </a>
+    <li class="nav-item dropdown" style="cursor:pointer;">
+   		<a class="nav-link" onclick="openChat()">
+        	<i class="far fa-comments"></i>
+     	</a>
     </li>
     <li class="nav-item">
     	<div class="nav-link">

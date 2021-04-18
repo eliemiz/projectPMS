@@ -137,28 +137,26 @@
 							<div class="card-header">
 								<h3 class="card-title">그룹 선택</h3>
 							</div>
-							<form>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-6">
-											<div class="form-group">
-												<label for="id">사용자명</label>
-												<input type="text" class="form-control" id="id" readonly="readonly">
-											</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<label for="id">사용자명</label>
+											<input type="text" class="form-control" id="id" readonly="readonly">
 										</div>
-										<div class="col-6">
-											<div class="form-group">
-												<label for="group">그룹 이름</label>
-												<input type="text" class="form-control" id="group">
-											</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label for="group">그룹 이름</label>
+											<input type="text" class="form-control" id="group">
 										</div>
 									</div>
 								</div>
-								<!-- /.card-body -->
-								<div class="card-footer">
-									<button type="button" class="btn btn-primary" id="enterButton">입장</button>
-								</div>
-							</form>
+							</div>
+							<!-- /.card-body -->
+							<div class="card-footer">
+								<button type="button" class="btn btn-primary" id="enterButton">입장</button>
+							</div>
 						</div>
 						<!-- /.card -->
 					</div>
@@ -187,14 +185,12 @@
 							</div>
 							<!-- /.card-body -->
 							<div class="card-footer">
-								<form action="#" method="post">
-									<div class="input-group">
-										<input type="text" id="message" name="message" class="form-control">
-										<span class="input-group-append">
-											<button type="button" class="btn btn-success" id="sendButton">Send</button>
-										</span>
-									</div>
-								</form>
+								<div class="input-group">
+									<input type="text" id="message" name="message" class="form-control">
+									<span class="input-group-append">
+										<button type="button" class="btn btn-success" id="sendButton">Send</button>
+									</span>
+								</div>
 							</div>
 							<!-- /.card-footer-->
 						</div>
