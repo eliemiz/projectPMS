@@ -9,5 +9,5 @@ public interface A02_MailDao {
 	
 	public Account find_pw(Account find);
 	
-	public Account signinIns(Account insert);
+	public void signinIns(Account insert);
 }

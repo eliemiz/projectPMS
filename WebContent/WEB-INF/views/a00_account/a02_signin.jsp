@@ -42,44 +42,13 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
-  /*
-     $(document).ready(function(){
-     
   
-   
+   var proc = "${proc}";
+	if(proc=="insert"){
+		alert("등록완료\n로그인페이지로 이동합니다.")
+		location.href = "${path}/account.do?method=login";			
+	}
 	
-    	 var receiver="${param.receiver}";
-         if(receiver!=""){
-       	  alert("");
-         }
-      });
-	$(function(){
-		//아이디 중복체크
-		    $('#user_id').blur(function(){
-		        $.ajax({
-			     type:"POST",
-			     url:"",
-			     data:{
-			            "user_id":$('#user_id').val()
-			     },
-			     success:function(data){	
-			            if($.trim(data)=="YES"){
-			               if($('#user_id').val()!=''){ 
-			               	alert("사용가능한 아이디입니다.");
-			               }
-			           	}else{
-			               if($('#user_id').val()!=''){
-			                  alert("중복된 아이디입니다.");
-			                  $('#user_id').val('');
-			                  $('#user_id').focus();
-			               }
-			            }
-			         }
-			    }) 
-		     })
-
-		});
-
 $(function(){
 
 //비밀번호 확인
@@ -93,7 +62,7 @@ $(function(){
 	    }
 	})  	   
 });
-*/
+
 
   
 $(document).ready(function(){
@@ -158,20 +127,13 @@ $(document).ready(function(){
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
-	    <form action="${path}/account.do?method=send2" method="post">
-	    <!-- <input type="hidden" name="password" id="password" value="A1234"/>  -->
-	    <input type="hidden" name="auth" id="auth" class="form-control" value="Developer">
+	      <!-- <input type="hidden" name="password" id="password" value="A1234"/>
+	      <form action="${path}/account.do?method=send2" method="post">  -->
+	       <form:form modelAttribute="account" action="${path}/account.do?method=insert" 
+				 	enctype="multipart/form-data" 
+				 	method="post">
 	       <div class="input-group mb-3">
-	          <input name="user_id" id="user_id" class="form-control" placeholder="아이디"/>
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-user"></span>
-	            </div>
-	          </div>
-	        </div>
-	         <br>  
-	          <div class="input-group mb-3">
-	          <input name="name" id="name" class="form-control" placeholder="이름"/>
+	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -180,11 +142,48 @@ $(document).ready(function(){
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <input name="mail" id="mail" class="form-control" placeholder="Email"/>
+	          <form:input path="password" class="form-control" placeholder="비밀번호"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-lock"></span>
+	            </div>
+	          </div>
+	        </div>
+             <br>
+	        <div class="input-group mb-3">
+	          <input id="password2" type="password" class="form-control" placeholder="비밀번호 재확인"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-lock"></span>
+	            </div>
+	          </div>
+	        </div> 
+	         <br>  
+	          <div class="input-group mb-3">
+	          <form:input path="name" class="form-control" placeholder="이름"/>
+	          <div class="input-group-append">
+	            <div class="input-group-text">
+	              <span class="fas fa-user"></span>
+	            </div>
+	          </div>
+	        </div>
+	        <br>
+	        <div class="input-group mb-3">
+	          <form:input path="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
 	            </div>
+	          </div>
+	        </div>
+	        <br>
+	        <div class="input-group mb-3">
+	        <div class="input-group-append">
+	          <form:select path="auth" class="form-control">
+	          	<option value="">권한 선택</option>
+	          	<form:option value="Developer" name="Developer"/>
+	          	<form:option value="Manager" name="Manager"/>
+	          </form:select>
 	          </div>
 	        </div>
 	        <div class="form-row float-right">
@@ -193,7 +192,7 @@ $(document).ready(function(){
 	            </a>
 	          <!-- /.col -->
 	        </div>
-	      </form>
+	      </form:form>
 	
 	      <div class="social-auth-links text-center">
 
@@ -210,7 +209,6 @@ $(document).ready(function(){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 
 
 
