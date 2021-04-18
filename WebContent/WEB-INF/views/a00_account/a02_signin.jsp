@@ -48,84 +48,65 @@ html, body {
   $.widget.bridge('uibutton', $.ui.button)
 
 /*
-//아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
-	  var checkbtn = 0;
-      var user_id =  $("#user_id").val(); 
-      $(document).ready(function(){ 
-    	  $('#checkbtn').on('click', function(){
-
-		      $.ajax({
-		          async: true,
-		          type : 'POST',
-		          data : user_id,
-		          url : "",
-		          dataType : "json",
-		          success : function(data) {
-		              if (data.cnt > 0) {
-		                  
-		                  alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-		                  //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-		                  $("#divInputId").addClass("has-error")
-		                  $("#divInputId").removeClass("has-success")
-		                  $("#user_id").focus();
-		                  
-		              
-		              } else {
-		                  alert("사용가능한 아이디입니다.");
-		                  //아이디가 존제할 경우 빨깡으로 , 아니면 파랑으로 처리하는 디자인
-		                  $("#divInputId").addClass("has-success")
-		                  $("#divInputId").removeClass("has-error")
-		                  $("#password").focus();
-		                  //아이디가 중복하지 않으면  idck = 1 
-		                  idck = 1;
-		                  
-		              }
-		          },
-		          error : function(error) {
-		              
-		              alert("error : " + error);
-		          }
-		      }  
-		      });
-	      
-     	 });
-      });*/
-
       $(document).ready(function(){
-   	   $("form").submit(function(e){
-   		  e.preventDefault(); 
-   	   });
-   	   $("#user_id").keyup(function(e){
-   		   if(e.keyCode==13){ // 입력할 항목에 enter키를 입력시 처리
-   			   ckId();
-   		   }
-   	   });
-         $("#ckIdBtn").click(function(){ // 등록여부확인 버튼 클릭 시
-       	  ckId();
-         });
+   	  
+	       $("#signin").submit(function(e){
+	   		  e.preventDefault(); 
+	   	   });
+	   	   $("#user_id").keyup(function(e){
+	   		   if(e.keyCode==13){ // 입력할 항목에 enter키를 입력시 처리
+	   			   ckId();
+	   		   }
+	   	   });
+	       $("#ckIdBtn").click(function(){ // 등록여부확인 버튼 클릭 시
+	       	  		ckId();
+	       });
        });
+			  function ckId(){
+				//var params = $("#ajax").serialize();
+	        	//alert($("#ajax").serialize());
+	        	//var data = $("#ajax").serialize(); 
+				$.ajax({
+					type:"post",
+					url:"${path}/hasMember.do",
+					data:$("#ajax").serialize(),
+					dataType:"json",
+					success:function(data){
+						// alert(data.mCnt);
+						if(data.mCnt==1){
+							alert("등록된 아이디가 있습니다.")
+							$("#user_id").val("").focus();
+						}else{
+							alert("등록 가능합니다.")
+						}
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			}	
+*/  
+      
         function ckId(){
-        	//var params = $("#ajax").serialize();
-        	// alert($("form").serialize());
-        	var data = $("form").serialize(); 
+        	
         	$.ajax({
         		type:"post",
         		url:"${path}/hasMember.do",
-        		data:$("form").serialize(),
+        		data:{user_id: $("[name=user_id]").val()},
         		dataType:"json",
         		success:function(data){
-        			// alert(data.mCnt);
+        			//alert(data.mCnt);
         			if(data.mCnt==1){
-        				alert("등록된 아이디가 있습니다.")
-        				$("#user_id").val("").focus();
+        				alert("등록된 아이디가 있습니다.");
         			}else{
-        				alert("등록 가능합니다.")
+        				alert("등록 가능합니다.");
         			}
         		},
         		error:function(err){
+        			alert("에러발생");
         			console.log(err);
         		}
-        	});
+            });
         }	
 
 
@@ -153,7 +134,7 @@ html, body {
 				return false;
 			}
 		    
-		    $("form").submit();
+		    $("#signin").submit();
 	  });
 	}); 
 	
@@ -207,18 +188,17 @@ html, body {
 							<div class="card-body">
 								<p class="login-box-msg"></p>
 								<form:form modelAttribute="account" action="${path}/account.do?method=send2" 
-									enctype="multipart/form-data" method="post">
+									enctype="multipart/form-data" method="post" id="signin">
 									<form:hidden path="auth" class="form-control" value="Developer" />
 									<div class="input-group mb-5">
-									<form name="ajax" class="form-inline" method="post">
 										<form:input path="user_id" class="form-control" placeholder="아이디" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
 											</div>
 										</div>
-										<button type="button" id="ckIdBtn" class="btn btn-default">중복확인</button>
-  									</form>
+										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()">중복확인</button>
+  									
 									</div>
 									<div class="input-group mb-5">
 										<form:input path="name" class="form-control" placeholder="이름" />
