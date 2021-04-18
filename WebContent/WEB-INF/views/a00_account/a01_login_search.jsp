@@ -42,14 +42,6 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
    $.widget.bridge('uibutton', $.ui.button)
-   /*
-    $(document).ready(function(){
-      var subject="${param.subject}";
-       if(subject!=""){
-          alert("메일발송성공");
-       }
-    });
-    */
 
     var result = "${result}";
     if (${not empty result}) {

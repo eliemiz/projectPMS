@@ -1,5 +1,7 @@
 package pms.a02_service;
 
+import java.util.Date;
+
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -93,41 +95,38 @@ public class A02_MailService {
    }
    
    public void sendMail2(Account account, Email email) throws MessagingException {
-		
-		account.setMail(email.getReceiver());
-		Account insert = new Account();
+	    
+	    
+	    email.setReceiver(account.getMail());
 		//Account ins = dao.signinIns(insert);
-		/* 1.멀티미디어형 메일데이터 전송 */
+		
 		MimeMessage msg = sender.createMimeMessage();
-	
-		/* 2. 제목 설정 */
+		
 		msg.setSubject("PMS 비밀번호 안내 메일입니다.");
-	
-		/* 3. 수신자 설정 */
+		
 		msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
-	
-		/* 4. 내용 설정 */
-		// 임시 비밀번호 생성
+		
+		
 		String pass = PasswordManager.getInstance().createPassword();
 		StringBuilder sb = new StringBuilder();
 		//sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
 		sb.append("새 비밀번호는 : " + pass + " 입니다.");
-		// 회원등록
+		account.setPassword(pass);
 		/*	account.getUser_id();
 			account.getPassword();
 			account.getName();
 			account.getMail();
 			account.getCreated_on();
 			account.getLast_login_on();
-			account.getAuth();  */
-		
-		//ins.setPassword(pass); 
+			account.getAuth(); 
+			 Account find = dao.find_pw(account); */
+		Account insert = new Account();
+		dao.signinIns(account);
 		//dao.update_pw(ins);
-	
-		// 내용 설정
+		
+		
 		msg.setText(sb.toString());
-	
-		// 5. 발송 처리
+		
 		sender.send(msg);
 		
 		}
@@ -135,3 +134,4 @@ public class A02_MailService {
 
       
 }
+
