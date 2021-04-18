@@ -158,11 +158,12 @@ $(document).ready(function(){
 	    </div>
 	    <div class="card-body">
 	      <p class="login-box-msg"></p>
-	    <form action="${path}/account.do?method=insert" method="post">
+	    <form:form modelAttribute="account" action="${path}/account.do?method=send2" enctype="multipart/form-data" 
+				 	method="post">
 	    <!-- <input type="hidden" name="password" id="password" value="A1234"/>  -->
-	    <input type="hidden" name="auth" id="auth" class="form-control" value="Developer">
+	    <form:hidden path="auth" class="form-control" value="Developer"/>
 	       <div class="input-group mb-3">
-	          <input name="user_id" id="user_id" class="form-control" placeholder="아이디"/>
+	          <form:input path="user_id" class="form-control" placeholder="아이디"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -171,7 +172,7 @@ $(document).ready(function(){
 	        </div>
 	         <br>  
 	          <div class="input-group mb-3">
-	          <input name="name" id="name" class="form-control" placeholder="이름"/>
+	          <form:input path="name" class="form-control" placeholder="이름"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-user"></span>
@@ -180,7 +181,7 @@ $(document).ready(function(){
 	        </div>
 	        <br>
 	        <div class="input-group mb-3">
-	          <input name="mail" id="mail" class="form-control" placeholder="Email"/>
+	          <form:input path="mail" class="form-control" placeholder="Email"/>
 	          <div class="input-group-append">
 	            <div class="input-group-text">
 	              <span class="fas fa-envelope"></span>
@@ -193,7 +194,7 @@ $(document).ready(function(){
 	            </a>
 	          <!-- /.col -->
 	        </div>
-	      </form>
+	      </form:form>
 	
 	      <div class="social-auth-links text-center">
 

@@ -80,7 +80,7 @@ public class A02_MailController {
 		System.out.println(account.getAuth());
 		 service.sendMail2(account, send);
 			
-		return "a00_account\\a02_signin";
+		return "forward:/account.do?method=login";
 	}	
 	
 
