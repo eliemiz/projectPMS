@@ -34,6 +34,12 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="dist/font/fonts.css"/>
+<style type="text/css">
+html, body {
+	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+}
+</style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -65,103 +71,105 @@
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+	<div class="wrapper">
 
-  <!-- Navbar -->
-  <jsp:include page="../a00_common/a00_header_nl.jsp"/>
+		<!-- Navbar -->
+		<jsp:include page="../a00_common/a00_header_nl.jsp" />
 
-  <!-- Main Sidebar Container -->
-  <jsp:include page="../a00_common/a01_sidebar.jsp"/>  
+		<!-- Main Sidebar Container -->
+		<jsp:include page="../a00_common/a01_sidebar.jsp" />
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">login</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">login</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    
-    
-     <!-- Main content -->
-    <section class="content">
-	<div class="hold-transition login-page" style="background-color: inherit; height: inherit;">
-	<div class="login-box">
-	  <!-- /.login-logo -->
-	  <div class="card card-outline card-primary">
-	    <div class="card-header text-center">
-	      <a href="../../index2.html" class="h1">로그인</a>
-	    </div>
-	    <div class="card-body">
-	
-	      <form id="login-form" method="post">
-	        <div class="input-group mb-3">
-	           아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          	  <input type="text" class="form-control" name="user_id" >
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	               <span class="fas fa-user"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="input-group mb-3">
-	          비밀번호&nbsp;&nbsp;
-	          <input type="password" class="form-control" name="password">
-	          <div class="input-group-append">
-	            <div class="input-group-text">
-	              <span class="fas fa-lock"></span>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="form-row float-right">
-	          <!-- /.col -->
-	            <button id="loginBtn" type="button" class="btn btn-primary btn-block">로그인</button>
-	          
-	          <!-- /.col -->
-	        </div>
-	        <br><br><br>
-	      </form>
-	      <a href="${path}/account.do?method=loginSearch">
-		  <button type="button" class="btn btn-outline-info btn-block btn-flat">
-          비밀번호 찾기</button></a>
-          <a href="${path}/account.do?method=signin">
-    	  <button type="button" class="btn btn-outline-danger btn-block btn-sm">
-    	  <i class="fa fa-book"></i> 새로 등록하기</button></a>
-	    </div>
-	    <!-- /.card-body -->
-	  </div>
-	  <!-- /.card -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0">Login</h1>
+						</div>
+						<!-- /.col -->
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item">
+									<a href="#">Home</a>
+								</li>
+								<li class="breadcrumb-item active">login</li>
+							</ol>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="hold-transition login-page"
+					style="background-color: inherit; height: inherit;">
+					<div class="login-box">
+						<!-- /.login-logo -->
+						<div class="card card-outline card-primary">
+							<div class="card-header text-center">
+								<h1>로그인</h1>
+							</div>
+							<div class="card-body">
+
+								<form id="login-form" method="post">
+									<div class="input-group mb-4">
+										<input type="text" class="form-control" name="user_id" placeholder="아이디 입력">
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<span class="fas fa-user"></span>
+											</div>
+										</div>
+									</div>
+									<div class="input-group mb-4">
+										<input type="password" class="form-control" name="password" placeholder="비밀번호 입력">
+										<div class="input-group-append">
+											<div class="input-group-text">
+												<span class="fas fa-lock"></span>
+											</div>
+										</div>
+									</div>
+									<div class="input-group mb-5">
+										<button id="loginBtn" type="button" class="btn btn-primary btn-block">로그인</button>
+									</div>
+								</form>
+								<div class="mb-3">
+									<a href="${path}/account.do?method=loginSearch">
+										<button type="button" class="btn btn-outline-info btn-block btn-flat">
+											<i class="fas fa-search"></i> 비밀번호 찾기
+										</button>
+									</a>
+								</div>
+								<div class="mb-3">
+									<a href="${path}/account.do?method=signin">
+										<button type="button" class="btn btn-outline-danger btn-block btn-flat">
+											<i class="fa fa-book"></i> 새로 등록하기
+										</button>
+									</a>
+								</div>
+							</div>
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.login-box -->
+				</div>
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Footer -->
+		<jsp:include page="../a00_common/a02_footer.jsp" />
+		
 	</div>
-	<!-- /.login-box -->
-	</div>
- </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-
-
- <!-- Footer -->
-  <jsp:include page="../a00_common/a02_footer.jsp"/>
-
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">
-    Control sidebar content goes here
-  </aside> -->
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+	<!-- ./wrapper -->
 
 <script type="text/javascript">
 

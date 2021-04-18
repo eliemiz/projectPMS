@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
-import pms.z01_vo.Email;
 
 @Repository
 public interface A00_AccountDao {
@@ -17,7 +16,7 @@ public interface A00_AccountDao {
 	
 	public ArrayList<AccountTask> getAccountTaskList(int projectId);
 	
-	public Account signinIns(Account insert);
+	public void signinIns(Account insert);
 
 	public void update_pw(Account upt);
 
@@ -26,5 +25,7 @@ public interface A00_AccountDao {
 	public Account getAccount(int accountId);
 	
 	public void loginDate(Account log);
+	
+	public int schMember(String user_id);
 
 }

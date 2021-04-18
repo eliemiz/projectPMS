@@ -49,4 +49,10 @@
 		set last_login_on = sysdate 
 		where user_id = #{user_id}
 	</update>
+	<!-- int schMember(String user_id) -->
+	<select id="schMember" resultType="int" parameterType="String" >
+      SELECT COUNT(*) FROM account
+      WHERE user_id = #{user_id}
+	</select>
+	
 </mapper>
