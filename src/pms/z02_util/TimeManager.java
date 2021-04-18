@@ -30,7 +30,8 @@ public class TimeManager {
 		return LazyHolder.INSTANCE;
 	}
 	
-	public String IsoToGantt(String date) {
+	/* 2021-04-19T15:00:00.000Z -> 2021-04-20 -> 20-04-2021 00:00 */
+	public String isoToGantt(String date) {
 		
 		String ganttDate = null;
 		
@@ -46,15 +47,30 @@ public class TimeManager {
 		return ganttDate;
 	}
 	
-	public String SimpleToIso(String date) {
-
-		// simpleFormat.setTimeZone(TimeZone.getTimeZone("Pacific/Nauru"));
-		simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String iso = null;
+	/* 2021-04-19T15:00:00.000Z -> 2021-04-20 */
+	public String isoToSimple(String date) {
+		
+		String simple = null;
+		
 		try {
-			Date simple;
-			simple = simpleFormat.parse(date);
-			System.out.println(simple);
+			Date localDate = isoFormat.parse(date);
+			simple = simpleFormat.format(localDate);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return simple;
+	}
+	
+	/* 2021-04-20 -> 2021-04-19T15:00:00.000Z */
+	public String simpleToIso(String date) {
+
+		String iso = null;
+		
+		try {
+			Date simple = simpleFormat.parse(date);
 			iso = isoFormat.format(simple); 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -64,20 +80,20 @@ public class TimeManager {
 		return iso;
 	}
 	
-	public String SimpleToLocal(String date) {
-		isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-		simpleFormat.setTimeZone(TimeZone.getTimeZone("UTC+9"));
-		String localDate = null;
+	public String isoPlusDay(String date) {
+		
+		String iso = null;
+		
 		try {
-			Date iso;
-			iso = simpleFormat.parse(date);
-			System.out.println(iso);
-			localDate = isoFormat.format(iso);
+			Date d = isoFormat.parse(date);
+			d.setTime(d.getTime() + (1000 * 60 * 60 * 24));
+			iso = isoFormat.format(d);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return localDate;
+		
+		return iso;
 	}
-
+	
 }

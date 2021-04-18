@@ -4,18 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
@@ -48,12 +43,26 @@ public class A12_TaskService {
 			sch.setTracker("");
 		if (sch.getStatus() == null)
 			sch.setStatus("");
-		return dao.getTaskList(sch);
+		
+		/* Local 시간으로 변경 */
+		ArrayList<Task> taskList = dao.getTaskList(sch); 
+		for (Task task : taskList) {
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));  
+		}
+		
+		return taskList;
 	}
 
 	// task 조회(id이용)
 	public Task getTask(int id) {		
+		
 		Task task = dao.getTask(id);
+		
+		/* Local 시간으로 변경 */
+		task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+		task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
+		
 		task.setFileInfo(dao.fileInfo(id));
 		// return dao.getTask(id);
 		return task;
@@ -64,8 +73,9 @@ public class A12_TaskService {
 		System.out.println("upload:" + upload);
 		System.out.println("uploadTmp:" + uploadTmp);
 		
-		ins.setStart_date(TimeManager.getInstance().SimpleToLocal(ins.getStart_date()));
-		ins.setDue_date(TimeManager.getInstance().SimpleToLocal(ins.getDue_date()));
+		/* iso 시간으로 변경 */
+		ins.setStart_date(TimeManager.getInstance().simpleToIso(ins.getStart_date()));
+		ins.setDue_date(TimeManager.getInstance().simpleToIso(ins.getDue_date()));
 		
 		dao.insertTask(ins);
 
@@ -106,8 +116,12 @@ public class A12_TaskService {
 
 	// task 수정
 	public void updateTask(Task upt) {
-		upt.setStart_date(TimeManager.getInstance().SimpleToLocal(upt.getStart_date()));
-		upt.setDue_date(TimeManager.getInstance().SimpleToLocal(upt.getDue_date()));
+
+		/* iso 시간으로 변경 */
+		upt.setStart_date(TimeManager.getInstance().simpleToIso(upt.getStart_date()));
+		/* 등록 시에 due_date + 1 */
+		upt.setDue_date(TimeManager.getInstance().simpleToIso(upt.getDue_date()));
+		
 		int id = upt.getId();
 		if(upt.getFilenames()!=null && upt.getFilenames().length>0) {
 			String filename = null;
@@ -172,25 +186,21 @@ public class A12_TaskService {
 
 	// Calendar List
 	public ArrayList<Calendar> calenList(int projectId) {
-		ArrayList<Calendar> list = new ArrayList<Calendar>();
-		for(Calendar c : list) {
-			c.setStart(TimeManager.getInstance().IsoToGantt(c.getStart()));
-			c.setEnd(TimeManager.getInstance().IsoToGantt(c.getEnd()));
+		ArrayList<Calendar> list = dao.calenList(projectId);
+		for (Calendar c : list) {
+			c.setEnd(TimeManager.getInstance().isoPlusDay(c.getEnd()));
+
 			System.out.println("시작시간: " + c.getStart());
 			System.out.println("종료시간: " + c.getEnd());
 		}
-		return dao.calenList(projectId);
+		return list;
 	}
 
 	// Gantt List
 	public ArrayList<GanttChart> ganttList(int projectId) {
 		ArrayList<GanttChart> list = dao.ganttList(projectId);
 		for (GanttChart gc : list) {
-			/* String > ISO */
-			gc.setStart_date(TimeManager.getInstance().SimpleToIso(gc.getStart_date()));
-			System.out.println("ISO변경: "+gc.getStart_date());
-			/* ISO > UTC */
-			gc.setStart_date(TimeManager.getInstance().IsoToGantt(gc.getStart_date()));
+			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
 			System.out.println("Gantt로 변경: "+gc.getStart_date());
 		}
 		return list;
