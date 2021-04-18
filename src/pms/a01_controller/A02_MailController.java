@@ -1,7 +1,6 @@
 package pms.a01_controller;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 import javax.mail.MessagingException;
 
@@ -10,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A02_MailService;
@@ -75,19 +72,12 @@ public class A02_MailController {
 		service.signinIns(insert);
 		return "forward:/account.do?method=login";
 	}
-	@PostMapping
+	
 
 	// http://localhost:7080/projectPMS/account.do?method=send2
 	@RequestMapping(params="method=send2")
 	public String send2(@ModelAttribute("account") Account account, Model d) throws MessagingException{
 
-		System.out.println(account.getUser_id());
-		System.out.println(account.getPassword());
-		System.out.println(account.getName());
-		System.out.println(account.getMail());
-		System.out.println(account.getCreated_on());
-		System.out.println(account.getLast_login_on());
-		System.out.println(account.getAuth());
 		service.sendMail2(account);
 		
 		d.addAttribute("result", "success");
@@ -95,13 +85,11 @@ public class A02_MailController {
 		return "a00_account\\a02_signin";
 	}	
 	
-	   @RequestMapping("hasMember.do")
-	   public String hasMember(
-			   @RequestParam(value="user_id", defaultValue="")
-			   	String user_id, Model d) {
+	   @PostMapping(params="method=hasMember")
+	   public String hasMember(@RequestParam(value="user_id", defaultValue="") String user_id, Model d) {
+		   System.out.println(user_id);
 		   d.addAttribute("mCnt", aservice.schMember(user_id));
 		   return "pageJsonReport";
 	   } 
 
-   
 }

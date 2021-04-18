@@ -91,15 +91,15 @@ html, body {
         	
         	$.ajax({
         		type:"post",
-        		url:"${path}/hasMember.do",
+        		url:"${path}/account.do?method=hasMember",
         		data:{user_id: $("[name=user_id]").val()},
         		dataType:"json",
         		success:function(data){
         			//alert(data.mCnt);
         			if(data.mCnt==1){
-        				alert("등록된 아이디가 있습니다.");
+        				alert("이미 등록된 아이디가 있습니다.");
         			}else{
-        				alert("등록 가능합니다.");
+        				alert("등록 가능한 아이디입니다.");
         			}
         		},
         		error:function(err){
