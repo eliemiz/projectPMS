@@ -64,8 +64,6 @@
 			navLinks : true,
 			selectable : true,
 			selectMirror : true,
-			editable : true,
-			dayMaxEvents : true,
 			eventClick : function(arg){
 				console.log("# 등록된 일정 클릭 #");
 				console.log(arg.event);
@@ -74,6 +72,8 @@
 				location.href = "${path}/task.do?method=detail&id="+arg.event.id;
 				
 			},
+			editable : true,
+			dayMaxEvents : true,
 			events :function(info, successCallback, failureCallback){
 				$.ajax({
 					type:"get",

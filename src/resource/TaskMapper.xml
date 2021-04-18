@@ -106,8 +106,9 @@
 	</resultMap>
 	<!-- public ArrayList<Calendar> calenList(int projectId) -->
 	<select id="calenList" resultMap="calMap">
-		SELECT t.id, t.parent_id groupId, t.subject title, a.name, t.description content,
-				t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor
+		SELECT t.id, t.parent_id groupId, t.subject title, a.name writer, t.description content,
+				t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor,
+				1 as allDay, 'white' as borderColor, 'white' as textColor
 		FROM task t, account a, project p
 		WHERE t.PROJECT_ID = p.ID 
 		AND t.ACCOUNT_ID = a.ID
