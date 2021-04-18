@@ -69,7 +69,7 @@ public class A02_MailController {
 
 	// http://localhost:7080/projectPMS/account.do?method=send2
 	@RequestMapping(params="method=send2")
-	public String send2(Account account, Email send) throws MessagingException{
+	public String send2(@ModelAttribute("account") Account account, Model d) throws MessagingException{
 
 		System.out.println(account.getUser_id());
 		System.out.println(account.getPassword());
@@ -78,9 +78,11 @@ public class A02_MailController {
 		System.out.println(account.getCreated_on());
 		System.out.println(account.getLast_login_on());
 		System.out.println(account.getAuth());
-		 service.sendMail2(account, send);
+		service.sendMail2(account);
+		
+		d.addAttribute("result", "success");
 			
-		return "forward:/account.do?method=login";
+		return "a00_account\\a02_signin";
 	}	
 	
 

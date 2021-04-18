@@ -11,7 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>비밀번호 찾기</title>
 
-
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
  <!-- Google Font: Source Sans Pro -->
@@ -34,6 +33,12 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="dist/font/fonts.css"/>
+<style type="text/css">
+html, body {
+	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+}
+</style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

@@ -9,13 +9,11 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-// org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.stereotype.Service;
 
 import pms.a03_dao.A00_AccountDao;
 import pms.z01_vo.Account;
 import pms.z01_vo.Email;
-import pms.z01_vo.EmailSender;
 import pms.z02_util.PasswordManager;
 
 @Service
@@ -94,8 +92,9 @@ public class A02_MailService {
       return 1;
    }
    
-   public void sendMail2(Account account, Email email) throws MessagingException {
+   public void sendMail2(Account account) throws MessagingException {
 	    
+	   Email email = new Email();
 	    
 	    email.setReceiver(account.getMail());
 		//Account ins = dao.signinIns(insert);
@@ -106,32 +105,19 @@ public class A02_MailService {
 		
 		msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
 		
-		
 		String pass = PasswordManager.getInstance().createPassword();
 		StringBuilder sb = new StringBuilder();
 		//sb.append("새로 생성된 비밀번호를 통해 접속 후 비밀번호를 변경해주세요.\n\n");
 		sb.append("새 비밀번호는 : " + pass + " 입니다.");
 		account.setPassword(pass);
-		/*	account.getUser_id();
-			account.getPassword();
-			account.getName();
-			account.getMail();
-			account.getCreated_on();
-			account.getLast_login_on();
-			account.getAuth(); 
-			 Account find = dao.find_pw(account); */
-		Account insert = new Account();
+		
 		dao.signinIns(account);
 		//dao.update_pw(ins);
-		
 		
 		msg.setText(sb.toString());
 		
 		sender.send(msg);
 		
 		}
-
-
-      
 }
 
