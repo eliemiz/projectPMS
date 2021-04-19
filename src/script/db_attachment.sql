@@ -18,5 +18,13 @@ CREATE SEQUENCE ATTACHMENT_SEQ
 	MAXVALUE 9999999
 	CYCLE;
 SELECT * FROM attachment;
+SELECT * FROM attachment WHERE DOCUMENT_ID = 2;
 SELECT * FROM task;
 INSERT INTO attachment VALUES (ATTACHMENT_SEQ.nextval,'TASK',59,'파일.jpg','파일저장.jpg','파일경로',256||'KB',SYSDATE);
+
+update ATTACHMENT
+			set filename = 'spade-80.png',
+				filesize = '109KB',
+				DISK_FILENAME = 'spade-80123.png'
+		where document_id = 2
+			and filename=#{orgFilename}
