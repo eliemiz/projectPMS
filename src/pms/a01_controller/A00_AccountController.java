@@ -3,6 +3,7 @@ package pms.a01_controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
 import pms.z01_vo.Account;
@@ -22,6 +24,9 @@ public class A00_AccountController {
 	
 	@Autowired(required = false)
 	private A00_AccountService service;
+	
+	@Autowired(required = false)
+	private LocaleResolver localeResolver;
 	
 	// http://localhost:7080/projectPMS/account.do?method=account
 	@RequestMapping(params = "method=account")
@@ -36,12 +41,22 @@ public class A00_AccountController {
 	
 	
 	// http://localhost:7080/projectPMS/account.do?method=login
-	@GetMapping(params = "method=login")
+	
+	  @GetMapping(params = "method=login")
+	
 		  public String login() {
+			
 			return "a00_account\\a00_login";
 		  }
+
 	@PostMapping(params = "method=login")
-	public String login( Account log ,HttpServletRequest request) {
+	public String login( Account log ,HttpServletRequest request, HttpServletResponse response) {
+		
+		/* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
 		System.out.println("아이디:"+log.getUser_id());
 		  Account ac = service.Login(log);
 			if(ac!=null){//해당 값이 있으면
