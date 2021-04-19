@@ -2,21 +2,27 @@ package pms.a01_controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
 import pms.a02_service.A18_AttachmentService;
+import pms.a02_service.A19_CommentService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Comment;
 import pms.z01_vo.Project;
 import pms.z01_vo.Task;
+import pms.z02_util.SessionManager;
 
 @Controller
 @RequestMapping("task.do")
@@ -29,27 +35,23 @@ public class A12_TaskController {
 	private A00_AccountService serviceA;
 	@Autowired(required = false)
 	private A18_AttachmentService serviceT;
-	/*
+	@Autowired(required=false)
+	private A19_CommentService serviceC;
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
-	*/
 	
 	
 	// http://localhost:7080/projectPMS/task.do?method=list
 	@RequestMapping(params = "method=list")
-	public String taskList(@ModelAttribute("sch") Task sch, Model d) {
+	public String taskList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Task sch, Model d) {
+		/* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
 		d.addAttribute("tasklist", service.getTaskList(sch));
 		return "a12_task\\a01_taskList";
 	}
-	/*
-	public String taskList(HttpServletRequest request, HttpServletResponse response, Model d) {
-
-		// Set Locale 
-		if (request.getParameter("lang") != null) {
-			LocaleManager.setLang(request, response, localeResolver);
-		}
-	}
-	*/
 		
 	// http://localhost:7080/projectPMS/task.do?method=insForm
 	@RequestMapping(params = "method=insForm")
@@ -110,21 +112,23 @@ public class A12_TaskController {
 		return "downloadviewer";
 	}
 	
-	// 댓글 method="insert"/insform >> return "detail"
-//	@RequestMapping(params = "method=insForm")
-//	public String insForm(@ModelAttribute("comment") Comment, comment) {
-//		return "a12_task\\a02_taskDetail";
-//	}
-//
-//	@RequestMapping(params = "method=insert")
-//	public String insertComment(Comment ins, Model d) {
-//		System.out.println("등록:" + ins.getContent());		
-//		service.insertComment(ins);
-//		
-//		d.addAttribute("proc", "ins");
-//	
-//		return "a12_task\\a02_taskDetail";
-//	}
+	// 댓글 
+	@RequestMapping(params = "method=inscForm")
+	public String insForm(@ModelAttribute("comment") Comment comment) {
+		// return "a12_task\\a02_taskDetail";
+		return "a12_task\\a03_taskDetail";
+		
+	}
+
+	@RequestMapping(params = "method=insc")
+	public String insertComment(Comment insc, Model d) {
+		System.out.println("등록:" + insc.getContent());		
+		service.insertComment(insc);
+		
+		d.addAttribute("proc", "ins");
+	
+		return "a12_task\\a03_taskDetail";
+	}
 	
 	
 	
