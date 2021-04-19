@@ -20,6 +20,29 @@
 		AND r.PROJECT_ID = p.ID
 		AND r.id = #{id}
 	</select>
+	
+	<select id="fileInfo" resultType="attachment" parameterType="int">
+		SELECT *
+		FROM attachment
+		WHERE document_id = #{document_id}
+	</select>
+	<insert id="uploadFile" parameterType="attachment">
+		INSERT INTO attachment VALUES (
+			ATTACHMENT_SEQ.nextval, #{document_type}, risk_seq.currval,
+			#{filename}, #{disk_filename}, #{pathname}, #{filesize}, sysdate)
+	</insert>
+	<delete id="deleteFile" parameterType="int">
+		DELETE from ATTACHMENT where id=#{id}
+	</delete>
+	<update id="updateFile" parameterType="hashMap">
+		UPDATE ATTACHMENT
+			SET filename = #{filename},
+				filesize = #{filesize}
+		WHERE id=#{id}
+			AND filename=#{orgFilename}
+	</update>
+	
+	
 	<!-- public void inertRisk(Risk ins); -->
 	<insert id="insertRisk" parameterType="risk">
 		INSERT INTO RISK 

@@ -81,6 +81,9 @@
 		$("#hd-project-list").change(function(){
 			location.href="${path}/risk.do?projectId="+$(this).val();
 		});
+		$(".custom-file-input").on("change",function(){
+			$(this).next(".custom-file-label").text($(this).val());
+		});
 		$("#uptBtu").on("click",function(){
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
@@ -218,13 +221,17 @@
 	                  <div class="col-md-6">
 			              <div class="form-group">
 		                    <label for="exampleInputEmail1">예상시작일</label>
+		                    
 		                    <form:input path="start_date" value="${risk.start_date}" type="date"
 		                    	class="form-control"/>
+		                    	
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">예상종료일</label>
+		                    
 		                    <form:input path="end_date" value="${risk.end_date}" type="date"
 		                     	class="form-control"/>
+		                    
 		                  </div>
 	                  </div>
                   </div>
@@ -244,19 +251,16 @@
                   <div class="form-group">
                     <label for="exampleInputPassword1">해결방안</label>
                     <form:textarea path="treatment" class="form-control" rows="3" value=""/>            
-                  </div>
+                  </div>               
+     			  <c:forEach var="finf" items="${risk.fileInfo}" varStatus="sts">
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
-                    <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">파일 선택</label>
+                        <input type="file" id="file01" class="custom-file-input" name="report" />
+                        <label class="custom-file-label" for="file01">${finf.filename}</label>
                       </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">업로드</span>
-                      </div>
-                    </div>
                   </div>
+                  </c:forEach>
                   <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>

@@ -85,7 +85,7 @@
 		// start_date end_date
 		$("#insBut").on("click",function(){
 			if($("[name=project_id]").val()==""){
-				alert("프로젝트를 선택하세요ㅕ.");
+				alert("프로젝트를 선택하세요.");
 				return false;
 			}else if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
@@ -203,10 +203,6 @@
 	             
 	              <div class="bs-stepper-content">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">제목</label>
-                    <form:input path="subject" type="text" class="form-control" style="width: 100%;"/>
-                  </div>
-                  <div class="form-group">
                     <label for="exampleInputEmail1">상세설명</label>
                     <form:textarea path="description" class="form-control" style="width:100%; height:300px;"/>
                     </div>
@@ -255,15 +251,10 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
-                    <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">파일 선택</label>
+                        <input type="file" class="custom-file-label" name="report"
+                        style="width:100%">
                       </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">업로드</span>
-                      </div>
-                    </div>
                   </div>
                   <!-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

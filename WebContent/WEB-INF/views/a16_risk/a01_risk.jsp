@@ -133,9 +133,9 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th><spring:message code="risk-id"/></th>
-                      <th><spring:message code="risk-subject"/></th>
+                      <th><spring:message code="risk-id"/></th>                      
                       <th><spring:message code="risk-projectname"/></th>
+                      <th><spring:message code="risk-subject"/></th>
                       <th><spring:message code="risk-status"/></th>
                       <th><spring:message code="risk-category"/></th>
                       <th><spring:message code="risk-probability"/></th>
@@ -149,9 +149,9 @@
                   <tbody>
                   <c:forEach var="risk" items="${riskList}">
                     <tr class="detail" id="${risk.id}" style="cursor:pointer">
-                      <td>${risk.id}</td>
-                      <td>${risk.subject}</td>
+                      <td>${risk.id}</td>                    
                       <td>${risk.project_name}</td>
+                      <td>${risk.subject}</td>
                       <td>${risk.status}</td>
                       <td>${risk.category}</td>
                       <td>
@@ -175,9 +175,17 @@
 					  </c:choose>
                       </td>
                       <td>${risk.account_name}</td>
-                      <td>${risk.start_date}</td> 
-                      <td>${risk.end_date}</td> 
-                      <td>${risk.updated_on}</td>
+                      <td>
+                      <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.start_date}"/>
+                      <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>
+                      </td>
+                      <td>
+                      <fmt:parseDate var="dateFmt2" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.end_date}"/>
+                      <fmt:formatDate value="${dateFmt2}" pattern="yyyy-MM-dd"/>
+                      </td> 
+                      <td>
+                      <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/>
+                      </td>
                     </tr>
                     </c:forEach>
                   </tbody>

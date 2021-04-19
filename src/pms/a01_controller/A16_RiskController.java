@@ -17,6 +17,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A16_RiskService;
+import pms.a02_service.A18_AttachmentService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
@@ -33,6 +34,8 @@ public class A16_RiskController {
 	private A01_ProjectService service3;
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
+	@Autowired(required = false)
+	private A18_AttachmentService service4;
 	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
@@ -71,24 +74,18 @@ public class A16_RiskController {
 		System.out.println("등록:" + ins.getDescription());
 		System.out.println("등록:" + ins.getStatus());
 		System.out.println("등록:" + ins.getCategory());
-		System.out.println("등록:" + ins.getCreated_on());
-		System.out.println("등록:" + ins.getUpdated_on());
+		System.out.println("등록 created_on:" + ins.getCreated_on());
+		System.out.println("등록 updated_on:" + ins.getUpdated_on());
 		System.out.println("등록:" + ins.getStart_date());
 		System.out.println("등록:" + ins.getEnd_date());
-		System.out.println("등록:" + ins.getProbability());
 		System.out.println("등록:" + ins.getProbability());
 		System.out.println("등록:" + ins.getImpact());
 		System.out.println("등록:" + ins.getStrategy());
 		System.out.println("등록:" + ins.getTreatment());
 		
-		/*
 		System.out.println("파일:"+
-		insert.getReport()[0].getOriginalFilename());
-		service.insertBoard(insert);
-		d.addAttribute("proc", "insert");
-		return "a02_boardInsert";*/
-		
-		
+		ins.getReport()[0].getOriginalFilename());
+
 		service.insertRisk(ins);
 		d.addAttribute("proc", "ins");
 		return "a16_risk\\a01_riskInsert";
@@ -110,10 +107,17 @@ public class A16_RiskController {
 		return "a16_risk\\a01_riskUpdate";			
 	}
 	
-	@RequestMapping(params = "method=delete")
+	@RequestMapping(params="method=delete")
 	public String Riskdelete(@RequestParam("id") int id) {
 		service.deleteRisk(id);
 		return "a16_risk\\a01_riskUpdate";
+	}
+	
+	@RequestMapping(params="method=download")
+	public String download(@RequestParam("filename") String filename, Model d) {
+		System.out.println("파일명:"+filename);
+		d.addAttribute("downloadFile", filename); 
+		return "downloadviewer";
 	}
 	
 	@ModelAttribute("accounts")

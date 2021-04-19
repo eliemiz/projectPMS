@@ -1,6 +1,8 @@
 package pms.z01_vo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
 
 public class Risk {
 	private int id;
@@ -20,6 +22,9 @@ public class Risk {
 	private String treatment;
 	private String account_name;
 	private String project_name;
+	private MultipartFile[] report; 
+	private String[] filenames;
+	private ArrayList<Attachment> fileInfo;
 	public Risk() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -125,6 +130,24 @@ public class Risk {
 	}
 	public void setProject_name(String project_name) {
 		this.project_name = project_name;
+	}
+	public MultipartFile[] getReport() {
+		return report;
+	}
+	public void setReport(MultipartFile[] report) {
+		this.report = report;
+	}
+	public String[] getFilenames() {
+		return filenames;
+	}
+	public void setFilenames(String[] filenames) {
+		this.filenames = filenames;
+	}
+	public ArrayList<Attachment> getFileInfo() {
+		return fileInfo;
+	}
+	public void setFileInfo(ArrayList<Attachment> fileInfo) {
+		this.fileInfo = fileInfo;
 	}
 	
 }

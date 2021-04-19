@@ -73,7 +73,12 @@
 		$("#hd-project-list").change(function(){
 			location.href="${path}/risk.do?projectId="+$(this).val();
 		});
-		
+		$("#fileInfo").click(function(){
+			var filename=$(this).text();
+			if(confirm("다운로드하시겠습니까?\n"+filename)){
+				$(location).attr("href","${path}/risk.do?method=download&filename="+filename);
+			}
+		});
 		$("#upt").click(function(){
 			$("form").attr("action","${path}/risk.do?method=uptForm");
 			$("form").submit();
@@ -152,7 +157,7 @@
             
             <div class="col-12 col-lg-12 col-lg-4 order-1 order-md-2">
               <h3 class="text-primary"><i class="fas fa-paint-stamp"></i>${risk.id}&nbsp;${risk.subject}</h3>
-              <h5 class="text-secondary">수정일 ${risk.updated_on}</h5>
+              <h5 class="text-secondary">수정일 : <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/></h5>
               &nbsp;&nbsp;&nbsp;
               
                <p>
@@ -216,12 +221,14 @@
                 </div>
                 <div class="form-group">
                 <p class="text-sm">예상시작일
-                  <b class="d-block">${risk.start_date}</b>
+                  <b class="d-block"><fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.start_date}"/>
+                      <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/></b>
                 </p>
                 </div>
                 <div class="form-group">
                 <p class="text-sm">예상종료일
-                  <b class="d-block">${risk.end_date}</b>
+                  <b class="d-block"><fmt:parseDate var="dateFmt2" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.end_date}"/>
+                      <fmt:formatDate value="${dateFmt2}" pattern="yyyy-MM-dd"/></b>
                 </p>
                 </div>
                 </div>
@@ -242,14 +249,19 @@
                 
                 
                 
-              
 
+			  <div id="download">
               <h5 class="mt-5 text-muted">첨부파일</h5>
               <ul class="list-unstyled">
+              <c:forEach var="file" items="${risk.fileInfo}" varStatus="sts">
                 <li>
-                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+                  <a href="" class="btn-link text-secondary"><i class="fas fa-download"></i>
+                   <!-- Functional-requirements.docx -->
+                  	 <span id="fileInfo" name="filename" value="${file.filename}">${file.filename}</span>
+                  </a>
                 </li>
-                <li>
+                </c:forEach>
+                <!-- <li>
                   <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
                 </li>
                 <li>
@@ -260,8 +272,10 @@
                 </li>
                 <li>
                   <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
-                </li>
+                </li> -->
               </ul>
+              </div>
+             
               
 		<div class="col-12 col-lg-12 col-lg-8 order-2 order-md-1">
           <div class="row">
