@@ -154,7 +154,7 @@
       <div class="card-header">
        <h3 class="card-title">리스크 등록</h3>
        	<form:hidden path="id"/>
-       	<form:hidden path="status" value="open"/>
+       	<form:hidden path="status" value="Open"/>
        	<form:hidden path="strategy" value="-"/>
        	<form:hidden path="treatment" value="-"/>
          </div>
