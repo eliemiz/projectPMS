@@ -34,6 +34,12 @@
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="dist/font/fonts.css"/>
+<style type="text/css">
+html, body {
+	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+}
+</style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -83,8 +89,8 @@
          
             </h1>
             <div class="form-row float-right">
-            <a href="${path}/admin.do?method=detail">
-             <button class="btn btn-default" type="submit"><i class="fas fa-pen">편집</i></button>
+            <a href="${path}/account.do?method=changePassword">
+             <button class="btn btn-default" type="submit"><i class="fas fa-pen">비밀번호 변경하기</i></button>
              </a>
             </div>
           </div>

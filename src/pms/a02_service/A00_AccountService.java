@@ -54,4 +54,9 @@ public class A00_AccountService {
 	public int schMember(String user_id) {
 		return dao.schMember(user_id);
 	}
+	
+	public void updatePw(Account update) {
+		
+		dao.updatePw(update);
+	}
 }

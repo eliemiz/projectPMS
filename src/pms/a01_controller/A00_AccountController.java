@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
@@ -74,25 +75,20 @@ public class A00_AccountController {
 	public String logout(HttpServletRequest request){
 		SessionManager.clearSession(request);
 		return "redirect:/account.do?method=login";
-	}
-	
-/*
-	// http://localhost:7080/projectPMS/account.do?method=signin
-	@RequestMapping(params = "method=signin")
-	public String signin(@ModelAttribute("account") Account a) {
-		
-		return "a00_account\\a02_signin";
-	}
-	// http://localhost:7080/projectPMS/account.do?method=insert
-	@RequestMapping(params = "method=insert")
-	public String signinIns(Account insert, Model d) {
-		service.signinIns(insert);
-		
-		d.addAttribute("proc", "insert");
-		
-		return "a00_account\\a02_signin";
-	}
-*/	
+	}	
+
+	// http://localhost:7080/projectPMS/account.do?method=changePassword
+   @RequestMapping(params = "method=changePassword")
+   public String changePassword(@RequestParam("id") int id, Model d) {
+      d.addAttribute("account", service.getAccount(id));
+      return "a00_account\\a04_change_password";
+   }
+   // http://localhost:7080/projectPMS/account.do?method=updatePassword
+    @RequestMapping(params = "method=updatePassword")
+    public String updatePassword(Account update) {       
+       service.updatePw(update);
+       return "forward:/account.do?method=login";
+    } 
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
 	@RequestMapping(params = "method=info")
