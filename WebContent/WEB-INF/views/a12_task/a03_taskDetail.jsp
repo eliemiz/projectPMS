@@ -71,6 +71,12 @@ html, body {
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 
+// 	var proc = "${proc}";
+// 	var id = $(this).attr("id");
+// 	if(proc=="ins"){
+// 		alert("댓글 등록 완료\n업무 상세 페이지로 이동합니다.")
+// 		location.href="${path}/task.do?method=detail&id="+id;
+// 	}
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
@@ -84,6 +90,13 @@ html, body {
 				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
 			}
 		});
+		
+// 		$("#CinsBtn").on("click",function(){
+// 			$("#comment").submit();
+// 		});
+// 		$("#CBtn").on("click",function(){
+// 			location.href="${path}/task.do?method=detail&id="+id;
+// 		});
 		
 		$("#uptFrm").click(function(){
 /* 			var projcet_id = $("[name=project_id]").val();
@@ -303,16 +316,18 @@ html, body {
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
            		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
-              	<form class="form-horizontal">
+              	<form class="form-horizontal" method="post" id="comment">
               		<div>
-                          <input class="form-control form-control-sm" placeholder="댓글을 작성해주세요"><br>
-                          	<input type = "button" class="btn btn-success" value="등록"/>
-                            <input type = "button" class="btn btn-danger" value="취소"/>
+                          <input class="form-control form-control-sm" placeholder="댓글을 작성해주세요" ><br>
+                          	<input type = "button" id="CinsBtn" class="btn btn-success" value="등록"/>
+                            <input type = "button" id="CBtn" class="btn btn-danger" value="취소"/>
                     </div><br>
                 </form><!-- 댓글 -->
                 <div align="center">2021-04-03</div>
               	<div class="form-group" style="width:700px;"><br>
-              		
+<!--               		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;"> -->
+<!--               		김철수&nbsp;&nbsp;팀장<br>수정사항 확인 바랍니다 -->
+<!--               		</div><br><br><br> -->
               		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;">
               		김철수&nbsp;&nbsp;팀장<br>수정사항 확인 바랍니다
               		</div><br><br><br>

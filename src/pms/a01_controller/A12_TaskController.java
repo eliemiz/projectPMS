@@ -14,7 +14,7 @@ import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
 import pms.a02_service.A18_AttachmentService;
 import pms.z01_vo.Account;
-import pms.z01_vo.Attachment;
+import pms.z01_vo.Comment;
 import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 
@@ -109,6 +109,24 @@ public class A12_TaskController {
 		d.addAttribute("downloadFile", filename); 
 		return "downloadviewer";
 	}
+	
+	// 댓글 method="insert"/insform >> return "detail"
+//	@RequestMapping(params = "method=insForm")
+//	public String insForm(@ModelAttribute("comment") Comment, comment) {
+//		return "a12_task\\a02_taskDetail";
+//	}
+//
+//	@RequestMapping(params = "method=insert")
+//	public String insertComment(Comment ins, Model d) {
+//		System.out.println("등록:" + ins.getContent());		
+//		service.insertComment(ins);
+//		
+//		d.addAttribute("proc", "ins");
+//	
+//		return "a12_task\\a02_taskDetail";
+//	}
+	
+	
 	
 	@ModelAttribute("projects")
 	public ArrayList<Project> getProjectList(){

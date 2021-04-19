@@ -34,7 +34,7 @@ WHERE subject LIKE '%'||'프로젝트'||'%'
 AND t.account_id = a.id
 AND t.PROJECT_ID = p.ID
 ORDER BY t.id desc;
-
+SELECT * FROM task;
 -- getTask(int id) 상세내용 이동
 SELECT t.id, t.PARENT_ID, t.PROJECT_ID, t.ACCOUNT_ID,
 		t.SUBJECT, t.DESCRIPTION, t.STATUS, t.PRIORITY, 

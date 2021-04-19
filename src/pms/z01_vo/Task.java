@@ -29,6 +29,7 @@ public class Task {
 	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
 	private String[] filenames; // 파일 수정시 사용
 	private ArrayList<Attachment> fileInfo;
+	private ArrayList<Comment> commentInfo;
 
 	public Task() {
 		super();
@@ -200,11 +201,25 @@ public class Task {
 	public void setFilename(String[] filenames) {
 		this.filenames = filenames;
 	} 
+
+	public void setFilenames(String[] filenames) {
+		this.filenames = filenames;
+	}
+	
 	public ArrayList<Attachment> getFileInfo() {
 		return fileInfo;
 	}
 	public void setFileInfo(ArrayList<Attachment> fileInfo) {
 		this.fileInfo = fileInfo;
 	}
+
+	public ArrayList<Comment> getCommentInfo() {
+		return commentInfo;
+	}
+
+	public void setCommentInfo(ArrayList<Comment> commentInfo) {
+		this.commentInfo = commentInfo;
+	}
+
 	 
 }

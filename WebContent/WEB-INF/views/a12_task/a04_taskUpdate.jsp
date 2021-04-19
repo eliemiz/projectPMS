@@ -63,6 +63,10 @@ html, body {
 	
 	if(proc=="upt"){
 		alert("수정완료\n리스트 페이지로 이동합니다");
+		// 아이디 설정
+		
+		// method=detail&id=?로 설정
+// 		location.href = "${path}/task.do?method=detail&id=";			
 		location.href = "${path}/task.do?method=list";			
 	}
 	
@@ -76,12 +80,12 @@ html, body {
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
 		// TODO: 다운로드 ㄴ
-		$(".fileInfo").click(function(){
+/* 		$(".fileInfo").click(function(){
 			var filename=$(this).text();
 			if(confirm("다운로드하시겠습니까?"+filename)){
 				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
 			}
-		});
+		}); */
 		$('#filesize').bind('change', function(){
 			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
 			
@@ -290,15 +294,16 @@ html, body {
      			<c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">
                 <div class="form-group">
                   <label for="exampleInputFile">첨부파일</label> 
-                    <!-- 파일 다운로드  -->   
+                    <!-- 기존 파일명  -->   
                   <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
                   <div class="custom-file">
                     <!-- TODO: 파일변경값 넘기기 -->     
                         <!-- 파일 변경 정보 -->
-                        <input type="file" id="file01" class="custom-file-input" name="report" />
-                  <!-- <input type="file" id="filesize" class="custom-file-input" name="report" />
-                   -->      
-                   <label class="custom-file-label" for="file01">${finf.filename}</label>       
+                        <!-- <input type="file" id="file01" class="custom-file-input" name="report" /> -->
+                   <input type="file" id="filesize" class="custom-file-input" name="report" />
+                         
+                   		<!-- <input type="file" for="file01" style="width:100%;"/> -->
+                    	<<!-- label class="custom-file-label" for="file01">변경하려면 파일을 선택하세요</label>         -->
                         <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                         <!-- style="width:100%;" -->
                   </div><br><br>
@@ -309,10 +314,10 @@ html, body {
                   </div>    
                    --%>        
                  </div>   
-                 
+                  </c:forEach> 
                 <!-- /.form-group -->
               </div>
-              </c:forEach> 
+             
               <!-- /.col -->
             </div>
             <!-- /.row -->

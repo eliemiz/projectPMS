@@ -75,8 +75,9 @@
 		update ATTACHMENT
 			set filename = #{filename},
 				filesize = #{filesize}
-		where id=#{id}
+		where document_id = #{document_id}
 			and filename=#{orgFilename}
+			and document_type = #{document_type}
 	</update>
 	
 	<!-- public void deleteTask(int task_id) -->
@@ -92,12 +93,33 @@
 
 	<!-- public void deleteFile(int id); -->
 	<delete id="deleteFile" parameterType="int">
-		delete from ATTACHMENT where id=#{id}
+		delete from ATTACHMENT
+		where document_id=#{document_id}
 	</delete>
 
 
+	<!-- comment -->
+<!-- 	public void insertComment(Comment ins); // 댓글 입력 -->
+<!-- 
+	<insert id="insertComment" parameterType="int">
+		INSERT INTO COMMENTS VALUES (
+		COMMENTS_SEQ.nextval,#{document_type},
+		#{document_id},#{account_id},#{content},
+		SYSDATE,SYSDATE)
+	</insert> -->
+<!-- 	public ArrayList<Comment> commentInfo(int document_id); // 댓글 조회 -->
 
+<!-- 	
+	<select id="commentInfo" resultMap="comments" parameterType="int">
+		select * 
+		from comments 
+ 		where document_id = #{document_id} 
+ 	</select>
+ 		-->
+ 		
+<!-- 	public void updateComment(Comment upt); // 댓글 수정 -->
 
+<!-- 	public void deleteComment(int id); // 댓글 삭제 -->
 
 	<!-- Calendar -->	
 	<resultMap type="calen" id="calMap">

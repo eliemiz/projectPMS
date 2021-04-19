@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
+import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
@@ -64,6 +65,7 @@ public class A12_TaskService {
 		task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
 		
 		task.setFileInfo(dao.fileInfo(id));
+//		task.setCommentInfo(dao.commentInfo(id));
 		// return dao.getTask(id);
 		return task;
 	}
@@ -125,10 +127,11 @@ public class A12_TaskService {
 		int id = upt.getId();
 		if(upt.getFilenames()!=null && upt.getFilenames().length>0) {
 			String filename = null;
+			long filesize = 0;
 			String orgFilename = null;
 			File tmpFile = null;
 			File orgFile = null;
-			Attachment uptFile = null;
+//			Attachment uptFile = null;
 			MultipartFile mpf = null;
 			File pathFile = new File(uploadTmp);
 			for(File f:pathFile.listFiles()) {
@@ -168,10 +171,12 @@ public class A12_TaskService {
 						System.out.println("# 기타 에러:"+e.getMessage());
 					}
 					HashMap<String, String> hs = new HashMap<String, String>();
-					hs.put("id", ""+id);
+					hs.put("document_id", ""+id);
 					hs.put("filename", filename);
+					hs.put("filesize", filesize+"KB");
+					hs.put("document_type", "task");
 					hs.put("orgFilename", upt.getFilenames()[idx]);
-					dao.updateFile(hs);		
+					dao.updateFile(hs);
 				}
 			}
 		}
@@ -183,6 +188,23 @@ public class A12_TaskService {
 		dao.deleteTask(id);
 		dao.deleteFile(id);
 	}
+	
+	
+	
+	// 댓글 입력
+//	public void insertComment(Comment ins) {
+//		dao.insertComment(ins);
+//	}
+	
+	
+//	// 댓글 조회
+//	public ArrayList<Comment> commentInfo(int document_id){
+//		dao.commentInfo(document_id);
+//	}
+//	
+	
+	
+	
 
 	// Calendar List
 	public ArrayList<Calendar> calenList(int projectId) {
