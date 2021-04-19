@@ -50,12 +50,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-
+	var selectType = '${param.document_type}';
+	
+	 if(selectType == 'task'){
+	        $('#task').attr('selected','selected');
+	    } else if(selectType == 'risk'){
+	        $('#risk').attr('selected','selected');
+	    } 
 	
     var vm = new Vue({
        el:".content-wrapper",
        data:{
-          type:''
+          type:selectType
        }
     });  
     
@@ -134,8 +140,8 @@ $(document).ready(function(){
                   <select class="form-control select2"  v-model="type" style="width:200px;">
                <!--      <option value=''>작업유형 선택</option> -->
                    <option value=""><spring:message code="all"/></option>
-                   <option value="task"><spring:message code="task"/></option> 
-                    <option value="risk"><spring:message code="risk"/></option>
+                   <option value="task" id="task"><spring:message code="task"/></option> 
+                    <option value="risk" id="risk"><spring:message code="risk"/></option>
                     
                <!--      <option value="">모두</option>
                     <option value="task">업무</option>
