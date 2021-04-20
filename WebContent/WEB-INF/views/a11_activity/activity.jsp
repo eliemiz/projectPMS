@@ -71,7 +71,7 @@ $(document).ready(function(){
     	//여기에 +"&document_type="+selectType;도 추가...?
        });	
      
-     	var pi = '${param.projectId}';
+     	var pi = '${projectId}';
      			
    	 $(".type").click(function(){
     	  var ty = $(this).attr("id");
@@ -142,7 +142,7 @@ $(document).ready(function(){
                   <label>검색조건</label>&nbsp;&nbsp;
                   <select class="form-control select2"  v-model="type">
                <!--      <option value=''>작업유형 선택</option> -->
-                   <option value=""><spring:message code="all"/></option>
+                   <option value="all"><spring:message code="all"/></option>
                    <option value="task" id="task"><spring:message code="task"/></option> 
                     <option value="risk" id="risk"><spring:message code="risk"/></option>
                     

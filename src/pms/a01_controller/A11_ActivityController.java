@@ -16,9 +16,8 @@ import org.springframework.web.servlet.LocaleResolver;
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A11_ActivityService;
-import pms.z01_vo.Account;
-import pms.z01_vo.AccountTask;
 import pms.z01_vo.Journal;
+import pms.z01_vo.JournalEx;
 import pms.z01_vo.Project;
 import pms.z02_util.SessionManager;
 
@@ -71,13 +70,26 @@ public class A11_ActivityController {
 			SessionManager.setLang(request, response, localeResolver);
 		}
 		
-		
-		/* d.addAttribute("activity", service.getJournalList(jr)); */
-		
-		d.addAttribute("activity", service.getJournalList1(hs));
-		d.addAttribute("activity", service.getJournalList2(hs));
-		d.addAttribute("activity", service.getJournalList3(hs));
-		
+		ArrayList<JournalEx> jList = null;
+		String type = request.getParameter("document_type");
+		if (type == null) {
+			// 모든 목록
+			jList = service.getJournalListAll(projectId);
+
+		} else {
+			if (type == "task") {
+				// task만
+				jList = service.getJournalListTask(projectId);
+			} else if (type == "risk") {
+				// risk만
+				jList = service.getJournalListRisk(projectId);
+			} else {
+				// 모든 목록
+				jList = service.getJournalListAll(projectId);
+			}
+		}
+		 
+		d.addAttribute("activity", jList);
 
 		return "a11_activity\\activity";
 	}
