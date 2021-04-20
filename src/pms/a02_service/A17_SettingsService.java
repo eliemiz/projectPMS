@@ -16,7 +16,10 @@ public class A17_SettingsService {
 		 dao.projectUpt(upt);
 	}
 	public void projectDel(int id) {
-		
+		dao.deleteTask(id);
+		dao.deleteTfile(id);
+		dao.deleteRisk(id);
+		dao.deleteRfile(id);
 		dao.projectDel(id);
 	}
 }

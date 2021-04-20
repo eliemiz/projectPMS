@@ -16,6 +16,10 @@ public interface A01_ProjectDao {
 	public void projectIns(Project insert);
 	// 삭제
 	public void projectDel(int id);
+	public void deleteTask(int id);
+	public void deleteTfile(int id);
+	public void deleteRfile(int id);
+	public void deleteRisk(int id);
 	//setting
 	public void projectUpt(Project upt);
 }

@@ -130,12 +130,6 @@ html, body {
                       <td>1</td>
                       <td>2</td>
                     </tr>
-                    <tr>
-                      <td>보고된 일감</td>
-                      <td>1</td>
-                      <td>1</td>
-                      <td>2</td>
-                    </tr>
                     
                   </tbody>
                   </table>
@@ -164,10 +158,10 @@ html, body {
                     <tr>
                       <th>프로젝트명</th>
                       <th>유형</th>
-                      <th>번호</th>
+                      <th>업무번호</th>
                       <th>상태</th>
                       <th>내용</th>
-                      <th>작성자</th>
+                      <th>담당자</th>
                     </tr>
                   </thead>
                   <tbody>

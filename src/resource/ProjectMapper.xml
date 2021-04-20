@@ -27,6 +27,35 @@
    		DELETE FROM PROJECT 
    			 where id = #{id}
     </delete>
+    
+    <delete id="deleteTask" parameterType="int">
+    	delete from task 
+		where project_id = #{project_id}
+    </delete>
+    <delete id="deleteTfile" parameterType="int">
+		delete from ATTACHMENT
+		where DOCUMENT_ID in (
+		SELECT a.document_id
+		from ATTACHMENT a, task t, PROJECT p
+		where a.DOCUMENT_ID = t.id
+		and t.PROJECT_ID = p.id
+		and p.id = #{id}
+		)
+    </delete>
+        <delete id="deleteRfile" parameterType="int">
+		delete from ATTACHMENT
+		where DOCUMENT_ID in (
+		SELECT a.document_id
+		from ATTACHMENT a, risk r, PROJECT p
+		where a.DOCUMENT_ID = r.id
+		and r.PROJECT_ID = p.id
+		and p.id = #{id}
+		)
+    </delete>
+    <delete id="deleteRisk" parameterType="int">
+    	delete from risk
+    	where project_id = #{project_id}
+    </delete>
       <!-- public void projectUpt(Project upt); -->
    <update id="projectUpt" parameterType="project">
    UPDATE project
