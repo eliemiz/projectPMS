@@ -47,9 +47,11 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		$("#hd-project-list").change(function(){
+		/* $("#hd-project-list").change(function(){
 			location.href="${path}/calendar.do?method=list&projectId="+$(this).val();
-		});
+		}); */
+		/* DashBoard에서 넘어올 땐 session값을 가지고 있어서 그대로 출력 */
+		/* 검색할때는 검색 눌러서 parameter값 넘기기 */
 		
 		var calendarEl = document.getElementById('calendar');
 		
