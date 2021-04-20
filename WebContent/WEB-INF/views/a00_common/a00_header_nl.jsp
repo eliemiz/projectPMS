@@ -9,7 +9,8 @@
 <script type="text/javascript">
 	
 	$(document).ready(function() {
-		$.ajax({
+		
+		/* $.ajax({
 			type: "get",
 			url: "${path}/jsonProject.do",
 			dataType: "json",
@@ -25,7 +26,7 @@
 			error: function(err){
 				alert("에러발생");
 			}
-		});
+		}); */
 		
 		$("#selectLang").val("<%=SessionManager.getLang(request)%>");
 		$("#selectLang").change(function(){

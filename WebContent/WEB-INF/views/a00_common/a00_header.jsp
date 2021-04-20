@@ -14,23 +14,24 @@
 	}
 	
 	$(document).ready(function() {
-		$.ajax({
-			type: "get",
-			url: "${path}/jsonProject.do",
-			dataType: "json",
-			success: function(data){
-				var projectList = data.projectList;
-				
-				$.each(projectList, function(idx, e, arr){
-					$("#hd-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
-				});
-				
-				$("#hd-project-list").val(data.projectId);
-			},
+		
+		/* $.ajax({
+		type: "get",
+		url: "${path}/jsonProject.do",
+		dataType: "json",
+		success: function(data){
+			var projectList = data.projectList;
+			
+			$.each(projectList, function(idx, e, arr){
+				$("#hd-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+			});
+			
+			$("#hd-project-list").val(data.projectId);
+		},
 			error: function(err){
 				alert("에러발생");
 			}
-		});
+		}); */
 		
 		$("#selectLang").val("<%=SessionManager.getLang(request)%>");
 		$("#selectLang").change(function(){
