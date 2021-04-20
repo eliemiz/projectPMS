@@ -109,7 +109,7 @@ $(document).ready(function(){
 <!-- ./wrapper -->
 <script>
 	gantt.plugins({
-		quick_info: true,
+//		quick_info: true,
 		tooltip: true,
 		critical_path: true
 	});
@@ -165,7 +165,16 @@ $(document).ready(function(){
 		error:function(err){
 			console.log(err);
 		}
-	})
+	});
+	gantt.attachEvent("onTaskDblClick", function(id,e){
+	       //any custom logic here
+	       return false;
+	});
+	gantt.attachEvent("onTaskClick", function(id,e){
+		if(confirm("상세정보로 이동하시겠습니까?")){
+			location.href = "${path}/task.do?method=detail&id="+id;
+		}
+	});
 //	gantt.parse(projects_milestones_critical);
 </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
