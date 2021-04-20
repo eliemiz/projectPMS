@@ -43,7 +43,7 @@ public class A00_AccountController {
 	
 	
 	// http://localhost:7080/projectPMS/account.do?method=login
-	
+	/*
 	  @GetMapping(params = "method=login")
 	
 		  public String login() {
@@ -72,12 +72,16 @@ public class A00_AccountController {
 			 service.loginDate(log); 
 		return "a00_account\\a00_login";
 	}
+	*/
 	
-	/*
 	@RequestMapping(params = "method=login", method = RequestMethod.GET)
 		
-	  public String login() {
-		
+	  public String login(HttpServletRequest request, HttpServletResponse response) {
+		// Set Locale 
+				if (request.getParameter("lang") != null) {
+					SessionManager.setLang(request, response, localeResolver);
+				}
+				
 		return "a00_account\\a00_login";
 	  }
 	
@@ -102,7 +106,7 @@ public class A00_AccountController {
 			 service.loginDate(log); 
 		return "a00_account\\a00_login";
 	}
-	*/
+	
 	@RequestMapping(params = "method=logout")
 	public String logout(HttpServletRequest request){
 		SessionManager.clearSession(request);
