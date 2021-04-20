@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -50,10 +51,10 @@ public class A00_AccountController {
 			return "a00_account\\a00_login";
 		  }
 
-	@PostMapping(params = "method=login")
+		@PostMapping(params = "method=login")
 	public String login( Account log ,HttpServletRequest request, HttpServletResponse response) {
 		
-		/* Set Locale */
+			// Set Locale 
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
 		}
@@ -71,6 +72,37 @@ public class A00_AccountController {
 			 service.loginDate(log); 
 		return "a00_account\\a00_login";
 	}
+	
+	/*
+	@RequestMapping(params = "method=login", method = RequestMethod.GET)
+		
+	  public String login() {
+		
+		return "a00_account\\a00_login";
+	  }
+	
+	@RequestMapping(params = "method=login", method =  RequestMethod.POST)
+	public String login( Account log ,HttpServletRequest request, HttpServletResponse response) {
+		
+			// Set Locale 
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
+		System.out.println("아이디:"+log.getUser_id());
+		  Account ac = service.Login(log);
+			if(ac!=null){//해당 값이 있으면
+				HttpSession session = request.getSession();
+				session.setAttribute("login", ac);
+				request.setAttribute("loginSucc", "Y");
+				SessionManager.setAccount(request, ac);
+			}else {
+				request.setAttribute("loginSucc", "N");
+			}
+			 service.loginDate(log); 
+		return "a00_account\\a00_login";
+	}
+	*/
 	@RequestMapping(params = "method=logout")
 	public String logout(HttpServletRequest request){
 		SessionManager.clearSession(request);

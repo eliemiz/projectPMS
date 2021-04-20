@@ -50,6 +50,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	/* 페이지 전환 후 select값 고정 */
 	var selectType = '${param.document_type}';
 	
 	 if(selectType == 'task'){
@@ -66,16 +67,18 @@ $(document).ready(function(){
     });  
     
      $("#hd-project-list").change(function(){
+    	 location.href="${path}/activity.do?projectId="+$(this).val()
+    	//여기에 +"&document_type="+selectType;도 추가...?
+       });	
+     
+     	var pi = '${param.projectId}';
+     			
    	 $(".type").click(function(){
     	  var ty = $(this).attr("id");
-    	  location.href="${path}/activity.do?projectId="+$(this).val()+"&document_type="+ty;
+    	  location.href="${path}/activity.do?projectId="+pi+"&document_type="+ty;
       	});
-    });
-    
-   	/*  $(".type").click(function(){
-    	  var ty = $(this).attr("id");
-    	  location.href="${path}/activity.do?document_type="+ty;
-      	}); */
+   
+   	
      $(".data").click(function(){
 	  	  var id = $(this).attr("id");
 	  	  var type = $(this).attr("data-id");
@@ -137,7 +140,7 @@ $(document).ready(function(){
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
                   <label>검색조건</label>&nbsp;&nbsp;
-                  <select class="form-control select2"  v-model="type" style="width:200px;">
+                  <select class="form-control select2"  v-model="type">
                <!--      <option value=''>작업유형 선택</option> -->
                    <option value=""><spring:message code="all"/></option>
                    <option value="task" id="task"><spring:message code="task"/></option> 
@@ -148,7 +151,6 @@ $(document).ready(function(){
                     <option value="risk">리스크</option> -->
                   </select>
                 </div>
-                <div>{{type}}</div>
                 <!-- <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" id="task" >
                   <label for="task" class="custom-control-label">Task</label>
@@ -174,7 +176,8 @@ $(document).ready(function(){
                 <table class="table table-head-fixed text-nowrap">
                 <col width="5%">
 			    <col width="5%">
-			    <col width="80%">
+			    <col width="75%">
+			    <col width="5%">
 			    <col width="10%">
                   <thead>
                     <tr style="text-align:center;">
@@ -187,7 +190,8 @@ $(document).ready(function(){
                   </thead>
                   <tbody>
                    <c:forEach var="act" items="${activity}">
-	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
+	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" 
+	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
 	                      <td>
 	                      <c:choose>

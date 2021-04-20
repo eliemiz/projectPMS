@@ -72,14 +72,14 @@ public class A11_ActivityController {
 		}
 		
 		
-		 d.addAttribute("activity", service.getJournalList(jr)); 
-		/*
-		d.addAttribute("activity", service.getJournalList1(jr));
-		d.addAttribute("activity", service.getJournalList2(jr));
-		d.addAttribute("activity", service.getJournalList3(jr));
-		*/
+		/* d.addAttribute("activity", service.getJournalList(jr)); */
+		
+		d.addAttribute("activity", service.getJournalList1(hs));
+		d.addAttribute("activity", service.getJournalList2(hs));
+		d.addAttribute("activity", service.getJournalList3(hs));
+		
 
-		return "a11_activity\\activity2";
+		return "a11_activity\\activity";
 	}
 	
 	

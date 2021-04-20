@@ -5,7 +5,7 @@
 	
 	<!-- public ArrayList<Journal> getJournalList(Journal jr); -->
 	
-	<!-- 
+	 
 	<select id="getJournalList1" parameterType="hashMap" resultType="journal">
 			SELECT j.*, a.name account_name, t.project_id projectId 
 			FROM journal j, account a, task t
@@ -41,15 +41,16 @@
 			AND j.account_id = a.id 
 			order by created_on DESC
 	</select>
-	 --> 
+	
 	 
- 
+ <!--
 	<select id="getJournalList" parameterType="journal" resultType="journal">
 	SELECT * 
 	FROM journal
 	WHERE document_type like '%'||#{document_type}||'%'
 		order by created_on desc
 	</select>
+	 --> 
 	
 </mapper>
 

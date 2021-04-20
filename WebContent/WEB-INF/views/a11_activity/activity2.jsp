@@ -50,14 +50,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	/* 페이지 전환 후 select값 고정 */
 	var selectType = '${param.document_type}';
-	
+
 	 if(selectType == 'task'){
 	        $('#task').attr('selected','selected');
 	    } else if(selectType == 'risk'){
 	        $('#risk').attr('selected','selected');
 	    } 
 	
+	 
     var vm = new Vue({
        el:".content-wrapper",
        data:{
