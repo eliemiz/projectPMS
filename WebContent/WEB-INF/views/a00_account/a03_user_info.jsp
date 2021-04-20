@@ -162,6 +162,8 @@ html, body {
                       <th>상태</th>
                       <th>내용</th>
                       <th>담당자</th>
+                      <th>시작날짜</th>
+                      <th>완료날짜</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -173,46 +175,7 @@ html, body {
                       <td>테스트</td>
                       <td>홍길동</td>
                     </tr>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>홍길동</td>
-                    </tr>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>홍길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>새작업</td>
-                      <td>#1</td>
-                      <td>신규</td>
-                      <td>테스트</td>
-                      <td>홍길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>홍길동</td>
-                    </tr>
-                    <tr>
-                      <td>PMS 프로젝트</td>
-                      <td>Risks</td>
-                      <td>#1</td>
-                      <td></td>
-                      <td>인력대체</td>
-                      <td>홍길동</td>
-                    </tr>
+                
                   </tbody>
                 </table>
               </div>

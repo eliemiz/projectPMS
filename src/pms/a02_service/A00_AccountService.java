@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import pms.a03_dao.A00_AccountDao;
 import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
+import pms.z01_vo.Task;
 
 @Service
 public class A00_AccountService {
@@ -59,4 +60,17 @@ public class A00_AccountService {
 		
 		dao.updatePw(update);
 	}
+	public ArrayList<Task> getTask(int id) {
+		
+		return dao.getTask(id);
+	}
+	
+	public int taskCount1(int id) {
+		return dao.taskCount1(id);
+	}
+	
+	public int taskCount2(int id) {
+		return dao.taskCount2(id);
+	}
+
 }

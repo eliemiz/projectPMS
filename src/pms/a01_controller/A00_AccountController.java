@@ -9,15 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
+import pms.a02_service.A12_TaskService;
 import pms.z01_vo.Account;
+import pms.z01_vo.Task;
 import pms.z02_util.SessionManager;
 
 @Controller
@@ -29,6 +29,7 @@ public class A00_AccountController {
 	
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
+	
 	
 	// http://localhost:7080/projectPMS/account.do?method=account
 	@RequestMapping(params = "method=account")
@@ -116,7 +117,7 @@ public class A00_AccountController {
 	// http://localhost:7080/projectPMS/account.do?method=changePassword
    @RequestMapping(params = "method=changePassword")
    public String changePassword(@RequestParam("id") int id, Model d) {
-      d.addAttribute("account", service.getAccount(id));
+      
       return "a00_account\\a04_change_password";
    }
    // http://localhost:7080/projectPMS/account.do?method=updatePassword
@@ -128,9 +129,18 @@ public class A00_AccountController {
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
 	@RequestMapping(params = "method=info")
-	public String info() {
+	public String info(@RequestParam("id") int id, Model d) {
+		ArrayList<Task> taskList = service.getTask(id);
+		d.addAttribute("taskList", taskList);
 		
-		return "a00_account\\a03_info";
+		int count1 = 0;
+		int count2 = 0;
+		d.addAttribute("cnt1",service.taskCount1(id));
+		d.addAttribute("cnt2",service.taskCount2(id));
+		
+		// ${cnt1}
+		
+		return "a00_account\\a03_user_info";
 	}
 	
 	

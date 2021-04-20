@@ -24,7 +24,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="${path}/account.do?method=info" class="d-block">${account.name}</a>
+				<a href="${path}/account.do?method=info&id=${account.id}" class="d-block">${account.name}</a>
 			</div>
 		</div>
 

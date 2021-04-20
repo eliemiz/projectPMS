@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
+import pms.z01_vo.Task;
 
 @Repository
 public interface A00_AccountDao {
@@ -30,5 +31,10 @@ public interface A00_AccountDao {
 	
 	public void updatePw(Account update);
 	
+	public ArrayList<Task> getTask(int id);
+	
+	public int taskCount1(int id);
+	
+	public int taskCount2(int id);
 
 }
