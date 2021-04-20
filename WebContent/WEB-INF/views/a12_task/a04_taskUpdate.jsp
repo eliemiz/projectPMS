@@ -303,7 +303,7 @@ html, body {
                    <input type="file" id="filesize" class="custom-file-input" name="report" />
                          
                    		<!-- <input type="file" for="file01" style="width:100%;"/> -->
-                    	<<!-- label class="custom-file-label" for="file01">변경하려면 파일을 선택하세요</label>         -->
+                    	 <label class="custom-file-label" for="file01">변경하려면 파일을 선택하세요</label>         
                         <!-- <label class="custom-file-label" for="report">Choose file</label> -->
                         <!-- style="width:100%;" -->
                   </div><br><br>

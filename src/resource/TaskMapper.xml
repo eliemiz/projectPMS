@@ -28,11 +28,14 @@
 		AND t.id = #{id}
 	</select>
 	
-	<!-- 파일 public ArrayList<Attachment> fileInfo(int document_id); -->
+	<!-- 파일 public ArrayList<Attachment> fileInfo(int document_id);
+		document_type 추가
+	 -->
 	<select id="fileInfo" resultType="attachment" parameterType="int">
 		select *
 		from attachment
 		where document_id = #{document_id}
+		and document_type = 'Task'
 	</select>
 	
 	<!-- public void insertTask(Task ins) -->
@@ -70,14 +73,17 @@
 				tracker = #{tracker}
 			WHERE ID = #{id}
 	</update>
-	<!-- public void updateFile(HashMap<String, String> hs) -->
+	<!-- public void updateFile(HashMap<String, String> hs)
+	disk_filename 수정
+	 -->
 	<update id="updateFile" parameterType="hashMap">
 		update ATTACHMENT
 			set filename = #{filename},
-				filesize = #{filesize}
+				filesize = #{filesize},
+				disk_filename = #{disk_filename}
 		where document_id = #{document_id}
 			and filename=#{orgFilename}
-			and document_type = #{document_type}
+			and document_type = 'Task'
 	</update>
 	
 	<!-- public void deleteTask(int task_id) -->

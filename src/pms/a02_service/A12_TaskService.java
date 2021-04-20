@@ -174,7 +174,7 @@ public class A12_TaskService {
 					hs.put("document_id", ""+id);
 					hs.put("filename", filename);
 					hs.put("filesize", filesize+"KB");
-					hs.put("document_type", "task");
+					hs.put("disk_filename", "disk_"+filename);
 					hs.put("orgFilename", upt.getFilenames()[idx]);
 					dao.updateFile(hs);
 				}

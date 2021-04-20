@@ -293,7 +293,7 @@ html, body {
 	            
 	            </div>
 	        </div>
-	      </c:forEach> 
+	      </c:forEach> <!-- TODO:위치바꾸기 첨부파일 폼 -->
 	      <!-- /.card-body -->
 	      
             </div><br> <!-- /.yellowbox -->
