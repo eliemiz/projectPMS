@@ -51,14 +51,15 @@ html, body {
    var proc = "${param.proc}";
    
 		if(proc=="update"){
-			alert("비밀번호가 변경되었습니다.\n로그인화면으로 이동하시겠습니까?");
-			location.href = "${path}/account.do?method=login";			
+			alert("비밀번호가 변경되었습니다.");
+			location.href = "${path}/account.do?method=logout";			
 		}
 
     $(document).ready(function(){
 
 		$("#Btn").on("click",function(){
 			if(confirm("변경하시겠습니까?")){
+				//alert($("[name=id]").val());
 				$("[name=proc]").val("update");
 				$("form").attr("action","${path}/account.do?method=updatePassword");
 				$("form").submit();
@@ -153,7 +154,7 @@ html, body {
 					        </div> 
                            <div class="row">
                               <div class="col-12">
-                                 <button type="submit" class="btn btn-primary btn-block" id="Btn">확인</button>
+                                 <button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>
                               </div>
                            </div>
                      	</div>

@@ -89,8 +89,8 @@ html, body {
          
             </h1>
             <div class="form-row float-right">
-            <a href="${path}/account.do?method=changePassword">
-             <button class="btn btn-default" type="submit"><i class="fas fa-pen">비밀번호 변경하기</i></button>
+            <a href="${path}/account.do?method=changePassword&id=${account.id}">
+             <button class="btn btn-default" type="button"><i class="fas fa-pen">비밀번호 변경하기</i></button>
              </a>
             </div>
           </div>
