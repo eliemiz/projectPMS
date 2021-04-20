@@ -53,10 +53,6 @@
     <li class="nav-item d-none d-sm-inline-block">
       <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
-    	<select id="hd-project-list" class="form-control">
-    	</select>
-    </li>
   </ul>
 
   <!-- Right navbar links -->
