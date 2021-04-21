@@ -57,6 +57,18 @@
 		$("#sb-project-setting").addClass("active");
 		
 		$("#uptBtn").on("click",function(){
+			
+			if ($("[name=name]").val() == "") {
+		 		alert("프로젝트명을 입력해주세요.");
+		 		return false;
+		 	} else if ($("[name=description]").val() == "") {
+		 		alert("설명을 입력해주세요.");
+		 		return false;
+		 	}
+		 	else if ($("[name=homepage]").val() == "") {
+		 		alert("홈페이지를 입력해주세요.");
+		 		return false;
+		 	}
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/settings.do?method=update");
@@ -142,9 +154,8 @@
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
-                <input name="identifier" class="form-control" value="${project.identifier}"/>
-                <a>* 1 에서 100 글자 소문자(a-z),숫자,대쉬(-)와 밑줄(_)만 가능합니다.<br>
-                * 식별자는 저장후에는 수정할 수 없습니다.</a>
+                <input name="identifier" class="form-control" value="${project.identifier}" readonly/>
+                * 식별자는 저장후에는 수정할 수 없습니다.
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>

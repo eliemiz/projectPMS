@@ -78,6 +78,8 @@ $(document).ready(function(){
 	        $('#task').attr('selected','selected');
 	    } else if(selectType == 'risk'){
 	        $('#risk').attr('selected','selected');
+	    }  else{
+	    	 $('#all').attr('selected','selected');
 	    } 
 	
     var vm = new Vue({
