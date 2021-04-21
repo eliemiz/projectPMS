@@ -42,4 +42,6 @@ public interface A12_TaskDao {
 	public ArrayList<GanttChart> ganttList(int projectId);
 	
 	public ArrayList<TaskResult> getTaskResult(int projectId); // 산출물 리스트 조회
+	
+	public ArrayList<Task> getTaskUser(int id);
 }

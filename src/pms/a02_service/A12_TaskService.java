@@ -233,5 +233,9 @@ public class A12_TaskService {
 	public ArrayList<TaskResult> getTaskResult(int projectId) {
 		return dao.getTaskResult(projectId);
 	}
+	
+	public ArrayList<Task> getTaskUser(int id){
+		return dao.getTaskUser(id);
+	}
 
 }

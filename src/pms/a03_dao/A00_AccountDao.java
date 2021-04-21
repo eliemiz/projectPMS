@@ -31,10 +31,14 @@ public interface A00_AccountDao {
 	
 	public void updatePw(Account update);
 	
-	public ArrayList<Task> getTask(int id);
+	//public ArrayList<Task> getTask(int id);
 	
 	public int taskCount1(int id);
 	
 	public int taskCount2(int id);
+	
+	
+	
+	
 
 }

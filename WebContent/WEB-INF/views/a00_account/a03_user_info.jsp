@@ -95,15 +95,16 @@ html, body {
             </div>
           </div>
           
+          
           <div class="card-body">
             <div class="card card-info card-outline">
               <div class="card-header">
-                <h5 class="card-title"><b>홍길동</b></h5>
+                <h5 class="card-title"><b>${account.name}</b></h5>
               </div>
               <div class="card-body">
-                <a> 로그인: admin</a> &nbsp;&nbsp;&nbsp;&nbsp;
-				<a> 등록시각: 2021/03/24</a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a> 마지막 로그인: 2021/04/03</a>
+                <a> 아이디: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+				<a> 등록시각: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a> 마지막 로그인: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
 				</div>
               </div>
             </div>
@@ -126,9 +127,9 @@ html, body {
                   <tbody>
                     <tr>
                       <td>할당된 일감</td>
-                      <td>1</td>
-                      <td>1</td>
-                      <td>2</td>
+                      <td>&nbsp;&nbsp;${cnt1}</td>
+                      <td>&nbsp;&nbsp;${cnt2}</td>
+                      <td>&nbsp;&nbsp;${cnt1 + cnt2}</td>
                     </tr>
                     
                   </tbody>
@@ -142,9 +143,6 @@ html, body {
         </div>
         <!-- /.row -->
           
-       
-            
-            
        <div class="row">
           <div class="col-12">
             <div class="card">
@@ -156,9 +154,9 @@ html, body {
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr>
+                      <th>번호</th>
                       <th>프로젝트명</th>
                       <th>유형</th>
-                      <th>업무번호</th>
                       <th>상태</th>
                       <th>내용</th>
                       <th>담당자</th>
@@ -167,17 +165,23 @@ html, body {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>화소반 프로젝트</td>
-                      <td>새작업</td>
-                      <td>#1</td>
-                      <td>신규</td>
-                      <td>테스트</td>
-                      <td>홍길동</td>
+                   <c:forEach var="task" items="${taskList}">
+                   <tr>
+                   	  <td>${task.id}</td>
+                      <td>${task.project_name}</td>
+                      <td>${task.tracker}</td>
+                      <td>${task.status}</td>
+                      <td>
+                      	<a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a>
+                      </td>
+                      <td>${task.name}</td>
+                      <td>${task.start_date}</td>
+                  	  <td>${task.due_date}</td>
                     </tr>
-                
+                   </c:forEach>
                   </tbody>
                 </table>
+                
               </div>
               <!-- /.card-body -->
             </div>

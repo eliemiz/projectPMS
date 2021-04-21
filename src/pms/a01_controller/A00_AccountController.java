@@ -17,6 +17,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A12_TaskService;
 import pms.z01_vo.Account;
+import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 import pms.z02_util.SessionManager;
 
@@ -29,6 +30,9 @@ public class A00_AccountController {
 	
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
+	
+	@Autowired(required = false)
+	private A12_TaskService tservice;
 	
 	
 	// http://localhost:7080/projectPMS/account.do?method=account
@@ -138,13 +142,18 @@ public class A00_AccountController {
 			SessionManager.setLang(request, response, localeResolver);
 		}
 		
-		ArrayList<Task> taskList = service.getTask(id);
+		Account account = service.getAccount(id);
+		d.addAttribute("account", account);
+		
+		ArrayList<Task> taskList = tservice.getTaskUser(id);
 		d.addAttribute("taskList", taskList);
 		
 		int count1 = 0;
 		int count2 = 0;
 		d.addAttribute("cnt1",service.taskCount1(id));
 		d.addAttribute("cnt2",service.taskCount2(id));
+		int tot = 0;
+		tot = (count1 + count2);
 		
 		// ${cnt1}
 		

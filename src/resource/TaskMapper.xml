@@ -163,6 +163,13 @@
 			WHERE T.PROJECT_ID = #{projectId} AND T.ACCOUNT_ID = A.ID AND STATUS = '완료' 
 			ORDER BY COMPLETED_ON DESC
 	</select>
+	<!-- public ArrayList<Task> getTaskUser(int id); -->
+	<select id="getTaskUser" resultType="task" parameterType="int">
+		SELECT t.*
+		FROM account a, task t
+		WHERE a.id=t.account_id
+		AND t.account_id=#{id}
+	</select>
 </mapper>
 
 
