@@ -38,7 +38,6 @@ public interface A12_TaskDao {
 	
 	// Calendar DAO
 	public ArrayList<Calendar> calenList(int projectId);
-	public ArrayList<Calendar> calenSch(CalendarSch sch);
 	
 	// Gantt Chart DAO
 	public ArrayList<GanttChart> ganttList(int projectId);
