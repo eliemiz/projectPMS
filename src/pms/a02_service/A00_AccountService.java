@@ -60,10 +60,13 @@ public class A00_AccountService {
 		
 		dao.updatePw(update);
 	}
+	/*
 	public ArrayList<Task> getTask(int id) {
 		
 		return dao.getTask(id);
-	}
+	} 
+	 */
+
 	
 	public int taskCount1(int id) {
 		return dao.taskCount1(id);
