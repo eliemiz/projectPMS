@@ -51,10 +51,31 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#sb-gantt").addClass("active");
-	$("#hd-project-list").change(function(){
+	/* Get project List */
+	$.ajax({
+		type: "get",
+		url: "${path}/jsonProject.do",
+		dataType: "json",
+		success: function(data){
+			var projectList = data.projectList;
+			
+			$.each(projectList, function(idx, e, arr){
+				$("#gantt-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+			});
+			
+			$("#gantt-project-list").val(data.projectId);
+		},
+		error: function(err){
+			alert("에러발생");
+		}
+	});
+	
+	/* project_id */
+	$("#gantt-project-list").change(function(){
 		location.href="${path}/gantt.do?method=list&projectId="+$(this).val();
 	});
+	
+	$("#sb-gantt").addClass("active");
 });
 </script>
 </head>
@@ -76,6 +97,11 @@ $(document).ready(function(){
           <div class="col-sm-6">
             <h1 class="m-0">Gantt Chart</h1>
           </div><!-- /.col -->
+          <div class="col-sm-6">
+          	<div class="input-group input-group-m" style="width: 250px;">
+                  <select id="gantt-project-list" class="form-control" style="width: 200px;"></select>
+            </div>
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
