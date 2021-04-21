@@ -33,13 +33,17 @@
 			var lang = $(this).val();
 			if (lang != "") {
 				$("[name=lang]").val($(this).val());
+				var method = "${param.method}";
+				//alert(method)
+				$("[name=method]").val(method);
 				$("#langForm").submit();
 			}
 		});
 	});
 </script>
-<form action="${path}/account.do?method=login" id="langForm" method="post">
-	<input type="hidden" name="lang">
+<form action="" id="langForm" method="get">
+	<input type="hidden" name="lang"/>
+	<input type="hidden" name="method"/>
 </form>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">

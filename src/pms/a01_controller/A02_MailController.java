@@ -3,6 +3,8 @@ package pms.a01_controller;
 
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,22 +13,31 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A02_MailService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Email;
+import pms.z02_util.SessionManager;
 
 @Controller
 @RequestMapping("account.do")
 public class A02_MailController {
    @Autowired(required=false)
    private A00_AccountService aservice;
+   @Autowired(required = false)
+   private LocaleResolver localeResolver;
+	
    
    // http://localhost:7080/projectPMS/account.do?method=loginSearch
    @RequestMapping(params = "method=loginSearch")
-   public String loginSearch() {
-      
+   public String loginSearch(HttpServletRequest request, HttpServletResponse response) {
+	   /* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
       return "a00_account\\a01_login_search";
    }
    // http://localhost:7080/projectPMS/account.do?method=update
@@ -62,7 +73,11 @@ public class A02_MailController {
    
    // http://localhost:7080/projectPMS/account.do?method=signin
 	@RequestMapping(params = "method=signin")
-	public String signin(@ModelAttribute("account") Account a) {
+	public String signin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("account") Account a) {
+		/* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
 		return "a00_account\\a02_signin";
 	}
 	

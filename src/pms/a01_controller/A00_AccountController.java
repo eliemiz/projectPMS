@@ -43,7 +43,7 @@ public class A00_AccountController {
 	}
 	
 	
-	// http://localhost:7080/projectPMS/account.do?method=login
+	
 	/*
 	  @GetMapping(params = "method=login")
 	
@@ -74,7 +74,7 @@ public class A00_AccountController {
 		return "a00_account\\a00_login";
 	}
 	*/
-	
+	// http://localhost:7080/projectPMS/account.do?method=login
 	@RequestMapping(params = "method=login", method = RequestMethod.GET)
 		
 	  public String login(HttpServletRequest request, HttpServletResponse response) {
@@ -116,8 +116,11 @@ public class A00_AccountController {
 
 	// http://localhost:7080/projectPMS/account.do?method=changePassword
    @RequestMapping(params = "method=changePassword")
-   public String changePassword(@RequestParam("id") int id, Model d) {
-      
+   public String changePassword(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id, Model d) {
+	   /* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
       return "a00_account\\a04_change_password";
    }
    // http://localhost:7080/projectPMS/account.do?method=updatePassword
@@ -129,7 +132,12 @@ public class A00_AccountController {
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
 	@RequestMapping(params = "method=info")
-	public String info(@RequestParam("id") int id, Model d) {
+	public String info(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id, Model d) {
+		/* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
 		ArrayList<Task> taskList = service.getTask(id);
 		d.addAttribute("taskList", taskList);
 		
