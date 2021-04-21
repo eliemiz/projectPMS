@@ -66,7 +66,6 @@ public class A00_AccountService {
 		return dao.getTask(id);
 	} 
 	 */
-
 	
 	public int taskCount1(int id) {
 		return dao.taskCount1(id);

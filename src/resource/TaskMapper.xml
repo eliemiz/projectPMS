@@ -177,9 +177,10 @@
 	</select>
 	<!-- public ArrayList<Task> getTaskUser(int id); -->
 	<select id="getTaskUser" resultType="task" parameterType="int">
-		SELECT t.*
-		FROM account a, task t
-		WHERE a.id=t.account_id
+		SELECT t.*, p.name project_name, a.name name
+		FROM account a, task t, project p
+		WHERE a.id=t.account_id 
+		AND t.PROJECT_ID = p.ID 
 		AND t.account_id=#{id}
 	</select>
 </mapper>

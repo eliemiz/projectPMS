@@ -49,6 +49,14 @@ html, body {
 
   $.widget.bridge('uibutton', $.ui.button)
 
+  	$(document).ready(function(){
+		
+		$(".data").click(function(){
+			var id = $(this).attr("id");
+    		location.href="${path}/task.do?method=detail&id="+id;
+    	});
+		
+	});
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -166,7 +174,7 @@ html, body {
                   </thead>
                   <tbody>
                    <c:forEach var="task" items="${taskList}">
-                   <tr>
+                   <tr class="data" id="${task.id}" style="cursor:pointer;">
                    	  <td>${task.id}</td>
                       <td>${task.project_name}</td>
                       <td>${task.tracker}</td>
