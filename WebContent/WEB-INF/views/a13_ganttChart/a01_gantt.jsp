@@ -50,89 +50,118 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	/* Get project List */
-	$.ajax({
-		type: "get",
-		url: "${path}/jsonProject.do",
-		dataType: "json",
-		success: function(data){
-			var projectList = data.projectList;
+	$(document).ready(function(){
+		/* Get project List */
+		$.ajax({
+			type: "get",
+			url: "${path}/jsonProject.do",
+			dataType: "json",
+			success: function(data){
+				var projectList = data.projectList;
+				
+				$.each(projectList, function(idx, e, arr){
+					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				});
+				
+				$("#projectId").val(data.projectId);
+			},
+			error: function(err){
+				alert("에러발생");
+			}
+		});
+		
+		$("#searchButton").click(function(){
 			
-			$.each(projectList, function(idx, e, arr){
-				$("#gantt-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
-			});
-			
-			$("#gantt-project-list").val(data.projectId);
-		},
-		error: function(err){
-			alert("에러발생");
-		}
+		});
+		
+		/* project_id */
+	/* 	$("#gantt-project-list").change(function(){
+			location.href="${path}/gantt.do?method=list&projectId="+$(this).val();
+		}); */
+		
+		$("#sb-gantt").addClass("active");
+		
 	});
-	
-	/* project_id */
-	$("#gantt-project-list").change(function(){
-		location.href="${path}/gantt.do?method=list&projectId="+$(this).val();
-	});
-	
-	$("#sb-gantt").addClass("active");
-});
+
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+	<div class="wrapper">
 
-  <!-- Navbar -->
-  <jsp:include page="../a00_common/a00_header.jsp"/>
+		<!-- Navbar -->
+		<jsp:include page="../a00_common/a00_header.jsp" />
 
-  <!-- Main Sidebar Container -->
-  <jsp:include page="../a00_common/a01_sidebar.jsp"/>  
+		<!-- Main Sidebar Container -->
+		<jsp:include page="../a00_common/a01_sidebar.jsp" />
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Gantt Chart</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-          	<div class="input-group input-group-m" style="width: 250px;">
-                  <select id="gantt-project-list" class="form-control" style="width: 200px;"></select>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0">Gantt Chart</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item">
+									<a href="#">Home</a>
+								</li>
+								<li class="breadcrumb-item active">Dashboard v1</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
 
-    <!-- Main content -->
-    <section class="content">
-		<div class="main-content">
-			<div id="gantt_here" style='width:100%; height:100%;padding: 0px;'></div>
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card card-outline card-primary">
+								<div class="card-header">
+									<h3 class="card-title">조건 검색</h3>
+								</div>
+								<div class="card-body">
+									<form class="form-group">
+										<div class="row mb-3">
+											<label for="projectId" class="col-md-2">프로젝트 선택</label>
+											<select id="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+										</div>
+										<div class="row mb-3">
+											<label for="taskName" class="col-md-2">업무 이름 검색</label>
+											<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+										</div>
+										<div class="row mb-3">
+											<button type="button" id="searchButton" class="btn btn-primary">검색</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<!-- /.card -->
+					</div>
+					<div class="main-content">
+						<div id="gantt_here" style="width: 100%; height: 100%; padding: 0px;"></div>
+					</div>
+				</div>
+			</section>
+			<!-- /.content -->
 		</div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  
-  <!-- Footer -->
-  <jsp:include page="../a00_common/a02_footer.jsp"/>
+		<!-- /.content-wrapper -->
 
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">
+		<!-- Footer -->
+		<jsp:include page="../a00_common/a02_footer.jsp" />
+
+		<!-- Control Sidebar -->
+		<!-- <aside class="control-sidebar control-sidebar-dark">
     Control sidebar content goes here
   </aside> -->
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
 <script>
 	gantt.plugins({
 //		quick_info: true,
@@ -178,6 +207,7 @@ $(document).ready(function(){
 	gantt.init("gantt_here");
 /* 	gantt.message({text: "Some text", expire: -1});
 	gantt.message({text: "Some text", type: "error", expire: -1}); */
+	
 	$.ajax({
 		type:"get",
 		url:"${path}/gantt.do?method=data",
@@ -201,6 +231,32 @@ $(document).ready(function(){
 			location.href = "${path}/task.do?method=detail&id="+id;
 		}
 	});
+	
+	$("#searchButton").click(function(){
+		var projectId = $("#projectId").val();
+		var taskName = $("#taskName").val();
+		
+		$.ajax({
+			type:"get",
+			url:"${path}/gantt.do?method=data",
+			data: {
+				projectId: projectId,
+				taskName: taskName
+			},
+			dataType:"json",
+			success:function(te){
+				console.log(te.list);
+				gantt.parse({
+					data: te.list
+				})
+			},
+			error:function(err){
+				console.log(err);
+			}
+		});
+		
+	});
+	
 //	gantt.parse(projects_milestones_critical);
 </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
