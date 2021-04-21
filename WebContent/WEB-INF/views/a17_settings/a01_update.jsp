@@ -138,7 +138,7 @@
               </div>
               <div class="form-group">
                 <label for="inputDescription">설명</label><br>
-                <textarea name="description" rows="8" cols="100" >${project.description}</textarea>
+                <textarea name="description" rows="8" cols="73" >${project.description}</textarea>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
