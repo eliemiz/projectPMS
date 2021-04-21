@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
+import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.Task;
@@ -37,6 +38,7 @@ public interface A12_TaskDao {
 	
 	// Calendar DAO
 	public ArrayList<Calendar> calenList(int projectId);
+	public ArrayList<Calendar> calenSch(CalendarSch sch);
 	
 	// Gantt Chart DAO
 	public ArrayList<GanttChart> ganttList(int projectId);

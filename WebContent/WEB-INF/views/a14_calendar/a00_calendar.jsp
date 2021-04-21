@@ -47,12 +47,16 @@
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		/* $("#hd-project-list").change(function(){
-			location.href="${path}/calendar.do?method=list&projectId="+$(this).val();
-		}); */
 		/* DashBoard에서 넘어올 땐 session값을 가지고 있어서 그대로 출력 */
 		/* 검색할때는 검색 눌러서 parameter값 넘기기 */
-		
+		// 유효성체크
+		var projcet_id = $("[name=project_id]").val();
+		var status = $("[name=status]").val();
+		var tracker = $("[name=tracker]").val();
+		alert("project_id : "+project_id);
+		alert("status : "+status);
+		alert("tracker : "+tracker);
+				
 		var calendarEl = document.getElementById('calendar');
 		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -131,6 +135,50 @@
 		<div id="query_form_with_buttons" class="hide-when-print">
 			<div id="query_form_content">
 				<fieldset id="filters" class="collapsible ">
+			    	<h3 class="card-title">검색조건</h3><br><br>			    	
+			    	<form:form modelAttribute="sch" method="post">
+				    	<div class="card-body">
+					    	<div class="row">
+						    	<div class="col-md-6">
+						    		<div class="form-group">
+							    		&nbsp;&nbsp;<label>프로젝트</label>&nbsp;&nbsp;
+							    		<form:select path="project_id" class="form-control select">
+							    			<option value="">프로젝트 선택</option>
+							    			<c:forEach var="proj" items="${projects}">
+							    				<form:option value="${proj.id}">${proj.name}</form:option>
+							    			</c:forEach>			    			
+							    		</form:select>
+						    		</div>
+						    		<div class="form-group">
+						    			&nbsp;&nbsp;<label>상태</label>&nbsp;&nbsp;
+							    		<form:select path="status" class="form-control">
+							    			<option value="">상태 선택</option>
+						                    <form:option value="신규" label="신규"/>
+						                    <form:option value="진행" label="진행"/>
+						                    <form:option value="해결" label="해결"/>
+						                    <form:option value="의견" label="의견"/>
+						                    <form:option value="완료" label="완료"/>
+						                    <form:option value="거절" label="거절"/>			    			
+							    		</form:select>
+						    		</div>
+						    	</div>
+						    	<div class="col-md-6">
+						    		<div class="form-group">
+							    		&nbsp;&nbsp;<label>유형</label>&nbsp;&nbsp;
+							    		<form:select path="tracker" class="form-control">
+							    			<option value="">유형 선택</option>
+						                    <form:option value="결함" label="결함"/>
+						                    <form:option value="새기능" label="새기능"/>
+						                    <form:option value="지원" label="지원"/>			    			
+							    		</form:select>
+						    		</div>
+						    		<div class="form-group">
+							    		<button class="btn btn-success" type="submit">검색</button>
+						    		</div>
+					 	   		</div>
+					 	   	</div>
+				 	   	</div>
+			    	</form:form>
 			    	
 				</fieldset>
 			</div>			
