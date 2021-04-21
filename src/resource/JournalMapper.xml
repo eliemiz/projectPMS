@@ -7,6 +7,7 @@
 	
 	 
 	<select id="getJournalListAll" resultType="journalEx" parameterType="int">
+		SELECT * FROM (
 		SELECT j.*, a.name account_name, p.name project_name
 			FROM journal j, account a, task t, project p
 			where UPPER(j.document_type) = UPPER('task')
@@ -22,6 +23,7 @@
 			AND j.account_id = a.id
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
+			) e ORDER BY e.CREATED_ON
 		<!-- SELECT (...) e ORDER BY e.CREATED_ON DESC; -->
 	</select>
 	<select id="getJournalListTask" resultType="journalEx" parameterType="int">
@@ -32,6 +34,7 @@
 			AND j.account_id = a.id 
 			and t.project_id = p.id
 			and t.project_id = #{project_id}
+			order by j.created_on desc
 	</select>
 	<select id="getJournalListRisk" resultType="journalEx" parameterType="int">
 		SELECT j.*, a.name account_name, p.name project_name
@@ -41,6 +44,7 @@
 			AND j.account_id = a.id
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
+			order by j.created_on desc
 	</select>
 	 
  <!--
