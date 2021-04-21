@@ -50,6 +50,27 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	 $('#all').attr('selected','selected');
+	
+	 /* Get project List */
+	$.ajax({
+		type: "get",
+		url: "${path}/jsonProject.do",
+		dataType: "json",
+		success: function(data){
+			var projectList = data.projectList;
+			
+			$.each(projectList, function(idx, e, arr){
+				$("#ac-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+			});
+			
+			$("#ac-project-list").val(data.projectId);
+		},
+		error: function(err){
+			alert("에러발생");
+		}
+	});
+	
 	/* 페이지 전환 후 select값 고정 */
 	var selectType = '${param.document_type}';
 	
@@ -66,10 +87,11 @@ $(document).ready(function(){
        }
     });  
     
-     $("#hd-project-list").change(function(){
-    	 location.href="${path}/activity.do?projectId="+$(this).val()
-    	//여기에 +"&document_type="+selectType;도 추가...?
-       });	
+      $("#ac-project-list").change(function(){
+    	 
+    	  location.href="${path}/activity.do?projectId="+$(this).val();
+    	 	
+       });	 
      
      	var pi = '${projectId}';
      			
@@ -135,30 +157,27 @@ $(document).ready(function(){
           <div class="card-body">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">작업내역 선택</h5>
+                <h5 class="card-title">프로젝트 선택</h5>
               </div>
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
-                  <label>검색조건</label>&nbsp;&nbsp;
+                  <select id="ac-project-list" class="form-control" style="width: 200px;"></select>
+                </div>
+              </div>
+            </div>
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="card-title">작업유형 선택</h5>
+              </div>
+              <div class="card-body">
+              <div class="input-group input-group-m" style="width: 250px;">
+                  <label>유형선택</label>&nbsp;&nbsp;
                   <select class="form-control select2"  v-model="type">
-               <!--      <option value=''>작업유형 선택</option> -->
-                   <option value="all"><spring:message code="all"/></option>
+                   <option value="all" id="all"><spring:message code="all"/></option> 
                    <option value="task" id="task"><spring:message code="task"/></option> 
                     <option value="risk" id="risk"><spring:message code="risk"/></option>
-                    
-               <!--      <option value="">모두</option>
-                    <option value="task">업무</option>
-                    <option value="risk">리스크</option> -->
                   </select>
                 </div>
-                <!-- <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="task" >
-                  <label for="task" class="custom-control-label">Task</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="risk" >
-                  <label for="risk" class="custom-control-label">Risk</label>
-                </div> -->
                <div class="form-row float-left">
             <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type">적용</button> 
             <!-- <div>{{type}}</div> -->
@@ -191,7 +210,7 @@ $(document).ready(function(){
                   <tbody>
                    <c:forEach var="act" items="${activity}">
 	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" 
-	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
+	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}">
 	                      <td>${act.document_id}</td>
 	                      <td>
 	                      <c:choose>

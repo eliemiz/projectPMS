@@ -40,9 +40,7 @@ public class A11_ActivityController {
 	
 	// http://localhost:7080/projectPMS/activity.do
 	@RequestMapping("activity.do")
-	public String Activity(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("jr") Journal jr,
-			/* @ModelAttribute("accountId") int accountId, */ Model d) {
-		
+	public String Activity(HttpServletRequest request, HttpServletResponse response,  Model d) {
 		
 		/* Set Project Id */
 		HttpSession session = request.getSession();
@@ -63,8 +61,6 @@ public class A11_ActivityController {
 			projectId = Integer.parseInt(projectIdObj.toString());
 		}
 		
-		
-		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
@@ -72,15 +68,15 @@ public class A11_ActivityController {
 		
 		ArrayList<JournalEx> jList = null;
 		String type = request.getParameter("document_type");
-		if (type == null) {
+		if (type==null) {
 			// 모든 목록
 			jList = service.getJournalListAll(projectId);
 
 		} else {
-			if (type == "task") {
+			if (type.equals("task")) {
 				// task만
 				jList = service.getJournalListTask(projectId);
-			} else if (type == "risk") {
+			} else if (type.equals("risk")) {
 				// risk만
 				jList = service.getJournalListRisk(projectId);
 			} else {
