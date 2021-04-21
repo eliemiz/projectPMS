@@ -210,7 +210,7 @@ $(document).ready(function(){
                   <tbody>
                    <c:forEach var="act" items="${activity}">
 	                    <tr onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';" 
-	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}">
+	                    	style="text-align:center; cursor: pointer;" class="data" id="${act.document_id}" data-id="${act.document_type}">
 	                      <td>${act.document_id}</td>
 	                      <td>
 	                      <c:choose>
