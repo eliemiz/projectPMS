@@ -235,9 +235,18 @@ public class A12_TaskService {
 	public ArrayList<TaskResult> getTaskResult(int projectId) {
 		return dao.getTaskResult(projectId);
 	}
-	
+
 	public ArrayList<Task> getTaskUser(int id){
-		return dao.getTaskUser(id);
+		
+		ArrayList<Task> taskUser = dao.getTaskUser(id);
+		
+		/* Local 시간으로 변경 */
+		for (Task task : taskUser) {
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
+		
+		}
+		return taskUser;
 	}
 
 }
