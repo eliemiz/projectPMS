@@ -23,7 +23,7 @@
 			AND j.account_id = a.id
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
-			) e ORDER BY e.CREATED_ON
+			) e ORDER BY e.CREATED_ON DESC
 		<!-- SELECT (...) e ORDER BY e.CREATED_ON DESC; -->
 	</select>
 	<select id="getJournalListTask" resultType="journalEx" parameterType="int">
