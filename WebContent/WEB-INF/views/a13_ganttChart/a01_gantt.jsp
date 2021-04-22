@@ -125,6 +125,18 @@
 											<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
 										</div>
 										<div class="row mb-3">
+											<label for="status" class="col-md-2">상태 검색</label>
+											<select id="status" class="form-control select" style="display:inline-block;">
+												<option value="">상태 선택</option>
+							                    <option value="신규">신규</option>
+							                    <option value="진행">진행</option>
+							                    <option value="해결">해결</option>
+							                    <option value="의견">의견</option>
+							                    <option value="완료">완료</option>
+							                    <option value="거절">거절</option>
+											</select>																	
+										</div>
+										<div class="row mb-3">
 											<button type="button" id="searchButton" class="btn btn-primary">검색</button>
 										</div>
 									</form>
@@ -225,13 +237,16 @@
 	$("#searchButton").click(function(){
 		var projectId = $("#projectId").val();
 		var taskName = $("#taskName").val();
+		var status = $("#status").val();
+		alert(status);
 		
 		$.ajax({
 			type:"get",
 			url:"${path}/gantt.do?method=data",
 			data: {
 				projectId: projectId,
-				taskName: taskName
+				taskName: taskName,
+				status: status
 			},
 			dataType:"json",
 			success:function(te){

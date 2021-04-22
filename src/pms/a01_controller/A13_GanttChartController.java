@@ -86,10 +86,14 @@ public class A13_GanttChartController {
 		if (taskName == null || taskName.trim().equals("")) {
 			taskName = "";
 		}
+		String status = request.getParameter("status");
+		if(status == null || status.trim().equals("")) {
+			status = "";
+		}
 		
-		System.out.println(projectId + ", " + taskName);
+		System.out.println(projectId + ", " + taskName + ", " + status);
 		
-		GanttSearch gs = new GanttSearch(projectId,taskName);
+		GanttSearch gs = new GanttSearch(projectId, taskName, status);
 		
 		
 		/* Get Model */

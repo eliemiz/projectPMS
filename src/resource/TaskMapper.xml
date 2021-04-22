@@ -164,6 +164,7 @@
 		where p.id = t.project_id
 		and p.id = #{projectId}
 		and t.subject LIKE '%'||#{taskName}||'%'
+		and t.status LIKE '%'||#{status}||'%'
 		ORDER BY t.id	
 	</select>
 	

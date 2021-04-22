@@ -4,11 +4,13 @@ public class GanttSearch {
 	// 검색용
 	private int projectId;
 	private String taskName;
+	private String status;
 
-	public GanttSearch(int projectId, String taskName) {
+	public GanttSearch(int projectId, String taskName, String status) {
 		super();
 		this.projectId = projectId;
 		this.taskName = taskName;
+		this.status = status;
 	}
 
 	public int getProjectId() {
@@ -25,6 +27,14 @@ public class GanttSearch {
 
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }
