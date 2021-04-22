@@ -265,6 +265,11 @@ public class A12_TaskService {
 		
 		/* 업무 목록 로드 */
 		ArrayList<Task> taskList = dao.getTaskListByProjectId(projectId);
+		if (taskList == null) {
+			return;
+		} else if (taskList.size() == 0) {
+			return;
+		}
 
 		/* 시작일, 종료일 검색 */
 		Date firstDate = null;
