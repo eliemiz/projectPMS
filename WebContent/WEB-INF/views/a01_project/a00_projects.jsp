@@ -109,7 +109,9 @@
               <div class="card-body">
                 <h6 class="card-title">${project.description}</h6>
                 <p class="card-text"></p>
+                <p class="card-text">${project.homepage}</p>
               <div class="form-row float-right">
+              
               	<a href="${path}/dashboard.do?projectId=${project.id}" class="btn btn-success">프로젝트 확인하기</a>
               </div>
               </div>

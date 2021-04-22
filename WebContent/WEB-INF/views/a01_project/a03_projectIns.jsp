@@ -69,9 +69,18 @@ $.widget.bridge('uibutton', $.ui.button)
 	  $("#Btn").on("click",function(){
 		  
 			if($("[name=name]").val()==""){
-				alert("제목을 입력해주세요");
+				alert("프로젝트명을 입력해주세요");
 				return false;
-			}
+			}else if ($("[name=description]").val() == "") {
+		 		alert("설명을 입력해주세요.");
+		 		return false;
+		 	}else if ($("[name=identifier]").val() == "") {
+		 		alert("식별자를 입력해주세요.");
+		 		return false;
+		 	}else if ($("[name=homepage]").val() == "") {
+		 		alert("홈페이지를 입력해주세요.");
+		 		return false;
+		 	}
 			$("form").submit();
  	  
        });
@@ -132,7 +141,7 @@ $.widget.bridge('uibutton', $.ui.button)
            
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">이름</label>
+                <label for="inputName">프로젝트명</label>
                 <form:input path="name" class="form-control"/>
               </div>
               <div class="form-group">
@@ -142,6 +151,7 @@ $.widget.bridge('uibutton', $.ui.button)
               <div class="form-group">
                 <label for="inputClientCompany">식별자</label>
                 <form:input path="identifier" class="form-control"/>
+              	* 식별자는 저장후에는 수정할 수 없습니다.
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">홈페이지</label>
