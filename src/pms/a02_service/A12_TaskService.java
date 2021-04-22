@@ -267,15 +267,20 @@ public class A12_TaskService {
 		ArrayList<Task> taskList = dao.getTaskListByProjectId(projectId);
 
 		/* 시작일, 종료일 검색 */
-		Date firstDate = new Date();
-		Date lastDate = new Date();
+		Date firstDate = null;
+		Date lastDate = null;
 		for (Task task : taskList) {
 			Date startDate = TimeManager.getInstance().isoToDate(task.getStart_date());
-			if (startDate.before(firstDate)) {
+			if (firstDate == null) {
+				firstDate = startDate;
+			} else if (startDate.before(firstDate)) {
 				firstDate = startDate;
 			}
+			
 			Date dueDate = TimeManager.getInstance().isoToDate(task.getDue_date());
-			if (dueDate.after(lastDate)) {
+			if (lastDate == null) {
+				lastDate = dueDate;
+			} else if (dueDate.after(lastDate)) {
 				lastDate = dueDate;
 			}
 		}
@@ -287,7 +292,7 @@ public class A12_TaskService {
 		ArrayList<Double> arr2 = new ArrayList<Double>();
 		
 		/* 시작일부터 종료일까지 순회 */
-		while(firstDate.before(lastDate)) {
+		while(!firstDate.after(lastDate)) {
 			labels.add(TimeManager.getInstance().dateToSimple(firstDate));
 			
 			/* 업무가 해당 범위 내에 있으면 날짜와 진행도 추가 */
@@ -299,7 +304,7 @@ public class A12_TaskService {
 				
 				stack1 += 100;
 				
-				if (firstDate.after(startDate) && firstDate.before(dueDate)) {
+				if (!firstDate.before(startDate) && !firstDate.after(dueDate)) {
 					stack2 += task.getDone_ratio();
 				} else {
 					stack2 += 100;
