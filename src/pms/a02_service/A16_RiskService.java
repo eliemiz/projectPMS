@@ -93,10 +93,11 @@ public class A16_RiskService {
 				upt.getFilenames().length>0) {
 		
 			String filename = null;	
+			long filesize = 0;
 			String orgFilename = null; 
 			File tmpFile = null; 
 			File orgFile = null; 
-			Attachment uptFile = null;
+			//Attachment uptFile = null;
 			MultipartFile mpf = null;
 			File pathFile = new File(uploadTmp); // 폴드 객체 생성.
 			for(File f:pathFile.listFiles()) {
@@ -142,8 +143,10 @@ public class A16_RiskService {
 					}
 					
 					HashMap<String, String> hs = new HashMap<String, String>();
-					hs.put("id", ""+id);
+					hs.put("document_id", ""+id);
 					hs.put("filename", filename);
+					hs.put("filesize", filesize+"KB");
+					hs.put("disk_filename", "disk_"+filename);
 					hs.put("orgFilename", upt.getFilenames()[idx]);
 					dao.updateFile(hs);
 				}

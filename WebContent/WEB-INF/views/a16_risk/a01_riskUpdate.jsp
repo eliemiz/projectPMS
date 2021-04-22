@@ -85,6 +85,13 @@
 			$(this).next(".custom-file-label").text($(this).val());
 		});
 		$("#uptBtu").on("click",function(){
+			if($("[name=start_date]").val()==""){
+				alert("예상시작일을 입력하세요.");
+				return false;
+			}else if($("[name=end_date]").val()==""){
+				alert("예상종료일을 입력하세요.");
+				return false;
+			}
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/risk.do?method=update");
@@ -255,9 +262,10 @@
      			  <c:forEach var="finf" items="${risk.fileInfo}" varStatus="sts">
                   <div class="form-group">
                     <label for="exampleInputFile">파일 첨부</label>
+                    <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
                       <div class="custom-file">
-                        <input type="file" id="file01" class="custom-file-input" name="report" />
-                        <label class="custom-file-label" for="file01">${finf.filename}</label>
+                        <input type="file" class="custom-file-input" name="report" />
+                        <label class="custom-file-label" for="file01"></label>
                       </div>
                   </div>
                   </c:forEach>

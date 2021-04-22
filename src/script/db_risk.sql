@@ -30,5 +30,15 @@ CREATE SEQUENCE RISK_SEQ
 	MINVALUE 1
 	MAXVALUE 9999999
 	CYCLE; 
-
+drop sequence RISK_SEQ;
 SELECT * FROM USER_SEQUENCES;
+SELECT account_seq.currval FROM dual;
+INSERT into COMMENTS values(
+	comments_seq.nextval, 'risk', risk_seq.currval,
+	account_seq.currval, '댓글 내용 테스트', sysdate, sysdate
+);
+INSERT into COMMENTS values(
+	299, 'risk', 1000,
+	1000, '댓글 내용 테스트', sysdate, sysdate
+);
+SELECT * FROM COMMENTS;

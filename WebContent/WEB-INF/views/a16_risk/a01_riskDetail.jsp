@@ -283,14 +283,25 @@
             <div class="row mt-4">
             <nav class="w-100">
               <div class="nav nav-tabs" id="product-tab" role="tablist">
-                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">댓글</a>
-                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글 달기</a>
+                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">이력</a>
+                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글</a>
               </div>
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
               	<br>
-              		<div class="post">
+              	
+	              	<div class="form-group">
+	                <p class="text-md">내용 수정
+	                  <b>2021-04-21</b>
+	                </p>
+	                </div>
+	                <div class="form-group">
+	                <p class="text-md">파일 수정
+	                  <b>2021-04-22</b>
+	                </p>
+	                </div>
+              		<!-- <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
                         <span class="username">
@@ -298,7 +309,7 @@
                         </span>
                         <span class="description">Shared publicly - 7:45 PM today</span>
                       </div>
-                      <!-- /.user-block -->
+                      /.user-block
                       <p>
                        댓글1 
                       </p>
@@ -312,7 +323,7 @@
                         </span>
                         <span class="description">Sent you a message - 3 days ago</span>
                       </div>
-                      <!-- /.user-block -->
+                      /.user-block
                       <p>
                        댓글2
                       </p>
@@ -326,14 +337,14 @@
                         </span>
                         <span class="description">Shared publicly - 5 days ago</span>
                       </div>
-                      <!-- /.user-block -->
+                      /.user-block
                       <p>
                        댓글3
                       </p>
-                    </div>
+                    </div> -->
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-           		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
+           		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 작성  
               	<form class="form-horizontal">
               		<div>
                           <input type="text" class="form-control"/><br>
@@ -341,6 +352,19 @@
                             <input type="button" class="btn btn-danger" value="취소"/>
                     </div><br>
                 </form>
+                <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
+                        <span class="username">
+                          <a href="#">Jonathan Burke Jr.</a>
+                        </span>
+                        <span class="description">Shared publicly - 7:45 PM today</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p>
+                       댓글1 
+                      </p>
+                    </div>
                 
               </div>
             </div>

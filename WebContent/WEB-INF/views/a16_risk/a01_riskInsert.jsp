@@ -157,6 +157,7 @@
        	<form:hidden path="status" value="Open"/>
        	<form:hidden path="strategy" value="-"/>
        	<form:hidden path="treatment" value="-"/>
+       	<input type="hidden" name="document_id" value="Risk"/>
          </div>
            <!-- /.card-header -->
                 <div class="card-body">                              
