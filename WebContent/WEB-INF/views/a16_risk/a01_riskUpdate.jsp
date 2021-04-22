@@ -265,7 +265,7 @@
                     <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" name="report" />
-                        <label class="custom-file-label" for="file01"></label>
+                        <label class="custom-file-label" for="file01">수정할 파일을 선택해주세요.</label>
                       </div>
                   </div>
                   </c:forEach>
