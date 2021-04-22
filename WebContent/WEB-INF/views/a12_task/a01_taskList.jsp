@@ -94,12 +94,6 @@ html, body {
 			var status = $("#status").val();
 			var writer = $("#writer").text();
 			
-			alert(projectId);
-			alert(subject);
-			alert(tracker);
-			alert(status);
-			alert(writer);
-			
 			$("form").submit();
 		});
 	});
