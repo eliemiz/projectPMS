@@ -51,9 +51,9 @@ public class A16_RiskController {
 	// http://localhost:6080/projectPMS/risk.do?method=detail
 	// http://localhost:7080/projectPMS/risk.do?method=detail
 	@RequestMapping(params="method=detail")
-	public String RiskDetail(@RequestParam("id") int id, Model d) {
-		System.out.println("id 확인:"+id);
-		d.addAttribute("risk", service.getRisk(id));
+	public String RiskDetail(@ModelAttribute("risk") Risk risk, Model d) {
+		System.out.println("id 확인:"+risk.getId());
+		d.addAttribute("risk", service.getRisk(risk.getId()));
 		
 		return "a16_risk\\a01_riskDetail";
 	}
@@ -112,7 +112,7 @@ public class A16_RiskController {
 		service.deleteRisk(id);
 		return "a16_risk\\a01_riskUpdate";
 	}
-	
+	// http://localhost:6080/projectPMS/risk.do?method=download&filename=risk.txt
 	@RequestMapping(params="method=download")
 	public String download(@RequestParam("filename") String filename, Model d) {
 		System.out.println("파일명:"+filename);

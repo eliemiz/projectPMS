@@ -32,6 +32,12 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+<style type="text/css">
+#download:hover{
+	cursor:pointer;
+	font-weight:bold;
+}
+</style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -160,9 +166,9 @@
               <h5 class="text-secondary">수정일 : <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/></h5>
               &nbsp;&nbsp;&nbsp;
               
-               <p>
+               <div>
                	${risk.description}
-        	   </p>  
+        	   </div>  
               <br>
               <div class="text-muted">
                <div class="row">
@@ -250,17 +256,18 @@
                 
                 
 
-			  <div id="download">
+			  
               <h5 class="mt-5 text-muted">첨부파일</h5>
-              <ul class="list-unstyled">
+              <div class="form-group">
               <c:forEach var="file" items="${risk.fileInfo}" varStatus="sts">
-                <li>
-                  <a href="" class="btn-link text-secondary"><i class="fas fa-download"></i>
+                <div id="download">
+                  <i class="fas fa-download">&nbsp;</i>
                    <!-- Functional-requirements.docx -->
                   	 <span id="fileInfo" name="filename" value="${file.filename}">${file.filename}</span>
-                  </a>
-                </li>
+                  </div>
+                
                 </c:forEach>
+                </div>
                 <!-- <li>
                   <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-pdf"></i> UAT.pdf</a>
                 </li>
@@ -273,8 +280,8 @@
                 <li>
                   <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
                 </li> -->
-              </ul>
-              </div>
+              
+              
              
               
 		<div class="col-12 col-lg-12 col-lg-8 order-2 order-md-1">
