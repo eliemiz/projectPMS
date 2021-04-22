@@ -165,6 +165,10 @@ html, body {
                   &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
                   <form:input path="subject" class="form-control"/>
                   </div><br>
+                  <div class="input-group input-group-m" style="width: 1000px;">
+                  &nbsp;&nbsp;<label for="projectId">프로젝트</label>&nbsp;&nbsp;
+                  <form:select path="projectId" class="form-contorl col-md-3" style="display:inline-block;"/>
+                  </div><br>
                    <%--
                   <div class="input-group input-group-m" style="width: 600px;">
                   <input type="checkbox" name="description" id="description" checked id="checkboxSuccess1">

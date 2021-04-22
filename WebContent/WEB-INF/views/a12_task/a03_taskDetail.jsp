@@ -315,6 +315,8 @@ html, body {
               	</div>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+           		<jsp:include page="a05_taskComment.jsp" />
+           		<%-- 
            		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
               	<form class="form-horizontal" method="post" id="comment">
               		<div>
@@ -331,7 +333,7 @@ html, body {
 <!--               		<div class="form control" id="round1" style="padding:10px; background-Color:lightpink; float:left;"> -->
 <!--               		홍길동&nbsp;&nbsp;사원<br>확인했습니다 -->
 <!--               		</div> -->
-              		
+              		--%>
               		
 <%--               		<c:foreach var="comment" items="${commentinfo}"> --%>
 <!--               		<div class="form control" id="round1" style="padding:10px; background-Color:lightgreen; float:right;"> -->
