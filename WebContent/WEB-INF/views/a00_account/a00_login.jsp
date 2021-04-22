@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,13 +115,13 @@ html, body {
 						<!-- /.login-logo -->
 						<div class="card card-outline card-primary">
 							<div class="card-header text-center">
-								<h1>로그인</h1>
+								<h1><spring:message code="account_login"/></h1>
 							</div>
 							<div class="card-body">
 
 								<form id="login-form" method="post">
 									<div class="input-group mb-4">
-										<input type="text" class="form-control" name="user_id" placeholder="아이디 입력">
+										<input type="text" class="form-control" name="user_id" placeholder="<spring:message code="account_id"/>">
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
@@ -128,7 +129,7 @@ html, body {
 										</div>
 									</div>
 									<div class="input-group mb-4">
-										<input type="password" class="form-control" name="password" placeholder="비밀번호 입력">
+										<input type="password" class="form-control" name="password" placeholder="<spring:message code="account_pass"/>">
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-lock"></span>
@@ -136,20 +137,20 @@ html, body {
 										</div>
 									</div>
 									<div class="input-group mb-5">
-										<button id="loginBtn" type="button" class="btn btn-primary btn-block">로그인</button>
+										<button id="loginBtn" type="button" class="btn btn-primary btn-block"><spring:message code="account_login"/></button>
 									</div>
 								</form>
 								<div class="mb-3">
 									<a href="${path}/account.do?method=loginSearch">
 										<button type="button" class="btn btn-outline-info btn-block btn-flat">
-											<i class="fas fa-search"></i> 비밀번호 찾기
+											<i class="fas fa-search"></i> <spring:message code="account_searchpass"/> 
 										</button>
 									</a>
 								</div>
 								<div class="mb-3">
 									<a href="${path}/account.do?method=signin">
 										<button type="button" class="btn btn-outline-danger btn-block btn-flat">
-											<i class="fa fa-book"></i> 새로 등록하기
+											<i class="fa fa-book"></i> <spring:message code="account_insert"/> 
 										</button>
 									</a>
 								</div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <fmt:requestEncoding value="UTF-8" />
 <!DOCTYPE html>
@@ -134,8 +135,8 @@ $(document).ready(function(){
 	 <div class="card-header">
 	 <form:form modelAttribute="sch" class="form-inline" method="post">
  		<nav class="navbar navbar-expand-sm bg-white navbar-white">
-		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
-		       <button class="btn btn-primary" type="submit">검색</button>
+		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="<spring:message code="ps_name"/>">
+		       <button class="btn btn-primary" type="submit"><spring:message code="ps_search"/></button>
 		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		     </form:form>
 		  </div>
@@ -151,8 +152,8 @@ $(document).ready(function(){
                   <thead>
                   <tr>
                    <th style="text-align:center;"></th>
-                    <th style="text-align:center;">프로젝트명</th>
-                    <th style="text-align:center;">프로젝트 설명</th>
+                    <th style="text-align:center;"><spring:message code="ps_name"/></th>
+                    <th style="text-align:center;"><spring:message code="ps_description"/></th>
                   </tr>
                   </thead>
                   <tbody>

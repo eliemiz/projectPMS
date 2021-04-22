@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,7 +133,7 @@
         <div class="col-md-8">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">프로젝트 설정</h3>
+              <h3 class="card-title"><spring:message code="ps_project_setting"/></h3>
 
             	<div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -145,20 +146,20 @@
    				<input type="hidden" name="id" value="${project.id}"/>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">이름</label>
+                <label for="inputName"><spring:message code="ps_name"/></label>
                 <input name="name" class="form-control" value="${project.name}"/>
               </div>
               <div class="form-group">
-                <label for="inputDescription">설명</label><br>
+                <label for="inputDescription"><spring:message code="ps_description"/></label><br>
                 <textarea name="description" rows="8" cols="73" >${project.description}</textarea>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">식별자</label>
+                <label for="inputClientCompany"><spring:message code="ps_identifier"/></label>
                 <input name="identifier" class="form-control" value="${project.identifier}" readonly/>
                 * 식별자는 저장후에는 수정할 수 없습니다.
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">홈페이지</label>
+                <label for="inputProjectLeader"><spring:message code="ps_homepage"/></label>
                 <input name="homepage" class="form-control" value="${project.homepage}"/>
               </div>
 
@@ -168,9 +169,9 @@
 	          </div> 
                <div class="form-row float-right">
           <!-- /.col -->
-            <button type="submit" class="btn btn-primary" id="uptBtn">설정</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-danger" id="delBtn">삭제</button>&nbsp;&nbsp;
-            <a href="${path}/settings.do?method=project" class="btn btn-default">취소</a>
+            <button type="submit" class="btn btn-primary" id="uptBtn"><spring:message code="ps_setting"/></button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-danger" id="delBtn"><spring:message code="ps_delete"/></button>&nbsp;&nbsp;
+            <a href="${path}/settings.do?method=project" class="btn btn-default"><spring:message code="ps_cancel"/></a>
           <!-- /.col -->
         </div>
             </div>
@@ -181,7 +182,7 @@
         </div>
       
       </div>
-     
+
     </section>
     <!-- /.content -->
   </div>

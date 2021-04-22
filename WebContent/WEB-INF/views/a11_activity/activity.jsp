@@ -159,7 +159,7 @@ $(document).ready(function(){
           <div class="card-body">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title"><spring:message code="project-select"/></h5>
+                <h5 class="card-title"><spring:message code="ac_project-select"/></h5>
               </div>
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
@@ -175,9 +175,9 @@ $(document).ready(function(){
               <div class="input-group input-group-m" style="width: 250px;">
                   <label><spring:message code="ac_type"/></label>&nbsp;&nbsp;
                   <select class="form-control select2"  v-model="type">
-                   <option value="all" id="all"><spring:message code="all"/></option> 
-                   <option value="task" id="task"><spring:message code="task"/></option> 
-                    <option value="risk" id="risk"><spring:message code="risk"/></option>
+                   <option value="all" id="all"><spring:message code="ac_all"/></option> 
+                   <option value="task" id="task"><spring:message code="ac_task"/></option> 
+                    <option value="risk" id="risk"><spring:message code="ac_risk"/></option>
                   </select>
                 </div>
                <div class="form-row float-left">
@@ -220,8 +220,8 @@ $(document).ready(function(){
 	                      <td>${act.document_id}</td>
 	                      <td>
 	                      <c:choose>
-							<c:when test="${act.document_type=='risk'}"> <spring:message code="risk"/> </c:when>
-							<c:when test="${act.document_type=='task'}"> <spring:message code="task"/> </c:when>
+							<c:when test="${act.document_type=='risk'}"> <spring:message code="ac_risk"/> </c:when>
+							<c:when test="${act.document_type=='task'}"> <spring:message code="ac_task"/> </c:when>
 							<c:otherwise> Error </c:otherwise>
 					  	 </c:choose>
 					  	 </td>

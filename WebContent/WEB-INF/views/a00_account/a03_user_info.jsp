@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +99,7 @@ html, body {
             </h1>
             <div class="form-row float-right">
             <a href="${path}/account.do?method=changePassword&id=${account.id}">
-             <button class="btn btn-default" type="button"><i class="fas fa-pen">비밀번호 변경하기</i></button>
+             <button class="btn btn-default" type="button"><i class="fas fa-pen"><spring:message code="u_pass_change"/></i></button>
              </a>
             </div>
           </div>
@@ -110,16 +111,16 @@ html, body {
                 <h5 class="card-title"><b>${account.name}</b></h5>
               </div>
               <div class="card-body">
-                <a> 아이디: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
-				<a> 등록시각: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a> 마지막 로그인: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
+                <a> <spring:message code="u_id"/>: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+				<a> <spring:message code="u_date"/>: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a> <spring:message code="u_login"/>: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
 				</div>
               </div>
             </div>
           
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">${account.name}님의 업무</h3>
+                <h3 class="card-title">${account.name}<spring:message code="user_task"/></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -127,14 +128,14 @@ html, body {
                       <thead>
                     <tr>
                       <th></th>
-                      <th style="text-align:center;">진행중</th>
-                      <th style="text-align:center;">완료됨</th>
-                      <th style="text-align:center;">합계</th>
+                      <th style="text-align:center;"><spring:message code="u_progress"/></th>
+                      <th style="text-align:center;"><spring:message code="u_done"/></th>
+                      <th style="text-align:center;"><spring:message code="a_all"/></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>할당된 업무</td>
+                      <td><spring:message code="user_tasks"/></td>
                       <td style="text-align:center;">${cnt1}</td>
                       <td style="text-align:center;">${cnt2}</td>
                       <td style="text-align:center;">${cnt1 + cnt2}</td>
@@ -155,21 +156,21 @@ html, body {
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">작업내역 목록</h3>
+                <h3 class="card-title"><spring:message code="u_task_list"/></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr style="text-align:center;">
-                      <th>번호</th>
-                      <th>프로젝트명</th>
-                      <th>유형</th>
-                      <th>상태</th>
-                      <th>내용</th>
-                      <th>담당자</th>
-                      <th>시작날짜</th>
-                      <th>완료날짜</th>
+                      <th><spring:message code="u_id"/></th>
+                      <th><spring:message code="u_project"/></th>
+                      <th><spring:message code="u_type"/></th>
+                      <th><spring:message code="u_status"/></th>
+                      <th><spring:message code="u_content"/></th>
+                      <th><spring:message code="u_writer"/></th>
+                      <th><spring:message code="u_start_date"/></th>
+                      <th><spring:message code="u_completed_date"/></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -178,8 +179,22 @@ html, body {
                    		onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';">
                    	  <td>${task.id}</td>
                       <td>${task.project_name}</td>
-                      <td>${task.tracker}</td>
-                      <td>${task.status}</td>
+                      <td>
+                      <c:choose>
+							<c:when test="${task.tracker=='새기능'}"> <spring:message code="u_newfunction"/> </c:when>
+							<c:when test="${task.tracker=='결함'}"> <spring:message code="u_defect"/> </c:when>
+							<c:when test="${task.tracker=='지원'}"> <spring:message code="u_support"/> </c:when>
+							<c:otherwise> Error </c:otherwise>
+					  </c:choose>
+                      </td>
+                      <td>
+                      <c:choose>
+							<c:when test="${task.status=='신규'}"> <spring:message code="u_new"/> </c:when>
+							<c:when test="${task.status=='완료'}"> <spring:message code="u_completed"/> </c:when>
+							<c:when test="${task.status=='진행'}"> <spring:message code="u_progresss"/> </c:when>
+							<c:otherwise> Error </c:otherwise>
+					  </c:choose>
+                      </td>
                       <td>${task.subject}</td>
                       <td>${task.name}</td>
                       <td>${task.start_date}</td>
@@ -196,8 +211,7 @@ html, body {
           </div>
         </div>
         <!-- /.row -->
-               
-        
+
     </section>
     <!-- /.content -->
   </div>
