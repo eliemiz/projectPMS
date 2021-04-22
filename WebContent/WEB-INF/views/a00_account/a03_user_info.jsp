@@ -197,9 +197,6 @@ html, body {
         </div>
         <!-- /.row -->
                
-            </div>
-          </div>
-        </div>
         
     </section>
     <!-- /.content -->
