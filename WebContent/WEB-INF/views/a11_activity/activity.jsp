@@ -50,7 +50,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	 $('#all').attr('selected','selected');
+	// $('#all').attr('selected','selected');
 	
 	 /* Get project List */
 	$.ajax({
@@ -95,7 +95,7 @@ $(document).ready(function(){
     	 	
        });	 
      
-     	var pi = '${projectId}';
+     	var pi = '${projectId}';//session받아오는거라서 param.projectId가 아니라 projectId임
      			
    	 $(".type").click(function(){
     	  var ty = $(this).attr("id");
@@ -133,7 +133,7 @@ $(document).ready(function(){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">activity</h1>
+            <h1 class="m-0">Activity</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -152,14 +152,14 @@ $(document).ready(function(){
         <div class="card card-row card-secondary">
           <div class="card-header">
             <h3 class="card-title">
-              작업내역
+              <spring:message code="activity"/> 
             </h3>
           </div>
           
           <div class="card-body">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">프로젝트 선택</h5>
+                <h5 class="card-title"><spring:message code="project-select"/></h5>
               </div>
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
@@ -169,11 +169,11 @@ $(document).ready(function(){
             </div>
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title">작업유형 선택</h5>
+                <h5 class="card-title"><spring:message code="d_type_select"/></h5>
               </div>
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
-                  <label>유형선택</label>&nbsp;&nbsp;
+                  <label><spring:message code="ac_type"/></label>&nbsp;&nbsp;
                   <select class="form-control select2"  v-model="type">
                    <option value="all" id="all"><spring:message code="all"/></option> 
                    <option value="task" id="task"><spring:message code="task"/></option> 
@@ -181,7 +181,7 @@ $(document).ready(function(){
                   </select>
                 </div>
                <div class="form-row float-left">
-            <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type">적용</button> 
+            <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type"><spring:message code="ac_setting"/></button> 
             <!-- <div>{{type}}</div> -->
               </div>
               </div>
@@ -190,7 +190,7 @@ $(document).ready(function(){
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">작업내역 목록</h3>
+                <h3 class="card-title"><spring:message code="ac_list"/></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -202,11 +202,15 @@ $(document).ready(function(){
 			    <col width="10%">
                   <thead>
                     <tr style="text-align:center;">
-                      <th>작업번호</th>
-                      <th>작업유형</th>
-                      <th>내용</th>
-                      <th>작성자</th>
-                      <th>작성일자</th>
+                      <th><spring:message code="ac_no"/></th>
+                      <th><spring:message code="ac_type"/></th>
+                      <th><spring:message code="ac_content"/></th>
+                      <th><spring:message code="ac_writer"/></th>
+                      <th><spring:message code="ac_date"/></th>
+                      <!-- <th>작업유형</th>ac_type
+                      <th>내용</th>ac_content
+                      <th>작성자</th>ac_writer
+                      <th>작업일자</th>ac_date -->
                     </tr>
                   </thead>
                   <tbody>
@@ -247,8 +251,27 @@ $(document).ready(function(){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
-
+<!-- 
+activity=Activity
+project-select=Project Select
+d_type_select=Type Select
+ac_type=Activity Type
+ac_list=Activity List
+ac_no=ID
+ac_content=Content
+ac_writer=Writer
+ac_date=Date
+ac_setting=Click
+activity=\uC791\uC5C5\uB0B4\uC5ED
+project-select=\uD504\uB85C\uC81D\uD2B8 \uC120\uD0DD
+d_type_select=\uC791\uC5C5\uC720\uD615 \uC120\uD0DD
+ac_type=\uC791\uC5C5\uC720\uD615
+ac_list=\uC791\uC5C5\uB0B4\uC5ED \uBAA9\uB85D
+ac_no=\uC791\uC5C5\uBC88\uD638
+ac_content=\uB0B4\uC6A9
+ac_writer=\uC791\uC131\uC790
+ac_date=\uC791\uC5C5\uC77C\uC790
+ac_setting=적용 -->
  <!-- Footer -->
   <jsp:include page="../a00_common/a02_footer.jsp"/>
 

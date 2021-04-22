@@ -16,6 +16,10 @@ WHERE id=2;
 SELECT * FROM journal;
 SELECT * FROM risk;
 SELECT * FROM task;
+UPDATE ACCOUNT 
+SET
+mail='projectmgtsystem1@gmail.com'
+WHERE id=1;
 INSERT INTO account values(account_seq.nextval,'himan','7777','김나리','asdf@naver.com',sysdate,sysdate,'Manager');
 INSERT INTO JOURNAL values(journal_seq.nextval,'task',2,1,sysdate,'제목 수정, 댓글 추가');
 SELECT * 
@@ -54,7 +58,7 @@ SELECT j.*, a.name account_name
 			order by created_on DESC
 			
 			
-SELECT * FROM journal;
+SELECT * FROM account;
 
 
 
