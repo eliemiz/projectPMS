@@ -18,6 +18,7 @@ import pms.z01_vo.TaskSch;
 @Repository
 public interface A12_TaskDao {
 	public ArrayList<Task> taskList(TaskSch sch);
+	public ArrayList<Task> getTaskListByProjectId(int projectId);	// 프로젝트ID로 Task리스트 조회
 	public Task getTask(int id); // task 조회
 	public ArrayList<Task> getTaskList(Task sch);
 	public void insertTask(Task ins); // task 등록

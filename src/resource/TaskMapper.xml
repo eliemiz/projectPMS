@@ -12,7 +12,9 @@
 		AND t.PROJECT_ID = p.ID
 		ORDER BY t.id desc
 	</select>
-
+	<select id="getTaskListByProjectId" resultType="task" parameterType="int">
+		SELECT * FROM TASK WHERE PROJECT_ID = #{projectId}
+	</select>
 	<!--public Task getTask(int id) -->
 	<select id="getTask" resultType="task" parameterType="int">
 		SELECT t.id, t.PARENT_ID, t.PROJECT_ID, t.ACCOUNT_ID,
