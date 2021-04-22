@@ -75,7 +75,7 @@ html, body {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">user information</h1>
+            <h1 class="m-0">User Information</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -119,7 +119,7 @@ html, body {
           
            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">일감</h3>
+                <h3 class="card-title">${account.name}님의 업무</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -127,17 +127,17 @@ html, body {
                       <thead>
                     <tr>
                       <th></th>
-                      <th>진행중</th>
-                      <th>완료됨</th>
-                      <th>합계</th>
+                      <th style="text-align:center;">진행중</th>
+                      <th style="text-align:center;">완료됨</th>
+                      <th style="text-align:center;">합계</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>할당된 일감</td>
-                      <td>&nbsp;&nbsp;${cnt1}</td>
-                      <td>&nbsp;&nbsp;${cnt2}</td>
-                      <td>&nbsp;&nbsp;${cnt1 + cnt2}</td>
+                      <td>할당된 업무</td>
+                      <td style="text-align:center;">${cnt1}</td>
+                      <td style="text-align:center;">${cnt2}</td>
+                      <td style="text-align:center;">${cnt1 + cnt2}</td>
                     </tr>
                     
                   </tbody>
@@ -161,7 +161,7 @@ html, body {
               <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
-                    <tr>
+                    <tr style="text-align:center;">
                       <th>번호</th>
                       <th>프로젝트명</th>
                       <th>유형</th>
@@ -174,14 +174,13 @@ html, body {
                   </thead>
                   <tbody>
                    <c:forEach var="task" items="${taskList}">
-                   <tr class="data" id="${task.id}" style="cursor:pointer;">
+                   <tr class="data" id="${task.id}" style="cursor:pointer; text-align:center;"
+                   		onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';">
                    	  <td>${task.id}</td>
                       <td>${task.project_name}</td>
                       <td>${task.tracker}</td>
                       <td>${task.status}</td>
-                      <td>
-                      	<a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a>
-                      </td>
+                      <td>${task.subject}</td>
                       <td>${task.name}</td>
                       <td>${task.start_date}</td>
                   	  <td>${task.due_date}</td>
