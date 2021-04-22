@@ -105,8 +105,14 @@ html, body {
 			}
 			
 			// 진척도에 숫자가 아닌 값을 넣었을 때 유효성 체크
-			if(isNaN($("[name=done_ratio]").val())){
-				alert("진척도는 숫자만 입력해주세요.(0~100)");
+			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
+				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
+				return false;
+			}
+			
+			// 추정시간에 숫자가 아닌 값을 넣었을 때 유효성 체크
+			if(isNaN($("[name=estimated]").val())||$("[name=estimated]").val()<0){
+				alert("추정시간은 0이상의 숫자만 입력하세요.");
 				return false;
 			}
 		

@@ -98,6 +98,14 @@ html, body {
 				alert("완료일을 선택해주세요");
 				return false;
 			} 
+			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
+				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
+				return false;
+			}
+			if(isNaN($("[name=estimated]").val())||$("[name=estimated]").val()<0){
+				alert("추정시간은 0이상의 숫자만 입력해주세요.");
+				return false;
+			}
 			// 달력 색깔 추가
 			if($("[name=tracker]").val()=='새기능'){
 				$("[name=backgroundColor]").val("#4f5fd4");
