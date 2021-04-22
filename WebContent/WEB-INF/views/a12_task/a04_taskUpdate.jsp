@@ -79,33 +79,45 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		// TODO: 다운로드 ㄴ
-/* 		$(".fileInfo").click(function(){
-			var filename=$(this).text();
-			if(confirm("다운로드하시겠습니까?"+filename)){
-				$(location).attr("href","${path}/task.do?method=download&filename="+filename);
-			}
-		}); */
+		
+		/* 파일 수정 시 파일명 & 파일사이즈 alert */
 		$('#filesize').bind('change', function(){
 			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
 			
 		});
+
+		/* 변경 파일 업로드 시 이름 표시 */
+		$(".custom-file-input").on("change",function(){
+			$(this).next(".custom-file-label").text($(this).val());
+		});
 		
+		/* 취소버튼 클릭 */
 		$("#gomain").click(function(){
 			$(location).attr("href","${path}/task.do?method=list");
 		});
 		
+		/* 수정버튼 클릭 */
 		$("#uptBtn").on("click",function(){
+			// 완료상태로 바꿨을 때 진척도 100으로 설정
+			if($("[name=status]").val()=="완료" && $("[name=done_ratio]").val()!=100){
+				alert("상태가 완료인 작업물은 진척도가 100이어야 합니다.");
+				return false;
+			}
+			
+			// 진척도에 숫자가 아닌 값을 넣었을 때 유효성 체크
+			if(isNaN($("[name=done_ratio]").val())){
+				alert("진척도는 숫자만 입력해주세요.(0~100)");
+				return false;
+			}
+		
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/task.do?method=update");
 				$("form").submit();
 			}
-		});
-		$(".custom-file-input").on("change",function(){
-			$(this).next(".custom-file-label").text($(this).val());
-		});
+		});		
 		
+		/* 삭제버튼 클릭 */
 		$("#delBtn").on("click",function(){
 			if(confirm("삭제하시겠습니까?")){
 				$("[name=proc]").val("del");
