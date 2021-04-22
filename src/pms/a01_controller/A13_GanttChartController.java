@@ -60,9 +60,7 @@ public class A13_GanttChartController {
 	
 	// http://localhost:7080/projectPMS/gantt.do?method=data
 	@GetMapping(params = "method=data")
-	public String data(HttpServletRequest request, HttpServletResponse response, Model d) {
-		
-		
+	public String data(HttpServletRequest request, HttpServletResponse response, Model d) {		
 		/* Set Project Id : request에서 projectId가 넘어왔다면 자동으로 세선에 저장해준다. */
 		HttpSession session = request.getSession();
 		String projectIdReq = request.getParameter("projectId");
@@ -90,16 +88,18 @@ public class A13_GanttChartController {
 		if(status == null || status.trim().equals("")) {
 			status = "";
 		}
-		
-		System.out.println(projectId + ", " + taskName + ", " + status);
-		
-		GanttSearch gs = new GanttSearch(projectId, taskName, status);
-		
+		String name = request.getParameter("name");
+		if(name == null || name.trim().equals("")) {
+			name = "";
+		}
+		System.out.println(projectId + ", " + taskName + ", " + status + ", " + name);
 		
 		/* Get Model */
 		// Project Info
 		Project project = serviceProject.getProject(projectId);
 		d.addAttribute("project", project);
+		
+		GanttSearch gs = new GanttSearch(projectId, taskName, status, name);
 		d.addAttribute("list", service.ganttSch(gs));
 		return "pageJsonReport";
 	}

@@ -56,20 +56,16 @@
 				var projectList = data.projectList;
 				
 				$.each(projectList, function(idx, e, arr){
-					$("#cal-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
+					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
 				});
 				
-				$("#cal-project-list").val(data.projectId);
+				$("#projectId").val(data.projectId);
 			},
 			error: function(err){
 				alert("에러발생");
 			}
 		});
 		
-		/* project_id */
-		$("#cal-project-list").change(function(){
-			location.href="${path}/calendar.do?method=list&projectId="+$(this).val();
-		});
 		
 		/* active 설정 */
 		$("#sb-calendar").addClass("active");
@@ -112,6 +108,34 @@
 				});
 			}
 		});
+		
+		$("#searchButton").click(function(){
+			var projectId = $("#projectId").val();
+			var taskName = $("#taskName").val();
+			var status = $("#status").val();
+			var name = $("#name").val();
+			
+			$.ajax({
+				type:"get",
+				url:"${path}/gantt.do?method=data",
+				data: {
+					projectId: projectId,
+					taskName: taskName,
+					status: status,
+					name: name
+				},
+				dataType:"json",
+				success:function(te){
+					console.log(te.list);
+					gantt.parse({
+						data: te.list
+					})
+				},
+				error:function(err){
+					console.log(err);
+				}
+			});		
+		});
 
 		calendar.render();
 	});
@@ -137,11 +161,6 @@
             <h1 class="m-0">Calendar</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
-          	<div class="input-group input-group-m" style="width: 250px;">
-                  <select id="cal-project-list" class="form-control" style="width: 200px;"></select>
-            </div>
-          </div>
-          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard v1</li>
@@ -154,14 +173,51 @@
 
     <!-- Main content -->
     <section class="content">
-		<div id="query_form_with_buttons" class="hide-when-print">
-			<div id="query_form_content">
-				<fieldset id="filters" class="collapsible ">
-			   
-				</fieldset>
-			</div>			
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card card-outline card-primary">
+						<div class="card-header">
+							<h3 class="card-title">조건 검색</h3>
+						</div>
+						<div class="card-body">
+							<form class="form-group">
+								<div class="row mb-3">
+									<label for="projectId" class="col-md-2">프로젝트 선택</label>
+									<select id="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+								</div>
+								<div class="row mb-3">
+									<label for="taskName" class="col-md-2">업무 이름 검색</label>
+									<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+								</div>
+								<div class="row mb-3">
+									<label for="status" class="col-md-2">상태 검색</label>
+									<select id="status" class="form-control col-md-3" style="display:inline-block;">
+										<option value="">상태 선택</option>
+					                    <option value="신규">신규</option>
+					                    <option value="진행">진행</option>
+					                    <option value="해결">해결</option>
+					                    <option value="의견">의견</option>
+					                    <option value="완료">완료</option>
+					                    <option value="거절">거절</option>
+									</select>																	
+								</div>
+								<div class="row mb-3">
+									<label for="name" class="col-md-2">담당자 검색</label>
+									<input type="text" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
+								</div>
+								<div class="row mb-3">
+									<button type="button" id="searchButton" class="btn btn-primary">검색</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main-content">
+	    		<div id='calendar'></div>
+	    	</div>
 		</div>
-    		<div id='calendar'></div>
     </section>
     <!-- /.content -->
   </div>

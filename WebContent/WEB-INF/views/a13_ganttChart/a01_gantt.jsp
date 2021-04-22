@@ -69,6 +69,8 @@
 				alert("에러발생");
 			}
 		});
+		
+		/* active 설정 */
 		$("#sb-gantt").addClass("active");
 		
 	});
@@ -126,7 +128,7 @@
 										</div>
 										<div class="row mb-3">
 											<label for="status" class="col-md-2">상태 검색</label>
-											<select id="status" class="form-control select" style="display:inline-block;">
+											<select id="status" class="form-control col-md-3" style="display:inline-block;">
 												<option value="">상태 선택</option>
 							                    <option value="신규">신규</option>
 							                    <option value="진행">진행</option>
@@ -135,6 +137,10 @@
 							                    <option value="완료">완료</option>
 							                    <option value="거절">거절</option>
 											</select>																	
+										</div>
+										<div class="row mb-3">
+											<label for="name" class="col-md-2">담당자 검색</label>
+											<input type="text" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
 										</div>
 										<div class="row mb-3">
 											<button type="button" id="searchButton" class="btn btn-primary">검색</button>
@@ -238,7 +244,7 @@
 		var projectId = $("#projectId").val();
 		var taskName = $("#taskName").val();
 		var status = $("#status").val();
-		alert(status);
+		var name = $("#name").val();
 		
 		$.ajax({
 			type:"get",
@@ -246,7 +252,8 @@
 			data: {
 				projectId: projectId,
 				taskName: taskName,
-				status: status
+				status: status,
+				name: name
 			},
 			dataType:"json",
 			success:function(te){
@@ -258,8 +265,7 @@
 			error:function(err){
 				console.log(err);
 			}
-		});
-		
+		});		
 	});
 	
 //	gantt.parse(projects_milestones_critical);

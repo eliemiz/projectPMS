@@ -2,16 +2,33 @@ package pms.z01_vo;
 
 public class CalendarSch {
 	// 검색조건
-	private String tracker;
+	private int projectId;
+	private String taskName;
 	private String status;
-	private int project_id;
+	private String name;
 
-	public String getTracker() {
-		return tracker;
+	public CalendarSch(int projectId, String taskName, String status, String name) {
+		super();
+		this.projectId = projectId;
+		this.taskName = taskName;
+		this.status = status;
+		this.name = name;
 	}
 
-	public void setTracker(String tracker) {
-		this.tracker = tracker;
+	public int getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
 	}
 
 	public String getStatus() {
@@ -22,12 +39,12 @@ public class CalendarSch {
 		this.status = status;
 	}
 
-	public int getProject_id() {
-		return project_id;
+	public String getName() {
+		return name;
 	}
 
-	public void setProject_id(int project_id) {
-		this.project_id = project_id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

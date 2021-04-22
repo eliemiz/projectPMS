@@ -5,12 +5,14 @@ public class GanttSearch {
 	private int projectId;
 	private String taskName;
 	private String status;
+	private String name;
 
-	public GanttSearch(int projectId, String taskName, String status) {
+	public GanttSearch(int projectId, String taskName, String status, String name) {
 		super();
 		this.projectId = projectId;
 		this.taskName = taskName;
 		this.status = status;
+		this.name = name;
 	}
 
 	public int getProjectId() {
@@ -35,6 +37,14 @@ public class GanttSearch {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

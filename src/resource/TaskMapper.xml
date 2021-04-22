@@ -144,6 +144,19 @@
 		AND t.ACCOUNT_ID = a.ID
 		AND p.id = #{p.id}
 	</select>
+	<!-- public ArrayList<Calendar> calenSch(CalendarSch sch) -->
+	<select id="calenSch" resultMap="calMap" parameterType="calenSch">
+		SELECT t.id, t.parent_id groupId, t.subject title, a.name writer, t.description content,
+				t.start_date start1, t.due_date end1, t.tracker, t.backgroundColor,
+				1 as allDay, 'white' as borderColor, 'white' as textColor
+		FROM task t, account a, project p
+		WHERE t.PROJECT_ID = p.ID 
+		AND t.ACCOUNT_ID = a.ID
+		AND p.id = #{projectId}
+		AND t.subject LIKE '%'||#{taskName}||'%'
+		AND t.status LIKE '%'||#{status}||'%'
+		AND a.name LIKE '%'||#{name}||'%'
+	</select>
 	
 	<!-- Gantt -->
 	<resultMap type="gantt" id="ganttMap"/>
@@ -162,11 +175,12 @@
 		SELECT t.id, t.TRACKER "type", t.subject text, t.start_date start_date,
 				to_date(SUBSTR(t.due_date,0,10))-to_date(SUBSTR(t.START_DATE,0,10)) + 1 duration,
 				t.PARENT_ID parent, t.DONE_RATIO/100 progress, 1 as "open"
-		FROM task t, project p
+		FROM task t, project p, account a
 		where p.id = t.project_id
 		and p.id = #{projectId}
 		and t.subject LIKE '%'||#{taskName}||'%'
 		and t.status LIKE '%'||#{status}||'%'
+		AND a.name LIKE '%'||#{name}||'%'
 		ORDER BY t.id	
 	</select>
 	

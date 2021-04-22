@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
+import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
@@ -212,6 +213,16 @@ public class A12_TaskService {
 	// Calendar List
 	public ArrayList<Calendar> calenList(int projectId) {
 		ArrayList<Calendar> list = dao.calenList(projectId);
+		for (Calendar c : list) {
+			c.setEnd(TimeManager.getInstance().isoPlusDay(c.getEnd()));
+
+			System.out.println("시작시간: " + c.getStart());
+			System.out.println("종료시간: " + c.getEnd());
+		}
+		return list;
+	}
+	public ArrayList<Calendar> calenSch(CalendarSch sch){
+		ArrayList<Calendar> list = dao.calenSch(sch);
 		for (Calendar c : list) {
 			c.setEnd(TimeManager.getInstance().isoPlusDay(c.getEnd()));
 
