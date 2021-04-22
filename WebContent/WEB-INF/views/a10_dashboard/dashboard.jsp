@@ -27,14 +27,55 @@
 html, body {
 	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
 }
+
+[v-cloak] {
+	display: none;
+} 
 </style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		var vm = new Vue({
+			el: "#searchForm",
+			data: {
+				projectList : [],
+				isProcessing : false
+			},
+			methods: {
+				getProjectList : function() {
+					this.fetchProjectList();
+				},
+				fetchProjectList: _.debounce(function(){
+					var vm = this;
+					
+					this.projectList = [];
+					this.isProcessing = true;
+					
+					var url = "${path}/jsonProject.do";
+					fetch(url).then(function(response){
+						return response.json();
+					}).then(function(json){
+						vm.projectList = json.projectList;
+						vm.isProcessing = false;
+					}).catch(function(err){
+						vm.isProcessing = false;
+					});
+				}, 200)
+			}
+		});
+		
+		vm.getProjectList();
+		
 		/* Get project List */
-		$.ajax({
+		/* $.ajax({
 			type: "get",
 			url: "${path}/jsonProject.do",
 			dataType: "json",
@@ -50,12 +91,14 @@ html, body {
 			error: function(err){
 				alert("에러발생");
 			}
-		});
+		}); */
 		
 		/* sidebar */
 		$("#sb-dashboard").addClass("active");
 
 		$("#hd-project-list").change(function() {
+			// getProjectList();
+			
 			location.href = "${path}/dashboard.do?projectId=" + $(this).val();
 		});
 	});
@@ -94,7 +137,7 @@ html, body {
 			<!-- Main content -->
 			<section class="content">
 				<div class="container-fluid">
-					<div class="row">
+					<div class="row" id="searchForm">
 						<div class="col-12">
 							<div class="card card-outline card-success">
 								<div class="card-header">
@@ -102,12 +145,12 @@ html, body {
 								</div>
 								<div class="card-body">
 									<select id="hd-project-list" class="form-control">
+										<option v-for="project in projectList" :value="project.id" v-text="project.name" v-cloak></option>
 									</select>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="col-12">
 							<div class="card card-primary card-outline card-tabs">
