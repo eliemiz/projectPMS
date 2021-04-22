@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -13,6 +14,7 @@ public class TimeManager {
 	private static SimpleDateFormat isoFormat;
 	private static SimpleDateFormat ganttFormat;
 	private static SimpleDateFormat simpleFormat;
+	private static SimpleDateFormat dateTimeFormat;
 	
 	/* Singleton */
 	private static class LazyHolder {
@@ -24,6 +26,7 @@ public class TimeManager {
 		isoFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		ganttFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	}
 
 	public static TimeManager getInstance() {
@@ -97,6 +100,19 @@ public class TimeManager {
 	
 	public String dateToSimple(Date date) {
 		return simpleFormat.format(date);
+	}
+	
+	public String datetimeToSimple(String datetime) {
+		try {
+			Date dt = dateTimeFormat.parse(datetime);
+			String date = simpleFormat.format(dt);
+			return date;
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "";
 	}
 	
 	public String isoPlusDay(String date) {

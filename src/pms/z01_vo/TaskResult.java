@@ -1,11 +1,13 @@
 package pms.z01_vo;
 
+import java.util.Date;
+
 public class TaskResult {
 	private int id;
 	private String subject;
 	private String name;
-	private String dueDate;
-	private String completedOn;
+	private String due_date;
+	private Date completed_on;
 
 	public int getId() {
 		return id;
@@ -31,20 +33,20 @@ public class TaskResult {
 		this.name = name;
 	}
 
-	public String getDueDate() {
-		return dueDate;
+	public String getDue_date() {
+		return due_date;
 	}
 
-	public void setDueDate(String dueDate) {
-		this.dueDate = dueDate;
+	public void setDue_date(String due_date) {
+		this.due_date = due_date;
 	}
 
-	public String getCompletedOn() {
-		return completedOn;
+	public Date getCompleted_on() {
+		return completed_on;
 	}
 
-	public void setCompletedOn(String completedOn) {
-		this.completedOn = completedOn;
+	public void setCompleted_on(Date completed_on) {
+		this.completed_on = completed_on;
 	}
 
 }

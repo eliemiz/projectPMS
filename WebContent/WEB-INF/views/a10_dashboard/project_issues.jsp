@@ -33,8 +33,8 @@
 				<a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a>
 			</td>
 			<td>${task.name}</td>
-			<td>${task.dueDate}</td>
-			<td>${task.completedOn}</td>
+			<td>${task.due_date}</td>
+			<td><fmt:formatDate pattern="yyyy-MM-dd" value="${task.completed_on}"/></td>
 		</tr>
 		</c:forEach>
 	</tbody>

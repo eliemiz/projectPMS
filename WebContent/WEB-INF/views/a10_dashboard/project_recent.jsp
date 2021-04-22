@@ -43,8 +43,44 @@
 							<td>${risk.id}</td>
 							<td><a href="${path}/risk.do?method=detail&id=${risk.id}">${risk.subject}</a></td>
 							<td>${risk.status}</td>
-							<td>${risk.probability}</td>
-							<td>${risk.impact}</td>
+							<td>
+							<c:choose>
+								<c:when test="${risk.probability==1}"> 
+									<spring:message code="risk-unlikely"/>
+								</c:when>
+								<c:when test="${risk.probability==2}">
+									<spring:message code="risk-low"/>
+								</c:when>
+								<c:when test="${risk.probability==3}">
+									<spring:message code="risk-medium"/>
+								</c:when>
+								<c:when test="${risk.probability==4}">
+									<spring:message code="risk-high"/>
+								</c:when>
+								<c:when test="${risk.probability==5}">
+									<spring:message code="risk-expected"/>
+								</c:when>
+							</c:choose>
+							</td>
+							<td>
+							<c:choose>
+								<c:when test="${risk.impact==1}">
+									<spring:message code="risk-negligible"/>
+								</c:when>
+								<c:when test="${risk.impact==2}">
+									<spring:message code="risk-minor"/>
+								</c:when>
+								<c:when test="${risk.impact==3}">
+									<spring:message code="risk-moderate"/>
+								</c:when>
+								<c:when test="${risk.impact==4}">
+									<spring:message code="risk-significant"/>
+								</c:when>
+								<c:when test="${risk.impact==5}">
+									<spring:message code="risk-severe"/>
+								</c:when>
+							</c:choose>
+							</td>
 							<td>${risk.start_date}</td>
 							<td>${risk.end_date}</td>
 						</tr>
@@ -95,8 +131,8 @@
 		                    <td>${task.id}</td>
 		                    <td><a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a></td>
 		                    <td>${task.name}</td>
-		                    <td>${task.dueDate}</td>
-		                    <td>${task.completedOn}</td>
+		                    <td>${task.due_date}</td>
+		                    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${task.completed_on}"/></td>
 						</tr>
 						</c:forEach>
 					</tbody>

@@ -244,7 +244,12 @@ public class A12_TaskService {
 	
 	// 산출물 리스트 조회
 	public ArrayList<TaskResult> getTaskResult(int projectId) {
-		return dao.getTaskResult(projectId);
+		ArrayList<TaskResult> trList = dao.getTaskResult(projectId);
+		for(TaskResult tr : trList) {
+			tr.setDue_date(TimeManager.getInstance().isoToSimple(tr.getDue_date()));
+		}
+		
+		return trList;
 	}
 
 	public ArrayList<Task> getTaskUser(int id){

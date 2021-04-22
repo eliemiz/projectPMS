@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pms.a03_dao.A16_RiskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Risk;
+import pms.z02_util.TimeManager;
 
 @Service
 public class A16_RiskService {
@@ -162,6 +163,13 @@ public class A16_RiskService {
 	}
 	
 	public ArrayList<Risk> getRecentRiskListByProject(int projectId) {
-		return dao.getRecentRiskListByProject(projectId);
+		ArrayList<Risk> riskList = dao.getRecentRiskListByProject(projectId);
+		
+		for (Risk risk : riskList) {
+			risk.setStart_date(TimeManager.getInstance().datetimeToSimple(risk.getStart_date()));
+			risk.setEnd_date(TimeManager.getInstance().datetimeToSimple(risk.getEnd_date()));
+		}
+		
+		return riskList;
 	}
 }
