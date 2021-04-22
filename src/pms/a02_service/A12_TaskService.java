@@ -22,6 +22,7 @@ import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
+import pms.z01_vo.TaskSch;
 import pms.z02_util.TimeManager;
 
 @Service
@@ -35,21 +36,11 @@ public class A12_TaskService {
 	@Value("${uploadTmp}")
 	private String uploadTmp;
 
-	// task 리스트 조회
-	public ArrayList<Task> getTaskList(Task sch) {
-		
-		// 검색
-		if (sch.getSubject() == null)
-			sch.setSubject("");
-		if (sch.getDescription() == null)
-			sch.setDescription("");
-		if (sch.getTracker() == null)
-			sch.setTracker("");
-		if (sch.getStatus() == null)
-			sch.setStatus("");
-		
+	// task 리스트 조회(검색)
+	public ArrayList<Task> taskList(TaskSch sch) {
+			
 		/* Local 시간으로 변경 */
-		ArrayList<Task> taskList = dao.getTaskList(sch); 
+		ArrayList<Task> taskList = dao.taskList(sch);
 		for (Task task : taskList) {
 			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
 			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));  

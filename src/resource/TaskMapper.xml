@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A12_TaskDao">
-	<!-- public ArrayList<Task> getTaskList(Task sch) -->
+	<!-- public ArrayList<Task> taskList(TaskSch sch) -->
 	<resultMap type="task" id="taskList"/>
-	<select id="getTaskList" resultMap="taskList" parameterType="task">
+	<select id="taskList" resultMap="taskList" parameterType="taskSch">
 		SELECT t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
 				start_date, due_date
 		FROM task t, account a, PROJECT p
-		WHERE t.subject LIKE '%'||#{subject}||'%'
-		AND t.account_id = a.id
+		WHERE t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
+		AND p.id = #{projectId}
+		AND t.subject LIKE '%'||#{subject}||'%'
+		AND t.tracker LIKE '%'||#{tracker}||'%'
+		AND t.status LIKE '%'||#{status}||'%'
+		AND a.name LIKE '%'||#{writer}||'%'
 		ORDER BY t.id desc
 	</select>
 	<select id="getTaskListByProjectId" resultType="task" parameterType="int">

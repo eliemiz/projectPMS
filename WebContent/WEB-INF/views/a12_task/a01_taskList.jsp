@@ -56,12 +56,7 @@ html, body {
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
-		/*
-		$(".data").on("dblclick",function(){
-	           var id = $(this).find("[name=id]").text();
-	         location.href="${path}/task.do?method=detail&id=" + id;
-	      });
-		*/
+		
 		$("#newTask").click(function(){
 			location.href = "${path}/task.do?method=insForm";
 		});
@@ -72,6 +67,35 @@ html, body {
     		location.href="${path}/task.do?method=detail&id="+id;
     	});
 		
+		/* Get project List */
+		$.ajax({
+			type: "get",
+			url: "${path}/jsonProject.do",
+			dataType: "json",
+			success: function(data){
+				var projectList = data.projectList;
+				
+				$.each(projectList, function(idx, e, arr){
+					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				});
+				
+				$("#projectId").val(data.projectId);
+			},
+			error: function(err){
+				alert("에러발생");
+			}
+		});
+		
+		/* Search */
+		$("#searchButton").click(function(){
+			var projectId = $("#projectId").val();
+			var subject = $("#subject").val();
+			var tracker = $("#tracker").val();
+			var status = $("#status").val();
+			var writer = $("#writer").val();
+			
+			
+		});
 	});
 </script>
 </head>
@@ -108,78 +132,45 @@ html, body {
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-              
-                <h3 class="card-title">검색조건</h3><br><br>
+              <div class="card-header">              
+                <h3 class="card-title">검색조건</h3>              
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
                 	<label id="newTask" style="cursor:pointer;">새Task만들기</label>
                 </div>
-                <%--
-                <div class="input-group input-group-m" style="width: 250px;">
-                  <label>검색조건</label>&nbsp;&nbsp;
-                  <select class="form-control select2">
-                    <option>유형</option>
-                    <option>상태</option>
-                    <option>담당자</option>
-                    <option>제목</option>
-                    <option>설명</option>
-                  </select>
-                </div><br>
-                 --%>
-                  <form:form modelAttribute="sch" method="post">
-                  <%--
-                  <div class="input-group input-group-m" style="width: 200px;">
-                  <input type="checkbox" name="tracker" id="tracker" checked id="checkboxSuccess1">
-                  &nbsp;&nbsp;<label>유형</label>&nbsp;&nbsp;
-                  <select class="form-control select2">
-                    <option value="결함">결함</option>
-                    <option value="새기능">새기능</option>
-                    <option value="지원">지원</option>
-                  </select>
-                   </div><br>
-                   
-                <div class="input-group input-group-m" style="width: 200px;">
-                  <input type="checkbox" name="status" id="status" checked id="checkboxSuccess1">
-                  &nbsp;&nbsp;<label>상태</label>&nbsp;&nbsp;
-                  <select class="form-control select2">
-                    <option value="신규">신규</option>
-                    <option value="진행">진행</option>
-                    <option value="해결">해결</option>
-                    <option value="의견">의견</option>
-                    <option value="완료">완료</option>
-                    <option value="거절">거절</option>
-                  </select>
-                </div><br>
-                 --%>
-                  <%--
-                  <div class="input-group input-group-m" style="width: 600px;">
-                  <input type="checkbox" checked id="checkboxSuccess1">
-                  &nbsp;&nbsp;<label>담당자</label>&nbsp;&nbsp;
-                  <input type="text" class="form-control">
-                  </div><br> --%>
-                  <div class="input-group input-group-m" style="width: 600px;">
-                  <%--
-                  <input type="checkbox" checked id="checkboxSuccess1">
-                  --%>
-                  &nbsp;&nbsp;<label>제목</label>&nbsp;&nbsp;
-                  <form:input path="subject" class="form-control"/>
-                  </div><br>
-                  <div class="input-group input-group-m" style="width: 1000px;">
-                  &nbsp;&nbsp;<label for="projectId">프로젝트</label>&nbsp;&nbsp;
-                  <form:select path="projectId" class="form-contorl col-md-3" style="display:inline-block;"/>
-                  </div><br>
-                   <%--
-                  <div class="input-group input-group-m" style="width: 600px;">
-                  <input type="checkbox" name="description" id="description" checked id="checkboxSuccess1">
-                  &nbsp;&nbsp;<label>설명</label>&nbsp;&nbsp;
-                  <input type="text" name="description" id="description" value="${task.description}" class="form-control">
-                  </div><br>
-                   --%>
-                  <button class="btn btn-success" type="submit" >검색</button>
-                </form:form>
               </div>
-              
+              <div class="card-body">
+                <form class="form-group">
+					<div class="row mb-3">
+						<label for="projectId" class="col-md-2">프로젝트 선택</label>
+						<select id="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+					</div>
+					<div class="row mb-3">
+						<label for="taskName" class="col-md-2">업무 이름 검색</label>
+						<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+					</div>
+					<div class="row mb-3">
+						<label for="status" class="col-md-2">상태 검색</label>
+						<select id="status" class="form-control col-md-3" style="display:inline-block;">
+							<option value="">상태 선택</option>
+					        <option value="신규">신규</option>
+					        <option value="진행">진행</option>
+					        <option value="해결">해결</option>
+					        <option value="의견">의견</option>
+					        <option value="완료">완료</option>
+					        <option value="거절">거절</option>
+						</select>																	
+					</div>
+					<div class="row mb-3">
+						<label for="name" class="col-md-2">담당자 검색</label>
+						<input type="text" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
+					</div>
+					<div class="row mb-3">
+						<button type="button" id="searchButton" class="btn btn-primary">검색</button>
+					</div>
+				</form>                
+              </div>      
+              <hr>        
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example2" class="table table-bordered table-hover">
