@@ -15,6 +15,7 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
+import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Project;
 import pms.z02_util.SessionManager;
 
@@ -88,11 +89,14 @@ public class A13_GanttChartController {
 		
 		System.out.println(projectId + ", " + taskName);
 		
+		GanttSearch gs = new GanttSearch(projectId,taskName);
+		
+		
 		/* Get Model */
 		// Project Info
 		Project project = serviceProject.getProject(projectId);
 		d.addAttribute("project", project);
-		d.addAttribute("list", service.ganttList(projectId));
+		d.addAttribute("list", service.ganttSch(gs));
 		return "pageJsonReport";
 	}
 }

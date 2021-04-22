@@ -69,16 +69,6 @@
 				alert("에러발생");
 			}
 		});
-		
-		$("#searchButton").click(function(){
-			
-		});
-		
-		/* project_id */
-	/* 	$("#gantt-project-list").change(function(){
-			location.href="${path}/gantt.do?method=list&projectId="+$(this).val();
-		}); */
-		
 		$("#sb-gantt").addClass("active");
 		
 	});

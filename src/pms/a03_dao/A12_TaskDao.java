@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
-import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
+import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z01_vo.TaskSch;
@@ -41,6 +41,7 @@ public interface A12_TaskDao {
 	
 	// Gantt Chart DAO
 	public ArrayList<GanttChart> ganttList(int projectId);
+	public ArrayList<GanttChart> ganttSch(GanttSearch sch);
 	
 	public ArrayList<TaskResult> getTaskResult(int projectId); // 산출물 리스트 조회
 	

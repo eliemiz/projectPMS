@@ -15,9 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
-import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
+import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z02_util.TimeManager;
@@ -224,6 +224,14 @@ public class A12_TaskService {
 	// Gantt List
 	public ArrayList<GanttChart> ganttList(int projectId) {
 		ArrayList<GanttChart> list = dao.ganttList(projectId);
+		for (GanttChart gc : list) {
+			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
+			System.out.println("Gantt로 변경: "+gc.getStart_date());
+		}
+		return list;
+	}
+	public ArrayList<GanttChart> ganttSch(GanttSearch sch){
+		ArrayList<GanttChart> list = dao.ganttSch(sch);
 		for (GanttChart gc : list) {
 			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
 			System.out.println("Gantt로 변경: "+gc.getStart_date());

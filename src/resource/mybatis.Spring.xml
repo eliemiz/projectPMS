@@ -27,6 +27,7 @@
 		<typeAlias alias="calen" type="pms.z01_vo.Calendar"/>
 		<typeAlias alias="calenSch" type="pms.z01_vo.CalendarSch"/>
 		<typeAlias alias="gantt" type="pms.z01_vo.GanttChart"/>
+		<typeAlias alias="ganttSch" type="pms.z01_vo.GanttSearch"/>
 
 		<typeAlias alias="temp" type="pms.z01_vo.Temp"/>
 		
