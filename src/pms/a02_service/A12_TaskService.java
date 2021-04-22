@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -268,4 +269,65 @@ public class A12_TaskService {
 		return taskUser;
 	}
 
+	/* Line Chart */
+	public void getLineChartList(int projectId, ArrayList<String> labels, ArrayList<Double> data1, ArrayList<Double> data2){
+		
+		/* 업무 목록 로드 */
+		ArrayList<Task> taskList = dao.getTaskListByProjectId(projectId);
+
+		/* 시작일, 종료일 검색 */
+		Date firstDate = new Date();
+		Date lastDate = new Date();
+		for (Task task : taskList) {
+			Date startDate = TimeManager.getInstance().isoToDate(task.getStart_date());
+			if (startDate.before(firstDate)) {
+				firstDate = startDate;
+			}
+			Date dueDate = TimeManager.getInstance().isoToDate(task.getDue_date());
+			if (dueDate.after(lastDate)) {
+				lastDate = dueDate;
+			}
+		}
+		
+		int count = 0;
+		double stack1 = 0.0;
+		double stack2 = 0.0;
+		ArrayList<Double> arr1 = new ArrayList<Double>();
+		ArrayList<Double> arr2 = new ArrayList<Double>();
+		
+		/* 시작일부터 종료일까지 순회 */
+		while(firstDate.before(lastDate)) {
+			labels.add(TimeManager.getInstance().dateToSimple(firstDate));
+			
+			/* 업무가 해당 범위 내에 있으면 날짜와 진행도 추가 */
+			for (Task task : taskList) {
+				count++;
+				
+				Date startDate = TimeManager.getInstance().isoToDate(task.getStart_date());
+				Date dueDate = TimeManager.getInstance().isoToDate(task.getDue_date());
+				
+				stack1 += 100;
+				
+				if (firstDate.after(startDate) && firstDate.before(dueDate)) {
+					stack2 += task.getDone_ratio();
+				} else {
+					stack2 += 100;
+				}
+			}
+			
+			arr1.add(stack1);
+			arr2.add(stack2);
+			
+			/* index date 하루 추가 */
+			firstDate = new Date(firstDate.getTime() + 1000 * 60 * 60 * 24);
+		}
+		
+		for (double i : arr1) {
+			data1.add(i/count);
+		}
+		
+		for (double i : arr2) {
+			data2.add(i/count);
+		}
+	}
 }

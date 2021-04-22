@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- DataTables -->
@@ -17,13 +19,13 @@
 <table id="example2" class="table table-bordered table-hover">
 	<thead>
 		<tr>
-			<th>번호</th>
-			<th>이름</th>
-			<th>역할</th>
-			<th>전체</th>
-			<th>진행</th>
-			<th>완료</th>
-			<th>달성률</th>
+			<th><spring:message code="dash-member-id"/></th>
+			<th><spring:message code="dash-member-name"/></th>
+			<th><spring:message code="dash-member-auth"/></th>
+			<th><spring:message code="dash-member-total"/></th>
+			<th><spring:message code="dash-member-incompleted"/></th>
+			<th><spring:message code="dash-member-completed"/></th>
+			<th><spring:message code="dash-member-done-ratio"/></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -41,13 +43,13 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<th>번호</th>
-			<th>이름</th>
-			<th>역할</th>
-			<th>전체</th>
-			<th>진행</th>
-			<th>완료</th>
-			<th>달성률</th>
+			<th><spring:message code="dash-member-id"/></th>
+			<th><spring:message code="dash-member-name"/></th>
+			<th><spring:message code="dash-member-auth"/></th>
+			<th><spring:message code="dash-member-total"/></th>
+			<th><spring:message code="dash-member-incompleted"/></th>
+			<th><spring:message code="dash-member-completed"/></th>
+			<th><spring:message code="dash-member-done-ratio"/></th>
 		</tr>
 	</tfoot>
 </table>

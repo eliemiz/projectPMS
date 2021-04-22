@@ -27,13 +27,17 @@
 						<th><spring:message code="dash-project-name"/> </th>
 						<td>${project.name}</td>
 						<th><spring:message code="dash-project-manager"/></th>
-						<td>홍길동</td>
+						<td>
+							<c:forEach var="account" items="${accountList}">
+								<c:if test="${account.auth == 'Manager'}">${account.name} </c:if>
+							</c:forEach>
+						</td>
 					</tr>
 					<tr>
 						<th><spring:message code="dash-project-description"/></th>
 						<td>${project.description}</td>
 						<th><spring:message code="dash-project-members"/></th>
-						<td>5명</td>
+						<td>${accountList.size()} <spring:message code="dash-project-member-count"/></td>
 					</tr>
 					<tr>
 						<th><spring:message code="dash-project-homepage"/></th>
@@ -48,7 +52,7 @@
 			<div class="table-responsive">
 				<table class="table text-center">
 					<tr>
-						<th>프로젝트 상태</th>
+						<th><spring:message code="dash-project-status"/></th>
 					</tr>
 					<c:choose>
 						<c:when test="${completeAll / (incompleteAll + completeAll) <= 0.7}">

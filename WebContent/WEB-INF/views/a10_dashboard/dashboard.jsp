@@ -43,7 +43,7 @@ html, body {
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		var vm = new Vue({
+		/* var vm = new Vue({
 			el: "#searchForm",
 			data: {
 				projectList : [],
@@ -64,6 +64,7 @@ html, body {
 						return response.json();
 					}).then(function(json){
 						vm.projectList = json.projectList;
+						$("#hd-project-list").val(json.projectId);
 						vm.isProcessing = false;
 					}).catch(function(err){
 						vm.isProcessing = false;
@@ -73,9 +74,9 @@ html, body {
 		});
 		
 		vm.getProjectList();
-		
+		 */
 		/* Get project List */
-		/* $.ajax({
+		$.ajax({
 			type: "get",
 			url: "${path}/jsonProject.do",
 			dataType: "json",
@@ -91,7 +92,7 @@ html, body {
 			error: function(err){
 				alert("에러발생");
 			}
-		}); */
+		});
 		
 		/* sidebar */
 		$("#sb-dashboard").addClass("active");
@@ -141,11 +142,11 @@ html, body {
 						<div class="col-12">
 							<div class="card card-outline card-success">
 								<div class="card-header">
-									<h3 class="card-title">프로젝트 선택</h3>
+									<h3 class="card-title"><spring:message code="dash-project-select"/></h3>
 								</div>
 								<div class="card-body">
 									<select id="hd-project-list" class="form-control">
-										<option v-for="project in projectList" :value="project.id" v-text="project.name" v-cloak></option>
+										<!-- <option v-for="project in projectList" :value="project.id" v-text="project.name" v-cloak></option> -->
 									</select>
 								</div>
 							</div>

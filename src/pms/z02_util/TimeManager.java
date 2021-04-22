@@ -80,6 +80,25 @@ public class TimeManager {
 		return iso;
 	}
 	
+	/* 2021-04-19T15:00:00.000Z -> Date 타입 */
+	public Date isoToDate(String date) {
+		
+		Date simple = new Date();
+		
+		try {
+			simple = simpleFormat.parse(date);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return simple;
+	}
+	
+	public String dateToSimple(Date date) {
+		return simpleFormat.format(date);
+	}
+	
 	public String isoPlusDay(String date) {
 		
 		String iso = null;

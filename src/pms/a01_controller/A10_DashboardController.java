@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -81,10 +82,8 @@ public class A10_DashboardController {
 		for (AccountTask at : accountList) {
 			incompleteAll += at.getIncompleted();
 			completeAll += at.getCompleted();
-			if (at.getAccount_id() == 100000) {
-				d.addAttribute("incompleteUser", at.getIncompleted());
-				d.addAttribute("completeUser", at.getCompleted());
-			}
+			d.addAttribute("incompleteUser", at.getIncompleted());
+			d.addAttribute("completeUser", at.getCompleted());
 		}
 		
 		d.addAttribute("incompleteAll", incompleteAll);
@@ -99,5 +98,54 @@ public class A10_DashboardController {
 		d.addAttribute("riskList", riskList);
 
 		return "a10_dashboard\\dashboard";
+	}
+
+	@GetMapping("jsonProject.do")
+	public String jsonProject(HttpServletRequest request, Model d) {
+		
+		ArrayList<Project> projectList = serviceProject.getProjectList();
+		
+		d.addAttribute("projectList", projectList);
+		
+		HttpSession session = request.getSession();
+		Object project_id_s = session.getAttribute("projectId");
+		int project_id;
+		if (project_id_s == null) {
+			project_id = projectList.get(0).getId();
+		} else {
+			project_id = Integer.parseInt(project_id_s.toString());
+		}
+		
+		d.addAttribute("projectId", project_id);
+		
+		return "pageJsonReport";
+	}
+	
+	@GetMapping("jsonLineChartList.do")
+	public String jsonLineChartList(HttpServletRequest request, Model d) {
+		
+		HttpSession session = request.getSession();
+
+		/* Get Project Id */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = serviceProject.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		
+		ArrayList<String> labels = new ArrayList<String>();
+		ArrayList<Double> data1 = new ArrayList<Double>();
+		ArrayList<Double> data2 = new ArrayList<Double>();
+		serviceTask.getLineChartList(projectId, labels, data1, data2);
+
+		d.addAttribute("labels", labels);
+		d.addAttribute("data1", data1);
+		d.addAttribute("data2", data2);
+		
+		return "pageJsonReport";
 	}
 }

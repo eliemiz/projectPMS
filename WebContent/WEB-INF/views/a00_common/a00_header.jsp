@@ -61,7 +61,14 @@
       <a href="${path}/project.do?method=projectList" class="nav-link"><spring:message code="hd-projects"/></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-    	<div class="nav-link">${account.name} 님 환영합니다.</div>
+    	<c:choose>
+    		<c:when test="${lang =='ko'}">
+    			<div class="nav-link">${account.name} 님 환영합니다!</div>
+    		</c:when>
+    		<c:otherwise>
+    			<div class="nav-link">Welcome, ${account.name}!</div>
+    		</c:otherwise>
+    	</c:choose>
     </li>
   </ul>
 

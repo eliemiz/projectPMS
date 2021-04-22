@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <!-- DataTables -->
@@ -17,11 +18,11 @@
 <table id="example3" class="table table-bordered table-hover">
 	<thead>
 		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>담당자</th>
-			<th>완료예정일</th>
-			<th>완료일</th>
+			<th><spring:message code="dash-issue-id"/></th>
+			<th><spring:message code="dash-issue-subject"/></th>
+			<th><spring:message code="dash-issue-author"/></th>
+			<th><spring:message code="dash-issue-due-date"/></th>
+			<th><spring:message code="dash-issue-completed-on"/></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -39,11 +40,11 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>담당자</th>
-			<th>완료예정일</th>
-			<th>완료일</th>
+			<th><spring:message code="dash-issue-id"/></th>
+			<th><spring:message code="dash-issue-subject"/></th>
+			<th><spring:message code="dash-issue-author"/></th>
+			<th><spring:message code="dash-issue-due-date"/></th>
+			<th><spring:message code="dash-issue-completed-on"/></th>
 		</tr>
 	</tfoot>
 </table>
