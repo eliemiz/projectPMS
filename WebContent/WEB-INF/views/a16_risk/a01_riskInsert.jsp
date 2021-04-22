@@ -90,6 +90,9 @@
 			}else if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
 				return false;
+			}else if($("[name=subject]").val().length >= 100) {
+				alert("제목은 100자 이하로 입력해주세요.");
+				return false;
 			}else if($("[name=account_id]").val()==""){
 				alert("담당자를 선택하세요.");
 				return false;

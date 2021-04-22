@@ -130,7 +130,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"><spring:message code="risk"/></h3>
+                <h3 class="card-title"><spring:message code="risk-risk"/></h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
