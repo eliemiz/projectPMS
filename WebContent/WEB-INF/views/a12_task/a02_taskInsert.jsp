@@ -76,6 +76,7 @@ html, body {
 		$("#sb-task").addClass("active");
 
 		$("#insBtn").on("click",function(){
+			/* 필수 입력사항 유효성 체크*/
 			if($("[name=project_id]").val()==""){
 				alert("프로젝트를 선택해주세요.");
 				return false;
@@ -97,16 +98,21 @@ html, body {
 			} else if($("[name=due_date]").val()==""){
 				alert("완료일을 선택해주세요");
 				return false;
-			} 
+			}
+			
+			/* 그 외 유효성체크 */
+			// 진척도
 			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
 				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
 				return false;
 			}
+			// 추정시간
 			if(isNaN($("[name=estimated]").val())||$("[name=estimated]").val()<0){
 				alert("추정시간은 0이상의 숫자만 입력해주세요.");
 				return false;
 			}
-			// 달력 색깔 추가
+			
+			/* 달력 색깔 추가 */
 			if($("[name=tracker]").val()=='새기능'){
 				$("[name=backgroundColor]").val("#4f5fd4");
 			} else if($("[name=tracker]").val()=='결함'){
