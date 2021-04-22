@@ -238,7 +238,7 @@ public class A12_TaskService {
 		}
 		return list;
 	}
-
+	
 	// 산출물 리스트 조회
 	public ArrayList<TaskResult> getTaskResult(int projectId) {
 		return dao.getTaskResult(projectId);

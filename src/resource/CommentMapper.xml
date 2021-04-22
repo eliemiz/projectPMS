@@ -5,7 +5,7 @@
 	<!-- 댓글 조회
 	public ArrayList<Comment> getCommentList(int document_id);
 	 -->
-	<select id="getCommentList" resultMap="commentList" parameterType="comment">
+	<select id="getCommentList" resultMap="commentList" parameterType="int">
 		select * from comments
 		where document_id = #{document_id}
 	</select>

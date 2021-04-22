@@ -18,8 +18,8 @@ public class A19_CommentService {
 		return commentList;
 	}
 	
-	public Comment getComment(int id) {
-		Comment comment = dao.getComment(id);
+	public Comment getComment(int document_id) {
+		Comment comment = dao.getComment(document_id);
 		return comment;
 	}
 	
