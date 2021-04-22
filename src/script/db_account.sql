@@ -9,7 +9,7 @@ WHERE user_id='아이디' AND password='비밀번호';
 
 DELETE FROM account 
 WHERE id=100000;
-SELECT * FROM account;
+SELECT * FROM project;
 
 DELETE FROM journal
 WHERE id=2;

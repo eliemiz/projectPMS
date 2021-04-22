@@ -62,7 +62,8 @@
 			if ($("[name=name]").val() == "") {
 		 		alert("프로젝트명을 입력해주세요.");
 		 		return false;
-		 	} else if ($("[name=description]").val() == "") {
+		 	} 
+			else if ($("[name=description]").val() == "") {
 		 		alert("설명을 입력해주세요.");
 		 		return false;
 		 	}
@@ -70,10 +71,25 @@
 		 		alert("홈페이지를 입력해주세요.");
 		 		return false;
 		 	}
+		 	else if($("[name=name]").val().length>=100){
+		 		alert("프로젝트명은 100자 미만으로 작성해주세요");
+		 		return false;
+		 	}
+		 	else if($("[name=description]").val().length>=300){
+		 		alert("설명은 300자 이하로 작성해주세요");
+		 		return false;
+		 	}
+		 	else if($("[name=homepage]").val().length>=100){
+		 		alert("홈페이지는 100자 미만으로 작성해주세요");
+		 		return false;
+		 	}
+			
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/settings.do?method=update");
 				$("form").submit();
+			}else {//취소 버튼 클릭
+				return false;
 			}
 		});
 		$("#delBtn").on("click",function(){
