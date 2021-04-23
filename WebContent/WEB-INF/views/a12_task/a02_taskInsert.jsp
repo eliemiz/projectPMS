@@ -101,6 +101,11 @@ html, body {
 			}
 			
 			/* 그 외 유효성체크 */
+			// 상태가 완료일 때 진척도 100으로 설정
+			if($("[name=status]").val()=="완료" && $("[name=done_ratio]").val()!=100){
+				alert("상태가 완료인 작업물은 진척도가 100이어야 합니다.");
+				return false;
+			}
 			// 진척도
 			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
 				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
@@ -114,6 +119,16 @@ html, body {
 			// 상위테스크에 숫자가 아닌 값을 넣었을 때 유효성 체크
 			if(isNaN($("[name=parent_id]").val())||$("[name=parent_id]").val()<0){
 				alert("상위테스크번호는 0이상의 숫자만 입력하세요.");
+				return false;
+			}
+			// 제목 길이
+			if($("[name=subject]").val().length>100){
+				alert("제목은 100자 이내로 입력하세요.");
+				return false;
+			}
+			// 내용 길이
+			if($("[name=description]").val().length>1000){
+				alert("내용은 1000자 이내로 입력하세요.");
 				return false;
 			}
 			
