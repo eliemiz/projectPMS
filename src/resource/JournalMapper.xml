@@ -6,7 +6,7 @@
 	<!-- public ArrayList<Journal> getJournalList(Journal jr); -->
 	
 	 
-	<select id="getJournalListAll" resultType="journalEx" parameterType="int">
+	<select id="getJournalListAll" resultType="journalEx" parameterType="journalSch">
 		SELECT * FROM (
 		SELECT j.*, a.name account_name, p.name project_name
 			FROM journal j, account a, task t, project p
@@ -15,6 +15,7 @@
 			AND j.account_id = a.id 
 			and t.project_id = p.id
 			and t.project_id = #{project_id}
+			and j.document_id = #{document_id}
 		UNION 
 		SELECT j.*, a.name account_name, p.name project_name
 			FROM journal j, account a, risk r, project p
@@ -23,10 +24,11 @@
 			AND j.account_id = a.id
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
+			and j.document_id = #{document_id}
 			) e ORDER BY e.CREATED_ON DESC
 		<!-- SELECT (...) e ORDER BY e.CREATED_ON DESC; -->
 	</select>
-	<select id="getJournalListTask" resultType="journalEx" parameterType="int">
+	<select id="getJournalListTask" resultType="journalEx" parameterType="journalSch">
 		SELECT j.*, a.name account_name, p.name project_name
 			FROM journal j, account a, task t, project p
 			where UPPER(j.document_type) = UPPER('task')
@@ -34,9 +36,10 @@
 			AND j.account_id = a.id 
 			and t.project_id = p.id
 			and t.project_id = #{project_id}
+			and j.document_id = #{document_id}
 			order by j.created_on desc
 	</select>
-	<select id="getJournalListRisk" resultType="journalEx" parameterType="int">
+	<select id="getJournalListRisk" resultType="journalEx" parameterType="journalSch">
 		SELECT j.*, a.name account_name, p.name project_name
 			FROM journal j, account a, risk r, project p
 			where UPPER(j.document_type) = UPPER('risk')
@@ -44,6 +47,7 @@
 			AND j.account_id = a.id
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
+			and j.document_id = #{document_id}
 			order by j.created_on desc
 	</select>
 	 
