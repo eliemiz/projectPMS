@@ -153,6 +153,21 @@ html, body {
 				alert("내용은 1000자 이내로 입력하세요.");
 				return false;
 			}
+			// 날짜 설정			
+			var month_s = $("[name=start_date]").val().split("-")[1];
+			var day_s = $("[name=start_date]").val().split("-")[2];
+			var month_d = $("[name=due_date]").val().split("-")[1];
+			var day_d = $("[name=due_date]").val().split("-")[2];
+			if(month_s == month_d){ // 월이 같고
+				if((day_s - day_d)>0){ // 일자가 시작일이 더 늦을 때
+					alert("완료일은 시작일 이후여야 합니다.");
+					return false;
+				}
+			} else if((month_s - month_d) > 0){ // 시작월이 완료월보다 더 뒤일 때
+				alert("완료일은 시작일 이후여야 합니다.");
+				return false;
+			}
+			
 		
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
