@@ -14,7 +14,7 @@
 			AND j.document_id = t.id
 			AND j.account_id = a.id 
 			and t.project_id = p.id
-			and t.project_id = #{project_id}
+			and t.project_id = #{projectId}
 			and j.document_id = #{document_id}
 		UNION 
 		SELECT j.*, a.name account_name, p.name project_name
@@ -23,7 +23,7 @@
 			AND j.document_id = r.id
 			AND j.account_id = a.id
 			and r.project_id = p.id
-			and r.project_id = #{project_id}
+			and r.project_id = #{projectId}
 			and j.document_id = #{document_id}
 			) e ORDER BY e.CREATED_ON DESC
 		<!-- SELECT (...) e ORDER BY e.CREATED_ON DESC; -->
@@ -35,7 +35,7 @@
 			AND j.document_id = t.id
 			AND j.account_id = a.id 
 			and t.project_id = p.id
-			and t.project_id = #{project_id}
+			and t.project_id = #{projectId}
 			and j.document_id = #{document_id}
 			order by j.created_on desc
 	</select>
@@ -46,7 +46,7 @@
 			AND j.document_id = r.id
 			AND j.account_id = a.id
 			and r.project_id = p.id
-			and r.project_id = #{project_id}
+			and r.project_id = #{projectId}
 			and j.document_id = #{document_id}
 			order by j.created_on desc
 	</select>
