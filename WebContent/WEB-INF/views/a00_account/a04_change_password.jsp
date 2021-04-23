@@ -58,6 +58,19 @@ html, body {
     $(document).ready(function(){
 
 		$("#Btn").on("click",function(){
+	 		if($("[name=password]").val()==""){
+				alert("새 비밀번호를 입력해주세요");
+				return false;
+			}
+			var pass_length = $("[name=password]").val().length
+			if(pass_length < 4 || pass_length > 50) {
+				alert("패스워드는 4자 이상 50자 이하이어야 합니다.");
+				return false;
+			}
+	 		if($("[name=password2]").val()==""){
+				alert("새 비밀번호를 확인해주세요");
+				return false;
+			}
 			if(confirm("변경하시겠습니까?")){
 				//alert($("[name=id]").val());
 				$("[name=proc]").val("update");
@@ -82,7 +95,6 @@ html, body {
 		})  	   
 	});
    
-    
    
 </script>
 </head>
