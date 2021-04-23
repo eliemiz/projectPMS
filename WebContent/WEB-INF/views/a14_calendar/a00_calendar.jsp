@@ -70,8 +70,8 @@
 		/* active 설정 */
 		$("#sb-calendar").addClass("active");
 		
-		var calendarEl = document.getElementById('calendar');
-		
+		/* Calendar */
+		var calendarEl = document.getElementById('calendar');		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			headerToolbar : {
 				left : 'prevYear prev today next nextYear',
@@ -109,7 +109,9 @@
 			}
 		});
 		
-		$("#searchButton").click(function(){
+		calendar.render();
+		
+		$("#searchButton").click(function(info, successCallback, failureCallback){
 			var projectId = $("#projectId").val();
 			var taskName = $("#taskName").val();
 			var status = $("#status").val();
@@ -125,21 +127,16 @@
 					name: name
 				},
 				dataType:"json",
-				success:function(te){
-					console.log(te.list);
-					calendar.parse({
-						data: te.list
-					})
+				success:function(data){
+					console.log(data.list);
+					calendar.destroy();
+					calendar.render();
 				},
 				error:function(err){
 					console.log(err);
 				}
-			});		
-			
-			$("form").submit();
+			});
 		});
-
-		calendar.render();
 	});
 
 </script>
@@ -183,7 +180,7 @@
 							<h3 class="card-title">조건 검색</h3>
 						</div>
 						<div class="card-body">
-							<form class="form-group" method="post" action="${path}/calendar.do?method=list">
+							<div class="form-group">
 								<div class="row mb-3">
 									<label for="projectId" class="col-md-2">프로젝트 선택</label>
 									<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
@@ -211,7 +208,7 @@
 								<div class="row mb-3">
 									<button type="button" id="searchButton" class="btn btn-primary">검색</button>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>

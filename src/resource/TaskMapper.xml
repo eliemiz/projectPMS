@@ -159,6 +159,7 @@
 		AND p.id = #{projectId}
 		AND t.subject LIKE '%'||#{taskName}||'%'
 		AND t.status LIKE '%'||#{status}||'%'
+		AND t.account_id = a.id
 		AND a.name LIKE '%'||#{name}||'%'
 	</select>
 	
@@ -184,6 +185,7 @@
 		and p.id = #{projectId}
 		and t.subject LIKE '%'||#{taskName}||'%'
 		and t.status LIKE '%'||#{status}||'%'
+		AND t.account_id = a.id
 		AND a.name LIKE '%'||#{name}||'%'
 		ORDER BY t.id	
 	</select>

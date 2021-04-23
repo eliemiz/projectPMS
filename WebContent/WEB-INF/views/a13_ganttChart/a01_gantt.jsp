@@ -117,7 +117,7 @@
 									<h3 class="card-title">조건 검색</h3>
 								</div>
 								<div class="card-body">
-									<form class="form-group" method="post" action="${path}/gantt.do?method=list">
+									<div class="form-group">
 										<div class="row mb-3">
 											<label for="projectId" class="col-md-2">프로젝트 선택</label>
 											<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
@@ -145,7 +145,7 @@
 										<div class="row mb-3">
 											<button type="button" id="searchButton" class="btn btn-primary">검색</button>
 										</div>
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -211,7 +211,22 @@
 		}},
 		{unit: "day", step: 1, format: "%D"}
 	];
-
+	
+	$.ajax({
+		type:"get",
+		url:"${path}/gantt.do?method=data",
+		dataType:"json",
+		success:function(te){
+			console.log(te.list);
+			gantt.parse({
+				data: te.list
+			})
+		},
+		error:function(err){
+			console.log(err);
+		}
+	});
+	
 	gantt.init("gantt_here");
 /* 	gantt.message({text: "Some text", expire: -1});
 	gantt.message({text: "Some text", type: "error", expire: -1}); */
@@ -243,6 +258,7 @@
 			dataType:"json",
 			success:function(te){
 				console.log(te.list);
+				gantt.clearAll();
 				gantt.parse({
 					data: te.list
 				})
@@ -251,24 +267,8 @@
 				console.log(err);
 			}
 		});		
+	});
 
-		$("form").submit();
-	});
-	
-	$.ajax({
-		type:"get",
-		url:"${path}/gantt.do?method=data",
-		dataType:"json",
-		success:function(te){
-			console.log(te.list);
-			gantt.parse({
-				data: te.list
-			})
-		},
-		error:function(err){
-			console.log(err);
-		}
-	});
 	
 //	gantt.parse(projects_milestones_critical);
 </script>
