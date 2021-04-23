@@ -61,10 +61,10 @@ $(document).ready(function(){
 			var projectList = data.projectList;
 			
 			$.each(projectList, function(idx, e, arr){
-				$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				$("#ac-project-list").append("<option value='" + e.id + "'>" + e.name + "</option>");
 			});
 			
-			$("#projectId").val(data.projectId);
+			$("#ac-project-list").val(data.projectId);
 		},
 		error: function(err){
 			alert("에러발생");
@@ -88,26 +88,20 @@ $(document).ready(function(){
           type:selectType
        }
     });  
-    /*
+    
       $("#ac-project-list").change(function(){
     	 
     	  location.href="${path}/activity.do?projectId="+$(this).val();
     	 	
        });	 
-     */
+     
      	var pi = '${projectId}';//session받아오는거라서 param.projectId가 아니라 projectId임
-    
-     	
+     			
    	 $(".type").click(function(){
     	  var ty = $(this).attr("id");
-    	  var document_id = $("#document_id").val();
-    	  var projectId = $("#projectId").val();
-    	 // location.href="${path}/activity.do?projectId="+pi+"&document_type="+ty;
-    	  $("form").submit();
+    	  location.href="${path}/activity.do?projectId="+pi+"&document_type="+ty;
       	});
    
-   
-
    	
      $(".data").click(function(){
 	  	  var id = $(this).attr("id");
@@ -163,14 +157,13 @@ $(document).ready(function(){
           </div>
           
           <div class="card-body">
-          <form class="form-group" method="post" action="${path}/activity.do">
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h5 class="card-title"><spring:message code="ac_project-select"/></h5>
               </div>
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
-                  <select id="projectId" name="projectId" class="form-control" style="width: 200px;"></select>
+                  <select id="ac-project-list" class="form-control" style="width: 200px;"></select>
                 </div>
               </div>
             </div>
@@ -181,23 +174,18 @@ $(document).ready(function(){
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
                   <label><spring:message code="ac_type"/></label>&nbsp;&nbsp;
-                  <select id="document_type" name="document_type" class="form-control select2"  v-model="type">
+                  <select class="form-control select2"  v-model="type">
                    <option value="all" id="all"><spring:message code="ac_all"/></option> 
                    <option value="task" id="task"><spring:message code="ac_task"/></option> 
                     <option value="risk" id="risk"><spring:message code="ac_risk"/></option>
                   </select>
                 </div>
-                <div class="row mb-3">
-						<label for="document_id" class="col-md-2">작업번호 검색</label>
-						<input type="text" name="document_id" id="document_id" class="form-control col-md-3" style="display:inline-block;"/>																	
-					</div>
                <div class="form-row float-left">
             <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type"><spring:message code="ac_setting"/></button> 
             <!-- <div>{{type}}</div> -->
               </div>
               </div>
             </div>
-           </form>
        <div class="row">
           <div class="col-12">
             <div class="card">

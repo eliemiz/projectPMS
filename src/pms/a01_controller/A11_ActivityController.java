@@ -9,14 +9,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A11_ActivityService;
+import pms.z01_vo.Journal;
 import pms.z01_vo.JournalEx;
-import pms.z01_vo.JournalSch;
 import pms.z01_vo.Project;
 import pms.z02_util.SessionManager;
 
@@ -49,7 +50,7 @@ public class A11_ActivityController {
 		}
 		
 
-		/* Get Project Id */
+		/*Get Project Id */
 		Object projectIdObj = session.getAttribute("projectId");
 		int projectId;
 		if (projectIdObj == null) {
@@ -67,44 +68,26 @@ public class A11_ActivityController {
 		
 		ArrayList<JournalEx> jList = null;
 		String type = request.getParameter("document_type");
-		String document_idS = request.getParameter("document_id");
-		 //숫자형 데이터에 대한 처리(에러 및 예외 처리)
-	      if(document_idS==null) document_idS="0";
-	      
-	      int document_id=0;
-	      //숫자형 입력하지 않더라도 에러로 수행을 정지시키는것을 막을 수 있다.
-	      //문자열형으로 입력하면 document_id를 0으로 처리
-	      try {
-	    	  document_id = Integer.parseInt(document_idS);
-	      }catch(Exception e) {
-	    	  System.out.println(e.getMessage());
-	      }
-	      
-	      
 		if (type==null) {
 			// 모든 목록
-			JournalSch sch = new JournalSch(projectId, document_id);
-			jList = service.getJournalListAll(sch);
+			jList = service.getJournalListAll(projectId);
 
 		} else {
 			if (type.equals("task")) {
 				// task만
-				JournalSch sch = new JournalSch(projectId, document_id);
-				jList = service.getJournalListTask(sch);
+				jList = service.getJournalListTask(projectId);
 			} else if (type.equals("risk")) {
 				// risk만
-				JournalSch sch = new JournalSch(projectId, document_id);
-				jList = service.getJournalListRisk(sch);
+				jList = service.getJournalListRisk(projectId);
 			} else {
 				// 모든 목록
-				JournalSch sch = new JournalSch(projectId, document_id);
-				jList = service.getJournalListAll(sch);
+				jList = service.getJournalListAll(projectId);
 			}
 		}
 		 
 		d.addAttribute("activity", jList);
 
-		return "a11_activity\\activity";
+		return "a11_activity\\activity4";
 	}
 	
 	
