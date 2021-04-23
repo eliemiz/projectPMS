@@ -32,23 +32,6 @@ public class A13_GanttChartController {
 	// http://localhost:7080/projectPMS/gantt.do?method=list
 	@RequestMapping(params = "method=list")
 	public String test(HttpServletRequest request, HttpServletResponse response) {
-		/* Set Project Id */
-		HttpSession session = request.getSession();
-		String projectIdReq = request.getParameter("projectId");
-		if (projectIdReq != null) {
-			session.setAttribute("projectId", projectIdReq);
-		}
-
-		/* Get Project Id */
-		Object projectIdObj = session.getAttribute("projectId");
-		int projectId;
-		if (projectIdObj == null) {
-			ArrayList<Project> projectList = serviceProject.getProjectList();
-			projectId = projectList.get(0).getId();
-			session.setAttribute("projectId", projectId);
-		} else {
-			projectId = Integer.parseInt(projectIdObj.toString());
-		}
 		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {

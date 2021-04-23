@@ -117,18 +117,18 @@
 									<h3 class="card-title">조건 검색</h3>
 								</div>
 								<div class="card-body">
-									<form class="form-group">
+									<form class="form-group" method="post" action="${path}/gantt.do?method=list">
 										<div class="row mb-3">
 											<label for="projectId" class="col-md-2">프로젝트 선택</label>
-											<select id="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+											<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
 										</div>
 										<div class="row mb-3">
 											<label for="taskName" class="col-md-2">업무 이름 검색</label>
-											<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+											<input type="text" id="taskName" name="taskName" class="form-control col-md-3" style="display:inline-block;"/>
 										</div>
 										<div class="row mb-3">
 											<label for="status" class="col-md-2">상태 검색</label>
-											<select id="status" class="form-control col-md-3" style="display:inline-block;">
+											<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
 												<option value="">상태 선택</option>
 							                    <option value="신규">신규</option>
 							                    <option value="진행">진행</option>
@@ -140,7 +140,7 @@
 										</div>
 										<div class="row mb-3">
 											<label for="name" class="col-md-2">담당자 검색</label>
-											<input type="text" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
+											<input type="text" id="name" name="name" class="form-control col-md-3" style="display:inline-block;"/>																	
 										</div>
 										<div class="row mb-3">
 											<button type="button" id="searchButton" class="btn btn-primary">검색</button>
@@ -186,7 +186,7 @@
 	};
 
 	gantt.config.columns = [
-		{name: "wbs", label: "WBS", width: 40, template: gantt.getWBSCode, resize: true},
+		{name: "wbs", label: "No", width: 40, template: gantt.getWBSCode, resize: true},
 		{name: "text", label: "Task name", tree: true, width: 170, resize: true, min_width: 10},
 		{name: "start_date", align: "center", width: 90, resize: true},
 		{name: "duration", align: "center", width: 80, resize: true}/* ,
@@ -215,21 +215,6 @@
 	gantt.init("gantt_here");
 /* 	gantt.message({text: "Some text", expire: -1});
 	gantt.message({text: "Some text", type: "error", expire: -1}); */
-	
-	$.ajax({
-		type:"get",
-		url:"${path}/gantt.do?method=data",
-		dataType:"json",
-		success:function(te){
-			console.log(te.list);
-			gantt.parse({
-				data: te.list
-			})
-		},
-		error:function(err){
-			console.log(err);
-		}
-	});
 	gantt.attachEvent("onTaskDblClick", function(id,e){
 	       //any custom logic here
 	       return false;
@@ -266,6 +251,23 @@
 				console.log(err);
 			}
 		});		
+
+		$("form").submit();
+	});
+	
+	$.ajax({
+		type:"get",
+		url:"${path}/gantt.do?method=data",
+		dataType:"json",
+		success:function(te){
+			console.log(te.list);
+			gantt.parse({
+				data: te.list
+			})
+		},
+		error:function(err){
+			console.log(err);
+		}
 	});
 	
 //	gantt.parse(projects_milestones_critical);

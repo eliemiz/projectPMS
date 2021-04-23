@@ -117,7 +117,7 @@
 			
 			$.ajax({
 				type:"get",
-				url:"${path}/gantt.do?method=data",
+				url:"${path}/calendar.do?method=data",
 				data: {
 					projectId: projectId,
 					taskName: taskName,
@@ -127,7 +127,7 @@
 				dataType:"json",
 				success:function(te){
 					console.log(te.list);
-					gantt.parse({
+					calendar.parse({
 						data: te.list
 					})
 				},
@@ -135,6 +135,8 @@
 					console.log(err);
 				}
 			});		
+			
+			$("form").submit();
 		});
 
 		calendar.render();
@@ -181,18 +183,18 @@
 							<h3 class="card-title">조건 검색</h3>
 						</div>
 						<div class="card-body">
-							<form class="form-group">
+							<form class="form-group" method="post" action="${path}/calendar.do?method=list">
 								<div class="row mb-3">
 									<label for="projectId" class="col-md-2">프로젝트 선택</label>
-									<select id="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+									<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
 								</div>
 								<div class="row mb-3">
 									<label for="taskName" class="col-md-2">업무 이름 검색</label>
-									<input type="text" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+									<input type="text" id="taskName" name="taskName" class="form-control col-md-3" style="display:inline-block;"/>
 								</div>
 								<div class="row mb-3">
 									<label for="status" class="col-md-2">상태 검색</label>
-									<select id="status" class="form-control col-md-3" style="display:inline-block;">
+									<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
 										<option value="">상태 선택</option>
 					                    <option value="신규">신규</option>
 					                    <option value="진행">진행</option>
@@ -204,7 +206,7 @@
 								</div>
 								<div class="row mb-3">
 									<label for="name" class="col-md-2">담당자 검색</label>
-									<input type="text" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
+									<input type="text" id="name" name="name" class="form-control col-md-3" style="display:inline-block;"/>																	
 								</div>
 								<div class="row mb-3">
 									<button type="button" id="searchButton" class="btn btn-primary">검색</button>
