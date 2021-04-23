@@ -306,7 +306,7 @@ html, body {
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
               	<br>
-              	<div><!-- journal 작업이력 -->
+              	<div>journal 작업이력
               	첨부파일&nbsp;삭제&nbsp;&nbsp;&nbsp;2021-04-03
               	</div><br>
               	<div>
