@@ -21,6 +21,7 @@
 		<typeAlias alias="attachment" type="pms.z01_vo.Attachment"/>
 		<typeAlias alias="journal" type="pms.z01_vo.Journal"/>
 		<typeAlias alias="journalEx" type="pms.z01_vo.JournalEx"/>
+		<typeAlias alias="journalSch" type="pms.z01_vo.JournalSch"/>
 		<typeAlias alias="journalDetail" type="pms.z01_vo.JournalDetail"/>
 		<typeAlias alias="comment" type="pms.z01_vo.Comment"/>
 		
