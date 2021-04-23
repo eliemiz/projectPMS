@@ -142,7 +142,9 @@
 		</div>
 		<!-- /.card-body -->
 		<div class="card-footer clearfix">
-			<a href="${path}/task.do?method=list" class="btn btn-sm btn-secondary float-right"><spring:message code="dash-view-all-issue"/></a>
+			<a href="${path}/task.do?method=list&status=완료" class="btn btn-sm btn-secondary float-right">
+				<spring:message code="dash-view-all-issue"/>
+			</a>
 		</div>
 		<!-- /.card-footer -->
 	</div>

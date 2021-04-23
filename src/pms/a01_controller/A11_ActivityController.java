@@ -86,6 +86,7 @@ public class A11_ActivityController {
 		}
 		 
 		d.addAttribute("activity", jList);
+		d.addAttribute("document_type", type);
 
 		return "a11_activity\\activity4";
 	}
