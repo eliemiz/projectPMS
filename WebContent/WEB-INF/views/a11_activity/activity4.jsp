@@ -65,30 +65,31 @@ $(document).ready(function(){
 			});
 			
 			$("#ac-project-list").val(data.projectId);
+			
+			/* 페이지 전환 후 select값 고정 */
+			var selectType = '${document_type}';
+			if (${empty document_type}) {
+				selectType = "all";
+			}
+			
+			$('#ac-document-type').val(selectType);
+			
+			/* if(selectType == 'task'){
+				$('#ac-document-type').val('task')
+		        $('#task').attr('selected','selected');
+		    } else if(selectType == 'risk'){
+		        $('#risk').attr('selected','selected');
+		    }  else{
+		    	 $('#all').attr('selected','selected');
+		    }  */
 		},
 		error: function(err){
 			alert("에러발생");
 		}
 	});
 	
-	/* 페이지 전환 후 select값 고정 */
-	var selectType = '${param.document_type}';
 	
-	 if(selectType == 'task'){
-	        $('#task').attr('selected','selected');
-	    } else if(selectType == 'risk'){
-	        $('#risk').attr('selected','selected');
-	    }  else{
-	    	 $('#all').attr('selected','selected');
-	    } 
 	
-    var vm = new Vue({
-       el:".content-wrapper",
-       data:{
-          type:selectType
-       }
-    });  
-    
       $("#ac-project-list").change(function(){
     	 
     	  location.href="${path}/activity.do?projectId="+$(this).val();
@@ -98,7 +99,8 @@ $(document).ready(function(){
      	var pi = '${projectId}';//session받아오는거라서 param.projectId가 아니라 projectId임
      			
    	 $(".type").click(function(){
-    	  var ty = $(this).attr("id");
+    	  /* var ty = $(this).attr("id"); */
+    	  var ty = $("#ac-document-type").val();
     	  location.href="${path}/activity.do?projectId="+pi+"&document_type="+ty;
       	});
    
@@ -174,7 +176,7 @@ $(document).ready(function(){
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
                   <label><spring:message code="ac_type"/></label>&nbsp;&nbsp;
-                  <select class="form-control select2"  v-model="type">
+                  <select class="form-control select2"  v-model="type" id="ac-document-type">
                    <option value="all" id="all"><spring:message code="ac_all"/></option> 
                    <option value="task" id="task"><spring:message code="ac_task"/></option> 
                     <option value="risk" id="risk"><spring:message code="ac_risk"/></option>
