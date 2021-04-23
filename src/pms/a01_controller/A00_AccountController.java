@@ -131,7 +131,7 @@ public class A00_AccountController {
     @RequestMapping(params = "method=updatePassword")
     public String updatePassword(Account update) {       
        service.updatePw(update);
-       return "redirect:/account.do?method=login";
+       return "redirect:/account.do?method=logout";
     } 
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
