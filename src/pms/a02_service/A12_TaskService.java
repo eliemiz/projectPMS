@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import pms.a03_dao.A11_JournalDao;
 import pms.a03_dao.A12_TaskDao;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
@@ -20,6 +21,7 @@ import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
+import pms.z01_vo.Journal;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z01_vo.TaskSch;
@@ -92,9 +94,8 @@ public class A12_TaskService {
 				try {
 					mpf.transferTo(tmpFile);
 					orgFile = new File(upload + filename);
-					Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-					/* ToDo: filename이 중복되면 문자열(예-123)을 넣을건데, 중복될 때에만 넣으려면? (if문을 어떻게 써야할까요?) */								
-					dao.uploadFile(new Attachment("Task",filename, filename+"123", upload, filesize+"KB"));
+					Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);							
+					dao.uploadFile(new Attachment("Task",filename, "(1)"+filename, upload, filesize+"KB"));
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
