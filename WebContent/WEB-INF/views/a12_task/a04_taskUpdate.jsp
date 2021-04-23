@@ -129,8 +129,9 @@ html, body {
 				return false;
 			}			
 			// 진척도에 숫자가 아닌 값을 넣었을 때 유효성 체크
-			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
-				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
+			var done_ratio = Number($("[name=done_ratio]").val());
+			if(isNaN(done_ratio) || done_ratio < 0 || done_ratio > 100 || !(Number.isInteger(done_ratio))){
+				alert("진척도는 0~100 사이의 정수만 입력하세요.");
 				return false;
 			}			
 			// 추정시간에 숫자가 아닌 값을 넣었을 때 유효성 체크
@@ -139,8 +140,9 @@ html, body {
 				return false;
 			}
 			// 상위테스크에 숫자가 아닌 값을 넣었을 때 유효성 체크
-			if(isNaN($("[name=parent_id]").val())||$("[name=parent_id]").val()<0){
-				alert("상위테스크번호는 0이상의 숫자만 입력하세요.");
+			var parent_id = Number($("[name=parent_id]").val());
+			if(isNaN(parent_id) || parent_id < 0 || !(Number.isInteger(parent_id))){
+				alert("상위테스크번호는 0이상의 정수만 입력하세요.");
 				return false;
 			}
 			// 제목 길이
@@ -153,20 +155,28 @@ html, body {
 				alert("내용은 1000자 이내로 입력하세요.");
 				return false;
 			}
-			// 날짜 설정			
+			// 날짜 설정
+			// 날짜 포맷 : yyyy-MM-dd
+			// $("[name=start_date]").val().split("-")[i] : - 기준으로 잘라서 배열에 저장하고 각각 0번째, 1번째, 2번째 표기
+			// 0번째: yyyy, 1번째: MM, 2번째: dd
+			var year_s = $("[name=start_date]").val().split("-")[0];
 			var month_s = $("[name=start_date]").val().split("-")[1];
 			var day_s = $("[name=start_date]").val().split("-")[2];
+			var year_d = $("[name=due_date]").val().split("-")[0];
 			var month_d = $("[name=due_date]").val().split("-")[1];
 			var day_d = $("[name=due_date]").val().split("-")[2];
-			if(month_s == month_d){ // 월이 같고
+			if(year_s > year_d){ // 시작연도가 완료연도보다 더 늦을 때(ex. 2021 > 2020)
+				alert("완료일의 연도는 시작일의 연도보다 이후여야 합니다.");
+				return false;
+			} else if(year_s = year_d && (month_s - month_d) > 0){ // (year_s = year_d)이고, 시작월이 완료월보다 더 뒤일 때
+				alert("완료일은 시작일 이후여야 합니다.");
+				return false;
+			} else if(month_s == month_d){ // (year_s < year_d)이고, 월이 같은데
 				if((day_s - day_d)>0){ // 일자가 시작일이 더 늦을 때
 					alert("완료일은 시작일 이후여야 합니다.");
 					return false;
 				}
-			} else if((month_s - month_d) > 0){ // 시작월이 완료월보다 더 뒤일 때
-				alert("완료일은 시작일 이후여야 합니다.");
-				return false;
-			}
+			} // 나머지: year_s < year_d 이고, 월이 같을 때는 완료일이 더 이후고, 아니면 완료일의 달이 더 뒤일 때이므로 참
 			
 		
 			if(confirm("수정하시겠습니까?")){
@@ -339,7 +349,7 @@ html, body {
             <div class="row">
               <div class="col-md-6">                
                 <div class="form-group">
-                  <label>진척도</label>
+                  <label>진척도(%)</label>
                   <form:input path="done_ratio" value="${done_ratio}" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
                 </div>                  
                 <!-- /.form-group -->
