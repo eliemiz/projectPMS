@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,11 +93,11 @@
 	 <div class="card-header">
 	 <form:form modelAttribute="sch" class="form-inline" method="post">
  		<nav class="navbar navbar-expand-sm bg-white navbar-white">
-		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="프로젝트명">
-		       <button class="btn btn-warning" type="submit">검색</button>
+		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="<spring:message code="p_name"/>">
+		       <button class="btn btn-warning" type="submit"> <spring:message code="p_search"/> </button>
 		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		     <div class="float-right">
-		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen">새 프로젝트 만들기</i></button>
+		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen"><spring:message code="p_new-project"/></i></button>
 		     </div>
 		     </form:form>
 		  </div>
@@ -112,12 +113,11 @@
                 <p class="card-text">${project.homepage}</p>
               <div class="form-row float-right">
               
-              	<a href="${path}/dashboard.do?projectId=${project.id}" class="btn btn-success">프로젝트 확인하기</a>
+              	<a href="${path}/dashboard.do?projectId=${project.id}" class="btn btn-success"><spring:message code="p_checking-project"/></a>
               </div>
               </div>
             </div>
             </c:forEach> 
-   
     </section>
     <!-- /.content -->
   </div>

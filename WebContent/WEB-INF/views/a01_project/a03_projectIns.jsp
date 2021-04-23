@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,20 +54,21 @@ $.widget.bridge('uibutton', $.ui.button)
   }  
 }); 
  */
-
+ var proc = "${proc}";
+ if(proc=="insert"){
+	  $("[name=id]").val("0");
+	  $("[name=name]").val("");
+	  
+ 	  if(confirm("등록완료!\n프로젝트목록으로 이동하시겠습니까?")){
+ 		  location.href="${path}/project.do";
+ 	  }
+ }
 
  $(document).ready(function(){
 	 
-	  var proc = "${proc}";
-	  if(proc=="insert"){
-		  $("[name=id]").val("0");
-		  $("[name=name]").val("");
-		  
-      	  if(confirm("등록완료!\n프로젝트목록으로 이동하시겠습니까?")){
-      		  location.href="${path}/project.do";
-      	  }
-	  }
+	 
 	  $("#Btn").on("click",function(){
+		  
 		  
 			if($("[name=name]").val()==""){
 				alert("프로젝트명을 입력해주세요");
@@ -74,13 +76,32 @@ $.widget.bridge('uibutton', $.ui.button)
 			}else if ($("[name=description]").val() == "") {
 		 		alert("설명을 입력해주세요.");
 		 		return false;
+		 		
 		 	}else if ($("[name=identifier]").val() == "") {
 		 		alert("식별자를 입력해주세요.");
 		 		return false;
+		 		
 		 	}else if ($("[name=homepage]").val() == "") {
 		 		alert("홈페이지를 입력해주세요.");
 		 		return false;
-		 	}
+		 		
+		 	}else if($("[name=name]").val().length>=100){
+				alert("프로젝트명은 100자 이내로 입력하세요.");
+				return false;
+				
+			}else if($("[name=description]").val().length>=300){
+				alert("설명은 300자 이내로 입력하세요.");
+				return false;
+				
+			}else if($("[name=identifier]").val().length>=30){
+				alert("식별자는 30자 이내로 입력하세요.");
+				return false;
+				
+			}else if($("[name=homepage]").val().length>=30){
+				alert("홈페이지는 30자 이내로 입력하세요.");
+				return false;
+			}
+
 			$("form").submit();
  	  
        });
@@ -130,7 +151,7 @@ $.widget.bridge('uibutton', $.ui.button)
         <div class="col-md-7">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">새 프로젝트</h3>
+              <h3 class="card-title"><spring:message code="p_new-project"/></h3>
 
 			<div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -141,20 +162,20 @@ $.widget.bridge('uibutton', $.ui.button)
            
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">프로젝트명</label>
+                <label for="inputName"><spring:message code="p_name"/></label>
                 <form:input path="name" class="form-control"/>
               </div>
               <div class="form-group">
-                <label for="inputDescription">설명</label><br>
+                <label for="inputDescription"><spring:message code="p_description"/></label><br>
                 <form:textarea path="description" rows="8" cols="100"/>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany">식별자</label>
+                <label for="inputClientCompany"><spring:message code="p_identifier"/></label>
                 <form:input path="identifier" class="form-control"/>
               	* 식별자는 저장후에는 수정할 수 없습니다.
               </div>
               <div class="form-group">
-                <label for="inputProjectLeader">홈페이지</label>
+                <label for="inputProjectLeader"><spring:message code="p_homepage"/></label>
                 <form:input path="homepage" class="form-control" />
               </div>
 
@@ -164,8 +185,8 @@ $.widget.bridge('uibutton', $.ui.button)
 	          </div> 
                <div class="form-row float-right">
           <!-- /.col -->
-            <button type="submit" class="btn btn-primary" id="Btn">만들기</button>&nbsp;&nbsp;
-            <a href="${path}/project.do" class="btn btn-default">취소</a>
+            <button type="submit" class="btn btn-primary" id="Btn"><spring:message code="p_new"/></button>&nbsp;&nbsp;
+            <a href="${path}/project.do" class="btn btn-default"><spring:message code="p_cancel"/></a>
           <!-- /.col -->
         </div>
             </div>
@@ -175,7 +196,6 @@ $.widget.bridge('uibutton', $.ui.button)
           
           <!-- /.card -->
         </div>
-      
       </div>
 </form:form>
     </section>

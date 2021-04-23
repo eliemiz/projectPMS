@@ -192,13 +192,16 @@ html, body {
 							<c:when test="${task.status=='신규'}"> <spring:message code="u_new"/> </c:when>
 							<c:when test="${task.status=='완료'}"> <spring:message code="u_completed"/> </c:when>
 							<c:when test="${task.status=='진행'}"> <spring:message code="u_progresss"/> </c:when>
+							<c:when test="${task.status=='해결'}"> <spring:message code="u_solve"/> </c:when>
+							<c:when test="${task.status=='의견'}"> <spring:message code="u_opinion"/> </c:when>
+							<c:when test="${task.status=='거절'}"> <spring:message code="u_reject"/> </c:when>
 							<c:otherwise> Error </c:otherwise>
 					  </c:choose>
                       </td>
                       <td>${task.subject}</td>
                       <td>${task.name}</td>
                       <td>${task.start_date}</td>
-                  	  <td>${task.due_date}</td>
+                  	  <td><fmt:formatDate value="${task.completed_on}" pattern="yyyy-MM-dd"/></td>
                     </tr>
                    </c:forEach>
                   </tbody>

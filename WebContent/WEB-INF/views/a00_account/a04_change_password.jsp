@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +135,6 @@ html, body {
 
          <!-- Main content -->
          <section class="content">
-
             <div class="hold-transition login-page"
                style="background-color: inherit; height: inherit;">
                <div class="login-box">
@@ -166,7 +166,7 @@ html, body {
 					        </div> 
                            <div class="row">
                               <div class="col-12">
-                                 <button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>
+                                 <button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_check"/></button>
                               </div>
                            </div>
                      	</div>

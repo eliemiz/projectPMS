@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -123,19 +124,18 @@ html, body {
 
          <!-- Main content -->
          <section class="content">
-
             <div class="hold-transition login-page"
                style="background-color: inherit; height: inherit;">
                <div class="login-box">
                   <div class="card card-outline card-primary">
                      <div class="card-header text-center">
-                        <a href="../../index2.html" class="h1">비밀번호 찾기</a>
+                        <a href="../../index2.html" class="h1"><spring:message code="account_searchpass"/></a>
                      </div>
                      <div class="card-body">
                         <form method="post" action="${path}/account.do?method=send">
                            <p class="login-box-msg">메일 주소를 입력하세요.</p>
                            <div class="input-group mb-3">
-                              <input name="receiver" id="mail" type="email" class="form-control" placeholder="Email 입력">
+                              <input name="receiver" id="mail" type="email" class="form-control" placeholder="<spring:message code="account_email"/>">
                               <div class="input-group-append">
                                  <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
@@ -144,11 +144,16 @@ html, body {
                            </div>
                            <p class="login-box-msg">이름을 입력하세요.</p>
                            <div class="input-group mb-3">
-                              <input name="name" id="name" type="text" class="form-control" placeholder="이름 입력">
+                              <input name="name" id="name" type="text" class="form-control" placeholder="<spring:message code="account_name"/>">
+                         		<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-user"></span>
+									</div>
+								</div>
                            </div>
                            <div class="row">
                               <div class="col-12">
-                                 <button type="button" class="btn btn-primary btn-block" id="Btn">확인</button>
+                                 <button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_check"/></button>
                               </div>
                            </div>
                         </form>

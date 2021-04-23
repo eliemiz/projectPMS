@@ -46,47 +46,44 @@ html, body {
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
   $.widget.bridge('uibutton', $.ui.button)
+    $(document).ready(function(){
+    	 $("#Btn").click(function(){
+    		 var idReg = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
+   		  
+ 		    if($("[name=user_id]").val()==""){
+ 				alert("아이디를 입력해주세요");
+ 				return false;
+ 				
+ 			}else if (!idReg.test($("[name=user_id]").val())) {
+ 	            alert("아이디는 영문 대소문자와 숫자를 사용해 4~12자리로 입력해야합니다.");
+ 	            return false;
+ 	            
+ 	        }else if($("[name=mail]").val()==""){
+ 				alert("이메일을 입력해주세요");
+ 				return false;
+ 				
+ 			}else if($("[name=name]").val()==""){
+ 				alert("이름을 입력해주세요");
+ 				return false;
+ 				
+ 			}else if($("#ckValid").val()=='NOCK'){
+ 		      alert("아이디 중복 체크하세요");
+ 		               return false;
+ 		               
+ 		    }else if($("#ckValid").val()=='VALID'){
+             alert("사용중인 아이디입니다");
+                      return false;
+            }
+  			$("#signin").submit();
+ 	  });
+    	 
 
-/*
-      $(document).ready(function(){
-   	  
-	       $("#signin").submit(function(e){
-	   		  e.preventDefault(); 
-	   	   });
-	   	   $("#user_id").keyup(function(e){
-	   		   if(e.keyCode==13){ // 입력할 항목에 enter키를 입력시 처리
-	   			   ckId();
-	   		   }
-	   	   });
-	       $("#ckIdBtn").click(function(){ // 등록여부확인 버튼 클릭 시
-	       	  		ckId();
-	       });
-       });
-			  function ckId(){
-				//var params = $("#ajax").serialize();
-	        	//alert($("#ajax").serialize());
-	        	//var data = $("#ajax").serialize(); 
-				$.ajax({
-					type:"post",
-					url:"${path}/hasMember.do",
-					data:$("#ajax").serialize(),
-					dataType:"json",
-					success:function(data){
-						// alert(data.mCnt);
-						if(data.mCnt==1){
-							alert("등록된 아이디가 있습니다.")
-							$("#user_id").val("").focus();
-						}else{
-							alert("등록 가능합니다.")
-						}
-					},
-					error:function(err){
-						console.log(err);
-					}
-				});
-			}	
-*/  
-      
+	   $("#user_id").keyup(function(e){
+		   if(e.keyCode==13){ // 입력할 항목에 enter키를 입력시 처리
+			   ckId();
+		   }
+	   });
+    });
         function ckId(){
         	
         	$.ajax({
@@ -98,8 +95,11 @@ html, body {
         			//alert(data.mCnt);
         			if(data.mCnt==1){
         				alert("이미 등록된 아이디가 있습니다.");
-        			}else{
+        				//$("#ckValid").val("VALID");
+        				$("#user_id").val("").focus();
+        			}else if(data.mCnt==0){
         				alert("등록 가능한 아이디입니다.");
+        				//$("#ckValid").val("INVALID");
         			}
         		},
         		error:function(err){
@@ -113,30 +113,10 @@ html, body {
 
 	var result = "${result}";
 	if (result == "success") {
-		alert("회원가입이 완료되었습니다.\n로그인화면으로 이동합니다.");
+		alert("회원가입이 완료되었습니다.\n이메일주소로 새 비밀번호가 발송되었습니다.");
 		location.href = "${path}/account.do?method=login";
 	}
   
-	$(document).ready(function(){
-	  $("#Btn").click(function(){
-		  
-		  
-		    if($("[name=user_id]").val()==""){
-				alert("아이디를 입력해주세요");
-				return false;
-				
-			}else if($("[name=mail]").val()==""){
-				alert("이메일을 입력해주세요");
-				return false;
-				
-			}else if($("[name=name]").val()==""){
-				alert("이름을 입력해주세요");
-				return false;
-			}
-		    
-		    $("#signin").submit();
-	  });
-	}); 
 	
 
 </script>
@@ -198,7 +178,9 @@ html, body {
 											</div>
 										</div>
 										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()">중복확인</button>
-  									
+  										<input type="hidden" id="ckValid" value="NOCK"/>
+	  									* 영문 대소문자와 숫자를 사용하여 <br>&nbsp;&nbsp;&nbsp;4~12자리로 입력해야합니다.<br>
+	  									* 회원 ID는 가입 후 변경이 불가합니다.
 									</div>
 									<div class="input-group mb-5">
 										<form:input path="name" class="form-control" placeholder="이름" />
