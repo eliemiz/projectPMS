@@ -100,25 +100,25 @@ html, body {
 		$("#uptBtn").on("click",function(){
 			/* 필수 입력사항 유효성 체크*/
 			if($("[name=project_id]").val()==""){
-				alert("프로젝트를 선택해주세요.");
+				alert("프로젝트를 선택하세요.");
 				return false;
 			} else if($("[name=tracker]").val()==""){
-				alert("유형을 선택해주세요");
+				alert("유형을 선택하세요.");
 				return false;
 			} else if($("[name=subject]").val()==""){
-				alert("제목을 입력해주세요");
+				alert("제목을 입력하세요.");
 				return false;
 			} else if($("[name=priority]").val()==""){
-				alert("우선순위를 선택해주세요");
+				alert("우선순위를 선택하세요.");
 				return false;
 			} else if($("[name=account_id]").val()==""){
-				alert("담당자를 선택해주세요");
+				alert("담당자를 선택하세요.");
 				return false;
 			} else if($("[name=start_date]").val()==""){
-				alert("시작일을 선택해주세요");
+				alert("시작일을 선택하세요.");
 				return false;
 			} else if($("[name=due_date]").val()==""){
-				alert("완료일을 선택해주세요");
+				alert("완료일을 선택하세요.");
 				return false;
 			}
 			
