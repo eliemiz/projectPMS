@@ -76,12 +76,10 @@ html, body {
 	 		if($("[name=name]").val()==""){
 				alert("이름을 입력해주세요");
 				return false;
+			}else if($("[name=name]").val().length>=30){
+				alert("이름은 30자 이내로 입력하세요.");
+				return false;
 			}
-	 		 var nameReg = /^[가-힣]{2,5}$/;
-	         if (!nameReg.test($("[name=name]").val())) {
-	             alert("이름이 올바르지 않습니다.");
-	             return false;
-	         }
 			$("form").submit();
 		}); 	
 	 });
