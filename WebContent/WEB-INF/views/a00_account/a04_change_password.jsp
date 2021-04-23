@@ -64,8 +64,8 @@ html, body {
 				return false;
 			}
 			var pass_length = $("[name=password]").val().length
-			if(pass_length < 4 || pass_length > 50) {
-				alert("패스워드는 4자 이상 50자 이하이어야 합니다.");
+			if(pass_length < 4 || pass_length >10) {
+				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
 				return false;
 			}
 	 		if($("[name=password2]").val()==""){
@@ -73,8 +73,8 @@ html, body {
 				return false;
 			}
 	 		var pass2_length = $("[name=password2]").val().length
-			if(pass2_length < 4 || pass2_length > 50) {
-				alert("패스워드는 4자 이상 50자 이하이어야 합니다.");
+			if(pass2_length < 4 || pass2_length >10) {
+				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
 				return false;
 			}
 	 		
