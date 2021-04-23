@@ -10,7 +10,7 @@ import pms.z01_vo.JournalEx;
 @Repository
 public interface A11_JournalDao {
 	
-	
+	public void insertJournal(Journal ins); // Journal 등록
 	/* public ArrayList<Journal> getJournalList(Journal jr); */
 	
 	public ArrayList<JournalEx> getJournalListAll(int project_id);
