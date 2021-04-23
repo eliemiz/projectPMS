@@ -98,21 +98,48 @@ html, body {
 		
 		/* 수정버튼 클릭 */
 		$("#uptBtn").on("click",function(){
+			/* 필수 입력사항 유효성 체크*/
+			if($("[name=project_id]").val()==""){
+				alert("프로젝트를 선택해주세요.");
+				return false;
+			} else if($("[name=tracker]").val()==""){
+				alert("유형을 선택해주세요");
+				return false;
+			} else if($("[name=subject]").val()==""){
+				alert("제목을 입력해주세요");
+				return false;
+			} else if($("[name=priority]").val()==""){
+				alert("우선순위를 선택해주세요");
+				return false;
+			} else if($("[name=account_id]").val()==""){
+				alert("담당자를 선택해주세요");
+				return false;
+			} else if($("[name=start_date]").val()==""){
+				alert("시작일을 선택해주세요");
+				return false;
+			} else if($("[name=due_date]").val()==""){
+				alert("완료일을 선택해주세요");
+				return false;
+			}
+			
 			// 완료상태로 바꿨을 때 진척도 100으로 설정
 			if($("[name=status]").val()=="완료" && $("[name=done_ratio]").val()!=100){
 				alert("상태가 완료인 작업물은 진척도가 100이어야 합니다.");
 				return false;
-			}
-			
+			}			
 			// 진척도에 숫자가 아닌 값을 넣었을 때 유효성 체크
 			if(isNaN($("[name=done_ratio]").val())||$("[name=done_ratio]").val()<0||$("[name=done_ratio]").val()>100){
 				alert("진척도는 0~100 사이의 숫자만 입력하세요.");
 				return false;
-			}
-			
+			}			
 			// 추정시간에 숫자가 아닌 값을 넣었을 때 유효성 체크
 			if(isNaN($("[name=estimated]").val())||$("[name=estimated]").val()<0){
 				alert("추정시간은 0이상의 숫자만 입력하세요.");
+				return false;
+			}
+			// 상위테스크에 숫자가 아닌 값을 넣었을 때 유효성 체크
+			if(isNaN($("[name=parent_id]").val())||$("[name=parent_id]").val()<0){
+				alert("상위테스크번호는 0이상의 숫자만 입력하세요.");
 				return false;
 			}
 		
@@ -223,15 +250,20 @@ html, body {
               </div>
               <!-- /.col -->
             </div>
-             <%-- TODO: 제목, 설명 부분 화면에 꽉차게 하는 방법? --%>
-            <div class="bs-stepper-content">
-            	<div class="form-group">
-            		<label>제목 *</label>
-            		<form:input path="subject" value="${task.subject}" type="text" class="form-control" style="width: 100%;"/>
+            <div class="row">
+            	<div class="col-md">
+	            	<div class="form-group">
+	            		<label>제목 *</label>
+	            		<form:input path="subject" value="${task.subject}" type="text" class="form-control" style="width: 100%;"/>
+	            	</div>
             	</div>
-            	<div class="form-group">
-            		<label>설명</label>            	
-            		<form:textarea path="description" value="${task.description}" class="form-control" style="width: 100%; height:300px;"/>
+            </div>
+            <div class="row">
+            	<div class="col-md">
+	            	<div class="form-group">
+	            		<label>설명</label>            	
+	            		<form:textarea path="description" value="${task.description}" class="form-control" style="width: 100%; height:300px;"/>
+	            	</div>
             	</div>
             </div>
             <div class="row">
@@ -261,16 +293,18 @@ html, body {
               </div>
               <!-- /.col -->
               <div class="col-md-6">
-                <div class="form-group">
-                  <label>추정시간</label>
-                  <form:input path="estimated" value="${task.estimated}" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
-                </div>
-                
+                <!-- Date -->
                 <div class="form-group">
                   <label>시작일</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
                        <form:input path="start_date" value="${task.start_date}" type="date" class="form-control" style="width:100%;"/>
                     </div>
+                </div>
+                <div class="form-group">
+                  <label>완료일</label>
+                   <div class="input-group date" id="enddate" data-target-input="nearest">
+                       <form:input path="due_date" value="${task.due_date}" type="date" class="form-control" style="width:100%;"/>
+                   </div>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -281,32 +315,7 @@ html, body {
                 <div class="form-group">
                   <label>진척도</label>
                   <form:input path="done_ratio" value="${done_ratio}" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
-                </div>
-                  <div class="form-group">
-                  	<label>연결된 Task</label>
-                  	<input type="text" class="form-control" style="width: 100%;">
-                  </div>    
-      <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
-                <!-- <div class="form-group">
-                  <label>Task 관리자</label><br>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>관리자</option>
-                    <option>홍길동</option>
-                    <option>김철수</option>
-                    <option>이춘향</option>
-                  </select>
-                </div> -->
-                <!-- /.form-group -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-6">
-                <!-- Date -->
-                <div class="form-group">
-                  <label>완료일</label>
-                   <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <form:input path="due_date" value="${task.due_date}" type="date" class="form-control" style="width:100%;"/>
-                   </div>
-                </div>
+                </div>                  
                 <!-- /.form-group -->
                 <c:set var="fcnt" value="${task.fileInfo.size()}"/>
      			<c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">
@@ -314,31 +323,29 @@ html, body {
                   <label for="exampleInputFile">첨부파일</label> 
                     <!-- 기존 파일명  -->   
                   <input class="form-control fileInfo" name="filenames" value="${finf.filename}" readonly/>
+                </div>
+                </c:forEach>
+              </div>
+              <!-- /.col -->
+              <div class="col-md-6">
+              	<div class="form-group">
+                  <label>추정시간</label>
+                  <form:input path="estimated" value="${task.estimated}" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
+                </div>  
+                <div class="form-group">
+                  <c:if test="${not empty task.fileInfo}">
+                  <label for="exampleInputFile">첨부파일 수정</label>
                   <div class="custom-file">
-                    <!-- TODO: 파일변경값 넘기기 -->     
-                        <!-- 파일 변경 정보 -->
-                        <!-- <input type="file" id="file01" class="custom-file-input" name="report" /> -->
-                   <input type="file" id="filesize" class="custom-file-input" name="report" />
-                         
-                   		<!-- <input type="file" for="file01" style="width:100%;"/> -->
-                    	 <label class="custom-file-label" for="file01">변경하려면 파일을 선택하세요</label>         
-                        <!-- <label class="custom-file-label" for="report">Choose file</label> -->
-                        <!-- style="width:100%;" -->
-                  </div><br><br>
-                  <%--
-                  <div class="form-group">
-                  	<label>연결된 Task</label>
-                  	<input type="text" class="form-control" style="width: 100%;">
-                  </div>    
-                   --%>        
-                 </div>   
-                  </c:forEach> 
+                  	<input type="file" id="filesize" class="custom-file-label" name="report" style="width:100%;"/>
+                  </div>
+                  </c:if>
+                </div>               
                 <!-- /.form-group -->
               </div>
-             
               <!-- /.col -->
             </div>
             <!-- /.row -->
+            	            
 			</div> 			
 			<!-- /.card-body -->
                 <div class="card-footer">

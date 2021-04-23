@@ -246,7 +246,11 @@ html, body {
                    <span name="account_id" value="${task.account_id}">${task.name}</span>                            
                 </div>
                 <!-- /.form-group -->
-                <!-- 추가사항 예비자리 -->
+                <div class="form-group">
+            		<label>상위 Task</label>
+            		&nbsp;&nbsp;&nbsp;
+					<span name="parent_id" value="${task.parent_id}">${task.parent_id}</span>        
+	             </div>
               </div>
               <!-- /.col -->
               <div class="col-md-6">
@@ -266,36 +270,31 @@ html, body {
               <!-- /.row -->
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
-            <div class="bs-stepper-content">
-            	<div class="form-group">
-            		<label>설명</label><br><br>
-            		<span name="description" value="${task.description}">${task.description}</span>
+            <div class="row">
+            	<div class="col-md">
+	            	<div class="form-group">
+	            		<label>설명</label><br><br>
+	            		<span name="description" value="${task.description}">${task.description}</span>
+	            	</div>
             	</div>
             </div>
             <hr align="left" style="border: solid 1px gray; width: 90%;">
-           <c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">  
-              <div class="bs-stepper-content">
-            	<div class="form-group">
-            		<label>첨부파일</label>
-            		&nbsp;&nbsp;&nbsp;
-            			<div id="download">
-            			<span id="fileInfo" name="filename" value="${finf.filename}">${finf.filename}</span>
-            		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i></div>
-            		<hr align="left" style="border: solid 1px gray; width: 90%;">
-            		<label>상위 Task</label>
-            		&nbsp;&nbsp;&nbsp;
-						<span name="parent_id" value="${task.parent_id}">${task.parent_id}</span>
-            		<hr align="left" style="border: solid 1px gray; width: 90%;">
-            		<label>연결된 Task</label>
-            		&nbsp;&nbsp;&nbsp;
-           
-	             </div>
-	            
+            <div class="row">
+            	<div class="col-md">
+	            	<div class="form-group">            		
+	           		<c:forEach var="finf" items="${task.fileInfo}" varStatus="sts">  
+	            		<label>첨부파일</label>
+	            		&nbsp;&nbsp;&nbsp;
+	            		<div id="download">
+		            		<span id="fileInfo" name="filename" value="${finf.filename}">${finf.filename}</span>
+		            		&nbsp;&nbsp;&nbsp;<i class="fas fa-download"></i>
+	            		</div>            	
+		      		</c:forEach>
+	            	</div>
 	            </div>
-	        </div>
-	      </c:forEach> <!-- TODO:위치바꾸기 첨부파일 폼 -->
+            </div>
+	      </div>
 	      <!-- /.card-body -->
-	      
             </div><br> <!-- /.yellowbox -->
             <div class="row mt-4">
             <nav class="w-100">
@@ -349,7 +348,6 @@ html, body {
             </div>
           </div>
          </div> 
-        </div>  
     </form:form>
     </section>
     <!-- /.content -->

@@ -111,6 +111,11 @@ html, body {
 				alert("추정시간은 0이상의 숫자만 입력해주세요.");
 				return false;
 			}
+			// 상위테스크에 숫자가 아닌 값을 넣었을 때 유효성 체크
+			if(isNaN($("[name=parent_id]").val())||$("[name=parent_id]").val()<0){
+				alert("상위테스크번호는 0이상의 숫자만 입력하세요.");
+				return false;
+			}
 			
 			/* 달력 색깔 추가 */
 			if($("[name=tracker]").val()=='새기능'){
@@ -243,8 +248,8 @@ html, body {
               </div>
               <!-- /.col -->
             </div>
-             <%-- TODO: 제목, 설명 부분 화면에 꽉차게 하는 방법? --%>
-            <div class="bs-stepper-content">
+           <div class="row">
+           	<div class="col-md">
             	<div class="form-group">
             		<label>제목 *</label>
             		<form:input path="subject" type="text" class="form-control" style="width: 100%;"/>
@@ -253,6 +258,7 @@ html, body {
             		<label>설명</label>            	
             		<form:textarea path="description" class="form-control" style="width: 100%; height:300px;"/>
             	</div>
+            </div>
             </div>
             <div class="row">
               <div class="col-md-6">
@@ -302,21 +308,7 @@ html, body {
                 <div class="form-group">
                   <label>진척도</label>
                   <form:input path="done_ratio" type="text" class="form-control" style="width: 100%;" placeholder="%(숫자만 입력하세요)"/>
-                </div>
-                  <div class="form-group">
-                  	<label>연결된 Task</label>
-                  	<input type="text" class="form-control" style="width: 100%;">
-                  </div>   
-      <%-- TODO: Task관리자 account에서 불러올건지, 없앨건지 --%>
-                <!-- <div class="form-group">
-                  <label>Task 관리자</label><br>
-                  <select class="form-control select" style="width: 100%;">
-                  	<option>관리자</option>
-                    <option>홍길동</option>
-                    <option>김철수</option>
-                    <option>이춘향</option>
-                  </select>
-                </div> -->
+                </div>                  
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -329,24 +321,21 @@ html, body {
                    </div>
                 </div>
                 <!-- /.form-group -->
-                <div class="form-group">
-       <%-- TODO: fileUpload 완성 후 수정 --%>
-                  <label for="exampleInputFile">첨부파일</label> 
-                  <div class="custom-file">
-                        <input type="file" id="filesize" class="custom-file-label" name="report" style="width:100%;"/>
-                        <!-- <label class="custom-file-label" for="report">Choose file</label> -->
-                  </div><br><br>
-                  <%--
-                  <div class="form-group">
-                  	<label>연결된 Task</label>
-         TODO: task_relation 이용해서 select로 할 지 입력으로 할 지 결정 
-                  	<input type="text" class="form-control" style="width: 100%;">
-                  </div>       
-                     --%>     
-                 </div>    
-                <!-- /.form-group -->
               </div>
               <!-- /.col -->
+            </div>           
+            <!-- /.row -->
+            <div class="row">
+            	<div class="col-md">
+            		<div class="form-group">
+	                	<label for="exampleInputFile">첨부파일</label> 
+	                	<div class="custom-file">
+	                    	<input type="file" id="filesize" class="custom-file-label" name="report" style="width:100%;"/>
+	                	</div>
+	                </div>
+	                <!-- /.form-group -->
+            	</div>
+            	<!-- /.col -->
             </div>
             <!-- /.row -->
 			</div> 			
