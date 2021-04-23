@@ -24,14 +24,14 @@ public class A19_CommentService {
 	}
 	
 	// 등록
-	public void insComment(Comment ins) {
-		dao.insComment(ins);
+	public void insComment(Comment insc) {
+		dao.insComment(insc);
 	}
 	
 		
 	// 수정
-	public void updateComment(Comment upt) {
-		dao.updateComment(upt);
+	public void updateComment(Comment uptc) {
+		dao.updateComment(uptc);
 	}
 	// 삭제
 	public void deleteComment(int id) {

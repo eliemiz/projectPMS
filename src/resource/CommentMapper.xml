@@ -10,15 +10,15 @@
 		where document_id = #{document_id}
 	</select>
 	<!-- 댓글 조회
-	public Comment getComment(int id)
+	public Comment getComment(int document_id)
 	 -->
 	 <select id="getComment" resultType="comment" parameterType="int">
 	 	select * from comments
-	 	where id = #{id}
+	 	where document_id = #{document_id}
 	 </select>
 	<!-- 댓글 등록 -->
 	<insert id="insComment" parameterType="comment">
-		INSERT INTO COMMENTS VALUES (COMMENTS_SEQ.nextval,#{document_type},task_seq.currval,
+		INSERT INTO COMMENTS VALUES (COMMENTS_SEQ.nextval,'Task',task_seq.currval,
 			#{account_id},#{content},sysdate,sysdate)
 	</insert>
 	<!-- 댓글 수정 -->
