@@ -85,7 +85,16 @@
 			$(this).next(".custom-file-label").text($(this).val());
 		});
 		$("#uptBtu").on("click",function(){
-			if($("[name=start_date]").val()==""){
+			if($("[name=subject]").val()==""){
+				alert("제목을 입력하세요.");
+				return false;
+			}else if($("[name=subject]").val().length >= 100) {
+				alert("제목은 100자 미만으로 입력해주세요.");
+				return false;
+			}else if($("[name=description]").val().length >= 1000){
+				alert("상세설명은 1000자 미만으로 입력해주세요.");
+				return false;	
+			}else if($("[name=start_date]").val()==""){
 				alert("예상시작일을 입력하세요.");
 				return false;
 			}else if($("[name=end_date]").val()==""){
@@ -150,7 +159,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
-                    <form:input type="email" class="form-control" value="${risk.subject}" path="subject" readonly="true"/>
+                    <form:input type="email" class="form-control" value="${risk.subject}" path="subject"/>
                     <form:hidden path="id"/>
                     <form:hidden path="subject"/>
                   </div>
