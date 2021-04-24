@@ -146,7 +146,7 @@ html, body {
                <div class="login-box">
                   <div class="card card-outline card-primary">
                      <div class="card-header text-center">
-                        <a href="../../index2.html" class="h1">비밀번호 변경</a>
+                        <a href="../../index2.html" class="h1"><spring:message code="account_change_pass"/></a>
                      </div>
                       <form method="post">
                       	<input type="hidden" name="proc"/>
@@ -154,7 +154,7 @@ html, body {
                      	  <div class="card-body">
                            <p class="login-box-msg">새로 변경 할 비밀번호를 입력하세요.</p>
                             <div class="input-group mb-3">
-					          <input name="password" id="password" type="password" class="form-control" placeholder="새 비밀번호"/>
+					          <input name="password" id="password" type="password" class="form-control" placeholder="<spring:message code="account_new_pass"/>"/>
 					          <div class="input-group-append">
 					            <div class="input-group-text">
 					              <span class="fas fa-lock"></span>
@@ -163,7 +163,7 @@ html, body {
 					        </div>
 				             <br>
 					        <div class="input-group mb-3">
-					          <input name="password2" id="password2" type="password" class="form-control" placeholder="새 비밀번호 확인"/>
+					          <input name="password2" id="password2" type="password" class="form-control" placeholder="<spring:message code="account_new_pass"/>"/>
 					          <div class="input-group-append">
 					            <div class="input-group-text">
 					              <span class="fas fa-lock"></span>

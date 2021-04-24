@@ -91,7 +91,7 @@ public class A02_MailController {
 
 	// http://localhost:7080/projectPMS/account.do?method=send2
 	@RequestMapping(params="method=send2")
-	public String send2(@ModelAttribute("account") Account account, Model d) throws MessagingException{
+	public String send2(Account account, Model d) throws MessagingException{
 
 		service.sendMail2(account);
 		

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html lang="en">
@@ -164,31 +165,30 @@ html, body {
 					<div style="width:600px;">
 						<div class="card card-outline card-primary">
 							<div class="card-header text-center">
-								<h1>회원 등록</h1>
+								<h1><spring:message code="account_member_registration"/></h1>
 							</div>
 							<div class="card-body">
 								<p class="login-box-msg"></p>
-								<form:form modelAttribute="account" action="${path}/account.do?method=send2" 
-									enctype="multipart/form-data" method="post" id="signin">
-									<form:hidden path="auth" class="form-control" value="Developer" />
+								<form action="${path}/account.do?method=send2" method="post" id="signin">
+									<input type="hidden" name="auth" class="form-control" value="Developer" />
 									<div class="input-group mb-5">
-										<form:input path="user_id" class="form-control" placeholder="아이디" />
+										<input name="user_id" id="user_id" class="form-control" placeholder="<spring:message code="account_id"/>" />
 										<div class="input-group-append mr-3">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
 											</div>
 										</div>
-										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()" onchange="changeId()">중복확인</button>
+										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()"><spring:message code="account_duplication"/></button>
   										<!-- <input type="hidden" id="ckValid" value="NOCK"/> -->
   										<div>
-  											<span> 영문 대소문자와 숫자를 사용하여 4~12자리로 입력해야합니다.</span><br>
-	  										<span> 회원 ID는 가입 후 변경이 불가합니다.</span><br>
+  											<span> *영문 대소문자와 숫자를 사용하여 4~12자리로 입력해야합니다.</span><br>
+	  										<span> *회원 ID는 가입 후 변경이 불가합니다.</span><br>
 	  										<span id="id-check-span" style="color:red;"></span>
   										</div>
 	  									
 									</div>
 									<div class="input-group mb-5">
-										<form:input path="name" class="form-control" placeholder="이름" />
+										<input name="name" class="form-control" placeholder="<spring:message code="account_name"/>" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
@@ -196,7 +196,7 @@ html, body {
 										</div>
 									</div>
 									<div class="input-group mb-5">
-										<form:input path="mail" class="form-control" placeholder="Email" />
+										<input name="mail" class="form-control" placeholder="<spring:message code="account_email"/>" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-envelope"></span>
@@ -204,9 +204,9 @@ html, body {
 										</div>
 									</div>
 									<div class="input-group mb-3">
-										<button type="button" class="btn btn-primary btn-block" id="Btn">등록</button>
+										<button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_enroll"/></button>
 									</div>
-								</form:form>
+								</form>
 							</div>
 							<!-- /.form-box -->
 						</div>
