@@ -4,7 +4,12 @@
 <mapper namespace="pms.a03_dao.A11_JournalDao">
 	
 	<!-- public ArrayList<Journal> getJournalList(Journal jr); -->
-	
+<!-- 	public ArrayList<Journal> getJournalList(int document_id) -->
+	<resultMap type="journal" id="journalMap"/>
+	<select id="getJournalList" resultMap="journalMap" parameterType="int">
+		SELECT * FROM journal
+		where document_id = #{document_id}
+	</select>
 	 
 	<select id="getJournalListAll" resultType="journalEx" parameterType="journalSch">
 		SELECT * FROM (

@@ -12,6 +12,7 @@ import pms.z01_vo.JournalSch;
 public interface A11_JournalDao {
 	
 	public void insertJournal(Journal ins); // Journal 등록
+	public ArrayList<Journal> getJournalList(int document_id);
 	/* public ArrayList<Journal> getJournalList(Journal jr); */
 	
 	public ArrayList<JournalEx> getJournalListAll(JournalSch sch);
