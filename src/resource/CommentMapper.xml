@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A19_CommentDao">
 	<resultMap type="comment" id="commentList"/>
+	
+	<select id="getCommentList2" resultMap="commentList" parameterType="comment">
+		SELECT *
+		from comments
+	</select>
+	
+	
 	<!-- 댓글 조회
 	public ArrayList<Comment> getCommentList(int document_id);
 	 -->
@@ -19,6 +26,10 @@
 	<!-- 댓글 등록 -->
 	<insert id="insComment" parameterType="comment">
 		INSERT INTO COMMENTS VALUES (COMMENTS_SEQ.nextval,'Task',task_seq.currval,
+			#{account_id},#{content},sysdate,sysdate)
+	</insert>
+	<insert id="insertComment" parameterType="comment">
+		INSERT INTO COMMENTS VALUES (COMMENTS_SEQ.nextval,'Risk',#{document_id},
 			#{account_id},#{content},sysdate,sysdate)
 	</insert>
 	<!-- 댓글 수정 -->

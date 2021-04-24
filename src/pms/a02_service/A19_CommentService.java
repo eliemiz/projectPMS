@@ -13,6 +13,10 @@ public class A19_CommentService {
 	@Autowired(required = false)
 	private A19_CommentDao dao;
 	
+	public ArrayList<Comment> getCommentList2(Comment comment){		
+		return dao.getCommentList2(comment);
+	}
+	
 	public ArrayList<Comment> getCommentList(int document_id){
 		ArrayList<Comment> commentList = dao.getCommentList(document_id);
 		return commentList;
@@ -26,6 +30,9 @@ public class A19_CommentService {
 	// 등록
 	public void insComment(Comment insc) {
 		dao.insComment(insc);
+	}
+	public void insertComment(Comment insc) {
+		dao.insertComment(insc);
 	}
 	
 		

@@ -24,6 +24,21 @@ public class A19_CommentController {
 	public String commentList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Comment sch, Model d) {
 		return "a12_task\\a05_taskComment";
 	}
+	// http://localhost:7080/projectPMS/comment.do?method=commentlist
+	@RequestMapping(params = "method=commentlist")
+	public String CommentList2(@ModelAttribute("comment") Comment comment, Model d) {
+		d.addAttribute("commentList2", service.getCommentList2(comment));
+		return "a16_risk\\a01_riskComment";
+	}
+	/*
+	// http://localhost:7080/projectPMS/comment.do?method=list2
+	@RequestMapping(params = "method=list2")
+	public String RiskComment(@ModelAttribute("comment") Comment comment, Model d) {
+		System.out.println("id 확인:"+comment.getDocument_id());
+		d.addAttribute("riskList", service.getComment(comment.getDocument_id()));
+		
+		return "a16_risk\\a01_riskComment";
+	}*/
 	
 	@RequestMapping(params = "method=uptForm")
 	public String uptForm(@RequestParam("id") int id, Model d) {
@@ -38,6 +53,16 @@ public class A19_CommentController {
 		return "forward:/comment.do?method=uptForm";
 	}
 	
+	@RequestMapping(params = "method=insForm")
+	public String insForm(@ModelAttribute("comment") Comment comment) {
+		return "a16_risk\\a01_riskComment";
+	}
+	@RequestMapping(params = "method=insert")
+	public String insComment(Comment insc, Model d) {
+		service.insertComment(insc);
+		d.addAttribute("proc", "insc");
+		return "a16_risk\\a01_riskComment";
+	}
 	@RequestMapping(params = "method=delete")
 	public String delete(@RequestParam("id") int id) {
 		service.deleteComment(id);

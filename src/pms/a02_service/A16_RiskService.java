@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import pms.a03_dao.A16_RiskDao;
 import pms.z01_vo.Attachment;
+import pms.z01_vo.Comment;
 import pms.z01_vo.Risk;
 import pms.z02_util.TimeManager;
 
@@ -172,4 +173,10 @@ public class A16_RiskService {
 		
 		return riskList;
 	}
+	/*
+	 * public ArrayList<Comment> getCommentList2(Comment sch){ return
+	 * dao.getCommentList2(sch); }
+	 */
+	
+	
 }

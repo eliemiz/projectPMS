@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,9 @@ import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A16_RiskService;
 import pms.a02_service.A18_AttachmentService;
+import pms.a02_service.A19_CommentService;
 import pms.z01_vo.Account;
+import pms.z01_vo.Comment;
 import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
 import pms.z02_util.SessionManager;
@@ -36,6 +37,8 @@ public class A16_RiskController {
 	private LocaleResolver localeResolver;
 	@Autowired(required = false)
 	private A18_AttachmentService service4;
+	@Autowired(required = false)
+	private A19_CommentService service5;
 	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
@@ -57,6 +60,16 @@ public class A16_RiskController {
 		
 		return "a16_risk\\a01_riskDetail";
 	}
+	
+	// http://localhost:7080/projectPMS/comment.do?method=commentlist
+	/*
+	@RequestMapping(params = "method=commentlist")
+	public String CommentList2(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Comment sch, Model d) {
+		d.addAttribute("commentList2", service.getCommentList2(sch));
+		return "a16_risk\\a01_riskComment";
+	}
+	*/
+	
 	// http://localhost:6080/projectPMS/risk.do?method=insForm
 	// http://localhost:7080/projectPMS/risk.do?method=insForm
 	@RequestMapping(params = "method=insForm")

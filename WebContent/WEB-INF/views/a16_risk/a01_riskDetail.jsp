@@ -351,14 +351,31 @@
                     </div> -->
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-           		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 작성  
-              	<form class="form-horizontal">
-              		<div>
-                          <input type="text" class="form-control"/><br>
-                          	<input type="button" class="btn btn-success" value="등록"/>
-                            <input type="button" class="btn btn-danger" value="취소"/>
-                    </div><br>
-                </form>
+              <%-- <jsp:include page="a01_riskComment.jsp"/> --%>
+           		<%-- <div class="container">
+				    <form id="commentForm" name="commentForm" method="post">
+				    <br><br>
+				        <div>
+				            <div>
+				                <span><strong>Comments</strong></span> <span id="cCnt"></span>
+				            </div>
+				            <div>
+				                <table class="table">                    
+				                    <tr>
+				                        <td>
+				                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+				                            <br>
+				                            <div>
+				                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
+				                            </div>
+				                        </td>
+				                    </tr>
+				                </table>
+				            </div>
+				        </div>
+				        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
+				    </form>
+				</div>
                 <div class="post">
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
@@ -371,7 +388,7 @@
                       <p>
                        댓글1 
                       </p>
-                    </div>
+                    </div> --%>
                 
               </div>
             </div>
@@ -383,6 +400,7 @@
           </div>
         </div>
         <!-- /.card-body -->
+      </div>
       </div>
       <!-- /.card -->
      </form:form>
