@@ -45,6 +45,8 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- fullCalendar -->
+<script src="fullcalendar-5.6.0/lib/main.min.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		/* Get project List */
@@ -127,12 +129,14 @@
 					name: name
 				},
 				dataType:"json",
-				success:function(te){
-					console.log(te.list);
+				success:function(data){
+					console.log(data.list);
 					// 검색 후 캘린더 초기화
 					calendar.removeAllEvents();
 					// 검색 조건에 맞는 데이터 로딩
-					
+					data.list.forEach(function(element, index, array){
+						calendar.addEvent(element);
+					});
 				},
 				error:function(err){
 					console.log(err);
