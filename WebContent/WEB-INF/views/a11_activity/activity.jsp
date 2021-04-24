@@ -72,10 +72,14 @@ $(document).ready(function(){
 			/* 페이지 전환 후 select값 고정 */
 			$('#document_type').val(selectType);
 			
+			
+			
 			var selectNum = '${document_id}';
+			
 			if (${empty document_id}) {
 				selectNum = "0";
 			}
+			
 			/* 페이지 전환 후 document_id값 고정 */
 			$('#document_id').val(selectNum);
 			
