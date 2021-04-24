@@ -7,8 +7,11 @@
 <!-- 	public ArrayList<Journal> getJournalList(int document_id) -->
 	<resultMap type="journal" id="journalMap"/>
 	<select id="getJournalList" resultMap="journalMap" parameterType="int">
-		SELECT * FROM journal
-		where document_id = #{document_id}
+		SELECT j.* FROM journal j, task t
+		WHERE j.document_id = t.id
+		AND j.document_type = 'task'
+		AND t.id = #{id}
+		AND j.account_id = t.account_id
 	</select>
 	  
 	<select id="getJournalListAll" resultType="journalEx" parameterType="journalSch">

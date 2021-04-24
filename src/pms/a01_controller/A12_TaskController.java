@@ -123,10 +123,11 @@ public class A12_TaskController {
 	
 	// http://localhost:7080/projectPMS/task.do?method=detail
 	@RequestMapping(params = "method=detail")
-	public String detail(@ModelAttribute("task") Task task, Model d) {
+	public String detail(@ModelAttribute("task") Task task, @ModelAttribute("journal") Journal journal, Model d) {
 		System.out.println("id:"+task.getId());
 		d.addAttribute("task", service.getTask(task.getId()));
-		
+		journal.setAccount_id(task.getAccount_id());
+		d.addAttribute("journal", serviceJ.getJournalList(task.getId()));
 		return "a12_task\\a03_taskDetail";
 	}
 	

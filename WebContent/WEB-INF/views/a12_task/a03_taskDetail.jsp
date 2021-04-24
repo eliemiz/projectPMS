@@ -295,6 +295,7 @@ html, body {
             </div>
 	      </div>
 	      <!-- /.card-body -->
+	      </form:form>
             </div><br> <!-- /.yellowbox -->
             <div class="row mt-4">
             <nav class="w-100">
@@ -308,7 +309,9 @@ html, body {
               	<br>
               	<div class="card-body repliesDiv">
 			    <!-- 이력 목록 출력 -->
-			    	<%-- ${task.content}&nbsp;&nbsp;${task.created_on} --%>
+			    	<c:forEach var="journal" items="${journal}">
+			    	${journal.content}&nbsp;&nbsp;${journal.created_on}
+			    	</c:forEach>
 			    </div>
               	<%-- 
               	<div>journal 작업이력
@@ -346,15 +349,12 @@ html, body {
 <%-- 	              		<span name="account_id" value="${conmeents.account_id}"></span> --%>
 <%-- 	              		<span name="created_on" value="${conmeents.created_on}"></span> --%>
 <!--               		</div><br> -->
-<%--               		</c:foreach> --%>
-              		 
-              		 
+<%--               		</c:foreach> --%>              		 
               	</div>
               </div>
             </div>
           </div>
-         </div> 
-    </form:form>
+         </div>     
     </section>
     <!-- /.content -->
   </div>
