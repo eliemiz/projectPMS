@@ -173,11 +173,11 @@ $(document).ready(function(){
           <form class="form-group" method="post" action="${path}/activity.do">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="card-title"><spring:message code="d_type_select"/></h5>
+                <h5 class="card-title"><spring:message code="ac_search"/></h5>
               </div>
              <div class="card-body">
               	<div class="input-group input-group-m" style="width: 400px;">
-              		<label><spring:message code="ac_type"/></label>
+              		<label><spring:message code="ac_project"/></label>
                   	<select style="margin-left:66px" id="projectId" name="projectId" class="form-control select2"></select>
                 </div>
               	<div class="input-group input-group-m" style="width: 340px;">
@@ -188,9 +188,8 @@ $(document).ready(function(){
                     	<option value="risk" id="risk"><spring:message code="ac_risk"/></option>
                   	</select>
                 </div>
-              
                 <div class="row mb-3">
-						<label for="document_id" class="col-md-2">작업번호</label> 
+						<label for="document_id" class="col-md-2"><spring:message code="ac_no"/></label> 
 						<input type="text" name="document_id" id="document_id" class="form-control col-md-3" style="display:inline-block;"/>																	
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;* 작업번호 0일때는 모든 작업번호가 조회됩니다.
