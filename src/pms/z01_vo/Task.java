@@ -30,6 +30,7 @@ public class Task {
 	private String[] filenames; // 파일 수정시 사용
 	private ArrayList<Attachment> fileInfo;
 	private ArrayList<Comment> commentInfo;
+	private String content; // journal content
 
 	public Task() {
 		super();
@@ -221,5 +222,12 @@ public class Task {
 		this.commentInfo = commentInfo;
 	}
 
-	 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 }

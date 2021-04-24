@@ -19,8 +19,10 @@ import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
 import pms.a02_service.A18_AttachmentService;
 import pms.a02_service.A19_CommentService;
+import pms.a02_service.A20_JournalService;
 import pms.z01_vo.Account;
 import pms.z01_vo.Comment;
+import pms.z01_vo.Journal;
 import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskSch;
@@ -39,6 +41,8 @@ public class A12_TaskController {
 	private A18_AttachmentService serviceT;
 	@Autowired(required=false)
 	private A19_CommentService serviceC;
+	@Autowired(required=false)
+	private A20_JournalService serviceJ;
 	@Autowired(required = false)
 	private LocaleResolver localeResolver;
 	

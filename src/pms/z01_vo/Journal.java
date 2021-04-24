@@ -1,5 +1,5 @@
 package pms.z01_vo;
-
+// pms.z01_vo.Journal
 import java.util.Date;
 
 public class Journal {

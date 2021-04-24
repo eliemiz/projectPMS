@@ -14,8 +14,13 @@ CREATE SEQUENCE JOURNAL_SEQ
 	CYCLE;
 
 SELECT * FROM JOURNAL;
+SELECT * FROM task; -- 1, 14,15,17,62,82
+SELECT * FROM ACCOUNT;-- 1,14,17,51,61,82
 SELECT content, created_on 
 FROM journal
 WHERE document_id = 45
 AND upper(document_type) = upper('task');
+
+SELECT * FROM journal
+where document_id = 25;
 INSERT INTO journal VALUES (journal_seq.nextval, 'Task', 9999, 99999, sysdate, 'Task Journal Test');

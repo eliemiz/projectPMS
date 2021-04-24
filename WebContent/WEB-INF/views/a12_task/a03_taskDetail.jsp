@@ -306,12 +306,18 @@ html, body {
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
               	<br>
+              	<div class="card-body repliesDiv">
+			    <!-- 이력 목록 출력 -->
+			    	${task.content}&nbsp;&nbsp;${task.created_on}
+			    </div>
+              	<%-- 
               	<div>journal 작업이력
               	첨부파일&nbsp;삭제&nbsp;&nbsp;&nbsp;2021-04-03
               	</div><br>
               	<div>
               	제목&nbsp;수정&nbsp;&nbsp;&nbsp;2021-04-04
               	</div>
+              	 --%>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
            		<jsp:include page="a05_taskComment.jsp" />

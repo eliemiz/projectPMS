@@ -15,6 +15,7 @@ public class A20_JournalController {
 	@Autowired(required = false)
 	private A20_JournalService service;
 	
+	/*
 	@RequestMapping(params = "method=list")
 	public String journalList(@ModelAttribute("task") Task task, Model d) {
 		System.out.println("id: "+task.getId());
@@ -22,4 +23,14 @@ public class A20_JournalController {
 		
 		return "a12_task\\a06_taskJournal";
 	}
+	*/
+	// localhost:7080/
+	@RequestMapping(params = "method=list")
+	public String journalList(@ModelAttribute("task") Task task, Model d) {
+		System.out.println("Journal get id: "+task.getId());
+		d.addAttribute("journal", service.getJournalList(task.getId()));
+		
+		return "a12_task\\a06_taskJournal";
+	}
+	
 }
