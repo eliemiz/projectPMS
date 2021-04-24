@@ -9,6 +9,10 @@ public JournalSch(int projectId, int document_id) {
 	this.projectId = projectId;
 	this.document_id = document_id;
 }
+public JournalSch(int projectId) {
+	super();
+	this.projectId = projectId;
+}
 public int getProjectId() {
 	return projectId;
 }

@@ -50,7 +50,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	// $('#all').attr('selected','selected');
 	
 	 /* Get project List */
 	$.ajax({
@@ -66,12 +65,12 @@ $(document).ready(function(){
 			
 			$("#ac-project-list").val(data.projectId);
 			
-			/* 페이지 전환 후 select값 고정 */
+			
 			var selectType = '${document_type}';
 			if (${empty document_type}) {
 				selectType = "all";
 			}
-			
+			/* 페이지 전환 후 select값 고정 */
 			$('#ac-document-type').val(selectType);
 			
 			/* if(selectType == 'task'){
@@ -176,15 +175,14 @@ $(document).ready(function(){
               <div class="card-body">
               <div class="input-group input-group-m" style="width: 250px;">
                   <label><spring:message code="ac_type"/></label>&nbsp;&nbsp;
-                  <select class="form-control select2"  v-model="type" id="ac-document-type">
+                  <select class="form-control select2" id="ac-document-type">
                    <option value="all" id="all"><spring:message code="ac_all"/></option> 
                    <option value="task" id="task"><spring:message code="ac_task"/></option> 
                     <option value="risk" id="risk"><spring:message code="ac_risk"/></option>
                   </select>
                 </div>
                <div class="form-row float-left">
-            <button type="button"  class="btn btn-primary btn-block type" v-bind:id="type"><spring:message code="ac_setting"/></button> 
-            <!-- <div>{{type}}</div> -->
+            <button type="button"  class="btn btn-primary btn-block type"><spring:message code="ac_setting"/></button> 
               </div>
               </div>
             </div>
@@ -209,10 +207,6 @@ $(document).ready(function(){
                       <th><spring:message code="ac_content"/></th>
                       <th><spring:message code="ac_writer"/></th>
                       <th><spring:message code="ac_date"/></th>
-                      <!-- <th>작업유형</th>ac_type
-                      <th>내용</th>ac_content
-                      <th>작성자</th>ac_writer
-                      <th>작업일자</th>ac_date -->
                     </tr>
                   </thead>
                   <tbody>
@@ -253,35 +247,10 @@ $(document).ready(function(){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<!-- 
-activity=Activity
-project-select=Project Select
-d_type_select=Type Select
-ac_type=Activity Type
-ac_list=Activity List
-ac_no=ID
-ac_content=Content
-ac_writer=Writer
-ac_date=Date
-ac_setting=Click
-activity=\uC791\uC5C5\uB0B4\uC5ED
-project-select=\uD504\uB85C\uC81D\uD2B8 \uC120\uD0DD
-d_type_select=\uC791\uC5C5\uC720\uD615 \uC120\uD0DD
-ac_type=\uC791\uC5C5\uC720\uD615
-ac_list=\uC791\uC5C5\uB0B4\uC5ED \uBAA9\uB85D
-ac_no=\uC791\uC5C5\uBC88\uD638
-ac_content=\uB0B4\uC6A9
-ac_writer=\uC791\uC131\uC790
-ac_date=\uC791\uC5C5\uC77C\uC790
-ac_setting=적용 -->
+
  <!-- Footer -->
   <jsp:include page="../a00_common/a02_footer.jsp"/>
 
-  <!-- Control Sidebar -->
-  <!-- <aside class="control-sidebar control-sidebar-dark">
-    Control sidebar content goes here
-  </aside> -->
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
