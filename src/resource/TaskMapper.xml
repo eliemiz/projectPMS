@@ -107,6 +107,16 @@
 		where document_id=#{document_id}
 	</delete>
 
+<!-- Journal -->
+	<!-- public ArrayList<Journal> getJournalList(int document_id) -->
+	<resultMap type="journal" id="journalMap"/>
+	<select id="getJournalList" resultMap="journalMap" parameterType="int">
+		SELECT j.* FROM journal j, task t
+		WHERE j.document_id = t.id
+		AND j.document_type = 'task'
+		AND t.id = #{id}
+		AND j.account_id = t.account_id
+	</select>
 
 	<!-- comment -->
 <!-- 	public void insertComment(Comment insc); // 댓글 입력 -->

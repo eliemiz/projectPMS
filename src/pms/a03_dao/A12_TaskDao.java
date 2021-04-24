@@ -12,6 +12,7 @@ import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
+import pms.z01_vo.Journal;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z01_vo.TaskSch;
@@ -37,6 +38,8 @@ public interface A12_TaskDao {
 	public void updateComment(Comment uptc); // 댓글 수정
 	public void deleteComment(int id); // 댓글 삭제
 	*/
+	// Journal DAO
+	public ArrayList<Journal> getJournalList(int id);	
 	
 	// Calendar DAO
 	public ArrayList<Calendar> calenList(int projectId);

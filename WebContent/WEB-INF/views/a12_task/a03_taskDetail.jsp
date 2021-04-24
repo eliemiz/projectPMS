@@ -295,7 +295,6 @@ html, body {
             </div>
 	      </div>
 	      <!-- /.card-body -->
-	      </form:form>
             </div><br> <!-- /.yellowbox -->
             <div class="row mt-4">
             <nav class="w-100">
@@ -309,7 +308,7 @@ html, body {
               	<br>
               	<div class="card-body repliesDiv">
 			    <!-- 이력 목록 출력 -->
-			    	<c:forEach var="journal" items="${journal}">
+			    	<c:forEach var="journal" items="${journals}">
 			    	${journal.content}&nbsp;&nbsp;${journal.created_on}
 			    	</c:forEach>
 			    </div>
@@ -355,6 +354,7 @@ html, body {
             </div>
           </div>
          </div>     
+	      </form:form>
     </section>
     <!-- /.content -->
   </div>

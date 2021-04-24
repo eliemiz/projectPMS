@@ -184,7 +184,10 @@ public class A12_TaskService {
 		dao.deleteFile(id);
 	}
 	
-	
+	// Journal
+	public ArrayList<Journal> getJournalList(int id){
+		return dao.getJournalList(id);
+	}
 	
 	// 댓글 입력
 	public void insertComment(Comment insc) {
