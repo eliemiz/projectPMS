@@ -11,6 +11,12 @@ public class Journal {
 	private Date created_on;
 	private String content;
 	
+	
+	public Journal() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Journal(int account_id, String content) {
 		super();
 		this.account_id = account_id;
