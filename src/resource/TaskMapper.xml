@@ -23,15 +23,13 @@
 	<select id="getTask" resultType="task" parameterType="int">
 		SELECT t.id, t.PARENT_ID, t.PROJECT_ID, t.ACCOUNT_ID,
 				t.SUBJECT, t.DESCRIPTION, t.STATUS, t.PRIORITY, t.UPDATED_ON,
-				start_date, due_date,
+				t.start_date, t.due_date,
 				t.ESTIMATED, t.DONE_RATIO, t.COMPLETED_ON,
-				t.TRACKER, a.name name, p.name project_name,
-				j.content, j.created_on
-		FROM task t, account a, PROJECT p, journal j
+				t.TRACKER, a.name name, p.name project_name
+		FROM task t, account a, PROJECT p
 		WHERE t.account_id = a.id
 		AND t.PROJECT_ID = p.ID
 		AND t.id = #{id}
-		AND j.document_id = t.id
 	</select>
 	
 	<!-- 파일 public ArrayList<Attachment> fileInfo(int document_id);

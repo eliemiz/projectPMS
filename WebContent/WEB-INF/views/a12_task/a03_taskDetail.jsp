@@ -308,7 +308,7 @@ html, body {
               	<br>
               	<div class="card-body repliesDiv">
 			    <!-- 이력 목록 출력 -->
-			    	${task.content}&nbsp;&nbsp;${task.created_on}
+			    	<%-- ${task.content}&nbsp;&nbsp;${task.created_on} --%>
 			    </div>
               	<%-- 
               	<div>journal 작업이력
