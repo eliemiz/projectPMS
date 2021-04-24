@@ -111,7 +111,7 @@
 		
 		calendar.render();
 		
-		$("#searchButton").click(function(info, successCallback, failureCallback){
+		$("#searchButton").click(function(){
 			var projectId = $("#projectId").val();
 			var taskName = $("#taskName").val();
 			var status = $("#status").val();
@@ -127,10 +127,12 @@
 					name: name
 				},
 				dataType:"json",
-				success:function(data){
-					console.log(data.list);
-					calendar.destroy();
-					calendar.render();
+				success:function(te){
+					console.log(te.list);
+					// 검색 후 캘린더 초기화
+					calendar.removeAllEvents();
+					// 검색 조건에 맞는 데이터 로딩
+					
 				},
 				error:function(err){
 					console.log(err);
