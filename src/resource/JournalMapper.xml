@@ -10,7 +10,7 @@
 		SELECT * FROM journal
 		where document_id = #{document_id}
 	</select>
-	 <!--  
+	  
 	<select id="getJournalListAll" resultType="journalEx" parameterType="journalSch">
 		SELECT * FROM (
 		SELECT j.*, a.name account_name, p.name project_name
@@ -93,8 +93,8 @@
 			and r.project_id = #{projectId}
 			order by j.created_on desc
 	</select>
-	-->
-	 
+
+	 <!-- 
 	<select id="getJournalListAll" resultType="journalEx" parameterType="int">
 		SELECT * FROM (
 		SELECT j.*, a.name account_name, p.name project_name
@@ -113,7 +113,7 @@
 			and r.project_id = p.id
 			and r.project_id = #{project_id}
 			) e ORDER BY e.CREATED_ON DESC
-		<!--   SELECT (...) e ORDER BY e.CREATED_ON DESC; -->
+		  // SELECT (...) e ORDER BY e.CREATED_ON DESC; 
 	</select>
 	<select id="getJournalListTask" resultType="journalEx" parameterType="int">
 		SELECT j.*, a.name account_name, p.name project_name
@@ -135,7 +135,7 @@
 			and r.project_id = #{project_id}
 			order by j.created_on desc
 	</select>
-	
+	 -->
  <!--
 	<select id="getJournalList" parameterType="journal" resultType="journal">
 	SELECT * 

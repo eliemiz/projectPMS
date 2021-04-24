@@ -15,21 +15,21 @@ public class A11_ActivityService {
 	@Autowired(required = false)
 	private A11_JournalDao dao;
 
-	public ArrayList<JournalEx> getJournalListAll(int project_id) {
+	public ArrayList<JournalEx> getJournalListAll(JournalSch sch) {
 
-		return dao.getJournalListAll(project_id);
+		return dao.getJournalListAll(sch);
 	}
 
-	public ArrayList<JournalEx> getJournalListTask(int project_id) {
+	public ArrayList<JournalEx> getJournalListTask(JournalSch sch) {
 
-		return dao.getJournalListTask(project_id);
+		return dao.getJournalListTask(sch);
 	}
 
-	public ArrayList<JournalEx> getJournalListRisk(int project_id) {
+	public ArrayList<JournalEx> getJournalListRisk(JournalSch sch) {
 
-		return dao.getJournalListRisk(project_id);
+		return dao.getJournalListRisk(sch);
 	}
-	/*
+	
 	public ArrayList<JournalEx> getJournalListAlld(JournalSch sch){
 		return dao.getJournalListAlld(sch);
 	}
@@ -39,5 +39,5 @@ public class A11_ActivityService {
 	public ArrayList<JournalEx> getJournalListRiskd(JournalSch sch){
 		return dao.getJournalListRiskd(sch);
 	}
-	*/
+	
 }
