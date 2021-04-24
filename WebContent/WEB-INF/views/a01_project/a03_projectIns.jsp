@@ -143,10 +143,6 @@ $.widget.bridge('uibutton', $.ui.button)
     
          <!-- Main content -->
     <section class="content">
-      <form:form modelAttribute="project" action="${path}/project.do?method=insert" 
-				 	enctype="multipart/form-data" 
-				 	method="post">
- 		<form:hidden path="id"/>
       <div class="row">
         <div class="col-md-7">
           <div class="card card-primary">
@@ -159,7 +155,9 @@ $.widget.bridge('uibutton', $.ui.button)
                 </button>
               </div>
             </div>
-           
+            <form:form modelAttribute="project" action="${path}/project.do?method=insert" 
+				 	enctype="multipart/form-data" method="post">
+ 				<form:hidden path="id"/>
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName"><spring:message code="p_name"/></label>
@@ -167,7 +165,7 @@ $.widget.bridge('uibutton', $.ui.button)
               </div>
               <div class="form-group">
                 <label for="inputDescription"><spring:message code="p_description"/></label><br>
-                <form:textarea path="description" rows="8" cols="100"/>
+                <form:textarea path="description" rows="8" cols="80"/>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany"><spring:message code="p_identifier"/></label>
@@ -184,20 +182,19 @@ $.widget.bridge('uibutton', $.ui.button)
 	           </div>
 	          </div> 
                <div class="form-row float-right">
-          <!-- /.col -->
-            <button type="submit" class="btn btn-primary" id="Btn"><spring:message code="p_new"/></button>&nbsp;&nbsp;
-            <a href="${path}/project.do" class="btn btn-default"><spring:message code="p_cancel"/></a>
-          <!-- /.col -->
-        </div>
+	          <!-- /.col -->
+	            <button type="submit" class="btn btn-primary" id="Btn"><spring:message code="p_new"/></button>&nbsp;&nbsp;
+	            <a href="${path}/project.do" class="btn btn-default"><spring:message code="p_cancel"/></a>
+	          <!-- /.col -->
+	          </div>
+             </div>
+             <!-- /.card-body -->
+             </form:form>
             </div>
-            <!-- /.card-body -->
-             
-          </div>
-          
           <!-- /.card -->
         </div>
       </div>
-</form:form>
+
     </section>
     <!-- /.content -->
   </div>
