@@ -235,7 +235,7 @@ html, body {
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">새 Task 만들기</h3>
+            <h3 class="card-title">새 업무 만들기</h3>
             <%-- 
             <form:hidden path="created_on"/>
             <form:hidden path="updated_on"/>
@@ -279,7 +279,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>상위Task</label>
+                  <label>상위업무</label>
     <%-- TODO: 최상위 task id(value)만 불러와서 task 이름을 select 할 것인지, 입력할 것인지? --%>
                   <form:input path="parent_id" type="text" class="form-control" style="width: 100%;"/>
                 </div>

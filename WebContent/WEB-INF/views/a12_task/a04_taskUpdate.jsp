@@ -279,7 +279,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>상위Task</label>
+                  <label>상위업무</label>
                   <form:input path="parent_id" type="text" class="form-control" value="${task.parent_id}" style="width: 100%;"/>
                 </div>
                 <!-- /.form-group -->

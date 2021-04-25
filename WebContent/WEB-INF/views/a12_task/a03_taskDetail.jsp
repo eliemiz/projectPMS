@@ -247,7 +247,7 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-            		<label>상위 Task</label>
+            		<label>상위 업무</label>
             		&nbsp;&nbsp;&nbsp;
 					<span name="parent_id" value="${task.parent_id}">${task.parent_id}</span>        
 	             </div>

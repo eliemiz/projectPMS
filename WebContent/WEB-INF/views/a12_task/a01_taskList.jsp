@@ -136,7 +136,7 @@ html, body {
                 <h3 class="card-title">검색조건</h3>              
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
-                	<label id="newTask" style="cursor:pointer;">새Task만들기</label>
+                	<label id="newTask" style="cursor:pointer;">새업무만들기</label>
                 </div>
               </div>
               <div class="card-body">
@@ -146,7 +146,7 @@ html, body {
 						<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
 					</div>
 					<div class="row mb-3">
-						<label for="subject" class="col-md-2">업무 이름 검색</label>
+						<label for="subject" class="col-md-2">업무 제목 검색</label>
 						<input type="text" name="subject" id="subject" class="form-control col-md-3" style="display:inline-block;"/>
 					</div>
 					<div class="row mb-3">
