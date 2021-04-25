@@ -224,7 +224,7 @@ html, body {
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                   <label>시작시간</label>
+                   <label>시작일자</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
                    <span name="start_date" value="${task.start_date}">${task.start_date}</span>
                 </div>
@@ -309,7 +309,9 @@ html, body {
               	<div class="card-body repliesDiv">
 			    <!-- 이력 목록 출력 -->
 			    	<c:forEach var="journal" items="${journals}">
+			    	<div>
 			    	${journal.content}&nbsp;&nbsp;${journal.created_on}
+			    	</div>
 			    	</c:forEach>
 			    </div>
               	<%-- 
@@ -428,7 +430,7 @@ html, body {
 
 <!-- Page specific script -->
 <script>
-
+	
 </script>
 </body>
 </html>

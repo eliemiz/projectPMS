@@ -113,6 +113,8 @@ public class A12_TaskService {
 	
 	public String getUpdated(Task oldTask, Task newTask) {
 
+		oldTask.setStart_date(TimeManager.getInstance().simpleToIso(oldTask.getStart_date()));
+		
 		StringBuilder sb = new StringBuilder(); 
 		if (!oldTask.getSubject().equals(newTask.getSubject())) {
 			sb.append("[제목 변경] \n" + oldTask.getSubject() + "\n -> " + newTask.getSubject() + "\n");
@@ -120,9 +122,42 @@ public class A12_TaskService {
 		if (!oldTask.getDescription().equals(newTask.getDescription())) {
 			sb.append("[내용 변경] \n" + oldTask.getDescription() + "\n -> " + newTask.getDescription() + "\n");
 		}
+		if (!oldTask.getTracker().equals(newTask.getTracker())) {
+			sb.append("[유형 변경] \n" + oldTask.getTracker() + "\n -> " + newTask.getTracker() + "\n");
+		}
+		if (!oldTask.getStatus().equals(newTask.getStatus())) {
+			sb.append("[상태 변경] \n" + oldTask.getStatus() + "\n -> " + newTask.getStatus() + "\n");
+		}
+		// TODO: newTask.@@ ==> null로 뜸
+//		if (!oldTask.getProject_name().equals(newTask.getProject_name())) {
+//			sb.append("[프로젝트 변경] \n" + oldTask.getProject_name() + "\n -> " + newTask.getProject_name() + "\n");
+//		}
+//		if (!oldTask.getName().equals(newTask.getName())) {
+//			sb.append("[담당자 변경] \n" + oldTask.getName() + "\n -> " + newTask.getName() + "\n");
+//		}
 		if (oldTask.getDone_ratio() != newTask.getDone_ratio()) {
 			sb.append("[진행도 변경] " + oldTask.getDone_ratio() + " -> " + newTask.getDone_ratio() + "\n");
 		}
+		// TODO: oldTask.@@ ==> simpleDATE로 변경해야함
+		if (oldTask.getStart_date() != newTask.getStart_date()) {
+			sb.append("[시작일자 변경] " + oldTask.getStart_date() + " -> " + newTask.getStart_date() + "\n");
+		}
+		if (oldTask.getDue_date() != newTask.getDue_date()) {
+			sb.append("[완료기한 변경] " + oldTask.getDue_date() + " -> " + newTask.getDue_date() + "\n");
+		}
+		if (oldTask.getAccount_id() != newTask.getAccount_id()) {
+			sb.append("[담당자 변경] " + oldTask.getAccount_id() + " -> " + newTask.getAccount_id() + "\n");
+		}
+		if (oldTask.getProject_id() != newTask.getProject_id()) {
+			sb.append("[프로젝트 변경] " + oldTask.getProject_id() + " -> " + newTask.getProject_id() + "\n");
+		}
+		if (oldTask.getPriority() != newTask.getPriority()) {
+			sb.append("[우선순위 변경] " + oldTask.getPriority() + " -> " + newTask.getPriority() + "\n");
+		}
+		if (oldTask.getEstimated() != newTask.getEstimated()) {
+			sb.append("[추정시간 변경] " + oldTask.getEstimated() + " -> " + newTask.getEstimated() + "\n");
+		}
+		
 		
 		return sb.toString();
 	}
@@ -132,8 +167,6 @@ public class A12_TaskService {
 		
 		// 1. id로 기존 task 로드
 		Task old = dao.getTask(upt.getId());
-		
-		// 2. 수정사항에 대해 journal 추가
 		String updated = getUpdated(old, upt);
 		if (updated != null) {
 			if (updated != "") {
