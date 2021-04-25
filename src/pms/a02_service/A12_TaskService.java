@@ -13,8 +13,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import pms.a03_dao.A00_AccountDao;
+import pms.a03_dao.A01_ProjectDao;
 import pms.a03_dao.A11_JournalDao;
 import pms.a03_dao.A12_TaskDao;
+import pms.z01_vo.Account;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Calendar;
 import pms.z01_vo.CalendarSch;
@@ -22,6 +25,7 @@ import pms.z01_vo.Comment;
 import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Journal;
+import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 import pms.z01_vo.TaskResult;
 import pms.z01_vo.TaskSch;
@@ -32,6 +36,10 @@ public class A12_TaskService {
 
 	@Autowired(required = false)
 	private A12_TaskDao dao;
+	@Autowired(required = false)
+	private A01_ProjectDao daoP;
+	@Autowired(required = false)
+	private A00_AccountDao daoA;
 
 	@Value("${upload}")
 	private String upload;
@@ -123,34 +131,37 @@ public class A12_TaskService {
 			sb.append("[내용 변경] \n" + oldTask.getDescription() + "\n -> " + newTask.getDescription() + "\n");
 		}
 		if (!oldTask.getTracker().equals(newTask.getTracker())) {
-			sb.append("[유형 변경] \n" + oldTask.getTracker() + "\n -> " + newTask.getTracker() + "\n");
+			sb.append("[유형 변경]" + oldTask.getTracker() + " -> " + newTask.getTracker() + "\n");
 		}
 		if (!oldTask.getStatus().equals(newTask.getStatus())) {
-			sb.append("[상태 변경] \n" + oldTask.getStatus() + "\n -> " + newTask.getStatus() + "\n");
+			sb.append("[상태 변경]" + oldTask.getStatus() + " -> " + newTask.getStatus() + "\n");
 		}
 		// TODO: newTask.@@ ==> null로 뜸
-//		if (!oldTask.getProject_name().equals(newTask.getProject_name())) {
-//			sb.append("[프로젝트 변경] \n" + oldTask.getProject_name() + "\n -> " + newTask.getProject_name() + "\n");
-//		}
-//		if (!oldTask.getName().equals(newTask.getName())) {
-//			sb.append("[담당자 변경] \n" + oldTask.getName() + "\n -> " + newTask.getName() + "\n");
-//		}
+		Project project = daoP.getProject(newTask.getProject_id());
+		if (!oldTask.getProject_name().equals(project.getName())) {
+			sb.append("[프로젝트 변경] " + oldTask.getProject_name() + " -> " + project.getName() + "\n");
+		}
+		Account account = daoA.getAccount(newTask.getAccount_id());
+		if (!oldTask.getName().equals(account.getName())) {
+			sb.append("[담당자 변경] " + oldTask.getName() + " -> " + account.getName() + "\n");
+		}
 		if (oldTask.getDone_ratio() != newTask.getDone_ratio()) {
 			sb.append("[진행도 변경] " + oldTask.getDone_ratio() + " -> " + newTask.getDone_ratio() + "\n");
 		}
-		// TODO: oldTask.@@ ==> simpleDATE로 변경해야함
 		if (oldTask.getStart_date() != newTask.getStart_date()) {
+			oldTask.setStart_date(TimeManager.getInstance().isoToSimple(oldTask.getStart_date()));
 			sb.append("[시작일자 변경] " + oldTask.getStart_date() + " -> " + newTask.getStart_date() + "\n");
 		}
 		if (oldTask.getDue_date() != newTask.getDue_date()) {
+			oldTask.setDue_date(TimeManager.getInstance().isoToSimple(oldTask.getDue_date()));
 			sb.append("[완료기한 변경] " + oldTask.getDue_date() + " -> " + newTask.getDue_date() + "\n");
 		}
-		if (oldTask.getAccount_id() != newTask.getAccount_id()) {
-			sb.append("[담당자 변경] " + oldTask.getAccount_id() + " -> " + newTask.getAccount_id() + "\n");
-		}
-		if (oldTask.getProject_id() != newTask.getProject_id()) {
-			sb.append("[프로젝트 변경] " + oldTask.getProject_id() + " -> " + newTask.getProject_id() + "\n");
-		}
+//		if (oldTask.getAccount_id() != newTask.getAccount_id()) {
+//			sb.append("[담당자 변경] " + oldTask.getAccount_id() + " -> " + newTask.getAccount_id() + "\n");
+//		}
+//		if (oldTask.getProject_id() != newTask.getProject_id()) {
+//			sb.append("[프로젝트 변경] " + oldTask.getProject_id() + " -> " + newTask.getProject_id() + "\n");
+//		}
 		if (oldTask.getPriority() != newTask.getPriority()) {
 			sb.append("[우선순위 변경] " + oldTask.getPriority() + " -> " + newTask.getPriority() + "\n");
 		}

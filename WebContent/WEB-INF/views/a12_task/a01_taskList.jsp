@@ -146,8 +146,8 @@ html, body {
 						<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
 					</div>
 					<div class="row mb-3">
-						<label for="taskName" class="col-md-2">업무 이름 검색</label>
-						<input type="text" name="taskName" id="taskName" class="form-control col-md-3" style="display:inline-block;"/>
+						<label for="subject" class="col-md-2">업무 이름 검색</label>
+						<input type="text" name="subject" id="subject" class="form-control col-md-3" style="display:inline-block;"/>
 					</div>
 					<div class="row mb-3">
 						<label for="tracker" class="col-md-2">유형 검색</label>
@@ -171,8 +171,8 @@ html, body {
 						</select>																	
 					</div>
 					<div class="row mb-3">
-						<label for="name" class="col-md-2">담당자 검색</label>
-						<input type="text" name="name" id="name" class="form-control col-md-3" style="display:inline-block;"/>																	
+						<label for="wrtier" class="col-md-2">담당자 검색</label>
+						<input type="text" name="writer" id="writer" class="form-control col-md-3" style="display:inline-block;"/>																	
 					</div>
 					<div class="row mb-3">
 						<button type="button" id="searchButton" class="btn btn-primary">검색</button>

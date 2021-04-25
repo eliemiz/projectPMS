@@ -309,19 +309,9 @@ html, body {
               	<div class="card-body repliesDiv">
 			    <!-- 이력 목록 출력 -->
 			    	<c:forEach var="journal" items="${journals}">
-			    	<div>
-			    	${journal.content}&nbsp;&nbsp;${journal.created_on}
-			    	</div>
+			    	<pre><strong># 변경 일자: <fmt:formatDate value="${journal.created_on}" pattern="yyyy-MM-dd HH:mm"/></strong><br>${journal.content}</pre>
 			    	</c:forEach>
 			    </div>
-              	<%-- 
-              	<div>journal 작업이력
-              	첨부파일&nbsp;삭제&nbsp;&nbsp;&nbsp;2021-04-03
-              	</div><br>
-              	<div>
-              	제목&nbsp;수정&nbsp;&nbsp;&nbsp;2021-04-04
-              	</div>
-              	 --%>
               </div>
               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
            		<jsp:include page="a05_taskComment.jsp" />
