@@ -239,7 +239,7 @@ $(document).ready(function(){
 							<c:otherwise> Error </c:otherwise>
 					  	 </c:choose>
 					  	 </td>
-	                      <td class="text-left">${act.content}</td>
+	                      <td class="text-left"><pre style="padding: 0px;">${act.content}</pre></td>
 	                      <td>${act.account_name}</td>
 	                       <td><fmt:formatDate value="${act.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></td>
 	                    </tr>

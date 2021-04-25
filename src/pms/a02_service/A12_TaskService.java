@@ -132,6 +132,8 @@ public class A12_TaskService {
 		
 		// 1. id로 기존 task 로드
 		Task old = dao.getTask(upt.getId());
+		
+		// 2. 수정사항에 대해 journal 추가
 		String updated = getUpdated(old, upt);
 		if (updated != null) {
 			if (updated != "") {
