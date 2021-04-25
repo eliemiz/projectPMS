@@ -110,9 +110,40 @@ public class A12_TaskService {
 			}
 		}
 	}
+	
+	public String getUpdated(Task oldTask, Task newTask) {
+
+		StringBuilder sb = new StringBuilder(); 
+		if (!oldTask.getSubject().equals(newTask.getSubject())) {
+			sb.append("[제목 변경] \n" + oldTask.getSubject() + "\n -> " + newTask.getSubject() + "\n");
+		}
+		if (!oldTask.getDescription().equals(newTask.getDescription())) {
+			sb.append("[내용 변경] \n" + oldTask.getDescription() + "\n -> " + newTask.getDescription() + "\n");
+		}
+		if (oldTask.getDone_ratio() != newTask.getDone_ratio()) {
+			sb.append("[진행도 변경] " + oldTask.getDone_ratio() + " -> " + newTask.getDone_ratio() + "\n");
+		}
+		
+		return sb.toString();
+	}
 
 	// task 수정
 	public void updateTask(Task upt) {
+		
+		// 1. id로 기존 task 로드
+		Task old = dao.getTask(upt.getId());
+		String updated = getUpdated(old, upt);
+		if (updated != null) {
+			if (updated != "") {
+				Journal journal = new Journal();
+				journal.setDocument_type("task");
+				journal.setDocument_id(upt.getId());
+				journal.setAccount_id(upt.getAccount_id());
+				journal.setContent(updated);
+				dao.insertJournal(journal);
+			}
+		}
+		
 
 		/* iso 시간으로 변경 */
 		upt.setStart_date(TimeManager.getInstance().simpleToIso(upt.getStart_date()));

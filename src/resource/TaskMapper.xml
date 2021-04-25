@@ -120,7 +120,7 @@
 	<!-- public void insertJournal(Journal insj) -->
 	<insert id="insertJournal" parameterType="Journal">
 		INSERT INTO journal VALUES (
-			journal_seq.nextval, 'Task', #{document_id}, 
+			journal_seq.nextval, #{document_type}, #{document_id}, 
 			#{account_id}, sysdate, #{content})
 	</insert>
 
