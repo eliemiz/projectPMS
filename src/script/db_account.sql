@@ -1,3 +1,14 @@
+CREATE TABLE account(
+	ID NUMBER PRIMARY KEY, -- 구성원 일련번호
+	USER_ID VARCHAR2(30), -- 구성원 아이디
+	PASSWORD VARCHAR2(32),-- 구성원 비밀번호
+	NAME VARCHAR2(100), -- 구성원 이름
+	MAIL VARCHAR2(100), -- 구성원 메일
+	CREATED_ON DATE, -- 구성원 등록일(가입일)
+	LAST_LOGIN_ON DATE, -- 구성원 마지막 로그인
+	AUTH VARCHAR2(30) -- 구성원 역할
+);
+
 
 INSERT INTO account values(100000,'himan','7777','홍길동','adf@naver.com','2021-04-08','2021-04-10','Manager');
 SELECT * FROM account;
