@@ -300,7 +300,7 @@ html, body {
             <nav class="w-100">
               <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">이력</a>
-                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글</a>
+<!--                 <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글</a> -->
               </div>
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
@@ -313,8 +313,8 @@ html, body {
 			    	</c:forEach>
 			    </div>
               </div>
-              <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-           		<jsp:include page="a05_taskComment.jsp" />
+<!--               <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> -->
+<%--            		<jsp:include page="a05_taskComment.jsp" /> --%>
            		<%-- 
            		<i class="far fa-comment-dots"></i>&nbsp;&nbsp;댓글 달기
               	<form class="form-horizontal" method="post" id="comment">
@@ -341,7 +341,7 @@ html, body {
 <%-- 	              		<span name="created_on" value="${conmeents.created_on}"></span> --%>
 <!--               		</div><br> -->
 <%--               		</c:foreach> --%>              		 
-              	</div>
+<!--               	</div> -->
               </div>
             </div>
           </div>
