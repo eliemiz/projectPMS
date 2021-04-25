@@ -25,6 +25,8 @@ public class Risk {
 	private MultipartFile[] report; 
 	private String[] filenames;
 	private ArrayList<Attachment> fileInfo;
+	private ArrayList<Comment> commentInfo;
+	private String content;
 	public Risk() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -148,6 +150,18 @@ public class Risk {
 	}
 	public void setFileInfo(ArrayList<Attachment> fileInfo) {
 		this.fileInfo = fileInfo;
+	}
+	public ArrayList<Comment> getCommentInfo() {
+		return commentInfo;
+	}
+	public void setCommentInfo(ArrayList<Comment> commentInfo) {
+		this.commentInfo = commentInfo;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	
 }

@@ -227,14 +227,12 @@
                 </div>
                 <div class="form-group">
                 <p class="text-sm">예상시작일
-                  <b class="d-block"><fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.start_date}"/>
-                      <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/></b>
+                  <b class="d-block">${risk.start_date}</b>
                 </p>
                 </div>
                 <div class="form-group">
                 <p class="text-sm">예상종료일
-                  <b class="d-block"><fmt:parseDate var="dateFmt2" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.end_date}"/>
-                      <fmt:formatDate value="${dateFmt2}" pattern="yyyy-MM-dd"/></b>
+                  <b class="d-block">${risk.end_date}</b>
                 </p>
                 </div>
                 </div>
@@ -291,106 +289,38 @@
             <nav class="w-100">
               <div class="nav nav-tabs" id="product-tab" role="tablist">
                 <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">이력</a>
-                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글</a>
+               <!--  <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">댓글</a> -->
               </div>
             </nav>
             <div class="tab-content p-3" id="nav-tabContent">
               <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> 
               	<br>
-              	
-	              	<div class="form-group">
-	                <p class="text-md">내용 수정
-	                  <b>2021-04-21</b>
-	                </p>
-	                </div>
-	                <div class="form-group">
-	                <p class="text-md">파일 수정
-	                  <b>2021-04-22</b>
-	                </p>
-	                </div>
-              		<!-- <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                        </span>
-                        <span class="description">Shared publicly - 7:45 PM today</span>
-                      </div>
-                      /.user-block
-                      <p>
-                       댓글1 
-                      </p>
-                    </div>
-
-                    <div class="post clearfix">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="dist/img/user7-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                        </span>
-                        <span class="description">Sent you a message - 3 days ago</span>
-                      </div>
-                      /.user-block
-                      <p>
-                       댓글2
-                      </p>
-                    </div>
-
-                    <div class="post">
-                      <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                        </span>
-                        <span class="description">Shared publicly - 5 days ago</span>
-                      </div>
-                      /.user-block
-                      <p>
-                       댓글3
-                      </p>
-                    </div> -->
+              	<div class="card-body repliesDiv">
+			    	<c:forEach var="journal" items="${journals}">
+			    	<pre><strong>변경 일자: <fmt:formatDate value="${journal.created_on}" pattern="yyyy-MM-dd HH:mm"/></strong><br>${journal.content}</pre>
+			    	</c:forEach>
+			    </div>
               </div>
-              <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
-              <%-- <jsp:include page="a01_riskComment.jsp"/> --%>
-           		<%-- <div class="container">
-				    <form id="commentForm" name="commentForm" method="post">
-				    <br><br>
-				        <div>
-				            <div>
-				                <span><strong>Comments</strong></span> <span id="cCnt"></span>
-				            </div>
-				            <div>
-				                <table class="table">                    
-				                    <tr>
-				                        <td>
-				                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
-				                            <br>
-				                            <div>
-				                                <a href='#' onClick="fn_comment('${result.code }')" class="btn pull-right btn-success">등록</a>
-				                            </div>
-				                        </td>
-				                    </tr>
-				                </table>
-				            </div>
-				        </div>
-				        <input type="hidden" id="b_code" name="b_code" value="${result.code }" />        
-				    </form>
-				</div>
-                <div class="post">
+              <%-- <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+             	<c:forEach var="comment" items="${risk.commentInfo}">
+             	
+             	<div class="post">                	
                       <div class="user-block">
                         <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
                         <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
+                          ${comment.account_id}
                         </span>
-                        <span class="description">Shared publicly - 7:45 PM today</span>
+                        <span class="description">${comment.updated_on}</span> <!--Shared publicly - 7:45 PM today -->
                       </div>
                       <!-- /.user-block -->
                       <p>
-                       댓글1 
+                       ${comment.content} 
                       </p>
-                    </div> --%>
+                    
+                </div>                      
+                </c:forEach>
                 
-              </div>
+              </div> --%>
             </div>
           </div>   
          </div>

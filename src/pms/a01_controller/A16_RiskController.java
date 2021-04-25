@@ -40,6 +40,7 @@ public class A16_RiskController {
 	@Autowired(required = false)
 	private A19_CommentService service5;
 	
+	
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
 	@RequestMapping(params="method=list")
@@ -57,19 +58,11 @@ public class A16_RiskController {
 	public String RiskDetail(@ModelAttribute("risk") Risk risk, Model d) {
 		System.out.println("id 확인:"+risk.getId());
 		d.addAttribute("risk", service.getRisk(risk.getId()));
+		d.addAttribute("journals", service.getJournalList(risk.getId()));
 		
 		return "a16_risk\\a01_riskDetail";
 	}
-	
-	// http://localhost:7080/projectPMS/comment.do?method=commentlist
-	/*
-	@RequestMapping(params = "method=commentlist")
-	public String CommentList2(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Comment sch, Model d) {
-		d.addAttribute("commentList2", service.getCommentList2(sch));
-		return "a16_risk\\a01_riskComment";
-	}
-	*/
-	
+
 	// http://localhost:6080/projectPMS/risk.do?method=insForm
 	// http://localhost:7080/projectPMS/risk.do?method=insForm
 	@RequestMapping(params = "method=insForm")
@@ -141,5 +134,9 @@ public class A16_RiskController {
 	public ArrayList<Project> getProjectList(){
 		return service3.getProjectList();
 	}
+	/*
+	 * @ModelAttribute("comments") public ArrayList<Comment> getCommentList(){
+	 * return service5.getCommentList(); }
+	 */
 	
 }

@@ -161,7 +161,6 @@
                     <label for="exampleInputEmail1">제목</label>
                     <form:input type="email" class="form-control" value="${risk.subject}" path="subject"/>
                     <form:hidden path="id"/>
-                    <form:hidden path="subject"/>
                   </div>
                   <div class="row">                 
                   <div class="col-md-6">

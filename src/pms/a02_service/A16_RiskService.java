@@ -12,9 +12,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import pms.a03_dao.A00_AccountDao;
 import pms.a03_dao.A16_RiskDao;
+import pms.z01_vo.Account;
 import pms.z01_vo.Attachment;
-import pms.z01_vo.Comment;
+import pms.z01_vo.Journal;
 import pms.z01_vo.Risk;
 import pms.z02_util.TimeManager;
 
@@ -22,6 +24,8 @@ import pms.z02_util.TimeManager;
 public class A16_RiskService {
 	@Autowired(required = false)
 	private A16_RiskDao dao;
+	@Autowired(required = false)
+	private A00_AccountDao daoA;
 	@Value("${upload}")
 	private String upload;
 	@Value("${uploadTmp}")
@@ -29,13 +33,27 @@ public class A16_RiskService {
 	
 	public ArrayList<Risk> getRiskList(Risk sch){
 		
+		ArrayList<Risk> riskList = dao.getRiskList(sch);
+		for (Risk risk : riskList) {
+			risk.setStart_date(TimeManager.getInstance().datetimeToSimple(risk.getStart_date()));  
+			risk.setEnd_date(TimeManager.getInstance().datetimeToSimple(risk.getEnd_date()));  
+		}
 		
-		return dao.getRiskList(sch);
+		
+		return riskList;
 	}
 	
 	public void insertRisk(Risk ins) {
 		System.out.println("upload:"+upload);
 		System.out.println("uploadTmp:"+uploadTmp);
+		
+		/*
+		 * String start =
+		 * TimeManager.getInstance().datetimeToSimple(ins.getStart_date());
+		 * ins.setStart_date(start); String end =
+		 * TimeManager.getInstance().datetimeToSimple(ins.getEnd_date());
+		 * ins.setEnd_date(end);
+		 */
 		
 		dao.insertRisk(ins);
 		
@@ -79,9 +97,54 @@ public class A16_RiskService {
 		} 
 	}
 	
+	public String getUpdated(Risk oldRisk, Risk newRisk) {
+				
+		StringBuilder sb = new StringBuilder(); 
+		
+		if (!oldRisk.getSubject().equals(newRisk.getSubject())) {
+			sb.append("[제목 변경] \n" + oldRisk.getSubject() + "\n -> " + newRisk.getSubject() + "\n");
+		}
+		if (!oldRisk.getDescription().equals(newRisk.getDescription())) {
+			sb.append("[내용 변경] \n" + oldRisk.getDescription() + "\n -> " + newRisk.getDescription() + "\n");
+		}
+		if (!oldRisk.getDescription().equals(newRisk.getDescription())) {
+			sb.append("[상태 변경] \n" + oldRisk.getStatus() + "\n -> " + newRisk.getStatus() + "\n");
+		}
+		Account account = daoA.getAccount(newRisk.getAccount_id());
+		if (!oldRisk.getAccount_name().equals(account.getName())) {
+			sb.append("[담당자 변경] " + oldRisk.getAccount_name() + " -> " + account.getName() + "\n");
+		}
+		if (oldRisk.getProbability() != newRisk.getProbability()) {
+			sb.append("[발생가능성 변경] \n" + oldRisk.getProbability() + "\n -> " + newRisk.getProbability() + "\n");
+		}
+		if (oldRisk.getImpact() != newRisk.getImpact()) {
+			sb.append("[영향도 변경] \n" + oldRisk.getImpact() + "\n -> " + newRisk.getImpact() + "\n");
+		}
+		String oldStart = TimeManager.getInstance().datetimeToSimple(oldRisk.getStart_date());
+		String oldEnd = TimeManager.getInstance().datetimeToSimple(oldRisk.getEnd_date());
+		if (!oldStart.equals(newRisk.getStart_date())) {
+			sb.append("[예상시작일자 변경] " + oldStart + " -> " + newRisk.getStart_date() + "\n");
+		}
+		if (!oldEnd.equals(newRisk.getEnd_date())) {
+			sb.append("[예상완료일 변경] " + oldEnd + " -> " + newRisk.getEnd_date() + "\n");
+		}
+		if (!oldRisk.getStrategy().equals(newRisk.getStrategy())) {
+			sb.append("[전략 변경] \n" + oldRisk.getStrategy() + "\n -> " + newRisk.getStrategy() + "\n");
+		}
+		if (!oldRisk.getTreatment().equals(newRisk.getTreatment())) {
+			sb.append("[해결방안 변경] \n" + oldRisk.getTreatment() + "\n -> " + newRisk.getTreatment() + "\n");
+		}
+		
+		return sb.toString();
+	}
+	
 	public Risk getRisk(int id) {
 		Risk risk = dao.getRisk(id);
-	
+		String start = TimeManager.getInstance().datetimeToSimple(risk.getStart_date());
+		risk.setStart_date(start);
+		String end = TimeManager.getInstance().datetimeToSimple(risk.getEnd_date());
+		risk.setEnd_date(end);
+		
 		risk.setFileInfo(dao.fileInfo(id));
 		//dao.uptReadCnt(no);
 		return risk;
@@ -89,7 +152,26 @@ public class A16_RiskService {
 	
 	public void updateRisk(Risk upt) {
 		
-	
+		Risk old = dao.getRisk(upt.getId());
+		String updated = getUpdated(old, upt);
+		if(updated != null) {
+			if (updated != "") {
+				Journal journal = new Journal();
+				journal.setDocument_type("risk");
+				journal.setDocument_id(upt.getId());
+				journal.setAccount_id(upt.getAccount_id());
+				journal.setContent(updated);
+				dao.insertJournal(journal);
+			}
+		}
+		
+		/*
+		 * upt.setStart_date(TimeManager.getInstance().datetimeToSimple(upt.
+		 * getStart_date()));
+		 * upt.setEnd_date(TimeManager.getInstance().datetimeToSimple(upt.getEnd_date())
+		 * );
+		 */
+		
 		int id = upt.getId();
 		if(upt.getFilenames()!= null &&
 				upt.getFilenames().length>0) {
@@ -161,6 +243,13 @@ public class A16_RiskService {
 	public void deleteRisk(int id) {
 		dao.deleteRisk(id);
 		dao.deleteFile(id);
+	}
+	public ArrayList<Journal> getJournalList(int id){
+		
+		return dao.getJournalList(id);
+	}
+	public void insertJournal(Journal insj) {
+		dao.insertJournal(insj);
 	}
 	
 	public ArrayList<Risk> getRecentRiskListByProject(int projectId) {

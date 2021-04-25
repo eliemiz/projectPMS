@@ -189,12 +189,14 @@
                       </td>
                       <td>${risk.account_name}</td>
                       <td>
-                      <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.start_date}"/>
-                      <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>
+                      ${risk.start_date}
+                      <%-- <fmt:parseDate var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.start_date}"/>
+                      <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/> --%>
                       </td>
                       <td>
-                      <fmt:parseDate var="dateFmt2" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.end_date}"/>
-                      <fmt:formatDate value="${dateFmt2}" pattern="yyyy-MM-dd"/>
+                      ${risk.end_date}
+                      <%-- <fmt:parseDate var="dateFmt2" pattern="yyyy-MM-dd HH:mm:ss" value="${risk.end_date}"/>
+                      <fmt:formatDate value="${dateFmt2}" pattern="yyyy-MM-dd"/> --%>
                       </td> 
                       <td>
                       <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/>

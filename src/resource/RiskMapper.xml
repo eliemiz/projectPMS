@@ -21,6 +21,13 @@
 		AND r.id = #{id}
 	</select>
 	
+	<select id="commentInfo" resultType="comment" parameterType="int">
+		SELECT *
+		FROM COMMENTS
+		WHERE document_id = #{document_id}
+		AND document_type = 'Risk'
+	</select>
+	
 	<select id="fileInfo" resultType="attachment" parameterType="int">
 		SELECT *
 		FROM attachment
@@ -58,23 +65,41 @@
 	<!-- public void updateRisk(Risk upt) -->
 	<update id="updateRisk" parameterType="risk">
 		UPDATE RISK
-		SET status = #{status},
-			description = #{description},
-			account_id = #{account_id},
-			category = #{category},
-			probability = #{probability},
-			impact = #{impact},
-			strategy = #{strategy},
-			start_date = #{start_date},
-			end_date = #{end_date},
-			updated_on = sysdate,
-			treatment = #{treatment}
-		WHERE ID = #{id}
+			SET subject = #{subject},
+				status = #{status},
+				description = #{description},
+				account_id = #{account_id},
+				category = #{category},
+				probability = #{probability},
+				impact = #{impact},
+				strategy = #{strategy},
+				start_date = #{start_date},
+				end_date = #{end_date},
+				updated_on = sysdate,
+				treatment = #{treatment}
+			WHERE ID = #{id}
 	</update>
 	<delete id="deleteRisk" parameterType="int" >
 		DELETE FROM RISK
 			WHERE id = #{id}
 	</delete>
+	
+	<!-- Journal -->
+	<resultMap type="journal" id="journalMap"/>
+	<select id="getJournalList" resultMap="journalMap" parameterType="int">
+		SELECT j.* FROM journal j, risk r
+		WHERE j.document_id = r.id
+		AND j.document_type = 'risk'
+		AND r.id = #{id}
+		AND j.account_id = r.account_id
+		ORDER BY j.id desc
+	</select>
+	<insert id="insertJournal" parameterType="Journal">
+		INSERT INTO journal VALUES (
+			journal_seq.nextval, #{document_type}, #{document_id}, 
+			#{account_id}, sysdate, #{content})
+	</insert>
+	
 	
 	<!-- public ArrayList<Risk> getRecentRiskListByProject(int projectId); -->
 	<select id="getRecentRiskListByProject" resultType="risk" parameterType="int">

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import org.springframework.stereotype.Repository;
 
 import pms.z01_vo.Attachment;
-import pms.z01_vo.Comment;
+import pms.z01_vo.Journal;
 import pms.z01_vo.Risk;
 import pms.z01_vo.RiskSch;
 
@@ -35,6 +35,9 @@ public interface A16_RiskDao {
 	
 	public void deleteFile(int id);	 
 
+	public ArrayList<Journal> getJournalList(int id);	
+	public void insertJournal(Journal insj);
+	
 	public ArrayList<Risk> getRecentRiskListByProject(int projectId); // 최근 5개 리스크 조회
 	
 	//public ArrayList<Comment> getCommentList2(Comment sch);
