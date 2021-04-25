@@ -116,6 +116,7 @@
 		AND j.document_type = 'task'
 		AND t.id = #{id}
 		AND j.account_id = t.account_id
+		ORDER BY j.id desc
 	</select>
 	<!-- public void insertJournal(Journal insj) -->
 	<insert id="insertJournal" parameterType="Journal">
