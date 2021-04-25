@@ -40,6 +40,7 @@ public interface A12_TaskDao {
 	*/
 	// Journal DAO
 	public ArrayList<Journal> getJournalList(int id);	
+	public void insertJournal(Journal insj);
 	
 	// Calendar DAO
 	public ArrayList<Calendar> calenList(int projectId);

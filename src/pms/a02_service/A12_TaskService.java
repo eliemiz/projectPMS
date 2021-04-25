@@ -186,7 +186,12 @@ public class A12_TaskService {
 	
 	// Journal
 	public ArrayList<Journal> getJournalList(int id){
+		/* iso 시간으로 변경 */
+//		Journal.setCreated_on(TimeManager.getInstance().isoToSimple(Journal.getCreated_on()));
 		return dao.getJournalList(id);
+	}
+	public void insertJournal(Journal insj) {
+		dao.insertJournal(insj);
 	}
 	
 	// 댓글 입력
