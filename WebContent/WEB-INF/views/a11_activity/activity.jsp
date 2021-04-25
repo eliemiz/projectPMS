@@ -50,6 +50,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	$("#sb-activity").addClass("active");
+	
 	 /* Get project List */
 	$.ajax({
 		type: "get",
@@ -177,24 +179,24 @@ $(document).ready(function(){
               </div>
              <div class="card-body">
               	<div class="input-group input-group-m" style="width: 400px;">
-              		<label><spring:message code="ac_project"/></label>
-                  	<select style="margin-left:66px" id="projectId" name="projectId" class="form-control select2"></select>
+              		<label style="margin-left:7px;"><spring:message code="ac_project"/></label>
+                  	<select style="margin-left:120px;" id="projectId" name="projectId" class="form-control select2"></select>
                 </div>
               	<div class="input-group input-group-m" style="width: 340px;">
-              	    <label><spring:message code="ac_type"/></label>
-                  	<select style="margin-left:66px" id="document_type" name="document_type" class="form-control select2">
+              	    <label style="margin-left:7px;"><spring:message code="ac_type"/></label>
+                  	<select style="margin-left:120px;" id="document_type" name="document_type" class="form-control select2">
                    		<option value="all" id="all"><spring:message code="ac_all"/></option> 
                    		<option value="task" id="task"><spring:message code="ac_task"/></option> 
                     	<option value="risk" id="risk"><spring:message code="ac_risk"/></option>
                   	</select>
                 </div>
-                <div class="row mb-3">
+                <div class="input-group input-group-m">
 						<label for="document_id" class="col-md-2"><spring:message code="ac_no"/></label> 
-						<input type="text" name="document_id" id="document_id" class="form-control col-md-3" style="display:inline-block;"/>																	
+						<input size="2" type="text" name="document_id" id="document_id" class="form-control col-md-1" />																	
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;* 작업번호 0일때는 모든 작업번호가 조회됩니다.
                <div class="form-row float-left">
-            <button type="submit"  class="btn btn-primary btn-block type" v-bind:id="type"><spring:message code="ac_setting"/></button> 
+            <button type="submit"  class="btn btn-primary btn-block type" ><spring:message code="ac_setting"/></button> 
             <!-- <div>{{type}}</div> -->
               </div>
              </div>
