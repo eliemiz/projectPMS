@@ -38,7 +38,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="risk" items="${riskList}" begin="1" end="5">
+						<c:forEach var="risk" items="${riskList}">
 						<tr>
 							<td>${risk.id}</td>
 							<td><a href="${path}/risk.do?method=detail&id=${risk.id}">${risk.subject}</a></td>

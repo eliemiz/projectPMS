@@ -103,6 +103,8 @@
 	
 	<!-- public ArrayList<Risk> getRecentRiskListByProject(int projectId); -->
 	<select id="getRecentRiskListByProject" resultType="risk" parameterType="int">
-		SELECT * FROM RISK WHERE PROJECT_ID = #{projectId} ORDER BY CREATED_ON DESC 
+		SELECT * FROM 
+		(SELECT * FROM RISK WHERE PROJECT_ID = #{projectId} ORDER BY CREATED_ON DESC) 
+		WHERE ROWNUM <![CDATA[<=]]> 5 
 	</select>
 </mapper>
