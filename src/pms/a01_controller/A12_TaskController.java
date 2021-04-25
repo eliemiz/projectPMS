@@ -162,25 +162,6 @@ public class A12_TaskController {
 		return "downloadviewer";
 	}
 	
-	// 댓글 
-	@RequestMapping(params = "method=inscForm")
-	public String insForm(@ModelAttribute("comment") Comment comment) {
-		// return "a12_task\\a02_taskDetail";
-		return "a12_task\\a03_taskDetail";
-		
-	}
-
-	@RequestMapping(params = "method=insc")
-	public String insertComment(Comment insc, Model d) {
-		System.out.println("등록:" + insc.getContent());		
-		service.insertComment(insc);
-		
-		d.addAttribute("proc", "ins");
-	
-		return "a12_task\\a03_taskDetail";
-	}
-	
-	
 	
 	@ModelAttribute("projects")
 	public ArrayList<Project> getProjectList(){

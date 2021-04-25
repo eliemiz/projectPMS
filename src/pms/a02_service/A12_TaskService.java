@@ -69,7 +69,6 @@ public class A12_TaskService {
 		task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
 		
 		task.setFileInfo(dao.fileInfo(id));
-		task.setCommentInfo(dao.commentInfo(id));
 		// return dao.getTask(id);
 		return task;
 	}
@@ -270,20 +269,7 @@ public class A12_TaskService {
 		dao.insertJournal(insj);
 	}
 	
-	// 댓글 입력
-	public void insertComment(Comment insc) {
-		dao.insertComment(insc);
-	}
-	
-	
-//	// 댓글 조회
-//	public ArrayList<Comment> commentInfo(int document_id){
-//		dao.commentInfo(document_id);
-//		return commentInfo(document_id);
-//	}
-	
-	
-	
+
 	
 
 	/* Calendar */

@@ -29,7 +29,6 @@ public class Task {
 	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
 	private String[] filenames; // 파일 수정시 사용
 	private ArrayList<Attachment> fileInfo;
-	private ArrayList<Comment> commentInfo;
 	private String content; // journal content
 
 	public Task() {
@@ -214,13 +213,6 @@ public class Task {
 		this.fileInfo = fileInfo;
 	}
 
-	public ArrayList<Comment> getCommentInfo() {
-		return commentInfo;
-	}
-
-	public void setCommentInfo(ArrayList<Comment> commentInfo) {
-		this.commentInfo = commentInfo;
-	}
 
 	public String getContent() {
 		return content;
