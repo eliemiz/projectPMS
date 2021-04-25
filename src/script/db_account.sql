@@ -60,5 +60,28 @@ SELECT j.*, a.name account_name
 			
 SELECT * FROM account;
 
+SELECT * FROM ACCOUNT a; 
+SELECT * FROM TASK t; 
 
 
+/*진행개수*/
+SELECT count(*) 
+FROM task t, account a
+WHERE t.ACCOUNT_ID = a.ID 
+AND (t.status = '진행' OR t.status = '신규')
+AND t.account_id=#{id}
+
+/*완료개수*/
+SELECT count(*) 
+FROM task t, account a
+WHERE t.ACCOUNT_ID = a.ID 
+AND t.status='완료'
+AND t.account_id=#{id}
+
+/*업무목록*/
+SELECT t.*, p.name project_name, a.name name
+FROM account a, task t, project p
+WHERE a.id=t.account_id 
+AND t.PROJECT_ID = p.ID 
+AND t.account_id=#{id}
+ORDER BY DUE_DATE DESC
