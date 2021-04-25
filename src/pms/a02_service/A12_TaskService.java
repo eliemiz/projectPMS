@@ -121,8 +121,6 @@ public class A12_TaskService {
 	
 	public String getUpdated(Task oldTask, Task newTask) {
 
-		oldTask.setStart_date(TimeManager.getInstance().simpleToIso(oldTask.getStart_date()));
-		
 		StringBuilder sb = new StringBuilder(); 
 		if (!oldTask.getSubject().equals(newTask.getSubject())) {
 			sb.append("[제목 변경] \n" + oldTask.getSubject() + "\n -> " + newTask.getSubject() + "\n");
@@ -148,13 +146,14 @@ public class A12_TaskService {
 		if (oldTask.getDone_ratio() != newTask.getDone_ratio()) {
 			sb.append("[진행도 변경] " + oldTask.getDone_ratio() + " -> " + newTask.getDone_ratio() + "\n");
 		}
-		if (oldTask.getStart_date() != newTask.getStart_date()) {
-			oldTask.setStart_date(TimeManager.getInstance().isoToSimple(oldTask.getStart_date()));
-			sb.append("[시작일자 변경] " + oldTask.getStart_date() + " -> " + newTask.getStart_date() + "\n");
+		
+		String oldStart = TimeManager.getInstance().isoToSimple(oldTask.getStart_date());
+		String oldDue = TimeManager.getInstance().isoToSimple(oldTask.getDue_date());
+		if (!oldStart.equals(newTask.getStart_date())) {
+			sb.append("[시작일자 변경] " + oldStart + " -> " + newTask.getStart_date() + "\n");
 		}
-		if (oldTask.getDue_date() != newTask.getDue_date()) {
-			oldTask.setDue_date(TimeManager.getInstance().isoToSimple(oldTask.getDue_date()));
-			sb.append("[완료기한 변경] " + oldTask.getDue_date() + " -> " + newTask.getDue_date() + "\n");
+		if (!oldDue.equals(newTask.getDue_date())) {
+			sb.append("[완료기한 변경] " + oldDue + " -> " + newTask.getDue_date() + "\n");
 		}
 //		if (oldTask.getAccount_id() != newTask.getAccount_id()) {
 //			sb.append("[담당자 변경] " + oldTask.getAccount_id() + " -> " + newTask.getAccount_id() + "\n");
