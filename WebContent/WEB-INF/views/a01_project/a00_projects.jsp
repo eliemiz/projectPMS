@@ -96,9 +96,11 @@
 		        <input  class="form-control mr-sm-2" type="text" name="name" value="${sch.name}" placeholder="<spring:message code="p_name"/>">
 		       <button class="btn btn-warning" type="submit"> <spring:message code="p_search"/> </button>
 		 </nav>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		     <c:if test="${account.auth == 'Manager'}">
 		     <div class="float-right">
 		     <button class="btn btn-primary" id="regBtn" type="button"><i class="fas fa-pen"><spring:message code="p_new-project"/></i></button>
 		     </div>
+		     </c:if>
 		     </form:form>
 		  </div>
 		  </div>
