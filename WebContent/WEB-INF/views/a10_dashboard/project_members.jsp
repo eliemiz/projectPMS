@@ -175,7 +175,7 @@
 	<tbody>
 		<tr v-for="(member, index) in memberList">
 			<td>{{member.account_id}}</td>
-			<td><a href="">{{member.name}}</a></td>
+			<td><a :href="'${path}/account.do?method=info&id=' + member.account_id">{{member.name}}</a></td>
 			<td>{{member.auth}}</td>
 			<td>{{member.total}}</td>
 			<td>{{member.incompleted}}</td>

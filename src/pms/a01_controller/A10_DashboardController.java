@@ -52,6 +52,7 @@ public class A10_DashboardController {
 	@RequestMapping("dashboard.do")
 	public String dashboard(HttpServletRequest request, HttpServletResponse response, Model d) {
 
+		
 		/* Set Project Id */
 		HttpSession session = request.getSession();
 		String projectIdReq = request.getParameter("projectId");
@@ -89,8 +90,10 @@ public class A10_DashboardController {
 		for (AccountTask at : accountList) {
 			incompleteAll += at.getIncompleted();
 			completeAll += at.getCompleted();
-			d.addAttribute("incompleteUser", at.getIncompleted());
-			d.addAttribute("completeUser", at.getCompleted());
+			if (at.getAccount_id() == SessionManager.getAccount(request).getId()) {
+				d.addAttribute("incompleteUser", at.getIncompleted());
+				d.addAttribute("completeUser", at.getCompleted());
+			}
 		}
 		
 		d.addAttribute("incompleteAll", incompleteAll);
