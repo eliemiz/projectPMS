@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import pms.z01_vo.Account;
 import pms.z01_vo.Comment;
 import pms.z01_vo.Project;
 import pms.z01_vo.Risk;
+import pms.z01_vo.RiskSch;
+import pms.z01_vo.TaskSch;
 import pms.z02_util.SessionManager;
 
 @Controller
@@ -44,8 +47,34 @@ public class A16_RiskController {
 	// http://localhost:6080/projectPMS/risk.do?method=list
 	// http://localhost:7080/projectPMS/risk.do?method=list
 	@RequestMapping(params="method=list")
-	public String RiskList(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("sch") Risk sch, Model d) {
-		d.addAttribute("riskList", service.getRiskList(sch));
+	public String RiskList(HttpServletRequest request, HttpServletResponse response, Model d) {
+		/* Set Project Id : request에서 projectId가 넘어왔다면 자동으로 세선에 저장해준다. */
+		HttpSession session = request.getSession();
+		String projectIdReq = request.getParameter("projectId");
+		if (projectIdReq != null) {
+			session.setAttribute("projectId", projectIdReq);
+		}
+
+		/* Get Project Id : 세션에 값이 없다면, 즉 페이지 진입, 검색 등에 프로젝트 선택한 적이 없을 때 */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = service3.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		System.out.println("프로젝트: "+projectId);
+		/* Get Model */
+		// Project Info
+		Project project = service3.getProject(projectId);
+		d.addAttribute("project", project);
+		
+		RiskSch sch = new RiskSch(projectId);
+		d.addAttribute("riskList", service.riskList(sch));
+		
+		
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
 		}

@@ -91,6 +91,29 @@
     		var id = $(this).attr("id");
     		location.href="${path}/risk.do?method=detail&id="+id;
     	});
+		
+		$.ajax({
+			type: "get",
+			url: "${path}/jsonProject.do",
+			dataType: "json",
+			success: function(data){
+				var projectList = data.projectList;
+				
+				$.each(projectList, function(idx, e, arr){
+					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				});
+				
+				$("#projectId").val(data.projectId);
+			},
+			error: function(err){
+				alert("에러발생");
+			}
+		});
+		
+		$("#searchButton").click(function(){
+			var projectId = $("#projectId").val();
+			$("form").submit();
+		})
 	})
 </script>
 </head>
@@ -130,7 +153,17 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"><spring:message code="risk-risk"/></h3>
+                <form class="form-group" method="post" action="${path}/risk.do?method=list">
+					<div class="row mb-3">
+						<label for="projectId" >프로젝트 &nbsp;&nbsp;</label>
+						<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+						<button type="button" id="searchButton" class="btn btn-primary">검색</button>
+					</div>
+			
+					<!-- <div class="row mb-3">
+						<button type="button" id="searchButton" class="btn btn-primary">검색</button>
+					</div> -->
+				</form>                
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
@@ -143,6 +176,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
+              
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                     <tr>

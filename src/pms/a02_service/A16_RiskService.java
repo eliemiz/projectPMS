@@ -18,6 +18,7 @@ import pms.z01_vo.Account;
 import pms.z01_vo.Attachment;
 import pms.z01_vo.Journal;
 import pms.z01_vo.Risk;
+import pms.z01_vo.RiskSch;
 import pms.z02_util.TimeManager;
 
 @Service
@@ -42,6 +43,17 @@ public class A16_RiskService {
 		
 		return riskList;
 	}
+	public ArrayList<Risk> riskList(RiskSch sch){
+			
+			ArrayList<Risk> riskList = dao.riskList(sch);
+			for (Risk risk : riskList) {
+				risk.setStart_date(TimeManager.getInstance().datetimeToSimple(risk.getStart_date()));  
+				risk.setEnd_date(TimeManager.getInstance().datetimeToSimple(risk.getEnd_date()));  
+			}
+			
+			
+			return riskList;
+		}
 	
 	public void insertRisk(Risk ins) {
 		System.out.println("upload:"+upload);

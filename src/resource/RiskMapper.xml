@@ -3,12 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pms.a03_dao.A16_RiskDao">
 	<resultMap type="risk" id="riskList"/>
-	<select id="getRiskList" resultMap="riskList" parameterType="risk">
+	<select id="riskList" resultMap="riskList" parameterType="riskSch">
 		SELECT r.*, a.name account_name,
 					p.name project_name
 		FROM RISK r, ACCOUNT a, PROJECT p
 		WHERE r.ACCOUNT_ID = a.ID
 		AND r.PROJECT_ID = p.ID
+		AND p.id = #{projectId}
 		ORDER BY r.ID DESC
 	</select>
 	<!--public Risk getRask(int id) -->
