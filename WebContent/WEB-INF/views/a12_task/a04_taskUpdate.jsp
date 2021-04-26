@@ -62,12 +62,9 @@ html, body {
 	var proc = "${param.proc}";
 	
 	if(proc=="upt"){
-		alert("수정완료\n리스트 페이지로 이동합니다");
-		// 아이디 설정
-		
-		// method=detail&id=?로 설정
-// 		location.href = "${path}/task.do?method=detail&id=";			
-		location.href = "${path}/task.do?method=list";			
+		if(confirm("수정되었습니다.\n업무 리스트화면으로 이동하시겠습니까?")){
+			location.href = "${path}/task.do?method=list";		
+		}			
 	}
 	
 	if(proc=="del"){
@@ -93,7 +90,9 @@ html, body {
 		
 		/* 취소버튼 클릭 */
 		$("#gomain").click(function(){
-			$(location).attr("href","${path}/task.do?method=list");
+			if(confirm("업무 목록화면으로 이동하시겠습니까?")){
+				$(location).attr("href","${path}/task.do?method=list");
+			}
 		});
 		
 		/* 수정버튼 클릭 */

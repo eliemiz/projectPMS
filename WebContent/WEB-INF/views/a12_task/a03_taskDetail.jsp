@@ -123,10 +123,18 @@ html, body {
 			alert("done_ratio "+done_ratio);
 			alert("due_date "+due_date);
 			alert("estimated "+estimated);	 */
-			if(confirm("수정하시겠습니까?")){
-				$("form").attr("action","${path}/task.do?method=uptForm");
-				$("form").submit();
-			}			
+			var accId = "${account.id}";
+			var accAuth = "${account.auth}";
+			var writer = $("[name=account_id]").val();
+			if(accId==writer || accAuth=='Manager'){
+				if(confirm("수정하시겠습니까?")){
+					$("form").attr("action","${path}/task.do?method=uptForm");
+					$("form").submit();
+				}
+			} else {
+				alert("수정 권한이 없습니다.\n작성자 혹은 PM만 수정이 가능합니다.");
+			}
+			
 		});
 	});
 </script>
