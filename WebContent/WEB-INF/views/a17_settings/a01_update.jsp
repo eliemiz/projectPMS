@@ -181,9 +181,8 @@
                 <textarea name="description" rows="8" cols="73" >${project.description}</textarea>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany"><spring:message code="ps_identifier"/></label>
-                <input name="identifier" class="form-control" value="${project.identifier}" readonly/>
-                * 식별자는 저장후에는 수정할 수 없습니다.
+                <!--  <label for="inputClientCompany"><spring:message code="ps_identifier"/></label>-->
+                <input type="hidden" name="identifier" class="form-control" value="${project.identifier}" readonly/>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader"><spring:message code="ps_homepage"/></label>

@@ -168,9 +168,8 @@ $.widget.bridge('uibutton', $.ui.button)
                 <form:textarea path="description" rows="8" cols="80"/>
               </div>
               <div class="form-group">
-                <label for="inputClientCompany"><spring:message code="p_identifier"/></label>
-                <form:input path="identifier" class="form-control"/>
-              	* 식별자는 저장후에는 수정할 수 없습니다.
+                <!-- <label for="inputClientCompany"><spring:message code="p_identifier"/></label> -->
+                <form:hidden path="identifier" value="식별자" class="form-control"/>
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader"><spring:message code="p_homepage"/></label>
