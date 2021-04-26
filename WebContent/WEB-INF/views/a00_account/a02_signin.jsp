@@ -171,6 +171,7 @@ html, body {
 								<p class="login-box-msg"></p>
 								<form action="${path}/account.do?method=send2" method="post" id="signin">
 									<input type="hidden" name="auth" class="form-control" value="Developer" />
+									<input type="hidden" name="id" class="form-control" />
 									<input type="hidden" name="user_id" class="form-control" />
 										
 									<div class="input-group mb-5">

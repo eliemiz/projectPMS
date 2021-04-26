@@ -30,6 +30,9 @@ public interface A00_AccountDao {
 	public int schMember(String mail);
 
 	public void updatePw(Account update);
+	
+	// 다음 시퀀스값 불러오기
+	public int sequence();
 
 	// public ArrayList<Task> getTask(int id);
 
