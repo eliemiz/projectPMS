@@ -43,16 +43,7 @@
 
   $.widget.bridge('uibutton', $.ui.button)
 
-  var proc = "${param.proc}";
-	
-	if(proc=="upt"){
-		alert("설정완료!!\설정 목록 페이지로 이동합니다");
-		location.href = "${path}/settings.do?method=project";			
-	}
-	if(proc=="del"){
-		alert("삭제완료\n설정 목록 페이지로 이동합니다");
-		location.href = "${path}/settings.do?method=project";			
-	}
+ 
   
 	$(document).ready(function(){
 		$("#sb-project-setting").addClass("active");
@@ -97,8 +88,28 @@
 				$("[name=proc]").val("del");
 				$("form").attr("action","${path}/settings.do?method=delete");
 				$("form").submit();
+			}else {//취소 버튼 클릭
+				return false;
 			}
 		});	
+		
+		 var proc = "${param.proc}";
+			
+			if(proc=="upt"){
+				if(confirm("설정완료!!\설정 목록 페이지로 이동하시겠습니까?")){
+					$(location).attr("href","${path}/settings.do?method=project");
+				}
+			}
+			if(proc=="del"){
+				alert("삭제완료\n설정 목록 페이지로 이동합니다");
+				location.href = "${path}/settings.do?method=project";			
+			}
+			
+			$("#backBtn").click(function(){
+				alert("project setting 목록페이지로 이동합니다.");
+				location.href = "${path}/settings.do?method=project";		
+			});	
+			
 	});
 
   $(function () {
@@ -187,7 +198,7 @@
           <!-- /.col -->
             <button type="submit" class="btn btn-primary" id="uptBtn"><spring:message code="ps_setting"/></button>&nbsp;&nbsp;
             <button type="submit" class="btn btn-danger" id="delBtn"><spring:message code="ps_delete"/></button>&nbsp;&nbsp;
-            <a href="${path}/settings.do?method=project" class="btn btn-default"><spring:message code="ps_cancel"/></a>
+            <button id="backBtn" type="button" class="btn btn-default"><spring:message code="ps_cancel"/></button>
           <!-- /.col -->
         </div>
             </div>
