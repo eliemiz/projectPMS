@@ -84,6 +84,11 @@
 		$(".custom-file-input").on("change",function(){
 			$(this).next(".custom-file-label").text($(this).val());
 		});
+		$("#canBtu").click(function(){
+			if(confirm("목록 페이지로 이동하시겠습니까?")){
+				$(location).attr("href","${path}/risk.do?method=list");
+			}
+		});
 		$("#uptBtu").on("click",function(){
 			if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
@@ -284,7 +289,7 @@
                 </div>
                 <!-- /.card-body -->
             <div class="card-footer">
-          <button type="button" onclick="location.href='${path}/risk.do?method=list'"
+          <button type="button" id="canBtu"
            class="btn btn-secondary float-right">취소</button>
           <button type="button" id="uptBtu"
            class="btn btn-primary float-right">수정</button>
