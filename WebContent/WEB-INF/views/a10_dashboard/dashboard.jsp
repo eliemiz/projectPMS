@@ -43,38 +43,6 @@ html, body {
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		/* var vm = new Vue({
-			el: "#searchForm",
-			data: {
-				projectList : [],
-				isProcessing : false
-			},
-			methods: {
-				getProjectList : function() {
-					this.fetchProjectList();
-				},
-				fetchProjectList: _.debounce(function(){
-					var vm = this;
-					
-					this.projectList = [];
-					this.isProcessing = true;
-					
-					var url = "${path}/jsonProject.do";
-					fetch(url).then(function(response){
-						return response.json();
-					}).then(function(json){
-						vm.projectList = json.projectList;
-						$("#hd-project-list").val(json.projectId);
-						vm.isProcessing = false;
-					}).catch(function(err){
-						vm.isProcessing = false;
-					});
-				}, 200)
-			}
-		});
-		
-		vm.getProjectList();
-		 */
 		/* Get project List */
 		$.ajax({
 			type: "get",

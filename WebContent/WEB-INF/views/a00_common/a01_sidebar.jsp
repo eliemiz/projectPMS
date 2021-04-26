@@ -12,7 +12,7 @@
 	<a href="${path}/dashboard.do" class="brand-link">
 		<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
 			class="brand-image img-circle elevation-3" style="opacity: .8">
-		<span class="brand-text font-weight-light">Project PMS</span>
+		<span class="brand-text font-weight-heavy"> C U P </span>
 	</a>
 
 	<!-- Sidebar -->

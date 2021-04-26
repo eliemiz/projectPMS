@@ -7,6 +7,7 @@ public class AccountTask {
 	private int total;
 	private int incompleted;
 	private int completed;
+	private boolean isMember;
 
 	public int getAccount_id() {
 		return account_id;
@@ -54,6 +55,14 @@ public class AccountTask {
 
 	public void setCompleted(int completed) {
 		this.completed = completed;
+	}
+
+	public boolean isMember() {
+		return isMember;
+	}
+
+	public void setMember(boolean isMember) {
+		this.isMember = isMember;
 	}
 
 }

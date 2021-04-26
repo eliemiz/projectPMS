@@ -6,22 +6,11 @@
 	<select id="getAccountList" resultType="account">
 	select * from account
 	</select>
-	
 	<!-- public Account Login(Account log); -->
 	<select id="Login" resultType="account" parameterType="account">
 	SELECT * 
 	FROM account
 	WHERE user_id=#{user_id} AND password=#{password}
-	</select>
-	
-	<!-- public ArrayList<AccountTask> getAccountTaskList(); -->
-	<select id="getAccountTaskList" resultType="accountTask" parameterType="int">
-		SELECT A.ID ACCOUNT_ID, A.NAME, A.AUTH,
-			COUNT(CASE WHEN A.ID = T.ACCOUNT_ID THEN 1 END) TOTAL,
-			COUNT(CASE WHEN T.STATUS = '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) COMPLETED, 
-			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
-			FROM ACCOUNT A, TASK T WHERE T.PROJECT_ID = #{projectId}
-			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
 	</select>
 	<!-- public void signinIns(Account insert); -->
 	<insert id="signinIns" parameterType="account">
@@ -42,7 +31,6 @@
 	FROM account
 	WHERE id=#{id}
 	</select>
-	
 	<!-- public void loginDate(Account log); -->
 	<update id="loginDate" parameterType="account">
 		update account 
@@ -93,6 +81,48 @@
 		AND t.account_id=#{id}
 	 </select>
 	 
-
+	<!-- for Dashboard -->
+	<!-- public ArrayList<AccountTask> getAccountTaskList(); -->
+	<select id="getAccountTaskList" resultType="accountTask" parameterType="int">
+		SELECT A.ID ACCOUNT_ID, A.NAME, A.AUTH,
+			COUNT(CASE WHEN A.ID = T.ACCOUNT_ID THEN 1 END) TOTAL,
+			COUNT(CASE WHEN T.STATUS = '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) COMPLETED, 
+			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
+			FROM ACCOUNT A, TASK T, PROJECT_USER P
+			WHERE T.PROJECT_ID(+) = #{projectId}
+			AND T.ACCOUNT_ID(+) = P.ACCOUNT_ID
+			AND P.PROJECT_ID = #{projectId}
+			AND A.ID = P.ACCOUNT_ID
+			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+	</select>
+	<!-- public ArrayList<AccountTask> getAccountTaskListForChart(int projectId); -->
+	<select id="getAccountTaskListForChart" resultType="accountTask" parameterType="int">
+		SELECT A.ID ACCOUNT_ID, A.NAME, A.AUTH,
+			COUNT(CASE WHEN A.ID = T.ACCOUNT_ID THEN 1 END) TOTAL,
+			COUNT(CASE WHEN T.STATUS = '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) COMPLETED, 
+			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
+			FROM ACCOUNT A, TASK T
+			WHERE T.PROJECT_ID = #{projectId} 
+			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+	</select>
+	
+	<!-- public ArrayList<ProjectUser> getProjectUsers(int projectId); -->
+	<select id="getProjectUsers" resultType="projectUser" parameterType="int">
+		SELECT A.ID ACCOUNT_ID, A.AUTH AUTH, A.NAME NAME, DECODE(P.ACCOUNT_ID, A.ID, 1, 0) MEMBER 
+		FROM ACCOUNT A, PROJECT_USER P 
+		WHERE A.ID = P.ACCOUNT_ID(+)
+		AND P.PROJECT_ID(+) = #{projectId}
+		ORDER BY ACCOUNT_ID DESC
+	</select>
+	
+	<!-- public void deleteProjectUsers(int projectId); -->
+	<delete id="deleteProjectUsers" parameterType="int">
+		DELETE FROM PROJECT_USER WHERE PROJECT_ID = #{projectId}
+	</delete>
+	
+	<!-- public void insertProjectUser(ProjectUser pu); -->
+	<insert id="insertProjectUser" parameterType="projectUser">
+		INSERT INTO PROJECT_USER VALUES (#{project_id}, #{account_id})
+	</insert>
 	
 </mapper>

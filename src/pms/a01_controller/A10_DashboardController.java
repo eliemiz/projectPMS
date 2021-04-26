@@ -1,11 +1,17 @@
 package pms.a01_controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +25,7 @@ import pms.a02_service.A12_TaskService;
 import pms.a02_service.A16_RiskService;
 import pms.z01_vo.AccountTask;
 import pms.z01_vo.Project;
+import pms.z01_vo.ProjectUser;
 import pms.z01_vo.Risk;
 import pms.z01_vo.TaskResult;
 import pms.z02_util.SessionManager;
@@ -74,7 +81,7 @@ public class A10_DashboardController {
 		d.addAttribute("project", project);
 		
 		// Account List
-		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskList(projectId);
+		ArrayList<AccountTask> accountList = serviceAccount.getAccountTaskListForChart(projectId);
 		d.addAttribute("accountList", accountList);
 		
 		int incompleteAll = 0;
@@ -145,6 +152,89 @@ public class A10_DashboardController {
 		d.addAttribute("labels", labels);
 		d.addAttribute("data1", data1);
 		d.addAttribute("data2", data2);
+		
+		return "pageJsonReport";
+	}
+	
+	// http://localhost:7080/projectPMS/jsonProjectUsers.do
+	@GetMapping("jsonProjectUsers.do")
+	public String jsonProjectUsers(HttpServletRequest request, Model d) {
+		
+		HttpSession session = request.getSession();
+		
+		/* Get Project Id */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = serviceProject.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		
+		ArrayList<ProjectUser> userList = serviceAccount.getProjectUsers(projectId);
+		d.addAttribute("userList", userList);
+		
+		return "pageJsonReport";
+	}
+	
+	@GetMapping("updateProjectUsers.do")
+	public String updateProjectUsers(HttpServletRequest request, Model d) {
+
+		ObjectMapper mapper = new ObjectMapper();
+		String list = request.getParameter("list");
+		try {
+			ProjectUser[] pus = mapper.readValue(list, ProjectUser[].class);
+			
+			// 초기화 처리
+			int projectId = SessionManager.getProjectId(request); 
+			serviceAccount.deleteProjectUsers(projectId);
+			
+			for (ProjectUser pu : pus) {
+				
+				// 갱신 처리
+				if (pu.isMember()) {
+					pu.setProject_id(projectId);
+					serviceAccount.insertProjectUser(pu);
+					System.out.println(pu);
+				}
+			}
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("완료");
+		
+		return "pageJsonReport";
+	}
+	
+	@GetMapping("jsonProjectMembers.do")
+	public String jsonProjectMembers(HttpServletRequest request, Model d) {
+		
+		HttpSession session = request.getSession(); 
+		
+		/* Get Project Id */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = serviceProject.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		
+		/* memberList 로드 */
+		ArrayList<AccountTask> memberList = serviceAccount.getAccountTaskList(projectId);
+		d.addAttribute("memberList", memberList);
 		
 		return "pageJsonReport";
 	}

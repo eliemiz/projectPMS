@@ -6,6 +6,7 @@
 		<typeAlias alias="project" type="pms.z01_vo.Project"/>
 		<typeAlias alias="account" type="pms.z01_vo.Account"/>
 		<typeAlias alias="accountTask" type="pms.z01_vo.AccountTask"/>
+		<typeAlias alias="projectUser" type="pms.z01_vo.ProjectUser"/>
 		
 		<typeAlias alias="task" type="pms.z01_vo.Task"/>
 		<typeAlias alias="taskSch" type="pms.z01_vo.TaskSch"/>

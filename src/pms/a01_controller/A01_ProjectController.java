@@ -56,7 +56,7 @@ public class A01_ProjectController {
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
 		}
-		service.projectIns(insert);		
+		service.projectIns(request, insert);		
 		d.addAttribute("proc", "insert");		
 		return "a01_project\\a03_projectIns";
 	}

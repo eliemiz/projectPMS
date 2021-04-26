@@ -22,4 +22,7 @@ public interface A01_ProjectDao {
 	public void deleteRisk(int id);
 	//setting
 	public void projectUpt(Project upt);
+	
+	// 현재 시퀀스값 불러오기
+	public int selectCurrentSeq();
 }

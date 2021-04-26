@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import pms.a03_dao.A00_AccountDao;
 import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
-import pms.z01_vo.Task;
+import pms.z01_vo.ProjectUser;
 
 @Service
 public class A00_AccountService {
@@ -25,10 +25,6 @@ public class A00_AccountService {
 		return dao.Login(log);
 	}
 
-	public ArrayList<AccountTask> getAccountTaskList(int projectId) {
-
-		return dao.getAccountTaskList(projectId);
-	}
 	
 	public void signinIns(Account insert) {
 		
@@ -78,6 +74,28 @@ public class A00_AccountService {
 	
 	public int taskCount2(int id) {
 		return dao.taskCount2(id);
+	}
+	
+	/* for Dashboard */
+	public ArrayList<AccountTask> getAccountTaskList(int projectId) {
+
+		return dao.getAccountTaskList(projectId);
+	}
+	
+	public ArrayList<AccountTask> getAccountTaskListForChart(int projectId){
+		return dao.getAccountTaskListForChart(projectId);
+	}
+	
+	public ArrayList<ProjectUser> getProjectUsers(int projectId){
+		return dao.getProjectUsers(projectId);
+	}
+	
+	public void deleteProjectUsers(int projectId) {
+		dao.deleteProjectUsers(projectId);
+	}
+	
+	public void insertProjectUser(ProjectUser pu) {
+		dao.insertProjectUser(pu);
 	}
 
 }

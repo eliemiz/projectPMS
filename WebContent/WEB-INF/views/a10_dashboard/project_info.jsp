@@ -4,6 +4,51 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var vm3 = new Vue({
+			el:"#infoTable",
+			data: {
+				projectId:0,
+				memberList:[]
+			},
+			methods:{
+				getMembers:function(){
+					this.projectId = "${projectId}";
+					console.log("projectId : " + this.projectId);
+					this.fetchMemberList();	
+				},
+				fetchMemberList: _.debounce(function(){
+					var vm = this;
+					/* 1. 모델데이터 초기화 */
+					this.memberList = [];
+					
+					var url = "${path}/jsonProjectMembers.do";
+					/* 2. fetch api의 ajax처리와 promise 형태 함수 처리 */
+					fetch(url).then(function(response){ 
+						return response.json();
+					}).then(function(json){	/* response에 의해서 받은 json 데이터 처리 */
+						console.log(json.memberList);
+						vm.memberList = json.memberList;
+					}).catch(function(err){	/* 에러 발생 시 처리 */
+						console.log("# 에러 발생 #");
+						console.log(err);
+					});
+				}, 200)
+			}
+		});
+		
+		vm3.getMembers();
+	});
+	
+</script>
 
 <div class="container-fluid">
 	<div class="text-right mb-3">
@@ -16,7 +61,7 @@
 		<!-- /.col -->
 		<div class="col-10">
 			<div class="table-responsive">
-				<table class="table">
+				<table class="table" id="infoTable">
 					<colgroup>
 						<col width="25%" />
 						<col width="25%" />
@@ -28,16 +73,20 @@
 						<td>${project.name}</td>
 						<th><spring:message code="dash-project-manager"/></th>
 						<td>
-							<c:forEach var="account" items="${accountList}">
+							<span v-for="(user, index) in memberList" v-if="user.auth == 'Manager'">{{user.name}}</span>
+							<%-- <c:forEach var="account" items="${accountList}">
 								<c:if test="${account.auth == 'Manager'}">${account.name} </c:if>
-							</c:forEach>
+							</c:forEach> --%>
 						</td>
 					</tr>
 					<tr>
 						<th><spring:message code="dash-project-description"/></th>
 						<td>${project.description}</td>
 						<th><spring:message code="dash-project-members"/></th>
-						<td>${accountList.size()} <spring:message code="dash-project-member-count"/></td>
+						<td>
+							{{memberList.length}}
+							<spring:message code="dash-project-member-count"/>
+						</td>
 					</tr>
 					<tr>
 						<th><spring:message code="dash-project-homepage"/></th>
