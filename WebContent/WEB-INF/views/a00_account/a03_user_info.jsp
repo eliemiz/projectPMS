@@ -111,7 +111,7 @@ html, body {
                 <h5 class="card-title"><b>${account.name}</b></h5>
               </div>
               <div class="card-body">
-                <a> <spring:message code="u_id"/>: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a> <spring:message code="u_user_id"/>: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
 				<a> <spring:message code="u_date"/>: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
 				<a> <spring:message code="u_login"/>: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
 				</div>
