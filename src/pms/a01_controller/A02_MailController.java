@@ -99,11 +99,19 @@ public class A02_MailController {
 			
 		return "a00_account\\a02_signin";
 	}	
-	
-	   @PostMapping(params="method=hasMember")
+	/*
+	  @PostMapping(params="method=hasMember")
 	   public String hasMember(@RequestParam(value="user_id", defaultValue="") String user_id, Model d) {
 		   System.out.println(user_id);
 		   d.addAttribute("mCnt", aservice.schMember(user_id));
+		   return "pageJsonReport";
+	   }  
+	 */
+	  
+	   @PostMapping(params="method=hasMember")
+	   public String hasMember(@RequestParam(value="mail", defaultValue="") String mail, Model d) {
+		   System.out.println(mail);
+		   d.addAttribute("mCnt", aservice.schMember(mail));
 		   return "pageJsonReport";
 	   } 
 

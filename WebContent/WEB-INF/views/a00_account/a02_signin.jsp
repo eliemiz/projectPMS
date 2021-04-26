@@ -52,34 +52,33 @@ html, body {
 	$(document).ready(function() {
 
 		$("#Btn").click(function() {
-			var idReg = /^[a-zA-z0-9]{4,12}$/; //아이디 유효성 검사
-
-			if ($("[name=user_id]").val() == "") {
-				alert("아이디를 입력해주세요");
-				$("#id-check-span").html("아이디를 입력해주세요.");
-				return false;
-			} else if (!idReg.test($(
-					"[name=user_id]").val())) {
-				alert("아이디는 영문 대소문자와 숫자를 사용해 4~12자리로 입력해야합니다.");
-				$("#id-check-span").html("아이디는 영문 대소문자와 숫자를 사용해 4~12자리로 입력해야합니다.");
-				return false;
-			} else if (isDuplicated == true) {
-				alert("아이디 중복체크 해주세요.");
-				$("#id-check-span").html("아이디 중복 체크해주세요.");
-				return false;
-			} else if ($("[name=mail]").val() == "") {
-				alert("이메일을 입력해주세요");
-				return false;
-
-			} else if ($("[name=name]").val() == "") {
+		 	if ($("[name=name]").val() == "") {
 				alert("이름을 입력해주세요");
 				return false;
-			} 
+				
+			} else if($("[name=name]").val().length>=30){
+				alert("이름은 30자 이내로 입력하세요.");
+				return false;
+				
+			} else if ($("[name=mail]").val() == "") {
+				alert("이메일을 입력해주세요");
+				$("#id-check-span").html("이메일을 입력해주세요.");
+				return false;
+
+			} else if($("[name=mail]").val().length>=30){
+				alert("형식에 맞지않습니다. 다시 입력하세요.");
+				return false;
+				
+			} else if (isDuplicated == true) {
+				alert("이메일 중복체크 해주세요.");
+				$("#id-check-span").html("이메일 중복 체크해주세요.");
+				return false;
+			}
 
 			$("#signin").submit();
 		});
 	
-		$("#user_id").keyup(function(e) {
+		$("#mail").keyup(function(e) {
 			if (e.keyCode == 13) { // 입력할 항목에 enter키를 입력시 처리
 				ckId();
 			} else {
@@ -93,19 +92,19 @@ html, body {
 			type : "post",
 			url : "${path}/account.do?method=hasMember",
 			data : {
-				user_id : $("[name=user_id]").val()
+				mail : $("[name=mail]").val()
 			},
 			dataType : "json",
 			success : function(data) {
 				//alert(data.mCnt);
 				if (data.mCnt == 0) {
-					alert("등록 가능한 아이디입니다.");
+					alert("등록 가능한 이메일입니다.");
 					$("#id-check-span").html("");
 					isDuplicated = false;
 				} else {
-					alert("이미 등록된 아이디가 있습니다.");
-					$("#id-check-span").html("이미 등록된 아이디가 있습니다.");
-					$("#user_id").val("").focus();
+					alert("이미 등록된 이메일이 있습니다.");
+					$("#id-check-span").html("이미 등록된 이메일이 있습니다.");
+					$("#mail").val("").focus();
 				}
 			},
 			error : function(err) {
@@ -114,10 +113,11 @@ html, body {
 			}
 		});
 	}
+	
 
 	var result = "${result}";
 	if (result == "success") {
-		alert("회원가입이 완료되었습니다.\n이메일주소로 새 비밀번호가 발송되었습니다.");
+		alert("회원가입이 완료되었습니다! \n이메일주소로 새 계정정보가 발송되었습니다.");
 		location.href = "${path}/account.do?method=login";
 	}
 	
@@ -162,7 +162,7 @@ html, body {
 			<section class="content">
 				<div class="hold-transition login-page"
 					style="background-color: inherit; height: inherit;">
-					<div style="width:600px;">
+					<div style="width:400px;">
 						<div class="card card-outline card-primary">
 							<div class="card-header text-center">
 								<h1><spring:message code="account_member_registration"/></h1>
@@ -171,38 +171,31 @@ html, body {
 								<p class="login-box-msg"></p>
 								<form action="${path}/account.do?method=send2" method="post" id="signin">
 									<input type="hidden" name="auth" class="form-control" value="Developer" />
-									<div class="input-group mb-5">
-										<input name="user_id" id="user_id" class="form-control" placeholder="<spring:message code="account_id"/>" />
-										<div class="input-group-append mr-3">
-											<div class="input-group-text">
-												<span class="fas fa-user"></span>
-											</div>
-										</div>
-										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()"><spring:message code="account_duplication"/></button>
-  										<!-- <input type="hidden" id="ckValid" value="NOCK"/> -->
-  										<div>
-  											<span> *영문 대소문자와 숫자를 사용하여 4~12자리로 입력해야합니다.</span><br>
-	  										<span> *회원 ID는 가입 후 변경이 불가합니다.</span><br>
-	  										<span id="id-check-span" style="color:red;"></span>
-  										</div>
-	  									
-									</div>
+									<input type="hidden" name="user_id" class="form-control" />
+										
 									<div class="input-group mb-5">
 										<input name="name" class="form-control" placeholder="<spring:message code="account_name"/>" />
-										<div class="input-group-append">
+										<div class="input-group-append mr-5">
 											<div class="input-group-text">
 												<span class="fas fa-user"></span>
 											</div>
 										</div>
 									</div>
 									<div class="input-group mb-5">
-										<input name="mail" class="form-control" placeholder="<spring:message code="account_email"/>" />
+										<input name="mail" id="mail" class="form-control" placeholder="<spring:message code="account_email"/>" />
 										<div class="input-group-append">
 											<div class="input-group-text">
 												<span class="fas fa-envelope"></span>
 											</div>
+										</div>	
+										<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckId()"><spring:message code="account_duplication"/></button>
+										   
+										<div>
+									    	<span> *중복된 이메일은 사용이 불가합니다. </span><br>
+									    	<span id="id-check-span" style="color:red;"></span>
 										</div>
 									</div>
+									
 									<div class="input-group mb-3">
 										<button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_enroll"/></button>
 									</div>

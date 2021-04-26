@@ -27,7 +27,9 @@ public interface A00_AccountDao {
 	
 	public void loginDate(Account log);
 	
-	public int schMember(String user_id);
+	// public int schMember(String user_id);
+	
+	public int schMember(String mail);
 	
 	public void updatePw(Account update);
 	

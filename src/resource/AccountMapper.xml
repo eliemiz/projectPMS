@@ -26,7 +26,7 @@
 	<!-- public void signinIns(Account insert); -->
 	<insert id="signinIns" parameterType="account">
 		INSERT INTO ACCOUNT
-		VALUES (ACCOUNT_seq.nextval, #{user_id}, #{password}, #{name},
+		VALUES (ACCOUNT_seq.nextval, 'USER' || TO_CHAR(account_seq.nextval), #{password}, #{name},
 		        #{mail}, sysdate, sysdate, #{auth})	
 	</insert>
 	<select id="find_pw" resultType="account">
@@ -49,10 +49,16 @@
 		set last_login_on = sysdate 
 		where user_id = #{user_id}
 	</update>
-	<!-- int schMember(String user_id) -->
+	<!-- int schMember(String user_id) 
 	<select id="schMember" resultType="int" parameterType="String" >
       SELECT COUNT(*) FROM account
       WHERE user_id = #{user_id}
+	</select>
+	-->
+	<!-- public int schMember(String mail); -->
+	<select id="schMember" resultType="int" parameterType="String" >
+      SELECT COUNT(*) FROM account
+      WHERE mail = #{mail}
 	</select>
 	<!-- public void updatePw(Account update); -->
 	<update id="updatePw" parameterType="account">
@@ -86,6 +92,7 @@
 		AND t.status='완료'
 		AND t.account_id=#{id}
 	 </select>
+	 
 
 	
 </mapper>

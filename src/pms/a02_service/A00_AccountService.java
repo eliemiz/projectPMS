@@ -51,9 +51,14 @@ public class A00_AccountService {
 	public void loginDate(Account log) {
 		dao.loginDate(log);
 	}
-	
-	public int schMember(String user_id) {
+	/*
+	 	public int schMember(String user_id) {
 		return dao.schMember(user_id);
+	}
+	
+	 */
+	public int schMember(String mail) {
+		return dao.schMember(mail);
 	}
 	
 	public void updatePw(Account update) {
