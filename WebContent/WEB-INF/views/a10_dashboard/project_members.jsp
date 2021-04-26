@@ -37,7 +37,16 @@
 			<td>${account.total}</td>
 			<td>${account.incompleted}</td>
 			<td>${account.completed}</td>
-			<td>${account.completed/account.total*100}%</td>
+			<td>
+				<c:choose>
+					<c:when test="${account.total == 0}">
+						-
+					</c:when>
+					<c:otherwise>
+						<fmt:formatNumber maxFractionDigits="2" value="${account.completed/account.total*100}"/> %					
+					</c:otherwise>
+				</c:choose>
+			</td>
 		</tr>
 		</c:forEach>
 	</tbody>
