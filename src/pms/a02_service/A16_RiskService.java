@@ -101,17 +101,17 @@ public class A16_RiskService {
 				
 		StringBuilder sb = new StringBuilder(); 
 		
-		
 		if (!oldRisk.getSubject().equals(newRisk.getSubject())) {
 			sb.append("[제목 변경] \n" + oldRisk.getSubject() + "\n -> " + newRisk.getSubject() + "\n");
 		}
 		String oldDescription = oldRisk.getDescription();
 		if (oldDescription == null) {
 			oldDescription = "";
-			if (!oldDescription.equals(newRisk.getDescription())) {
-				sb.append("[내용 변경] \n" + oldDescription + "\n -> " + newRisk.getDescription() + "\n");
-			}
 		}
+		if (!oldDescription.equals(newRisk.getDescription())) {
+			sb.append("[내용 변경] \n" + oldDescription + "\n -> " + newRisk.getDescription() + "\n");
+		}
+		
 		if (!oldRisk.getStatus().equals(newRisk.getStatus())) {
 			sb.append("[상태 변경] \n" + oldRisk.getStatus() + "\n -> " + newRisk.getStatus() + "\n");
 		}
