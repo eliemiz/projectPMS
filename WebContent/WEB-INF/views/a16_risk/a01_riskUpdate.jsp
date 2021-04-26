@@ -69,11 +69,11 @@
 <script type="text/javascript">
 	var proc = "${param.proc}";
 	if(proc=="upt"){
-		alert("수정 완료");
+		if(confirm("수정 완료\n 목록 페이지로 이동하시겠습니까?"))
 		location.href = "${path}/risk.do?method=list";			
 	}
 	if(proc=="del"){
-		alert("삭제 완료");
+		alert("삭제 완료\n목록 페이지로 이동합니다.");
 		location.href = "${path}/risk.do?method=list";			
 	}
 	$(document).ready(function(){

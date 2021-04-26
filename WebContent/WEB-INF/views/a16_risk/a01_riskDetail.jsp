@@ -149,8 +149,10 @@
           <div class="card-tools">
             <div class="input-group input-group-sm">
               <div class="input-group-append">
+              <c:if test="${sessionScope.account.id == risk.account_id || (account.auth == 'Manager') }">
                 <button type="button" id="upt"
                  	class="btn btn-primary float-right">수정</button>
+                </c:if>
                 &nbsp;&nbsp;&nbsp;
          <%--        <button type="button" onclick="location.href='${path}/risk.do?method=list'"
                  class="btn btn-secondary float-right">삭제</button>  --%>
