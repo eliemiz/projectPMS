@@ -198,9 +198,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <c:forEach var="risk" items="${riskList}">
+                  <c:forEach var="risk" varStatus="sts" items="${riskList}">
                     <tr class="detail" id="${risk.id}" style="cursor:pointer">
-                      <td>${risk.id}</td>                    
+                      <td>${sts.count}</td>                    
                       <td>${risk.project_name}</td>
                       <td>${risk.subject}</td>
                       <td>${risk.status}</td>
