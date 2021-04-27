@@ -16,8 +16,11 @@ public interface A00_AccountDao {
 	public Account Login(Account log);
 
 	public void signinIns(Account insert);
-
+	
+	// 회원정보수정
 	public void update_pw(Account upt);
+	 
+	public void update_info(Account upt);
 
 	public Account find_pw(Account find);
 	
@@ -31,8 +34,6 @@ public interface A00_AccountDao {
 
 	public int schMember(String mail);
 
-	public void updatePw(Account update);
-	
 	// 다음 시퀀스값 불러오기
 	public int sequence();
 

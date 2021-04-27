@@ -56,13 +56,15 @@ html, body {
 			location.href = "${path}/account.do?method=logout";			
 		}
 
+		var isDuplicated = true;
+		
     $(document).ready(function(){
 
 		$("#Btn").on("click",function(){
 	 		if($("[name=password]").val()==""){
 				alert("새 비밀번호를 입력해주세요");
 				return false;
-			}
+			} 
 			var pass_length = $("[name=password]").val().length
 			if(pass_length < 4 || pass_length >10) {
 				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
@@ -76,17 +78,68 @@ html, body {
 			if(pass2_length < 4 || pass2_length >10) {
 				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
 				return false;
+				
+			} 
+	 		if ($("[name=mail]").val() == "") {
+				alert("이메일을 입력해주세요");
+				$("#id-check-span").html("이메일을 입력해주세요.");
+				return false;
+
+			} else if($("[name=mail]").val().length>=30){
+				alert("형식에 맞지않습니다. 다시 입력하세요.");
+				return false;
+				
+			} else if (isDuplicated == true) {
+				alert("이메일 중복체크 해주세요.");
+				$("#id-check-span").html("이메일 중복 체크해주세요.");
+				return false;
 			}
 	 		
 			if(confirm("변경하시겠습니까?")){
 				//alert($("[name=id]").val());
-				$("[name=proc]").val("update");
-				$("form").attr("action","${path}/account.do?method=updatePassword");
+				$("[name=proc]").val("upt");
+				$("form").attr("action","${path}/account.do?method=updateInfo");
 				$("form").submit();
+			}else {
+				return false;
 			}
 		}); 	
 	 	 
-	 });
+		$("#mail").keyup(function(e) {
+			if (e.keyCode == 13) { // 입력할 항목에 enter키를 입력시 처리
+				ckId();
+			} else {
+				isDuplicated = true;
+			}
+		});
+	});
+
+	function ckMail() {
+		$.ajax({
+			type : "post",
+			url : "${path}/account.do?method=hasMember2",
+			data : {
+				mail : $("[name=mail]").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				//alert(data.mCnt);
+				if (data.mCnt == 0) {
+					alert("등록 가능한 이메일입니다.");
+					$("#id-check-span").html("");
+					isDuplicated = false;
+				} else {
+					alert("이미 등록된 이메일이 있습니다.");
+					$("#id-check-span").html("이미 등록된 이메일이 있습니다.");
+					$("#mail").val("").focus();
+				}
+			},
+			error : function(err) {
+				alert("에러발생");
+				console.log(err);
+			}
+		});
+	}
  	
 	$(function(){
 	
@@ -153,6 +206,28 @@ html, body {
     					<input type="hidden" name="id" value="${account.id}"/>
                      	  <div class="card-body">
                            <p class="login-box-msg">새로 변경 할 비밀번호를 입력하세요.</p>
+                            <div class="input-group mb-3">
+								<input name="name" class="form-control" value="${account.name}"  />
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-user"></span>
+									</div>
+								</div>
+							</div>
+							<div class="input-group mb-3">
+								<input name="mail" id="mail" class="form-control" value="${account.mail}" />
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-envelope"></span>
+									</div>
+								</div>	
+								<button type="button" id="ckIdBtn" class="btn btn-default" onclick="ckMail()"><spring:message code="account_duplication"/></button>
+								   
+								<div>
+							    	<span> *중복된 이메일은 사용이 불가합니다. </span><br>
+							    	<span id="id-check-span" style="color:red;"></span>
+								</div>
+							</div>
                             <div class="input-group mb-3">
 					          <input name="password" id="password" type="password" class="form-control" placeholder="<spring:message code="account_new_pass"/>"/>
 					          <div class="input-group-append">

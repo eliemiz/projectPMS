@@ -38,6 +38,9 @@ public class A00_AccountService {
 		
 		dao.update_pw(upt);
 	}
+	public void update_info(Account upt) {
+		dao.update_info(upt);
+	}
 	
 	public Account getAccount(int accountId) {
 		
@@ -56,11 +59,7 @@ public class A00_AccountService {
 	public int schMember(String mail) {
 		return dao.schMember(mail);
 	}
-	
-	public void updatePw(Account update) {
-		
-		dao.updatePw(update);
-	}
+
 	/*
 	public ArrayList<Task> getTask(int id) {
 		

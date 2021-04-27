@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -117,22 +118,34 @@ public class A00_AccountController {
 		SessionManager.clearSession(request);
 		return "redirect:/account.do?method=login";
 	}	
-
-	// http://localhost:7080/projectPMS/account.do?method=changePassword
-   @RequestMapping(params = "method=changePassword")
-   public String changePassword(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id, Model d) {
-	   /* Set Locale */
+    
+	// http://localhost:7080/projectPMS/account.do?method=changeInfo
+	@RequestMapping(params = "method=changeInfo")
+	public String changeInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id, Model d) {
+		
+		/* Set Locale */
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
 		}
-      return "a00_account\\a04_change_password";
-   }
-   // http://localhost:7080/projectPMS/account.do?method=updatePassword
-    @RequestMapping(params = "method=updatePassword")
-    public String updatePassword(Account update) {       
-       service.updatePw(update);
+		
+		d.addAttribute("account", service.getAccount(id));
+		
+		return "a00_account\\a04_change_info";
+	}
+	
+	// http://localhost:7080/projectPMS/account.do?method=updateInfo
+	@RequestMapping( params = "method=updateInfo")
+    public String updateInfo(Account upt) {       
+       service.update_info(upt);
        return "redirect:/account.do?method=logout";
     } 
+	 
+   @PostMapping(params="method=hasMember2")
+   public String hasMember2(@RequestParam(value="mail", defaultValue="") String mail, Model d) {
+	   System.out.println(mail);
+	   d.addAttribute("mCnt", service.schMember(mail));
+	   return "pageJsonReport";
+   } 
 	
 	// http://localhost:7080/projectPMS/account.do?method=info
 	@RequestMapping(params = "method=info")

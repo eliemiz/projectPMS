@@ -38,7 +38,7 @@
 <link rel="stylesheet" href="dist/font/fonts.css"/>
 <style type="text/css">
 html, body {
-	font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
+   font-family: "Noto Sans KR", "Source Sans Pro", sans-serif !important;
 }
 </style>
 <!-- jQuery -->
@@ -50,14 +50,14 @@ html, body {
 
   $.widget.bridge('uibutton', $.ui.button)
 
-  	$(document).ready(function(){
-		
-		$(".data").click(function(){
-			var id = $(this).attr("id");
-    		location.href="${path}/task.do?method=detail&id="+id;
-    	});
-		
-	});
+     $(document).ready(function(){
+      
+      $(".data").click(function(){
+         var id = $(this).attr("id");
+          location.href="${path}/task.do?method=detail&id="+id;
+       });
+      
+   });
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -98,7 +98,7 @@ html, body {
          
             </h1>
             <div class="form-row float-right">
-            <a href="${path}/account.do?method=changePassword&id=${account.id}">
+            <a href="${path}/account.do?method=changeInfo&id=${account.id}">
              <button class="btn btn-default" type="button"><i class="fas fa-pen"><spring:message code="u_pass_change"/></i></button>
              </a>
             </div>
@@ -112,9 +112,9 @@ html, body {
               </div>
               <div class="card-body">
                 <a> <spring:message code="u_user_id"/>: ${account.user_id}</a> &nbsp;&nbsp;&nbsp;&nbsp;
-				<a> <spring:message code="u_date"/>: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a> <spring:message code="u_login"/>: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
-				</div>
+            <a> <spring:message code="u_date"/>: <fmt:formatDate value="${account.created_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a> <spring:message code="u_login"/>: <fmt:formatDate value="${account.last_login_on}" pattern="yyyy-MM-dd hh:mm:ss"/></a>
+            </div>
               </div>
             </div>
           
@@ -176,32 +176,32 @@ html, body {
                   <tbody>
                    <c:forEach var="task" varStatus="s" items="${taskList}">
                    <tr class="data" id="${task.id}" style="cursor:pointer; text-align:center;"
-                   		onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';">
-                   	  <td>${s.count}</td>
+                         onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';">
+                        <td>${s.count}</td>
                       <td>${task.project_name}</td>
                       <td>
                       <c:choose>
-							<c:when test="${task.tracker=='새기능'}"> <spring:message code="u_newfunction"/> </c:when>
-							<c:when test="${task.tracker=='결함'}"> <spring:message code="u_defect"/> </c:when>
-							<c:when test="${task.tracker=='지원'}"> <spring:message code="u_support"/> </c:when>
-							<c:otherwise> Error </c:otherwise>
-					  </c:choose>
+                     <c:when test="${task.tracker=='새기능'}"> <spring:message code="u_newfunction"/> </c:when>
+                     <c:when test="${task.tracker=='결함'}"> <spring:message code="u_defect"/> </c:when>
+                     <c:when test="${task.tracker=='지원'}"> <spring:message code="u_support"/> </c:when>
+                     <c:otherwise> Error </c:otherwise>
+                 </c:choose>
                       </td>
                       <td>
                       <c:choose>
-							<c:when test="${task.status=='신규'}"> <spring:message code="u_new"/> </c:when>
-							<c:when test="${task.status=='완료'}"> <spring:message code="u_completed"/> </c:when>
-							<c:when test="${task.status=='진행'}"> <spring:message code="u_progresss"/> </c:when>
-							<c:when test="${task.status=='해결'}"> <spring:message code="u_solve"/> </c:when>
-							<c:when test="${task.status=='의견'}"> <spring:message code="u_opinion"/> </c:when>
-							<c:when test="${task.status=='거절'}"> <spring:message code="u_reject"/> </c:when>
-							<c:otherwise> Error </c:otherwise>
-					  </c:choose>
+                     <c:when test="${task.status=='신규'}"> <spring:message code="u_new"/> </c:when>
+                     <c:when test="${task.status=='완료'}"> <spring:message code="u_completed"/> </c:when>
+                     <c:when test="${task.status=='진행'}"> <spring:message code="u_progresss"/> </c:when>
+                     <c:when test="${task.status=='해결'}"> <spring:message code="u_solve"/> </c:when>
+                     <c:when test="${task.status=='의견'}"> <spring:message code="u_opinion"/> </c:when>
+                     <c:when test="${task.status=='거절'}"> <spring:message code="u_reject"/> </c:when>
+                     <c:otherwise> Error </c:otherwise>
+                 </c:choose>
                       </td>
                       <td>${task.subject}</td>
                       <td>${task.name}</td>
                       <td>${task.start_date}</td>
-                  	  <td><fmt:formatDate value="${task.completed_on}" pattern="yyyy-MM-dd"/></td>
+                       <td><fmt:formatDate value="${task.completed_on}" pattern="yyyy-MM-dd"/></td>
                     </tr>
                    </c:forEach>
                   </tbody>
