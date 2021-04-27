@@ -165,7 +165,7 @@ $.widget.bridge('uibutton', $.ui.button)
               </div>
               <div class="form-group">
                 <label for="inputDescription"><spring:message code="p_description"/></label><br>
-                <form:textarea path="description" rows="8" cols="80"/>
+                <form:textarea path="description" rows="8" cols="80" class="form-control"/>
               </div>
               <div class="form-group">
                 <!-- <label for="inputClientCompany"><spring:message code="p_identifier"/></label> -->
