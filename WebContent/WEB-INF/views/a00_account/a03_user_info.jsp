@@ -99,7 +99,7 @@ html, body {
             </h1>
             <div class="form-row float-right">
             <a href="${path}/account.do?method=changeInfo&id=${account.id}">
-             <button class="btn btn-default" type="button"><i class="fas fa-pen"><spring:message code="u_pass_change"/></i></button>
+             <button class="btn btn-default" type="button"><i class="fas fa-pen"><spring:message code="u_change_info"/></i></button>
              </a>
             </div>
           </div>

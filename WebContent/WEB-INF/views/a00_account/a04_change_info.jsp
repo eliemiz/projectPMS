@@ -61,7 +61,15 @@ html, body {
     $(document).ready(function(){
 
 		$("#Btn").on("click",function(){
-	 		if($("[name=password]").val()==""){
+		 	if ($("[name=name]").val() == "") {
+				alert("이름을 입력해주세요");
+				return false;
+				
+			} else if($("[name=name]").val().length>=30){
+				alert("이름은 30자 이내로 입력하세요.");
+				return false;
+				
+			} else if($("[name=password]").val()==""){
 				alert("새 비밀번호를 입력해주세요");
 				return false;
 			} 
@@ -199,13 +207,13 @@ html, body {
                <div class="login-box">
                   <div class="card card-outline card-primary">
                      <div class="card-header text-center">
-                        <a href="../../index2.html" class="h1"><spring:message code="account_change_pass"/></a>
+                        <a href="../../index2.html" class="h1"><spring:message code="u_change_info"/></a>
                      </div>
                       <form method="post">
                       	<input type="hidden" name="proc"/>
     					<input type="hidden" name="id" value="${account.id}"/>
                      	  <div class="card-body">
-                           <p class="login-box-msg">새로 변경 할 비밀번호를 입력하세요.</p>
+                           <p class="login-box-msg">새로 변경 할 회원정보를 입력하세요.</p>
                             <div class="input-group mb-3">
 								<input name="name" class="form-control" value="${account.name}"  />
 								<div class="input-group-append">
