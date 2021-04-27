@@ -126,7 +126,10 @@ html, body {
 			var accId = "${account.id}";
 			var accAuth = "${account.auth}";
 			var writer = $("[name=account_id]").val();
-			if(accId==writer || accAuth=='Manager'){
+			var status = $("#status").text();
+			if(status=="완료"){
+				alert("완료된 업무는 수정이 불가능합니다.");
+			} else if(accId==writer || accAuth=='Manager'){
 				if(confirm("수정하시겠습니까?")){
 					$("form").attr("action","${path}/task.do?method=uptForm");
 					$("form").submit();
@@ -142,22 +145,21 @@ html, body {
 			var accAuth = "${account.auth}";
 			var writer = $("[name=account_id]").val();
 			var parent_id = $("[name=parent_id]").val();
-			if(parent_id==0){
-				if(accId==writer || accAuth=='Manager'){
-					if(confirm("하위 업무를 등록하시겠습니까?")){
-						// 하위 업무 등록을 위한 데이터 처리
-						$("[name=parent_id]").val($("[name=id]").val());
-						$("[name=subject]").val("");
-						$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
-						$("form").attr("action","${path}/task.do?method=insForm");
-						$("form").submit();
-					}
-				} else {
-					alert("하위 업무 생성 권한이 없습니다.\n담당자 혹은 PM만 생성이 가능합니다.");
+			var status = $("#status").text();
+			if(status=="완료"){
+				alert("완료된 업무의 하위업무 생성은 불가능합니다.");
+			} else if(accId==writer || accAuth=='Manager'){
+				if(confirm("하위 업무를 등록하시겠습니까?")){
+					// 하위 업무 등록을 위한 데이터 처리
+					$("[name=parent_id]").val($("[name=id]").val());
+					$("[name=subject]").val("");
+					$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
+					$("form").attr("action","${path}/task.do?method=insForm");
+					$("form").submit();
 				}
 			} else {
-				alert("이 업무는 이미 하위업무입니다.\n하위 업무의 하위 업무는 작성할 수 없습니다.");
-			}			
+				alert("하위 업무 생성 권한이 없습니다.\n담당자 혹은 PM만 생성이 가능합니다.");
+			}	
 			
 		});
 	});
@@ -216,8 +218,12 @@ html, body {
           <label id="list" style="cursor:pointer;"><i class="fas fa-list"></i>목록</label>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <label id="uptFrm" style="cursor:pointer;"><i class="fas fa-pen"></i>편집</label>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <label id="childTask" style="cursor:pointer;"><i class="fas fa-pen"></i>하위Task만들기</label>
+          <c:choose>
+          	<c:when test="${task.parent_id == 0}">
+	          &nbsp;&nbsp;&nbsp;&nbsp;
+	          <label id="childTask" style="cursor:pointer;"><i class="fas fa-pen"></i>하위Task만들기</label>          	
+          	</c:when>
+          </c:choose>
           </div>
           
           <div style="background-Color:lightyellow; textcolor:black;">
@@ -230,7 +236,7 @@ html, body {
                 <div class="form-group">
                   <label>상태</label>
                    &nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
-                   <span name="status" value="${task.status}">${task.status}</span>
+                   <span id="status" name="status" value="${task.status}">${task.status}</span>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
