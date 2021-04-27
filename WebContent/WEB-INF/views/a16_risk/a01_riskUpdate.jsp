@@ -173,9 +173,11 @@
                     <label for="exampleInputEmail1">상태</label>
 	                      <div class="form-group">
 	                        <form:select path="status" class="form-control select2">
-	                          <form:option value="Open" label="Open"/>
 	                          <form:option value="Discuss" label="Discuss"/>
-	                          <form:option value="Close" label="Close"/>  
+	                          <form:option value="Request" label="Request"/>	                         
+	                          <form:option value="Review" label="Review"/>
+	                          <form:option value="Completed" label="Completed"/>  
+	                          <form:option value="Return " label="Return"/>  
 	                        </form:select>
 	                      </div>
 	              </div>

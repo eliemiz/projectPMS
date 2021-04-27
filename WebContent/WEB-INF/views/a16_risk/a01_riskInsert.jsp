@@ -160,7 +160,7 @@
       <div class="card-header">
        <h3 class="card-title">리스크 등록</h3>
        	<form:hidden path="id"/>
-       	<form:hidden path="status" value="Open"/>
+       	<form:hidden path="status" value="New"/>
        	<form:hidden path="strategy" value="-"/>
        	<form:hidden path="treatment" value="-"/>
        	<input type="hidden" name="document_id" value="Risk"/>
@@ -201,7 +201,7 @@
 	                    <form:select path="account_id" class="form-control select" style="width: 100%;">
 		                 <option value="">담당자 선택</option>
 		                  	<c:forEach var="account" items="${accounts}">
-			                    <form:option value="${account.id}">${account.name}</form:option>
+			                    <form:option value="${account.id}">${account.name}(${account.auth})</form:option>
 		                    </c:forEach>
 	                 	</form:select>	            
 	                  </div> 

@@ -168,8 +168,10 @@
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
+                    <c:if test="${sessionScope.account.auth == 'Manager'}">
                       <button type="button" onclick="location.href='${path}/risk.do?method=insForm'"
-                      class="btn btn-primary float-right"><spring:message code="risk-insert"/></button>          
+                      class="btn btn-primary float-right"><spring:message code="risk-insert"/></button>   
+                      </c:if>       
                     </div>
                   </div>
                 </div>
