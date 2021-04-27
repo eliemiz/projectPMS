@@ -178,7 +178,7 @@
               </div>
               <div class="form-group">
                 <label for="inputDescription"><spring:message code="ps_description"/></label><br>
-                <textarea name="description" rows="8" cols="73" >${project.description}</textarea>
+                <textarea name="description" rows="8" cols="73" class="form-control">${project.description}</textarea>
               </div>
               <div class="form-group">
                 <!--  <label for="inputClientCompany"><spring:message code="ps_identifier"/></label>-->
