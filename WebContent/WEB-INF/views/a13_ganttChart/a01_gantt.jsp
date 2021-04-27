@@ -240,6 +240,36 @@
 		}
 	});
 	
+	gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+	    var task = gantt.getTask(id);
+	    updateTask(task);
+	});
+	
+	function updateTask(task) {
+		$.ajax({
+			type:"post",
+			url:"gantt.do?method=update",
+			data: {
+				id: task.id,
+				start_date: task.start_date.toISOString(),
+				duration: task.duration,
+				progress: task.progress
+			},
+			dataType:"json",
+			success: function(data) {
+				if (data.success == "Y"){
+					alert("수정 완료 했습니다.");
+				} else {
+					console.log("수정하지 못했습니다.");
+				}
+			},
+			error: function(err) {
+				alert("에러 발생");
+				console.log(err);
+			}
+		});
+	}
+	
 	$("#searchButton").click(function(){
 		var projectId = $("#projectId").val();
 		var taskName = $("#taskName").val();

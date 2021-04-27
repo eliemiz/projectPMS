@@ -10,14 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
+import pms.z01_vo.GanttChart;
 import pms.z01_vo.GanttSearch;
 import pms.z01_vo.Project;
+import pms.z01_vo.Task;
 import pms.z02_util.SessionManager;
+import pms.z02_util.TimeManager;
 
 @Controller
 @RequestMapping("gantt.do")
@@ -84,6 +88,26 @@ public class A13_GanttChartController {
 		
 		GanttSearch gs = new GanttSearch(projectId, taskName, status, name);
 		d.addAttribute("list", service.ganttSch(gs));
+		return "pageJsonReport";
+	}
+	
+	@PostMapping(params = "method=update")
+	public String update(GanttChart gantt, Model d) {		
+		
+		// 업무 정보 가져오기
+		Task task = service.getTask(gantt.getId());
+		
+		// 날짜 수정하기
+		task.setStart_date(TimeManager.getInstance().isoPlusDay(gantt.getStart_date()));
+		task.setDue_date(TimeManager.getInstance().isoPlusDay(gantt.getStart_date(), gantt.getDuration()));
+		task.setDone_ratio((int)Math.round(gantt.getProgress() * 100));
+		
+		// DB 갱신하기
+		service.updateTask(task);
+		
+		// 결과 반환하기
+		d.addAttribute("success", "Y");
+		
 		return "pageJsonReport";
 	}
 }
