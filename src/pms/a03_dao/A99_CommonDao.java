@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
 
+import pms.z01_vo.Language;
 import pms.z01_vo.Temp;
 
 @Repository
 public interface A99_CommonDao {
 
 	public ArrayList<Temp> getTempList();
+
+	public ArrayList<Language> languageList();
 }

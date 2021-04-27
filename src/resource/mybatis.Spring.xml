@@ -32,6 +32,7 @@
 		<typeAlias alias="ganttSch" type="pms.z01_vo.GanttSearch"/>
 
 		<typeAlias alias="temp" type="pms.z01_vo.Temp"/>
+		<typeAlias alias="language" type="pms.z01_vo.Language"/>
 		
 	</typeAliases>
 	<mappers>

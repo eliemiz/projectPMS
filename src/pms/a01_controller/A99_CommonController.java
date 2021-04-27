@@ -2,12 +2,16 @@ package pms.a01_controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pms.a02_service.A99_CommonService;
+import pms.z01_vo.Language;
 import pms.z01_vo.Temp;
 
 @Controller
@@ -31,5 +35,14 @@ public class A99_CommonController {
 	public String chatting() {
 		
 		return "a00_common\\a03_chatting";
+	}
+	
+
+	@RequestMapping("localize.do")
+	public String localize(HttpServletRequest request, Model d){
+		
+		d.addAttribute("localize", serviceCommon.languageList());
+		
+		return "pageJsonReport";
 	}
 }

@@ -5,4 +5,8 @@
 	<select id="getTempList" resultType="temp">
 		SELECT * FROM TEMP
 	</select>
+	<!-- public ArrayList<Language> languageList(); -->
+	<select id="languageList" resultType="language">
+		SELECT * FROM LOCALIZE
+	</select>
 </mapper>

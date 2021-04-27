@@ -108,10 +108,58 @@
 						console.log(err);
 					}
 				});
+			},
+			eventDrop: function(arg){
+				updateEvent(arg.event);
+			},
+			eventResize: function(arg){
+				updateEvent(arg.event);
 			}
 		});
 		
 		calendar.render();
+		
+		// update를 위한 공통 모듈
+		function updateEvent(event) {
+			var sch = {};
+			 
+			sch.id = event.id;
+			// sch.title = event.title;
+			sch.start = event.start.toISOString();
+			sch.end = event.end.toISOString();
+			// 작성자는 변경될 일 없으니 writer는 sesion으로 넣고 등록
+			// sch.content = event.extendedProps.content;
+			// sch.textColor = event.textColor;
+			// sch.backgroundColor = event.backgroundColor;
+			// sch.borderColor = event.borderColor;
+			// sch.allDay = event.allDay;
+			
+			console.log("# 수정될 값 확인 #");
+			console.log(sch);
+			
+			updateCall(sch);
+		}
+
+		// 수정 처리 ajax
+		function updateCall(sch) {
+			$.ajax({
+				type: "post",
+				url: "calendar.do?method=update",
+				data: sch,
+				dataType: "json",
+				success: function(data){
+					if (data.success == "Y"){
+						alert("수정 완료했습니다.");
+					} else {
+						console.log("실패");
+					}
+				},
+				error: function(err){
+					alert("에러 발생: " + err);
+					console.log(err);
+				}
+			});
+		}
 		
 		$("#searchButton").click(function(){
 			var projectId = $("#projectId").val();

@@ -131,4 +131,20 @@ public class TimeManager {
 		return iso;
 	}
 	
+public String isoMinusDay(String date) {
+		
+		String iso = null;
+		
+		try {
+			Date d = isoFormat.parse(date);
+			d.setTime(d.getTime() - (1000 * 60 * 60 * 24));
+			iso = isoFormat.format(d);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return iso;
+	}
+	
 }

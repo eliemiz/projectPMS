@@ -10,18 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
-import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
-import pms.z01_vo.Account;
-import pms.z01_vo.AccountTask;
+import pms.z01_vo.Calendar;
 import pms.z01_vo.CalendarSch;
 import pms.z01_vo.Project;
+import pms.z01_vo.Task;
 import pms.z02_util.SessionManager;
+import pms.z02_util.TimeManager;
 
 @Controller
 @RequestMapping("calendar.do")
@@ -88,6 +88,26 @@ public class A14_CalendarController {
 		
 		CalendarSch cs = new CalendarSch(projectId, taskName, status, name);
 		d.addAttribute("list", service.calenSch(cs));
+		return "pageJsonReport";
+	}
+	
+	@PostMapping(params = "method=update")
+	public String update(Calendar cal, Model d) {
+		
+		// 업무 정보 가져오기
+		int task_id = cal.getId();
+		Task task = service.getTask(task_id);
+		
+		// 날짜 수정하기
+		task.setStart_date(TimeManager.getInstance().isoPlusDay(cal.getStart()));
+		task.setDue_date(cal.getEnd());
+		
+		// DB 갱신하기
+		service.updateTask(task);
+		
+		// 결과 반환하기
+		d.addAttribute("success", "Y");
+		
 		return "pageJsonReport";
 	}
 }
