@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +21,7 @@ import pms.a02_service.A00_AccountService;
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
 import pms.a02_service.A16_RiskService;
+import pms.z01_vo.Account;
 import pms.z01_vo.AccountTask;
 import pms.z01_vo.Project;
 import pms.z01_vo.ProjectUser;
@@ -76,6 +75,12 @@ public class A10_DashboardController {
 			SessionManager.setLang(request, response, localeResolver);
 		}
 
+		Account account = SessionManager.getAccount(request);
+		if (account == null) {
+			System.out.println("not login");
+			return "a10_dashboard\\dashboard";
+		}
+		
 		/* Get Model */
 		// Project Info
 		Project project = serviceProject.getProject(projectId);
@@ -90,7 +95,7 @@ public class A10_DashboardController {
 		for (AccountTask at : accountList) {
 			incompleteAll += at.getIncompleted();
 			completeAll += at.getCompleted();
-			if (at.getAccount_id() == SessionManager.getAccount(request).getId()) {
+			if (at.getAccount_id() == account.getId()) {
 				d.addAttribute("incompleteUser", at.getIncompleted());
 				d.addAttribute("completeUser", at.getCompleted());
 			}
