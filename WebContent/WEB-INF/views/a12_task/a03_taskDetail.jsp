@@ -136,6 +136,16 @@ html, body {
 			}
 			
 		});
+		
+		$("#childTask").click(function(){
+			if(confirm("하위 업무를 등록하시겠습니까?")){
+				// 하위 업무 등록을 위한 데이터 처리
+				$("[name=parent_id]").val($("[name=id]").val());
+				$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
+				$("form").attr("action","${path}/task.do?method=insForm");
+				$("form").submit();
+			}
+		});
 	});
 </script>
 </head>
@@ -200,6 +210,8 @@ html, body {
           <label id="list" style="cursor:pointer;"><i class="fas fa-list"></i>목록</label>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <label id="uptFrm" style="cursor:pointer;"><i class="fas fa-pen"></i>편집</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label id="childTask" style="cursor:pointer;"><i class="fas fa-pen"></i>하위Task만들기</label>
           </div>
           
           <div style="background-Color:lightyellow; textcolor:black;">

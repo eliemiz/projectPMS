@@ -60,12 +60,17 @@ html, body {
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	
-	var proc = "${proc}";
-	if(proc=="ins"){
-		alert("등록완료\n리스트로 이동합니다.")
-		location.href = "${path}/task.do?method=list";			
-	}
 	$(document).ready(function(){
+		var proc = "${proc}";
+		if(proc=="ins"){
+			// 하위 업무 등록 후 모델값 초기화
+			$("[name=parent_id]").val("0");
+			$("[name=description]").val("");
+			
+			alert("등록완료\n업무리스트로 이동합니다.")
+			location.href = "${path}/task.do?method=list";			
+		}
+		
 		$('#filesize').bind('change', function(){
 			alert('filename: '+this.files[0].name+'\n(filesize: '+Math.round(this.files[0].size/1024)+"KB)");
 			
@@ -236,11 +241,7 @@ html, body {
         <div class="card card-default">
           <div class="card-header">
             <h3 class="card-title">새 업무 만들기</h3>
-            <%-- 
-            <form:hidden path="created_on"/>
-            <form:hidden path="updated_on"/>
-            <form:hidden path="completed_on"/>
-            --%>
+            
             <form:hidden path="backgroundColor"/>
             <input type="hidden" name="document_id" value="Task"/>
           </div>
@@ -249,13 +250,25 @@ html, body {
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>프로젝트 *</label>
+                	<%-- 하위 업무 등록 --%>
+                	<c:if test="${task.parent_id!=0}">
+                	<form:hidden path="created_on"/>
+		            <form:hidden path="updated_on"/>
+		            <form:hidden path="completed_on"/>
+                	<label>프로젝트</label>
+                	<input type="text" name="project_name" value="${task.project_name}" class="form-control" readonly/>
+                	</c:if>                 	
+                	<%-- 일반 업무 등록 --%>
+                  <label>프로젝트 *</label>               
                   <form:select path="project_id" class="form-control select2" style="width: 100%;">
-                    <option value="">프로젝트 선택</option>
+                    
+                    <option value="">프로젝트 선택</option>                    
                     <c:forEach var = "project" items="${projects}">
                     	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
                   </form:select>
+                                 
+                    
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -326,17 +339,19 @@ html, body {
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>추정시간</label>
-                  <form:input path="estimated" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
-                </div>
-                
+              <div class="col-md-6">              
+                <!-- Date -->
                 <div class="form-group">
                   <label>시작일 *</label><br>
                   <div class="input-group date" id="startdate" data-target-input="nearest">
                        <form:input path="start_date" type="date" class="form-control" style="width:100%;"/>
                     </div>
+                </div>
+                <div class="form-group">
+                  <label>완료일 *</label>
+                   <div class="input-group date" id="enddate" data-target-input="nearest">
+                       <form:input path="due_date" type="date" class="form-control" style="width:100%;"/>
+                   </div>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -352,14 +367,10 @@ html, body {
               </div>
               <!-- /.col -->
               <div class="col-md-6">
-                <!-- Date -->
-                <div class="form-group">
-                  <label>완료일 *</label>
-                   <div class="input-group date" id="enddate" data-target-input="nearest">
-                       <form:input path="due_date" type="date" class="form-control" style="width:100%;"/>
-                   </div>
-                </div>
-                <!-- /.form-group -->
+              	<div class="form-group">
+                  <label>추정시간</label>
+                  <form:input path="estimated" type="text" class="form-control" style="width: 100%;" placeholder="시간(숫자만 입력하세요)"/>
+                </div>                
               </div>
               <!-- /.col -->
             </div>           

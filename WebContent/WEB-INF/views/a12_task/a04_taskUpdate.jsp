@@ -242,13 +242,14 @@ html, body {
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>프로젝트 *</label>
-                  <form:select path="project_id" class="form-control select2" style="width: 100%;">
+                  <label>프로젝트</label>
+                  <%-- <form:select path="project_id" class="form-control select2" style="width: 100%;">
                     <option value="">프로젝트 선택</option>
                     <c:forEach var = "project" items="${projects}">
                     	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
-                  </form:select>
+                  </form:select> --%>
+                  <input name="project_id" class="form-control" value="${task.project_name}" readonly/>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -268,13 +269,8 @@ html, body {
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>유형 *</label>
-                  <form:select path="tracker" class="form-control select" style="width: 100%;">
-                    <option value="">유형 선택</option>
-                    <form:option value="결함" label="결함"/>
-                    <form:option value="새기능" label="새기능"/>
-                    <form:option value="지원" label="지원"/>
-                  </form:select>
+                  <label>유형</label>
+                  <input name="tracker" class="form-control" value="${task.tracker}" readonly/>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">

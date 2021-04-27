@@ -234,7 +234,7 @@
 	       //any custom logic here
 	       return false;
 	});
-	gantt.attachEvent("onTaskClick", function(id,e){
+	gantt.attachEvent("onTaskDblClick", function(id,e){
 		if(confirm("상세정보로 이동하시겠습니까?")){
 			location.href = "${path}/task.do?method=detail&id="+id;
 		}

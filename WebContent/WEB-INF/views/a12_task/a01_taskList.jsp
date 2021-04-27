@@ -206,9 +206,9 @@ html, body {
                   </tr>
                   </thead>
                   <tbody>
-                  <c:forEach var="task" items="${tasklist}">
+                  <c:forEach var="task" varStatus="t" items="${tasklist}">
                   <tr class="data" id="${task.id}" style="cursor:pointer;">
-                  	<td>${task.id}</td>
+                  	<td>${t.count}</td><%-- task.id에서 task.cnt로 수정(0427) --%>
                   	<td>${task.project_name}</td>
                   	<td>${task.tracker}</td>
                   	<td>${task.status}</td>
