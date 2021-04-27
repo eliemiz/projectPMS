@@ -149,7 +149,7 @@
     <section class="content">
     	<div class="row" id="searchForm">
 			<div class="col-12">
-				<div class="card card-outline card-success">
+				<div class="card card-outline card-primary">
 				<form class="form-group" method="post" action="${path}/risk.do?method=list">
 					<div class="card-header">
 						<h3 class="card-title"><spring:message code="risk-selectProject"/></h3>
