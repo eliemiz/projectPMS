@@ -86,8 +86,17 @@
 			}
 		});
 		$("#upt").click(function(){
-			$("form").attr("action","${path}/risk.do?method=uptForm");
-			$("form").submit();
+			var auth = "${account.auth}";
+			var status = "${risk.status}";
+			if((status == 'Request' || 
+				status == 'Review' || 
+				status == 'Reassignment' ||
+				status == 'Completed') && auth != 'Manager'){
+				alert("Project Manager만 수정 가능합니다.")
+			}else{
+				$("form").attr("action","${path}/risk.do?method=uptForm");
+				$("form").submit();
+			}
 		});
 	});
 </script>
@@ -183,7 +192,7 @@
                  </div>
                  <div class="form-group">
 	                <p class="text-sm">담당자
-	                  <b class="d-block">${risk.account_name}</b>
+	                  <b class="d-block">${risk.account_name}(${account.auth})</b>
 	                </p>
 	             </div>
 	             <div class="form-group">

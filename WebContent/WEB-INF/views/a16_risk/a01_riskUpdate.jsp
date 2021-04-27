@@ -176,6 +176,7 @@
 	                          <form:option value="Discuss" label="Discuss"/>
 	                          <form:option value="Request" label="Request"/>	                         
 	                          <form:option value="Review" label="Review"/>
+	                          <form:option value="Reassignment" label="Reassignment"/>
 	                          <form:option value="Completed" label="Completed"/>  
 	                          <form:option value="Return " label="Return"/>  
 	                        </form:select>
@@ -197,7 +198,7 @@
                     <form:select path="account_id" class="form-control select" style="width: 100%;">
 	                 <option value="">담당자 선택</option>
 	                  	<c:forEach var="account" items="${accounts}">
-		                    <form:option value="${account.id}">${account.name}</form:option>
+		                    <form:option value="${account.id}">${account.name}(${account.auth})</form:option>
 	                    </c:forEach>
                  	</form:select>              
                   </div>
