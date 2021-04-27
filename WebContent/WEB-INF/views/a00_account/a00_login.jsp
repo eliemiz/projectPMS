@@ -141,6 +141,13 @@ html, body {
 									</div>
 								</form>
 								<div class="mb-3">
+									<a href="${path}/account.do?method=loginSearch2">
+										<button type="button" class="btn btn-outline-warning btn-block btn-flat">
+											<i class="fas fa-search"></i> <spring:message code="account_searchid"/> 
+										</button>
+									</a>
+								</div>
+								<div class="mb-3">
 									<a href="${path}/account.do?method=loginSearch">
 										<button type="button" class="btn btn-outline-info btn-block btn-flat">
 											<i class="fas fa-search"></i> <spring:message code="account_searchpass"/> 

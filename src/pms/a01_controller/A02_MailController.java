@@ -28,6 +28,8 @@ public class A02_MailController {
    private A00_AccountService aservice;
    @Autowired(required = false)
    private LocaleResolver localeResolver;
+   @Autowired(required=false)
+   private A02_MailService service;
 	
    
    // http://localhost:7080/projectPMS/account.do?method=loginSearch
@@ -48,10 +50,7 @@ public class A02_MailController {
        return "forward:/account.do?method=login";
     } // 수정 후, 다시 조회 처리할 수 있게 하기 위하여 forward로
       // 해당 controller 기능 메서드 호출
-   
-   
-   @Autowired(required=false)
-   private A02_MailService service;
+
    // 메일발송
    // http://localhost:7080/projectPMS/account.do?method=send
    @RequestMapping(params="method=send")
@@ -70,6 +69,41 @@ public class A02_MailController {
       // 메일 전송을 service단에서 처리
       return "a00_account\\a01_login_search";
    }
+   
+   
+   
+   
+   // http://localhost:7080/projectPMS/account.do?method=loginSearch2
+   @RequestMapping(params = "method=loginSearch2")
+   public String loginSearch2(HttpServletRequest request, HttpServletResponse response) {
+	   /* Set Locale */
+		if (request.getParameter("lang") != null) {
+			SessionManager.setLang(request, response, localeResolver);
+		}
+		
+      return "a00_account\\a01_login_search2";
+   }
+   // 메일발송
+   // http://localhost:7080/projectPMS/account.do?method=sendId
+   @RequestMapping(params="method=sendId")
+   public String sendId(Account account, Email send, Model d) throws MessagingException{
+      
+      System.out.println(account.getName());
+      System.out.println(send.getReceiver());
+      
+      int result = service.sendIdMail(account.getName(), send);
+      if (result == 1) {
+         d.addAttribute("result", "success");
+      } else if (result == -1) {
+         d.addAttribute("result", "failToFind");
+      }
+      
+      // 메일 전송을 service단에서 처리
+      return "a00_account\\a01_login_search2";
+   }
+   
+   
+   
    
    // http://localhost:7080/projectPMS/account.do?method=signin
 	@RequestMapping(params = "method=signin")

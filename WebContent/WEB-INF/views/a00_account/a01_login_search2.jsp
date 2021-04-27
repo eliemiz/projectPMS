@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>비밀번호 찾기</title>
+<title>아이디 찾기</title>
 
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -52,7 +52,7 @@ html, body {
     var result = "${result}";
     if (${not empty result}) {
        if (result == "success") {
-          alert("새 임시 비밀번호가 메일로 발송되었습니다.");
+          alert("해당 계정의 아이디 정보가 메일로 발송되었습니다.");
           location.href = "${path}/account.do?method=login";
        } else if (result == "failToFind") {
           alert("해당하는 사용자가 없습니다.");
@@ -65,13 +65,6 @@ html, body {
 				alert("이메일을 입력해주세요");
 				return false;
 			}
-	 		/*
-	 		 var emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	         if (!emailReg.test($("[name=mail]").val())) {
-	             alert("이메일 형식이 올바르지 않습니다.");
-	             return false;
-	        }
-	         */
 
 	 		if($("[name=name]").val()==""){
 				alert("이름을 입력해주세요");
@@ -101,7 +94,7 @@ html, body {
             <div class="container-fluid">
                <div class="row mb-2">
                   <div class="col-sm-6">
-                     <h1 class="m-0">Password Search</h1>
+                     <h1 class="m-0">ID Search</h1>
                   </div>
                   <!-- /.col -->
                   <div class="col-sm-6">
@@ -109,7 +102,7 @@ html, body {
                         <li class="breadcrumb-item">
                            <a href="#">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">password search</li>
+                        <li class="breadcrumb-item active">ID search</li>
                      </ol>
                   </div>
                   <!-- /.col -->
@@ -127,10 +120,10 @@ html, body {
                <div class="login-box">
                   <div class="card card-outline card-primary">
                      <div class="card-header text-center">
-                        <a href="../../index2.html" class="h1"><spring:message code="account_searchpass"/></a>
+                        <a href="../../index2.html" class="h1"><spring:message code="account_searchid"/></a>
                      </div>
                      <div class="card-body">
-                        <form method="post" action="${path}/account.do?method=send">
+                        <form method="post" action="${path}/account.do?method=sendId">
                            <p class="login-box-msg">메일 주소를 입력하세요.</p>
                            <div class="input-group mb-3">
                               <input name="receiver" id="mail" type="email" class="form-control" placeholder="<spring:message code="account_email"/>">

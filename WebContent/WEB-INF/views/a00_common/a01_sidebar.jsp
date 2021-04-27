@@ -43,14 +43,6 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="${path}/activity.do" class="nav-link" id="sb-activity">
-						<i class="nav-icon far fa-edit"></i>
-						<p>
-							<spring:message code="sb-activity"/>
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
 					<a href="${path}/task.do?method=list" class="nav-link" id="sb-task">
 						<i class="nav-icon fas fa-tasks"></i>
 						<p>
@@ -79,6 +71,14 @@
 						<i class="nav-icon fas fa-exclamation-circle"></i>
 						<p>
 							<spring:message code="sb-risk"/>
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="${path}/activity.do" class="nav-link" id="sb-activity">
+						<i class="nav-icon far fa-edit"></i>
+						<p>
+							<spring:message code="sb-activity"/>
 						</p>
 					</a>
 				</li>
