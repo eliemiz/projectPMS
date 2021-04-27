@@ -132,20 +132,33 @@ html, body {
 					$("form").submit();
 				}
 			} else {
-				alert("수정 권한이 없습니다.\n작성자 혹은 PM만 수정이 가능합니다.");
+				alert("수정 권한이 없습니다.\n담당자 혹은 PM만 수정이 가능합니다.");
 			}
 			
 		});
 		
 		$("#childTask").click(function(){
-			if(confirm("하위 업무를 등록하시겠습니까?")){
-				// 하위 업무 등록을 위한 데이터 처리
-				$("[name=parent_id]").val($("[name=id]").val());
-				$("[name=subject]").val("");
-				$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
-				$("form").attr("action","${path}/task.do?method=insForm");
-				$("form").submit();
-			}
+			var accId = "${account.id}";
+			var accAuth = "${account.auth}";
+			var writer = $("[name=account_id]").val();
+			var parent_id = $("[name=parent_id]").val();
+			if(parent_id==0){
+				if(accId==writer || accAuth=='Manager'){
+					if(confirm("하위 업무를 등록하시겠습니까?")){
+						// 하위 업무 등록을 위한 데이터 처리
+						$("[name=parent_id]").val($("[name=id]").val());
+						$("[name=subject]").val("");
+						$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
+						$("form").attr("action","${path}/task.do?method=insForm");
+						$("form").submit();
+					}
+				} else {
+					alert("하위 업무 생성 권한이 없습니다.\n담당자 혹은 PM만 생성이 가능합니다.");
+				}
+			} else {
+				alert("이 업무는 이미 하위업무입니다.\n하위 업무의 하위 업무는 작성할 수 없습니다.");
+			}			
+			
 		});
 	});
 </script>

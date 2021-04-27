@@ -364,7 +364,7 @@ html, body {
 												style="width: 100%;">
 												<option value="">담당자 선택</option>
 												<c:forEach var="account" items="${accounts}">
-													<form:option value="${account.id}">${account.name}</form:option>
+													<form:option value="${account.id}">${account.name}(${account.auth})</form:option>
 												</c:forEach>
 											</form:select>
 										</div>
