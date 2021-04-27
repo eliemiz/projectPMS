@@ -106,7 +106,7 @@
 			AND T.ACCOUNT_ID(+) = P.ACCOUNT_ID
 			AND P.PROJECT_ID = #{projectId}
 			AND A.ID = P.ACCOUNT_ID
-			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID
 	</select>
 	<!-- public ArrayList<AccountTask> getAccountTaskListForChart(int projectId); -->
 	<select id="getAccountTaskListForChart" resultType="accountTask" parameterType="int">
@@ -116,7 +116,7 @@
 			COUNT(CASE WHEN T.STATUS != '완료' AND A.ID = T.ACCOUNT_ID THEN 1 END) INCOMPLETED
 			FROM ACCOUNT A, TASK T
 			WHERE T.PROJECT_ID = #{projectId} 
-			GROUP BY (A.ID, A.NAME, A.AUTH) ORDER BY A.ID DESC
+			GROUP BY (A.ID, A.NAME, A.AUTH)
 	</select>
 	
 	<!-- public ArrayList<ProjectUser> getProjectUsers(int projectId); -->

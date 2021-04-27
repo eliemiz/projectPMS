@@ -26,9 +26,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="task" items="${taskList}">
+		<c:forEach var="task" items="${taskList}" varStatus="sts">
 		<tr>
-			<td>${task.id}</td>
+			<td>${sts.count}</td>
 			<td>
 				<a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a>
 			</td>

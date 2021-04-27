@@ -38,9 +38,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="risk" items="${riskList}">
+						<c:forEach var="risk" items="${riskList}" varStatus="sts">
 						<tr>
-							<td>${risk.id}</td>
+							<td>${sts.count}</td>
 							<td><a href="${path}/risk.do?method=detail&id=${risk.id}">${risk.subject}</a></td>
 							<td>${risk.status}</td>
 							<td>
@@ -126,9 +126,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="task" items="${taskList}" begin="1" end="5">
+						<c:forEach var="task" items="${taskList}" begin="1" end="5" varStatus="sts">
 						<tr>
-		                    <td>${task.id}</td>
+		                    <td>${sts.count}</td>
 		                    <td><a href="${path}/task.do?method=detail&id=${task.id}">${task.subject}</a></td>
 		                    <td>${task.name}</td>
 		                    <td>${task.due_date}</td>

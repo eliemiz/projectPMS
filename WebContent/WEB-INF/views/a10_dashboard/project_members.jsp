@@ -174,7 +174,7 @@
 	</thead>
 	<tbody>
 		<tr v-for="(member, index) in memberList">
-			<td>{{member.account_id}}</td>
+			<td>{{index+1}}</td>
 			<td><a :href="'${path}/account.do?method=info&id=' + member.account_id">{{member.name}}</a></td>
 			<td>{{member.auth}}</td>
 			<td>{{member.total}}</td>
