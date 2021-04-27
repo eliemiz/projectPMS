@@ -240,8 +240,42 @@
 		}
 	});
 	
+	gantt.attachEvent("onBeforeTaskChanged", function(id, mode, task){
+		
+		var ret = false;
+    	$.ajax({
+	    	method: "post",
+	    	url: "${path}/gantt.do?method=check",
+	    	async: false,
+   			data:{
+   				id: id
+   			},
+   			dataType: "json",
+   			success: function(data){
+   				var result = data.result;
+   				if (result == "success") {
+   					ret = true;
+   				} else if (result == "alreadyFinished") {
+   					alert("이미 완료된 업무이므로 수정할 수 없습니다.");
+   				} else if (result == "notAuthor") {
+   					alert("PM 또는 업무 담당자만 변경 가능합니다.");
+   				} else if (result == "notLogined") {
+   					alert("로그인이 필요합니다.");
+   				} else {
+   					alert("에러 발생");
+   				}
+   			},
+   			error: function(err){
+   				alert("에러 발생");
+   				console.log(err);
+   			}
+	    });
+		
+	    return ret;
+	});
+	
 	gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
-	    var task = gantt.getTask(id);
+		var task = gantt.getTask(id);
 	    updateTask(task);
 	});
 	
