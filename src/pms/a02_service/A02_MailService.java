@@ -40,11 +40,6 @@ public class A02_MailService {
       // dao.update_pw(upt);
    }
 
-   public void find_pw(Account find) {
-      dao.find_pw(find);
-   }
-   
-
    public void signinIns(Account insert) {
       dao.signinIns(insert);
    }   
@@ -93,6 +88,46 @@ public class A02_MailService {
 
       return 1;
    }
+   
+   public int sendIdMail(String name, Email email) throws MessagingException {
+
+	      /* 0. 해당하는 계정이 있는지 확인 */
+	      Account account = new Account();
+	      account.setName(name);
+	      account.setMail(email.getReceiver());
+	      Account find = dao.find_id(account);
+	      if (find == null) {
+	         return -1; // 해당 계정 없음
+	      }
+		  try {
+		      /* 1.멀티미디어형 메일데이터 전송 */
+		      MimeMessage msg = sender.createMimeMessage();
+		
+		      /* 2. 제목 설정 */
+		      msg.setSubject("PMS 아이디 찾기 안내 메일입니다.");
+		
+		      /* 3. 수신자 설정 */
+		      msg.setRecipient(RecipientType.TO, new InternetAddress(email.getReceiver()));
+		
+		      /* 4. 내용 설정 */
+		      String id = find.getUser_id();
+		      StringBuilder sb = new StringBuilder();
+		      sb.append("해당 계정의 아이디는 : " + id + " 입니다.");
+		
+		      // 내용 설정
+		      msg.setText(sb.toString());
+		
+		      // 5. 발송 처리
+		      sender.send(msg);
+		  }catch (MessagingException e) {
+			  System.out.println("#에러발생#");
+			  e.printStackTrace();
+			  
+			  return -2;
+		  }   
+
+	      return 1;
+	   }
    
    public void sendMail2(Account account) throws MessagingException {
 	    

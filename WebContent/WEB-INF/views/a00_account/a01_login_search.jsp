@@ -52,7 +52,7 @@ html, body {
     var result = "${result}";
     if (${not empty result}) {
        if (result == "success") {
-          alert("메일이 발송되었습니다.");
+          alert("새 임시 비밀번호가 메일로 발송되었습니다.");
           location.href = "${path}/account.do?method=login";
        } else if (result == "failToFind") {
           alert("해당하는 사용자가 없습니다.");
