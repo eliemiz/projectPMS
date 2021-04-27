@@ -141,6 +141,7 @@ html, body {
 			if(confirm("하위 업무를 등록하시겠습니까?")){
 				// 하위 업무 등록을 위한 데이터 처리
 				$("[name=parent_id]").val($("[name=id]").val());
+				$("[name=subject]").val("");
 				$("[name=description]").val("\n\n\n\n\n\n\n\n====== 상위 업무 내용 =====\n"+$("[name=description]").val());				
 				$("form").attr("action","${path}/task.do?method=insForm");
 				$("form").submit();
@@ -188,16 +189,8 @@ html, body {
         	<form:hidden path="account_id"/>        	
         	<form:hidden path="subject"/>
         	<form:hidden path="description"/>
-        	<form:hidden path="status"/>
-        	<form:hidden path="priority"/>
-        	<form:hidden path="created_on"/>
-        	<form:hidden path="updated_on"/>
         	<form:hidden path="start_date"/>
-        	<form:hidden path="due_date"/>
-        	<form:hidden path="estimated"/>
-        	<form:hidden path="done_ratio"/>
-        	<form:hidden path="completed_on"/>
-        	<form:hidden path="tracker"/>
+        	<form:hidden path="project_name"/>
         	
           <h3 class="card-title">
           	${task.tracker}&nbsp;&nbsp;#<span id="id" name="id" value="${task.id}">${task.id}</span>
