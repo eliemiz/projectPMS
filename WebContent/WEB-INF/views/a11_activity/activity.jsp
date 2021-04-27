@@ -221,7 +221,7 @@ $(document).ready(function(){
                       <th><spring:message code="ac_no"/></th>
                       <th><spring:message code="ac_type"/></th>
                       <th><spring:message code="ac_content"/></th>
-                      <th><spring:message code="ac_writer"/></th>
+                      <th><spring:message code="ac_responsibility"/></th>
                       <th><spring:message code="ac_date"/></th>
                       <!-- <th>작업유형</th>ac_type
                       <th>내용</th>ac_content
