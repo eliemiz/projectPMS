@@ -109,11 +109,10 @@
 				alert("에러발생");
 			}
 		});
-		
-		$("#searchButton").click(function(){
+		$("#projectId").change(function() {
 			var projectId = $("#projectId").val();
 			$("form").submit();
-		})
+		});
 	})
 </script>
 </head>
@@ -148,23 +147,26 @@
 
     <!-- Main content -->
     <section class="content">
+    	<div class="row" id="searchForm">
+			<div class="col-12">
+				<div class="card card-outline card-success">
+				<form class="form-group" method="post" action="${path}/risk.do?method=list">
+					<div class="card-header">
+						<h3 class="card-title"><spring:message code="risk-selectProject"/></h3>
+					</div>
+					<div class="card-body">
+						<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
+					</div>
+					</form>
+				</div>
+			</div>		
+		</div>
     	<!-- /.row -->
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <form class="form-group" method="post" action="${path}/risk.do?method=list">
-					<div class="row mb-3">
-						<label for="projectId" >프로젝트 &nbsp;&nbsp;</label>
-						<select id="projectId" name="projectId" class="form-control col-md-3" style="display:inline-block;"></select>
-						<button type="button" id="searchButton" class="btn btn-primary">검색</button>
-					</div>
-			
-					<!-- <div class="row mb-3">
-						<button type="button" id="searchButton" class="btn btn-primary">검색</button>
-					</div> -->
-				</form>                
-
+              <div class="card-header">                
+				<h3 class="card-title"><spring:message code="risk-list"/></h3>
                 <div class="card-tools">
                   <div class="input-group input-group-sm">
                     <div class="input-group-append">
