@@ -168,7 +168,7 @@ html, body {
                       <th><spring:message code="u_type"/></th>
                       <th><spring:message code="u_status"/></th>
                       <th><spring:message code="u_content"/></th>
-                      <th><spring:message code="u_writer"/></th>
+                      <th><spring:message code="ac_responsibility"/></th>
                       <th><spring:message code="u_start_date"/></th>
                       <th><spring:message code="u_completed_date"/></th>
                     </tr>
