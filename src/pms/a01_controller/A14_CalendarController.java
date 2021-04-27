@@ -16,8 +16,10 @@ import org.springframework.web.servlet.LocaleResolver;
 
 import pms.a02_service.A01_ProjectService;
 import pms.a02_service.A12_TaskService;
+import pms.z01_vo.Account;
 import pms.z01_vo.Calendar;
 import pms.z01_vo.CalendarSch;
+import pms.z01_vo.GanttChart;
 import pms.z01_vo.Project;
 import pms.z01_vo.Task;
 import pms.z02_util.SessionManager;
@@ -107,6 +109,42 @@ public class A14_CalendarController {
 		
 		// 결과 반환하기
 		d.addAttribute("success", "Y");
+		
+		return "pageJsonReport";
+	}
+	
+	@PostMapping(params = "method=check")
+	public String check(HttpServletRequest request, Calendar cal, Model d) {		
+		
+		// 업무 정보 가져오기
+		Task task = service.getTask(cal.getId());
+		
+		// 유효성 체크 및 결과 반환
+		// 1. 이미 완료
+		if (task.getStatus().equals("완료")) {
+			d.addAttribute("result", "alreadyFinished");
+			return "pageJsonReport";
+		} 
+		
+		Account account = SessionManager.getAccount(request);
+		// 2. 로그인되어있지 않음
+		if (account == null) {
+			d.addAttribute("result", "notLogined");
+			return "pageJsonReport";
+		} 
+		
+		// 3. PM은 가능
+		if (account.getAuth().equals("Manager")) {
+			d.addAttribute("result", "success");
+			return "pageJsonReport";
+		}
+		
+		// 4. 담당자 체크
+		if (account.getId() == task.getAccount_id()) {
+			d.addAttribute("result", "success");
+		} else {
+			d.addAttribute("result", "notAuthor");
+		}
 		
 		return "pageJsonReport";
 	}
