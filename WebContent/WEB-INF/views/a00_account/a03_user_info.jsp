@@ -174,10 +174,10 @@ html, body {
                     </tr>
                   </thead>
                   <tbody>
-                   <c:forEach var="task" items="${taskList}">
+                   <c:forEach var="task" varStatus="s" items="${taskList}">
                    <tr class="data" id="${task.id}" style="cursor:pointer; text-align:center;"
                    		onmouseover="this.style.backgroundColor='#efefef';" onmouseout="this.style.backgroundColor='#ffffff';">
-                   	  <td>${task.id}</td>
+                   	  <td>${s.count}</td>
                       <td>${task.project_name}</td>
                       <td>
                       <c:choose>
