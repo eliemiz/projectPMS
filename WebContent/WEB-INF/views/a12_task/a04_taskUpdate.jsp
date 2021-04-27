@@ -249,7 +249,8 @@ html, body {
                     	<form:option value="${project.id}">${project.name}</form:option>
                     </c:forEach>
                   </form:select> --%>
-                  <input name="project_id" class="form-control" value="${task.project_name}" readonly/>
+                  <input name="project_name" class="form-control" value="${task.project_name}" readonly/>
+                  <input type="hidden" name="project_id" value="${task.project_id}"/>
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
@@ -274,8 +275,16 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-                  <label>상위업무</label>
-                  <form:input path="parent_id" type="text" class="form-control" value="${task.parent_id}" style="width: 100%;"/>
+				  <label>상위업무번호</label>
+                  <c:choose>
+					<c:when test="${task.parent_id != 0}">
+						<input name="parent_id" value="${task.parent_id}" type="text" class="form-control" style="width: 100%;" readonly/>
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="parent_id" value="0"/>
+						<input type="text" class="form-control" value="-" readonly/>
+					</c:otherwise>
+				  </c:choose>
                 </div>
                 <!-- /.form-group -->
               </div>

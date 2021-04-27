@@ -273,9 +273,19 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-            		<label>상위 업무</label>
-            		&nbsp;&nbsp;&nbsp;
-					<span name="parent_id" value="${task.parent_id}">${task.parent_id}</span>        
+            		<label>상위 업무 번호</label>
+            		<c:choose>        
+	            		<c:when test="${task.parent_id != 0}">
+		            		&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; 
+							<span name="parent_id" value="${task.parent_id}">
+								<a href="${path}/task.do?method=detail&id=${task.parent_id}">${task.parent_id}</a>
+							</span>
+						</c:when>
+						<c:otherwise>
+		            		&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; 
+							<span name="parent_id" value="0">-</span>						
+						</c:otherwise>
+					</c:choose>					        
 	             </div>
               </div>
               <!-- /.col -->

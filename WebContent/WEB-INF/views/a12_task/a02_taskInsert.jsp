@@ -311,16 +311,15 @@ html, body {
 										</div>
 										<!-- /.form-group -->
 										<div class="form-group">
-											
-											<%-- TODO: 최상위 task id(value)만 불러와서 task 이름을 select 할 것인지, 입력할 것인지? --%>
+											<label>상위업무번호</label>
 											<c:choose>
 											<c:when test="${task.parent_id != 0}">
-												<label>상위업무번호</label>
 												<input name="parent_id" value="${task.parent_id}" type="text" class="form-control"
 													style="width: 100%;" readonly/>
 											</c:when>
 											<c:otherwise>
 												<input type="hidden" name="parent_id" value="0"/>
+												<input type="text" class="form-control" value="-" readonly/>
 											</c:otherwise>
 											</c:choose>
 										</div>
