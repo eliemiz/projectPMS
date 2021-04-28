@@ -407,4 +407,21 @@ public class A12_TaskService {
 			data2.add(i/count);
 		}
 	}
+	
+	/* Approval */
+	// 리스트 불러오기
+	public ArrayList<Task> getTaskList(TaskSch sch){
+		/* Local 시간으로 변경 */
+		ArrayList<Task> taskList = dao.getTaskList(sch);
+		for (Task task : taskList) {
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));  
+		}
+		
+		return taskList;
+	}
+	// 상태 업데이트
+	public void updateStatus(Task upt) {
+		dao.updateStatus(upt);
+	}
 }

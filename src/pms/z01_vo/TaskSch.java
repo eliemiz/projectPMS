@@ -16,6 +16,12 @@ public class TaskSch {
 		this.writer = writer;
 	}
 
+	public TaskSch(int projectId, String status) {
+		super();
+		this.projectId = projectId;
+		this.status = status;
+	}
+
 	public int getProjectId() {
 		return projectId;
 	}

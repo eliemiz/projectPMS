@@ -62,13 +62,52 @@ html, body {
 			}
 		});
 		
+		/* 목록 이동 */
+		$(".data").dblclick(function(){
+			var id = $(this).attr("id");
+			if(confirm("상세화면으로 이동하시겠습니까?")){
+    			location.href="${path}/task.do?method=detail&id="+id;
+			}
+    	});
+		
 		/* sidebar */
 		$("#sb-approval").addClass("active");
 
-		$("#hd-project-list").change(function() {
-			// getProjectList();
-			
-			//location.href = "${path}/dashboard.do?projectId=" + $(this).val();
+		$("#hd-project-list").change(function() {			
+			location.href = "${path}/approval.do?projectId=" + $(this).val();
+		});
+		
+		$("#status").change(function(){
+			var projectId = $("#hd-project-list").val();
+			location.href = "${path}/approval.do?projectId="+projectId+"&status="+$(this).val();
+		});
+		
+		var proc = "${proc}";
+		if(proc=="accept"){
+			if(confirm("결재 승인이 완료되었습니다.\n결재 완료목록으로 이동하시겠습니까?")){
+				var projectId = $("#hd-project-list").val();
+				location.href = "${path}/approval.do?projectId="+projectId+"&status=결재완료";
+			}
+		}
+		if(proc=="reject"){
+			if(confirm("결재 거절이 완료되었습니다.\n결재 반려목록으로 이동하시겠습니까?")){
+				var projectId = $("#hd-project-list").val();
+				location.href = "${path}/approval.do?projectId="+projectId+"&status=결재반려";
+			}
+		}
+		$("#accept").click(function(){
+			if(confirm("결재를 승인하시겠습니까?")){
+				$("[name=proc]").val("accept");
+				$("form").attr("action","${path}/approval.do?method=update");
+				$("form").submit();
+			}
+		});
+		$("#reject").click(function(){
+			if(confirm("결재를 거절하시겠습니까?")){
+				$("[name=proc]").val("reject");
+				$("form").attr("action","${path}/approval.do?method=update");
+				$("form").submit();
+			}
 		});
 	});
 </script>
@@ -104,76 +143,109 @@ html, body {
 			</div>
 
 			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row" id="searchForm">
-						<div class="col-12">
-							<div class="card card-outline card-success">
-								<div class="card-header">
-									<h3 class="card-title"><spring:message code="dash-project-select"/></h3>
-								</div>
-								<div class="card-body">
-									<select id="hd-project-list" class="form-control">
-										<!-- <option v-for="project in projectList" :value="project.id" v-text="project.name" v-cloak></option> -->
-									</select>
-								</div>
+		    <section class="content">
+		      <div class="container-fluid">
+				<div class="row" id="searchForm">
+					<div class="col-12">
+						<div class="card card-outline card-success">
+							<div class="card-header">
+								<h3 class="card-title"><spring:message code="dash-project-select"/></h3>
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-12">
-							<div class="card card-primary card-outline card-tabs">
-								<div class="card-header p-0 pt-1 border-bottom-0">
-									<ul class="nav nav-tabs" id="custom-tabs-three-tab"
-										role="tablist">
-										<li class="nav-item">
-											<a class="nav-link active" id="info-tab" data-toggle="pill"
-												href="#info" role="tab" aria-controls="info"
-												aria-selected="true">
-												<spring:message code="dash-info" />
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" id="members-tab" data-toggle="pill"
-												href="#members" role="tab" aria-controls="members"
-												aria-selected="false">
-												<spring:message code="dash-members" />
-											</a>
-										</li>
-										<li class="nav-item">
-											<a class="nav-link" id="issues-tab" data-toggle="pill"
-												href="#issues" role="tab" aria-controls="issues"
-												aria-selected="false">
-												<spring:message code="dash-issues" />
-											</a>
-										</li>
-									</ul>
-								</div>
-								<div class="card-body">
-									<div class="tab-content" id="custom-tabs-three-tabContent">
-										<div class="tab-pane fade show active" id="info"
-											role="tabpanel" aria-labelledby="info-tab">
-											<%-- <jsp:include page="" />
-											<jsp:include page="" />
-											<jsp:include page="" /> --%>
-
-										</div>
-										<div class="tab-pane fade" id="members" role="tabpanel"
-											aria-labelledby="members-tab">
-											<%-- <jsp:include page="" /> --%>
-										</div>
-										<div class="tab-pane fade" id="issues" role="tabpanel"
-											aria-labelledby="issues-tab">
-											<%-- <jsp:include page="" /> --%>
-										</div>
-									</div>
-								</div>
-								<!-- /.card -->
+							<div class="card-body">
+								<select id="hd-project-list" class="form-control"></select>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+		        <div class="row">
+		          <div class="col-12">
+		            <div class="card">
+		              <div class="card-header">              
+		                <h3 class="card-title">검색조건</h3> 
+		              </div>              
+		              <div class="card-body">
+		                <div class="form-group">		
+							<div class="row mb-3">
+								<label for="status" class="col-md-2">상태 선택</label>
+								<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
+									<option value="결재대기">결재대기</option>
+									<option value="결재반려">반려</option>
+									<option value="결재완료">완료</option>
+								</select>																	
+							</div>						
+						</div>                
+		              </div>      
+		              <hr>        
+		              <!-- /.card-header -->
+		              <div class="card-body">
+		              <form method="post">
+		              <input type="hidden" name="proc" value=""/>
+		                <table id="example2" class="table table-bordered table-hover">
+		                <col width="5%">
+		                <col width="12%">
+					  	<col width="5%">
+					    <col width="8%">
+					    <col width="8%">
+					    <col width="29%">
+					    <col width="7%">
+					    <col width="9%">
+					    <col width="9%">
+					    <col width="8%">
+		                  <thead>
+		                  <tr align="center">
+		                    <th>번호</th>
+		                    <th>프로젝트 이름</th>
+		                    <th>유형</th>
+		                    <th>상태</th>
+		                    <th>우선순위</th>
+		                    <th>제목</th>
+		                    <th>담당자</th>
+		                    <th>시작날짜</th>
+		                    <th>완료날짜</th>
+		                    <th>결재여부</th>
+		                  </tr>
+		                  </thead>
+		                  <tbody>
+		                  <c:forEach var="task" varStatus="t" items="${tasklist}">
+		                  <tr align="center" class="data" id="${task.id}" style="cursor:pointer;">
+		                  	<%-- <td>${task.level}</td> --%>
+		                  	<td>${t.count}</td><%-- task.id에서 task.cnt로 수정(0427) --%>
+		                  	<td>${task.project_name}</td>
+		                  	<td>${task.tracker}</td>
+		                  	<td>${task.status}</td>
+		                  	<td>
+			                  	<c:choose>
+				                   	<c:when test="${task.priority==1}">낮음</c:when>
+				                   	<c:when test="${task.priority==2}">보통</c:when>
+				                   	<c:when test="${task.priority==3}">높음</c:when>
+				                   	<c:when test="${task.priority==4}">긴급</c:when>
+				                   	<c:when test="${task.priority==5}">즉시</c:when>
+				                    </c:choose>
+		                  	</td>
+		                  	<td align="left">
+		                  		${task.subject}
+		                	</td>
+		                  	<td>${task.name}</td>
+		                  	<td>${task.start_date}</td>
+		                  	<td>${task.due_date}</td>
+		                  	<td><input type="button" id="accept" class="btn btn-primary" value="승인"/>
+		                  		<input type="button" id="reject" class="btn btn-danger" value="거절"/></td>
+		                  </tr>
+		                  </c:forEach>
+		                  </tbody>
+		                </table>
+		                </form>
+		                </div>
+		              <!-- /.card-body -->
+		            </div>
+		            <!-- /.card -->
+		          </div>
+		          <!-- /.col -->
+		        </div>
+		        <!-- /.row -->
+		      </div>
+		      <!-- /.container-fluid -->
+		    </section>
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->

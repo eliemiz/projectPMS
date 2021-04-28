@@ -200,6 +200,25 @@
 		AND t.account_id=#{id}
 		ORDER BY COMPLETED_ON DESC
 	</select>
+	
+	<!-- Approval: public ArrayList<Task> getTaskList(TaskSch sch) -->
+	<select id="getTaskList" resultMap="taskList" parameterType="taskSch">
+		SELECT t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
+				start_date, due_date
+		FROM task t, account a, PROJECT p
+		WHERE t.account_id = a.id
+		AND t.PROJECT_ID = p.ID
+		AND p.id = #{projectId}
+		AND t.status LIKE '%'||#{status}||'%'
+		ORDER BY t.priority DESC
+	</select>
+	<!-- public void updateStatus(Task upt) -->
+	<update id="updateStatus" parameterType="task">
+		UPDATE TASK
+			SET status = #{status},
+				updated_on = sysdate
+			WHERE ID = #{id}
+	</update>
 </mapper>
 
 

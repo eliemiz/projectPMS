@@ -22,7 +22,6 @@ public interface A12_TaskDao {
 	public ArrayList<Task> taskList(TaskSch sch); // 검색용 list
 	public ArrayList<Task> getTaskListByProjectId(int projectId);	// 프로젝트ID로 Task리스트 조회
 	public Task getTask(int id); // task 조회
-	public ArrayList<Task> getTaskList(Task sch);
 	public void insertTask(Task ins); // task 등록
 	public void updateTask(Task upt); // task 수정	
 	public void deleteTask(int id); // task 삭제
@@ -48,4 +47,8 @@ public interface A12_TaskDao {
 	public ArrayList<TaskResult> getTaskResult(int projectId); // 산출물 리스트 조회
 	
 	public ArrayList<Task> getTaskUser(int id);
+	
+	// Approval
+	public ArrayList<Task> getTaskList(TaskSch sch);
+	public void updateStatus(Task upt);
 }
