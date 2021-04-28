@@ -95,7 +95,29 @@ public class A16_RiskController {
 	// http://localhost:6080/projectPMS/risk.do?method=insForm
 	// http://localhost:7080/projectPMS/risk.do?method=insForm
 	@RequestMapping(params = "method=insForm")
-	public String insForm(@ModelAttribute("risk") Risk risk) {
+	public String insForm(HttpServletRequest request, @ModelAttribute("risk") Risk risk, Model d) {
+		/* Set Project Id : request에서 projectId가 넘어왔다면 자동으로 세선에 저장해준다. */
+		HttpSession session = request.getSession();
+		String projectIdReq = request.getParameter("projectId");
+		if (projectIdReq != null) {
+			session.setAttribute("projectId", projectIdReq);
+		}
+
+		/* Get Project Id : 세션에 값이 없다면, 즉 페이지 진입, 검색 등에 프로젝트 선택한 적이 없을 때 */
+		Object projectIdObj = session.getAttribute("projectId");
+		int projectId;
+		if (projectIdObj == null) {
+			ArrayList<Project> projectList = service3.getProjectList();
+			projectId = projectList.get(0).getId();
+			session.setAttribute("projectId", projectId);
+		} else {
+			projectId = Integer.parseInt(projectIdObj.toString());
+		}
+		System.out.println("프로젝트: "+projectId);
+		/* Get Model */
+		// Project Info
+		Project project = service3.getProject(projectId);
+		d.addAttribute("project", project);
 		return "a16_risk\\a01_riskInsert";
 	}
 	
