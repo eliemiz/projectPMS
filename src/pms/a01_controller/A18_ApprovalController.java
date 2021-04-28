@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -62,6 +63,8 @@ public class A18_ApprovalController {
 		TaskSch sch = new TaskSch(projectId, status);
 		d.addAttribute("tasklist", service.getTaskList(sch));
 		
+		d.addAttribute("status", status);
+		
 		/* Set Locale */
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
@@ -70,16 +73,26 @@ public class A18_ApprovalController {
 		return "a18_approval\\a01_approvalMain";
 	}
 	
-	@RequestMapping(params = "method=accept")
-	public String accept(HttpServletRequest request, HttpServletResponse response, Task upt) {
+	@PostMapping("approvalUpdate.do")
+	public String update(HttpServletRequest request, HttpServletResponse response, Model d) {
+		
 		String proc = request.getParameter("proc");
-		if(proc=="accept") {
+		String task_id_s = request.getParameter("task_id");
+		int task_id = Integer.parseInt(task_id_s);
+		Task upt = service.getTask(task_id);
+		if(proc.equals("accept")) {
 			upt.setStatus("결재완료");
+			upt.setDone_ratio(100);
 			System.out.println("승인"+upt.getId());
 		} else if(proc.equals("reject")) {
 			upt.setStatus("결재반려");
 		}
+		
 		service.updateStatus(upt);
-		return "forward:/approval.do";
+		
+		d.addAttribute("proc", proc);
+		d.addAttribute("project_id", SessionManager.getProjectId(request));
+		
+		return "a18_approval\\a01_approvalMain";
 	}
 }

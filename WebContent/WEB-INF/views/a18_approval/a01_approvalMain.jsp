@@ -41,7 +41,10 @@ html, body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
+		
+		$("#status").val("${status}");
 		
 		/* Get project List */
 		$.ajax({
@@ -86,16 +89,17 @@ html, body {
 		if(proc=="accept"){
 			if(confirm("결재 승인이 완료되었습니다.\n결재 완료목록으로 이동하시겠습니까?")){
 				var projectId = $("#hd-project-list").val();
-				location.href = "${path}/approval.do?projectId="+projectId+"&status=결재완료";
+				location.href = "${path}/approval.do?projectId=${project_id}&status=결재완료";
 			}
 		}
 		if(proc=="reject"){
 			if(confirm("결재 거절이 완료되었습니다.\n결재 반려목록으로 이동하시겠습니까?")){
 				var projectId = $("#hd-project-list").val();
-				location.href = "${path}/approval.do?projectId="+projectId+"&status=결재반려";
+				location.href = "${path}/approval.do?projectId=${project_id}&status=결재반려";
 			}
 		}
-		$("#accept").click(function(){
+		
+		/* $("#accept").click(function(){
 			if(confirm("결재를 승인하시겠습니까?")){
 				$("[name=proc]").val("accept");
 				$("form").attr("action","${path}/approval.do?method=update");
@@ -108,8 +112,18 @@ html, body {
 				$("form").attr("action","${path}/approval.do?method=update");
 				$("form").submit();
 			}
-		});
+		}); */
+		
+		
 	});
+	
+	function appAccept(obj) {
+		$("[name=proc]").val("accept");
+		$("[name=task_id]").val(obj);
+		$("#form_app").attr("action","${path}/approvalUpdate.do");
+		$("#form_app").submit();
+	}
+	
 </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -178,19 +192,11 @@ html, body {
 		              <hr>        
 		              <!-- /.card-header -->
 		              <div class="card-body">
-		              <form method="post">
-		              <input type="hidden" name="proc" value=""/>
+		              <form id="form_app" method="post">
+		              	<input type="hidden" name="proc"/>
+		              	<input type="hidden" name="task_id"/>
+		              </form>
 		                <table id="example2" class="table table-bordered table-hover">
-		                <col width="5%">
-		                <col width="12%">
-					  	<col width="5%">
-					    <col width="8%">
-					    <col width="8%">
-					    <col width="29%">
-					    <col width="7%">
-					    <col width="9%">
-					    <col width="9%">
-					    <col width="8%">
 		                  <thead>
 		                  <tr align="center">
 		                    <th>번호</th>
@@ -228,13 +234,14 @@ html, body {
 		                  	<td>${task.name}</td>
 		                  	<td>${task.start_date}</td>
 		                  	<td>${task.due_date}</td>
-		                  	<td><input type="button" id="accept" class="btn btn-primary" value="승인"/>
-		                  		<input type="button" id="reject" class="btn btn-danger" value="거절"/></td>
+		                  	<td>
+		                  		<input type="button" onclick="appAccept(${task.id})" class="btn btn-primary" value="승인"/>
+		                  		<input type="button" onclick="appReject(${task.id})" class="btn btn-danger" value="거절"/>
+	                  		</td>
 		                  </tr>
 		                  </c:forEach>
 		                  </tbody>
 		                </table>
-		                </form>
 		                </div>
 		              <!-- /.card-body -->
 		            </div>
