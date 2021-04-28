@@ -154,7 +154,7 @@
 	    	<form:hidden path="account_name"/>
 	    	<form:hidden path="project_name"/>
           <h3 class="card-title">상세 내용</h3>
-
+			
           <div class="card-tools">
             <div class="input-group input-group-sm">
               <div class="input-group-append">
@@ -178,7 +178,7 @@
               &nbsp;&nbsp;&nbsp;
               
                <div>
-               	<form:textarea path="description" class="form-control" style="width:100%; height:300px;"/>
+               	${risk.description}
         	   </div>  
               <br>
               <div class="text-muted">
@@ -258,9 +258,9 @@
                 </p>
                 </div>
                 <div class="form-group">
-                <p class="text-md">해결방안
-                  <form:textarea path="treatment" class="form-control" style="width:100%; height:200px;"/>
+                <p class="text-md">해결방안<br> 
                 </p>
+                ${risk.treatment}
                 </div>
                 
                 

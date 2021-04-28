@@ -217,7 +217,7 @@
                  	</form:select>     
                  	</c:if>
                  	<c:if test="${account.auth!='Manager'}">   
-                 	  <input type="hidden" name="account_id" value="${account_id}"/>
+                 	  <input type="hidden" name="account_id" value="${account.id}"/>
                  	  <input type="text" class="form-control" style="width: 100%;" value="${account.name}" readonly="readonly"/>
                  	</c:if>      
                   </div>
@@ -248,13 +248,15 @@
 			                      </form:select>
 			                    </c:if>
 			                    <c:if test="${account.auth!='Manager'}">
-			                   	  <form:select path="probability" class="form-control select2" readonly="true">
-			                        <form:option value="1" label=" 미세 "/>
-			                        <form:option value="2" label=" 낮음 "/>
-			                        <form:option value="3" label=" 보통 "/>
-			                        <form:option value="4" label=" 높음 "/>
-			                        <form:option value="5" label=" 확실 "/>
-			                      </form:select>
+			                   	  <input type="hidden" name="probability" value="${risk.probability}"/>
+			                   	  <c:choose>
+									<c:when test="${risk.probability==1}"><input type="text" class="form-control" style="width: 100%;" value="미세" readonly="readonly"/></c:when>
+									<c:when test="${risk.probability==2}"><input type="text" class="form-control" style="width: 100%;" value="낮음" readonly="readonly"/></c:when>
+									<c:when test="${risk.probability==3}"><input type="text" class="form-control" style="width: 100%;" value="보통" readonly="readonly"/></c:when>
+									<c:when test="${risk.probability==4}"><input type="text" class="form-control" style="width: 100%;" value="높음" readonly="readonly"/></c:when>
+									<c:when test="${risk.probability==5}"><input type="text" class="form-control" style="width: 100%;" value="확실" readonly="readonly"/></c:when>
+									<c:otherwise> Error </c:otherwise>
+								  </c:choose>
 			                    </c:if>
 			                    </div>
 		                  </div>
@@ -271,13 +273,16 @@
 			                      </form:select>
 			                </c:if>
 			                <c:if test="${account.auth!='Manager'}">
-			                	  <form:select path="impact" class="form-control select2" readonly="true">
-			                        <form:option value="1" label=" 미세 "/>
-			                        <form:option value="2" label=" 낮음 "/>
-			                        <form:option value="3" label=" 보통 "/>
-			                        <form:option value="4" label=" 중요 "/>
-			                        <form:option value="5" label=" 치명적 "/>
-			                      </form:select>
+			                <input type="hidden" name="impact" value="${risk.impact}"/>
+			                   	  <c:choose>
+									<c:when test="${risk.impact==1}"><input type="text" class="form-control" style="width: 100%;" value="미세" readonly="readonly"/></c:when>
+									<c:when test="${risk.impact==2}"><input type="text" class="form-control" style="width: 100%;" value="낮음" readonly="readonly"/></c:when>
+									<c:when test="${risk.impact==3}"><input type="text" class="form-control" style="width: 100%;" value="보통" readonly="readonly"/></c:when>
+									<c:when test="${risk.impact==4}"><input type="text" class="form-control" style="width: 100%;" value="중요" readonly="readonly"/></c:when>
+									<c:when test="${risk.impact==5}"><input type="text" class="form-control" style="width: 100%;" value="치명적" readonly="readonly"/></c:when>
+									<c:otherwise> Error </c:otherwise>
+								  </c:choose>
+
 			                </c:if>
 			                </div>
 		                  </div>
@@ -290,7 +295,7 @@
 		                    	class="form-control"/>
 		                    </c:if>
 		                    <c:if test="${account.auth!='Manager'}">
-		                    <form:input path="end_date" value="${risk.start_date}" type="date"
+		                    <form:input path="start_date" value="${risk.start_date}" type="date"
 		                     	class="form-control" readonly="true"/>
 		                    </c:if>	
 		                  </div>
