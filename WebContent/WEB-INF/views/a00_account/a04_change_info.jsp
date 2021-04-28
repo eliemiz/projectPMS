@@ -57,6 +57,9 @@ html, body {
 		}
 
 		var isDuplicated = true;
+		var Rmail=$("#mail").val();
+		//var Rmail= $("[name=mail]").val();
+		var Pmail="${account.mail}";
 		
     $(document).ready(function(){
 
@@ -97,11 +100,12 @@ html, body {
 				alert("형식에 맞지않습니다. 다시 입력하세요.");
 				return false;
 				
-			} else if (isDuplicated == true) {
-				alert("이메일 중복체크 해주세요.");
-				$("#id-check-span").html("이메일 중복 체크해주세요.");
-				return false;
-			}
+			} else if (Rmail!=Pmail && isDuplicated == true) {
+	            alert("이메일 중복체크 해주세요.");
+	            $("#id-check-span").html("이메일 중복 체크해주세요.");
+	            return false;
+	        }
+				
 	 		
 			if(confirm("변경하시겠습니까?")){
 				//alert($("[name=id]").val());
@@ -113,13 +117,16 @@ html, body {
 			}
 		}); 	
 	 	 
+		/*
 		$("#mail").keyup(function(e) {
 			if (e.keyCode == 13) { // 입력할 항목에 enter키를 입력시 처리
-				ckId();
+				ckMail();
 			} else {
 				isDuplicated = true;
 			}
 		});
+		*/
+		
 	});
 
 	function ckMail() {

@@ -127,8 +127,8 @@ public class A00_AccountController {
 		if (request.getParameter("lang") != null) {
 			SessionManager.setLang(request, response, localeResolver);
 		}
-		
-		d.addAttribute("account", service.getAccount(id));
+		Account account = service.getAccount(id);
+		d.addAttribute("account", account);
 		
 		return "a00_account\\a04_change_info";
 	}
