@@ -4,7 +4,7 @@
 	<!-- public ArrayList<Task> taskList(TaskSch sch) -->
 	<resultMap type="task" id="taskList"/>
 	<select id="taskList" resultMap="taskList" parameterType="taskSch">
-		SELECT t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
+		SELECT level, t.id, p.name project_name, t.tracker, t.status, t.PRIORITY, t.subject, a.name name,
 				start_date, due_date
 		FROM task t, account a, PROJECT p
 		WHERE t.account_id = a.id
@@ -14,7 +14,8 @@
 		AND t.tracker LIKE '%'||#{tracker}||'%'
 		AND t.status LIKE '%'||#{status}||'%'
 		AND a.name LIKE '%'||#{writer}||'%'
-		ORDER BY t.id desc
+		CONNECT BY PRIOR t.id = t.parent_id
+		ORDER siblings BY t.id DESC
 	</select>
 	<select id="getTaskListByProjectId" resultType="task" parameterType="int">
 		SELECT * FROM TASK WHERE PROJECT_ID = #{projectId}

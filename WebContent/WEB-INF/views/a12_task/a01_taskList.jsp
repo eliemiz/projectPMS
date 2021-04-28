@@ -209,6 +209,7 @@ html, body {
                   <tbody>
                   <c:forEach var="task" varStatus="t" items="${tasklist}">
                   <tr class="data" id="${task.id}" style="cursor:pointer;">
+                  	<%-- <td>${task.level}</td> --%>
                   	<td>${t.count}</td><%-- task.id에서 task.cnt로 수정(0427) --%>
                   	<td>${task.project_name}</td>
                   	<td>${task.tracker}</td>
@@ -222,7 +223,13 @@ html, body {
 		                   	<c:when test="${task.priority==5}">즉시</c:when>
 		                    </c:choose>
                   	</td>
-                  	<td>${task.subject}</td>
+                  	<td>
+                  		<c:forEach varStatus="sts" begin="1" end="${task.level}">
+                  			<c:if test="${task.level>1}">&nbsp;&nbsp;</c:if>
+                  			<!-- 공백 및 하위 항목 이미지(손가락 같은거) 추가해주세요 -->
+                  		</c:forEach>
+                  		${task.subject}
+                	</td>
                   	<td>${task.name}</td>
                   	<td>${task.start_date}</td>
                   	<td>${task.due_date}</td>

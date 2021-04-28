@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Task {
+	private int level;
 	private int id;
 	private int parent_id;
 	private int project_id;
@@ -23,7 +24,7 @@ public class Task {
 	private int done_ratio;
 	private Date completed_on;
 	private String tracker; // 유형 추가
-	private String backgroundColor; // 캘린더 색깔 추가 
+	private String backgroundColor; // 캘린더 색깔 추가
 	private String name; // 어카운트 이름 불러오기
 	private String project_name;
 	private MultipartFile[] report; // 업로드시 필요(파일 수정시 업로드)
@@ -34,6 +35,14 @@ public class Task {
 	public Task() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public int getId() {
@@ -188,31 +197,33 @@ public class Task {
 		this.project_name = project_name;
 	}
 
-	
 	public MultipartFile[] getReport() {
 		return report;
 	}
+
 	public void setReport(MultipartFile[] report) {
 		this.report = report;
 	}
+
 	public String[] getFilenames() {
 		return filenames;
 	}
+
 	public void setFilename(String[] filenames) {
 		this.filenames = filenames;
-	} 
+	}
 
 	public void setFilenames(String[] filenames) {
 		this.filenames = filenames;
 	}
-	
+
 	public ArrayList<Attachment> getFileInfo() {
 		return fileInfo;
 	}
+
 	public void setFileInfo(ArrayList<Attachment> fileInfo) {
 		this.fileInfo = fileInfo;
 	}
-
 
 	public String getContent() {
 		return content;
