@@ -167,9 +167,9 @@ public class A12_TaskController {
 	
 	// http://localhost:7080/projectPMS/task.do?method=delete
 	@RequestMapping(params = "method=delete")
-	public String delete(@RequestParam("id") int id) {
-		service.deleteTask(id);
-		return "a12_task\\a04_taskUpdate";
+	public String delete(Task del) {
+		service.deleteTask(del.getId());
+		return "a12_task\\a01_taskList";
 	}
 	
 	// 파일 다운로드

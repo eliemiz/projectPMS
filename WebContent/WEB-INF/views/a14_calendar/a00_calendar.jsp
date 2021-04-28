@@ -285,12 +285,11 @@
 									<label for="status" class="col-md-2">상태 검색</label>
 									<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
 										<option value="">상태 선택</option>
-					                    <option value="신규">신규</option>
-					                    <option value="진행">진행</option>
-					                    <option value="해결">해결</option>
-					                    <option value="의견">의견</option>
-					                    <option value="완료">완료</option>
-					                    <option value="거절">거절</option>
+								        <option value="신규">신규</option>
+								        <option value="진행">진행</option>
+								        <option value="결제대기">결제대기</option>
+								        <option value="반려">반려</option>
+								        <option value="완료">완료</option>
 									</select>																	
 								</div>
 								<div class="row mb-3">

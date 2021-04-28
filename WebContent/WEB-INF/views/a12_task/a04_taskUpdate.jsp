@@ -67,10 +67,7 @@ html, body {
 		}			
 	}
 	
-	if(proc=="del"){
-		alert("삭제완료\n리스트 페이지로 이동합니다");
-		location.href = "${path}/task.do?method=list";			
-	}
+	
 	
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
@@ -185,16 +182,7 @@ html, body {
 				$("form").attr("action","${path}/task.do?method=update");
 				$("form").submit();
 			}
-		});		
-		
-		/* 삭제버튼 클릭 */
-		$("#delBtn").on("click",function(){
-			if(confirm("하위 업무가 존재하는 경우 하위 업무도 함께 삭제됩니다.\n삭제하시겠습니까?")){
-				$("[name=proc]").val("del");
-				$("form").attr("action","${path}/task.do?method=delete");
-				$("form").submit();
-			}
-		});		
+		});			
 	});
 </script>
 </head>
@@ -261,10 +249,7 @@ html, body {
                      <option value="">상태 선택</option>
                      <form:option value="신규" label="신규"/>
                      <form:option value="진행" label="진행"/>
-                     <form:option value="해결" label="해결"/>
-                     <form:option value="의견" label="의견"/>
-                     <form:option value="완료" label="완료"/>
-                     <form:option value="거절" label="거절"/>
+                     <form:option value="결제대기" label="결제대기"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->
@@ -392,7 +377,6 @@ html, body {
 			<!-- /.card-body -->
                 <div class="card-footer">
                   <input type="button" class="btn btn-primary" id="uptBtn" value="수정"/>
-                  <input type="button" class="btn btn-primary" id="delBtn" value="삭제"/>
                   <input type="button" class="btn btn-primary" id="gomain" value="취소"/>
                 </div>
           <!--/.col (right) -->
