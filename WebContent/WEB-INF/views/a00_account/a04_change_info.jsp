@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>비밀번호 변경</title>
+<title>사용자 정보 수정</title>
 
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -214,7 +214,7 @@ html, body {
             <div class="hold-transition login-page"
                style="background-color: inherit; height: inherit;">
                <div class="login-box">
-                  <div class="card card-outline card-primary">
+                  <div class="card card-outline card-info">
                      <div class="card-header text-center">
                         <a href="../../index2.html" class="h1"><spring:message code="u_change_info"/></a>
                      </div>
@@ -264,7 +264,7 @@ html, body {
 					        </div> 
                            <div class="row">
                               <div class="col-12">
-                                 <button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_check"/></button>
+                                 <button type="button" class="btn btn-info btn-block" id="Btn"><spring:message code="account_check"/></button>
                               </div>
                            </div>
                      	</div>

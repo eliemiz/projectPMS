@@ -163,7 +163,7 @@ html, body {
 				<div class="hold-transition login-page"
 					style="background-color: inherit; height: inherit;">
 					<div style="width:400px;">
-						<div class="card card-outline card-primary">
+						<div class="card card-outline card-danger">
 							<div class="card-header text-center">
 								<h1><spring:message code="account_member_registration"/></h1>
 							</div>
@@ -199,7 +199,7 @@ html, body {
 									</div>
 									
 									<div class="input-group mb-3">
-										<button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_enroll"/></button>
+										<button type="button" class="btn btn-danger btn-block" id="Btn"><spring:message code="account_enroll"/></button>
 									</div>
 								</form>
 							</div>

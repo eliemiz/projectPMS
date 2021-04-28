@@ -125,7 +125,7 @@ html, body {
             <div class="hold-transition login-page"
                style="background-color: inherit; height: inherit;">
                <div class="login-box">
-                  <div class="card card-outline card-primary">
+                  <div class="card card-outline card-info">
                      <div class="card-header text-center">
                         <a href="../../index2.html" class="h1"><spring:message code="account_searchpass"/></a>
                      </div>
@@ -151,7 +151,7 @@ html, body {
                            </div>
                            <div class="row">
                               <div class="col-12">
-                                 <button type="button" class="btn btn-primary btn-block" id="Btn"><spring:message code="account_check"/></button>
+                                 <button type="button" class="btn btn-info btn-block" id="Btn"><spring:message code="account_check"/></button>
                               </div>
                            </div>
                         </form>
