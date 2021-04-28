@@ -167,7 +167,7 @@ html, body {
 		      <div class="container-fluid">
 				<div class="row" id="searchForm">
 					<div class="col-12">
-						<div class="card card-outline card-success">
+						<div class="card card-primary card-outline">
 							<div class="card-header">
 								<h3 class="card-title"><spring:message code="dash-project-select"/></h3>
 							</div>
@@ -175,28 +175,28 @@ html, body {
 								<select id="hd-project-list" class="form-control"></select>
 							</div>
 						</div>
+						<div class="card card-outline card-success">
+							<div class="card-header">
+								<h3 class="card-title">상태 선택</h3>
+							</div>
+							<div class="card-body">
+				                <div class="form-group">		
+									<div class="row mb-3">
+										<label for="status" class="col-md-2">상태 선택</label>
+										<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
+											<option value="결재대기">결재대기</option>
+											<option value="결재반려">반려</option>
+											<option value="결재완료">완료</option>
+										</select>																	
+									</div>						
+								</div>                
+				            </div>
+						</div>
 					</div>
 				</div>
 		        <div class="row">
 		          <div class="col-12">
-		            <div class="card">
-		              <div class="card-header">              
-		                <h3 class="card-title">검색조건</h3> 
-		              </div>              
-		              <div class="card-body">
-		                <div class="form-group">		
-							<div class="row mb-3">
-								<label for="status" class="col-md-2">상태 선택</label>
-								<select id="status" name="status" class="form-control col-md-3" style="display:inline-block;">
-									<option value="결재대기">결재대기</option>
-									<option value="결재반려">반려</option>
-									<option value="결재완료">완료</option>
-								</select>																	
-							</div>						
-						</div>                
-		              </div>      
-		              <hr>        
-		              <!-- /.card-header -->
+		            <div class="card">		              
 		              <div class="card-body">
 		              <form id="form_app" method="post">
 		              	<input type="hidden" name="proc"/>
