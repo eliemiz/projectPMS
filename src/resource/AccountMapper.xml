@@ -83,7 +83,7 @@
 		SELECT count(*) 
 		FROM task t, account a
 		WHERE t.ACCOUNT_ID = a.ID 
-		AND (t.status = '진행' OR t.status = '신규')
+		AND (t.status = '진행' OR t.status = '신규' OR t.status = '결재대기' OR t.status = '결재반려')
 		AND t.account_id=#{id}
 	 </select>
 	 <select id="taskCount2" resultType="int" parameterType="int">
