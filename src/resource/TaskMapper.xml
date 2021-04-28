@@ -188,7 +188,7 @@
 	<!-- public ArrayList<TaskResult> getTaskResult(int projectId); -->
 	<select id="getTaskResult" resultType="taskResult" parameterType="int">
 		SELECT T.ID, T.SUBJECT, A.NAME, T.DUE_DATE, T.COMPLETED_ON FROM TASK T, ACCOUNT A 
-			WHERE T.PROJECT_ID = #{projectId} AND T.ACCOUNT_ID = A.ID AND STATUS = '완료' 
+			WHERE T.PROJECT_ID = #{projectId} AND T.ACCOUNT_ID = A.ID AND STATUS = '결재완료' 
 			ORDER BY COMPLETED_ON DESC
 	</select>
 	<!-- public ArrayList<Task> getTaskUser(int id); -->
