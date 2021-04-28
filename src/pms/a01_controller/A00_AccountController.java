@@ -129,6 +129,7 @@ public class A00_AccountController {
 		}
 		Account account = service.getAccount(id);
 		d.addAttribute("account", account);
+		System.out.println(account.getMail());
 		
 		return "a00_account\\a04_change_info";
 	}

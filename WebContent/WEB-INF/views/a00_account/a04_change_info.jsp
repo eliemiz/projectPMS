@@ -57,13 +57,15 @@ html, body {
 		}
 
 		var isDuplicated = true;
-		var Rmail=$("#mail").val();
-		//var Rmail= $("[name=mail]").val();
-		var Pmail="${account.mail}";
+	
 		
     $(document).ready(function(){
-
+    	
 		$("#Btn").on("click",function(){
+			var Rmail=$("#mail").val();
+			var Pmail="${account.mail}";
+			var pass_length = $("[name=password]").val().length
+			var pass2_length = $("[name=password2]").val().length
 		 	if ($("[name=name]").val() == "") {
 				alert("이름을 입력해주세요");
 				return false;
@@ -76,22 +78,22 @@ html, body {
 				alert("새 비밀번호를 입력해주세요");
 				return false;
 			} 
-			var pass_length = $("[name=password]").val().length
-			if(pass_length < 4 || pass_length >10) {
+		
+			else if(pass_length < 4 || pass_length >10) {
 				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
 				return false;
 			}
-	 		if($("[name=password2]").val()==""){
+			else if($("[name=password2]").val()==""){
 				alert("새 비밀번호를 확인해주세요");
 				return false;
 			}
-	 		var pass2_length = $("[name=password2]").val().length
-			if(pass2_length < 4 || pass2_length >10) {
+	 		
+			else if(pass2_length < 4 || pass2_length >10) {
 				alert("패스워드는 4자 이상 10자 이하이어야 합니다.");
 				return false;
 				
 			} 
-	 		if ($("[name=mail]").val() == "") {
+			else if ($("[name=mail]").val() == "") {
 				alert("이메일을 입력해주세요");
 				$("#id-check-span").html("이메일을 입력해주세요.");
 				return false;
@@ -100,14 +102,14 @@ html, body {
 				alert("형식에 맞지않습니다. 다시 입력하세요.");
 				return false;
 				
-			} else if (Rmail!=Pmail && isDuplicated == true) {
+			} else if (Rmail != Pmail && isDuplicated == true) {
 	            alert("이메일 중복체크 해주세요.");
 	            $("#id-check-span").html("이메일 중복 체크해주세요.");
 	            return false;
 	        }
 				
 	 		
-			if(confirm("변경하시겠습니까?")){
+			 if(confirm("변경하시겠습니까?")){
 				//alert($("[name=id]").val());
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/account.do?method=updateInfo");
