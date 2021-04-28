@@ -79,7 +79,24 @@
 		$("#hd-project-list").change(function(){
 			location.href="${path}/risk.do?projectId="+$(this).val();
 		});
-		
+		$("#start_date").val(getToday());
+		function getToday(){
+		       var date = new Date();
+		       var year = date.getFullYear();
+		       var month = ("0" + (1 + date.getMonth())).slice(-2);
+		       var day = ("0" + date.getDate()).slice(-2);
+
+		       return year + "-" + month + "-" + day;
+		   }
+		$("#end_date").val(getToday());
+		function getToday(){
+		       var date = new Date();
+		       var year = date.getFullYear();
+		       var month = ("0" + (1 + date.getMonth())).slice(-2);
+		       var day = ("0" + date.getDate()).slice(-2);
+
+		       return year + "-" + month + "-" + day;
+		   }
 		// subject description account_id
 		// category probability impact
 		// start_date end_date
@@ -169,12 +186,14 @@
                 <div class="card-body">                              
                   <div class="form-group">
                     <label for="exampleInputEmail1">프로젝트</label>
-                    <form:select path="project_id" class="form-control select2" style="width: 100%;">
+                    <input type="hidden" name="project_id" value="${project.id}"/>
+                    <input type="text" class="form-control" style="width: 100%;" value="${project.name}" readonly="readonly"/>
+                    <%-- <form:select path="project_id" class="form-control select2" style="width: 100%;">
 	                    <option value="">프로젝트</option>
 	                    <c:forEach var = "project" items="${projects}">
 	                    	<form:option value="${project.id}">${project.name}</form:option>
 	                    </c:forEach>
-                  	</form:select>
+                  	</form:select> --%>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
@@ -187,10 +206,10 @@
                     <label for="exampleInputEmail1">범주</label>
 	                   <div class="form-group">
 	                     <form:select path="category" class="form-control select2">
-	                       <form:option value="Internal" label="Internal"/>
-	                        <form:option value="External" label="External"/>
-	                        <form:option value="Technical" label="Technical"/>
-	                        <form:option value="Unforeseeable" label="Unforeseeable"/>
+	                       <form:option value="내부적 문제" label="내부적 문제"/>
+	                        <form:option value="외부적 문제" label="외부적 문제"/>
+	                        <form:option value="기술적 문제" label="기술적 문제"/>
+	                        <form:option value="예측불가" label="예측불가"/>
 	                      </form:select>
 	                      </div>
 	               </div>
@@ -205,7 +224,7 @@
 		                    </c:forEach>
 	                 	</form:select>	            
 	                  </div> 
-	                  </div>
+	                  </div> 
                   </div>  
 	             
 	              <div class="bs-stepper-content">
@@ -221,11 +240,11 @@
 	                    <label for="exampleInputEmail1">발생가능성</label>
 							<div class="form-group">
 		                      <form:select path="probability" class="form-control select2">
-		                        <form:option value="1" label=" Unlikely "/>
-		                        <form:option value="2" label=" Low "/>
-		                        <form:option value="3" label=" Medium "/>
-		                        <form:option value="4" label=" High "/>
-		                        <form:option value="5" label=" Expected "/>
+		                        <form:option value="1" label=" 미세 "/>
+		                        <form:option value="2" label=" 낮음 "/>
+		                        <form:option value="3" label=" 보통 "/>
+		                        <form:option value="4" label=" 높음 "/>
+		                        <form:option value="5" label=" 확실 "/>
 		                      </form:select>
 		                    </div>
 	                  </div>
@@ -233,11 +252,11 @@
 	                    <label for="exampleInputEmail1">영향도</label>
 	                    <div class="form-group">
 		                      <form:select path="impact" class="form-control select2">
-		                        <form:option value="1" label=" Negligible "/>
-		                        <form:option value="2" label=" Minor "/>
-		                        <form:option value="3" label=" Moderate "/>
-		                        <form:option value="4" label=" Significant "/>
-		                        <form:option value="5" label=" Severe "/>
+		                        <form:option value="1" label=" 미세 "/>
+		                        <form:option value="2" label=" 낮음 "/>
+		                        <form:option value="3" label=" 보통 "/>
+		                        <form:option value="4" label=" 중요 "/>
+		                        <form:option value="5" label=" 치명적 "/>
 		                      </form:select>
 		                    </div>
 	                  </div>

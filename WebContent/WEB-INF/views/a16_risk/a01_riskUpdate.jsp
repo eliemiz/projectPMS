@@ -164,7 +164,13 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">제목</label>
-                    <form:input type="email" class="form-control" value="${risk.subject}" path="subject"/>
+                    <c:if test="${account.auth=='Manager'}">
+                    	<form:input type="email" class="form-control" value="${risk.subject}" path="subject"/>
+                    </c:if>
+                    <c:if test="${account.auth!='Manager'}">
+                    	<form:input type="email" class="form-control" value="${risk.subject}" path="subject"
+                    	readonly="true"/>
+                    </c:if>
                     <form:hidden path="id"/>
                   </div>
                   <div class="row">                 
@@ -173,34 +179,47 @@
                     <label for="exampleInputEmail1">상태</label>
 	                      <div class="form-group">
 	                        <form:select path="status" class="form-control select2">
-	                          <form:option value="Discuss" label="Discuss"/>
-	                          <form:option value="Request" label="Request"/>	                         
-	                          <form:option value="Review" label="Review"/>
-	                          <form:option value="Reassignment" label="Reassignment"/>
-	                          <form:option value="Completed" label="Completed"/>  
-	                          <form:option value="Return " label="Return"/>  
+	                          <form:option value="진행" label="진행"/>
+	                          <form:option value="결재요청" label="결재요청"/>
+	                          <c:if test="${account.auth=='Manager'}">	                         
+	                          <form:option value="검토" label="검토"/>
+	                          <form:option value="재할당" label="재할당"/>
+	                          <form:option value="완료" label="완료"/>  
+	                          <form:option value="반려 " label="반려"/>  
+	                          </c:if>
 	                        </form:select>
 	                      </div>
 	              </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">범주</label>
 	                      <div class="form-group">
+	                      <c:if test="${account.auth=='Manager'}">
 	                        <form:select path="category" class="form-control select2">
-	                          <form:option value="Internal" label="Internal"/>
-	                          <form:option value="External" label="External"/>
-	                          <form:option value="Technical" label="Technical"/>
-	                          <form:option value="Unforeseeable" label="Unforeseeable"/>
+	                          <form:option value="내부적 문제" label="내부적 문제"/>
+		                        <form:option value="외부적 문제" label="외부적 문제"/>
+		                        <form:option value="기술적 문제" label="기술적 문제"/>
+		                        <form:option value="예측불가" label="예측불가"/>
 	                        </form:select>
+	                      </c:if>
+	                      <c:if test="${account.auth!='Manager'}">
+	                      	<form:input path="category" class="form-control select2" readonly="true"/>
+	                      </c:if>
 	                      </div>
 	              </div>
 	              <div class="form-group">
                     <label for="exampleInputEmail1">담당자</label>
+                    <c:if test="${account.auth=='Manager'}">
                     <form:select path="account_id" class="form-control select" style="width: 100%;">
 	                 <option value="">담당자 선택</option>
 	                  	<c:forEach var="account" items="${accounts}">
 		                    <form:option value="${account.id}">${account.name}(${account.auth})</form:option>
 	                    </c:forEach>
-                 	</form:select>              
+                 	</form:select>     
+                 	</c:if>
+                 	<c:if test="${account.auth!='Manager'}">   
+                 	  <input type="hidden" name="account_id" value="${account_id}"/>
+                 	  <input type="text" class="form-control" style="width: 100%;" value="${account.name}" readonly="readonly"/>
+                 	</c:if>      
                   </div>
                   </div>
                   
@@ -216,61 +235,95 @@
                   
                   <div class="row">                 
 	                  <div class="col-md-6">
-		                  <div class="form-group">
+		                  <div class="form-group">	               
 		                    <label for="exampleInputEmail1">발생가능성</label>
 		                    	<div class="form-group">
+		                    	<c:if test="${account.auth=='Manager'}">
 			                      <form:select path="probability" class="form-control select2">
-			                        <form:option value="1" label=" Unlikely "/>
-			                        <form:option value="2" label=" Low "/>
-			                        <form:option value="3" label=" Medium "/>
-			                        <form:option value="4" label=" High "/>
-			                        <form:option value="5" label=" Expected "/>
+			                        <form:option value="1" label=" 미세 "/>
+			                        <form:option value="2" label=" 낮음 "/>
+			                        <form:option value="3" label=" 보통 "/>
+			                        <form:option value="4" label=" 높음 "/>
+			                        <form:option value="5" label=" 확실 "/>
 			                      </form:select>
+			                    </c:if>
+			                    <c:if test="${account.auth!='Manager'}">
+			                   	  <form:select path="probability" class="form-control select2" readonly="true">
+			                        <form:option value="1" label=" 미세 "/>
+			                        <form:option value="2" label=" 낮음 "/>
+			                        <form:option value="3" label=" 보통 "/>
+			                        <form:option value="4" label=" 높음 "/>
+			                        <form:option value="5" label=" 확실 "/>
+			                      </form:select>
+			                    </c:if>
 			                    </div>
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">영향도</label>
 		                    <div class="form-group">
+		                    <c:if test="${account.auth=='Manager'}">
 			                      <form:select path="impact" class="form-control select2">
-			                        <form:option value="1" label=" Negligible "/>
-			                        <form:option value="2" label=" Minor "/>
-			                        <form:option value="3" label=" Moderate "/>
-			                        <form:option value="4" label=" Significant "/>
-			                        <form:option value="5" label=" Severe "/>
+			                        <form:option value="1" label=" 미세 "/>
+			                        <form:option value="2" label=" 낮음 "/>
+			                        <form:option value="3" label=" 보통 "/>
+			                        <form:option value="4" label=" 중요 "/>
+			                        <form:option value="5" label=" 치명적 "/>
 			                      </form:select>
-			                    </div>
+			                </c:if>
+			                <c:if test="${account.auth!='Manager'}">
+			                	  <form:select path="impact" class="form-control select2" readonly="true">
+			                        <form:option value="1" label=" 미세 "/>
+			                        <form:option value="2" label=" 낮음 "/>
+			                        <form:option value="3" label=" 보통 "/>
+			                        <form:option value="4" label=" 중요 "/>
+			                        <form:option value="5" label=" 치명적 "/>
+			                      </form:select>
+			                </c:if>
+			                </div>
 		                  </div>
 		              </div>
 	                  <div class="col-md-6">
 			              <div class="form-group">
 		                    <label for="exampleInputEmail1">예상시작일</label>
-		                    
+		                    <c:if test="${account.auth=='Manager'}">
 		                    <form:input path="start_date" value="${risk.start_date}" type="date"
 		                    	class="form-control"/>
-		                    	
+		                    </c:if>
+		                    <c:if test="${account.auth!='Manager'}">
+		                    <form:input path="end_date" value="${risk.start_date}" type="date"
+		                     	class="form-control" readonly="true"/>
+		                    </c:if>	
 		                  </div>
 		                  <div class="form-group">
 		                    <label for="exampleInputEmail1">예상종료일</label>
-		                    
+		                    <c:if test="${account.auth=='Manager'}">
 		                    <form:input path="end_date" value="${risk.end_date}" type="date"
 		                     	class="form-control"/>
+		                    </c:if>
+		                    <c:if test="${account.auth!='Manager'}">
+		                    <form:input path="end_date" value="${risk.end_date}" type="date"
+		                     	class="form-control" readonly="true"/>
+		                    </c:if>
 		                    
 		                  </div>
 	                  </div>
                   </div>
                              
+                  
+                  <br>
+                  <br>
+                  <h4>조치내용</h4>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">전략</label>
+                    <label for="exampleInputEmail1">대응 전략</label>
 	                      <div class="form-group">
 	                        <form:select path="strategy" class="form-control select2">
-	                          <form:option value="Accept" label="Accept"/>
-	                          <form:option value="Mitigate" label="Mitigate"/>
-	                          <form:option value="Transfer" label="Transfer"/>
-	                          <form:option value="Eliminate" label="Eliminate"/>
+	                          <form:option value="동의" label="동의"/>
+	                          <form:option value="완화" label="완화"/>
+	                          <form:option value="이전" label="이전"/>
+	                          <form:option value="삭제" label="삭제"/>
 	                        </form:select>
 	                      </div>	                      
 	              </div>
-                  
                   <div class="form-group">
                     <label for="exampleInputPassword1">해결방안</label>
                     <form:textarea path="treatment" class="form-control" rows="3" value=""/>            

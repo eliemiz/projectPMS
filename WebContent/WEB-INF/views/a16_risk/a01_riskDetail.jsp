@@ -173,12 +173,12 @@
           <div class="row">
             
             <div class="col-12 col-lg-12 col-lg-4 order-1 order-md-2">
-              <h3 class="text-primary"><i class="fas fa-paint-stamp"></i>&nbsp;${risk.subject}</h3>
+              <h3 class="text-primary"><i class="fas fa-paint-stamp"></i>${risk.subject}</h3>
               <h5 class="text-secondary">수정일 : <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/></h5>
               &nbsp;&nbsp;&nbsp;
               
                <div>
-               	${risk.description}
+               	<form:textarea path="description" class="form-control" style="width:100%; height:300px;"/>
         	   </div>  
               <br>
               <div class="text-muted">
@@ -212,11 +212,11 @@
                 <p class="text-sm">발생도
                   <b class="d-block">
                   <c:choose>
-					<c:when test="${risk.probability==1}"> Unlikely </c:when>
-					<c:when test="${risk.probability==2}"> Low </c:when>
-					<c:when test="${risk.probability==3}"> Medium </c:when>
-					<c:when test="${risk.probability==4}"> High </c:when>
-					<c:when test="${risk.probability==5}"> Expected </c:when>
+					<c:when test="${risk.probability==1}"> 미세 </c:when>
+					<c:when test="${risk.probability==2}"> 낮음 </c:when>
+					<c:when test="${risk.probability==3}"> 보통 </c:when>
+					<c:when test="${risk.probability==4}"> 높음 </c:when>
+					<c:when test="${risk.probability==5}"> 확실 </c:when>
 					<c:otherwise> Error </c:otherwise>
 				  </c:choose>
                   </b>
@@ -226,11 +226,11 @@
                 <p class="text-sm">영향도
                   <b class="d-block">
                   <c:choose>
-					<c:when test="${risk.impact==1}"> Negligible </c:when>
-					<c:when test="${risk.impact==2}"> Minor </c:when>
-					<c:when test="${risk.impact==3}"> Moderate </c:when>
-					<c:when test="${risk.impact==4}"> Significant </c:when>
-					<c:when test="${risk.impact==5}"> Severe </c:when>
+					<c:when test="${risk.impact==1}"> 미세 </c:when>
+					<c:when test="${risk.impact==2}"> 낮음 </c:when>
+					<c:when test="${risk.impact==3}"> 보통 </c:when>
+					<c:when test="${risk.impact==4}"> 중요 </c:when>
+					<c:when test="${risk.impact==5}"> 치명적 </c:when>
 					<c:otherwise> Error </c:otherwise>
 				  </c:choose>
                   </b>
@@ -250,6 +250,8 @@
                 </div>
                 <br>
                 
+                
+                <h4 class="text-primary">조치내용</h4>
                 <div class="form-group">
                 <p class="text-md">전략
                   <b class="d-block">${risk.strategy}</b>
@@ -257,7 +259,7 @@
                 </div>
                 <div class="form-group">
                 <p class="text-md">해결방안
-                  <b class="d-block">${risk.treatment}</b>
+                  <form:textarea path="treatment" class="form-control" style="width:100%; height:200px;"/>
                 </p>
                 </div>
                 
