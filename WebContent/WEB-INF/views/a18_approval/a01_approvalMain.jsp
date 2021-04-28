@@ -123,6 +123,12 @@ html, body {
 		$("#form_app").attr("action","${path}/approvalUpdate.do");
 		$("#form_app").submit();
 	}
+	function appReject(obj) {
+		$("[name=proc]").val("reject");
+		$("[name=task_id]").val(obj);
+		$("#form_app").attr("action","${path}/approvalUpdate.do");
+		$("#form_app").submit();
+	}
 	
 </script>
 </head>
@@ -234,10 +240,20 @@ html, body {
 		                  	<td>${task.name}</td>
 		                  	<td>${task.start_date}</td>
 		                  	<td>${task.due_date}</td>
-		                  	<td>
-		                  		<input type="button" onclick="appAccept(${task.id})" class="btn btn-primary" value="승인"/>
-		                  		<input type="button" onclick="appReject(${task.id})" class="btn btn-danger" value="거절"/>
-	                  		</td>
+		                  	<c:choose>
+                              <c:when test="${task.status=='결재대기'}">		               
+			                  	<td>
+			                  		<input type="button" onclick="appAccept(${task.id})" class="btn btn-primary" value="승인"/>
+			                  		<input type="button" onclick="appReject(${task.id})" class="btn btn-danger" value="거절"/>
+		                  		</td>
+	                  		</c:when>
+	                  		<c:when test="${task.status=='결재반려'}">
+	                  			<td>반려 됨</td>
+	                  		</c:when>
+	                  		<c:otherwise>
+	                  			<td>결재 완료</td>
+	                  		</c:otherwise>
+	                  		</c:choose>
 		                  </tr>
 		                  </c:forEach>
 		                  </tbody>

@@ -216,7 +216,8 @@
 	<update id="updateStatus" parameterType="task">
 		UPDATE TASK
 			SET status = #{status},
-				updated_on = sysdate
+				updated_on = sysdate,
+				done_ratio = #{done_ratio}
 			WHERE ID = #{id}
 	</update>
 </mapper>

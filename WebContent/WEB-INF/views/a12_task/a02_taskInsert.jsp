@@ -133,15 +133,10 @@ html, body {
 			}
 			
 			/* 그 외 유효성체크 */
-			// 상태가 완료일 때 진척도 100으로 설정
-			if($("[name=status]").val()=="완료" && $("[name=done_ratio]").val()!=100){
-				alert("상태가 완료인 작업물은 진척도가 100이어야 합니다.");
-				return false;
-			}
 			// 진척도에 숫자가 아닌 값을 넣었을 때 유효성 체크
 			var done_ratio = Number($("[name=done_ratio]").val());
-			if(isNaN(done_ratio) || done_ratio < 0 || done_ratio > 100 || !(Number.isInteger(done_ratio))){
-				alert("진척도는 0~100 사이의 정수만 입력하세요.");
+			if(isNaN(done_ratio) || done_ratio < 0 || done_ratio >= 100 || !(Number.isInteger(done_ratio))){
+				alert("새로 만드는 업무는 진척도가 100일 수 없습니다.\n 진척도는 0이상 100미만의 정수만 입력하세요.");
 				return false;
 			}			
 			// 추정시간에 숫자가 아닌 값을 넣었을 때 유효성 체크

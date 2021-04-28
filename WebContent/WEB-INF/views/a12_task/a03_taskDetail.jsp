@@ -127,8 +127,8 @@ html, body {
 			var accAuth = "${account.auth}";
 			var writer = $("[name=account_id]").val();
 			var status = $("#status").text();
-			if(status=="완료"){
-				alert("완료된 업무는 수정이 불가능합니다.");
+			if(status=="결재완료"){
+				alert("결재가 완료된 업무는 수정이 불가능합니다.");
 			} else if(accId==writer || accAuth=='Manager'){
 				if(confirm("수정하시겠습니까?")){
 					$("form").attr("action","${path}/task.do?method=uptForm");
@@ -162,8 +162,8 @@ html, body {
 			var writer = $("[name=account_id]").val();
 			var parent_id = $("[name=parent_id]").val();
 			var status = $("#status").text();
-			if(status=="완료"){
-				alert("완료된 업무의 하위업무 생성은 불가능합니다.");
+			if(status=="결재완료"){
+				alert("결재가 완료된 업무의 하위업무 생성은 불가능합니다.");
 			} else if(accId==writer || accAuth=='Manager'){
 				if(confirm("하위 업무를 등록하시겠습니까?")){
 					// 하위 업무 등록을 위한 데이터 처리
