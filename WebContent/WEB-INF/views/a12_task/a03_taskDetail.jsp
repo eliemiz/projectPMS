@@ -77,7 +77,7 @@ html, body {
 // 		alert("댓글 등록 완료\n업무 상세 페이지로 이동합니다.")
 // 		location.href="${path}/task.do?method=detail&id="+id;
 // 	}
-	$(document).ready(function(){
+	$(document).ready(function(){		
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
 		$("#sb-task").addClass("active");
@@ -140,6 +140,22 @@ html, body {
 			
 		});
 		
+		/* 삭제버튼 클릭 */
+		var accId = "${account.id}";
+		var accAuth = "${account.auth}";
+		var writer = $("[name=account_id]").val();		
+		$("#delBtn").on("click",function(){
+			if(accId==writer || accAuth=='Manager'){
+				if(confirm("하위 업무가 존재하는 경우 하위 업무도 함께 삭제됩니다.\n삭제하시겠습니까?")){
+					$("form").attr("action","${path}/task.do?method=delete");
+					$("form").submit();
+					alert("삭제되었습니다.");
+				}
+			} else {
+				alert("삭제 권한이 없습니다.\n담당자 혹은 PM만 삭제가 가능합니다.");
+			}
+		});	
+		
 		$("#childTask").click(function(){
 			var accId = "${account.id}";
 			var accAuth = "${account.auth}";
@@ -196,6 +212,7 @@ html, body {
     <section class="content">
       <!-- Default box -->
         <form:form modelAttribute="task" action="" enctype="multipart/form-data" method="post">
+        
       <div class="card">
         <div class="card-header">
         	<form:hidden path="id"/>
@@ -218,6 +235,8 @@ html, body {
           <label id="list" style="cursor:pointer;"><i class="fas fa-list"></i>목록</label>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <label id="uptFrm" style="cursor:pointer;"><i class="fas fa-pen"></i>편집</label>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <label id="delBtn" style="cursor:pointer;"><i class="fas fa-pen"></i>삭제</label>
           <c:choose>
           	<c:when test="${task.parent_id == 0}">
 	          &nbsp;&nbsp;&nbsp;&nbsp;

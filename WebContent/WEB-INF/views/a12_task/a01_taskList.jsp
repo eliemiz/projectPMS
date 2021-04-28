@@ -96,6 +96,7 @@ html, body {
 			
 			$("form").submit();
 		});
+		
 	});
 </script>
 </head>
