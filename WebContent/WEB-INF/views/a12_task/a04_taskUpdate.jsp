@@ -189,7 +189,7 @@ html, body {
 		
 		/* 삭제버튼 클릭 */
 		$("#delBtn").on("click",function(){
-			if(confirm("삭제하시겠습니까?")){
+			if(confirm("하위 업무가 존재하는 경우 하위 업무도 함께 삭제됩니다.\n삭제하시겠습니까?")){
 				$("[name=proc]").val("del");
 				$("form").attr("action","${path}/task.do?method=delete");
 				$("form").submit();

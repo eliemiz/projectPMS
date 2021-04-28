@@ -226,7 +226,9 @@ html, body {
                   	<td>
                   		<c:forEach varStatus="sts" begin="1" end="${task.level}">
                   			<c:if test="${task.level>1}">&nbsp;&nbsp;</c:if>
-                  			<!-- 공백 및 하위 항목 이미지(손가락 같은거) 추가해주세요 -->
+                  			<c:if test="${task.level>1 and sts.last}">
+                  			≫&nbsp;
+                  			</c:if>
                   		</c:forEach>
                   		${task.subject}
                 	</td>
