@@ -190,10 +190,10 @@ html, body {
                       <td>
                       <c:choose>
                      <c:when test="${task.status=='신규'}"> <spring:message code="u_new"/> </c:when>
-                     <c:when test="${task.status=='완료'}"> <spring:message code="u_completed"/> </c:when>
+                     <c:when test="${task.status=='결재완료'}"> <spring:message code="u_completed"/> </c:when>
                      <c:when test="${task.status=='진행'}"> <spring:message code="u_progresss"/> </c:when>
                      <c:when test="${task.status=='결재대기'}"> <spring:message code="u_waiting_approval"/> </c:when>
-                     <c:when test="${task.status=='반려'}"> <spring:message code="u_return_approval"/> </c:when>
+                     <c:when test="${task.status=='결재반려'}"> <spring:message code="u_return_approval"/> </c:when>
                      <c:otherwise> Error </c:otherwise>
                  </c:choose>
                       </td>
