@@ -151,7 +151,10 @@ public class A16_RiskService {
 		if (!oldRisk.getTreatment().equals(newRisk.getTreatment())) {
 			sb.append("[해결방안 변경] \n" + oldRisk.getTreatment() + "\n -> " + newRisk.getTreatment() + "\n");
 		}
-		
+		if (!oldRisk.getFileInfo().equals(newRisk.getFileInfo())) {
+			//sb.append("[파일 변경] \n" + oldRisk.getFileInfo() + "\n -> " + newRisk.getFileInfo() + "\n");
+			sb.append("[파일 변경] \n");
+		}
 		return sb.toString();
 	}
 	
@@ -169,8 +172,13 @@ public class A16_RiskService {
 	
 	public void updateRisk(Risk upt) {
 		
-		Risk old = dao.getRisk(upt.getId());
+		
+		Risk old = dao.getRisk(upt.getId());	
+		old.setFileInfo(dao.fileInfo(old.getId()));
+		old.getFileInfo();
 		String updated = getUpdated(old, upt);
+		//old.getFileInfo();
+		
 		if(updated != null) {
 			if (updated != "") {
 				Journal journal = new Journal();
