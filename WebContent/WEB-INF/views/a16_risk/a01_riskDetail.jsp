@@ -37,6 +37,7 @@
 	cursor:pointer;
 	font-weight:bold;
 }
+
 </style>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -176,10 +177,8 @@
               <h3 class="text-primary"><i class="fas fa-paint-stamp"></i>${risk.subject}</h3>
               <h5 class="text-secondary">수정일 : <fmt:formatDate value="${risk.updated_on}" pattern="yyyy-MM-dd"/></h5>
               &nbsp;&nbsp;&nbsp;
-              
-               <div>
-               	${risk.description}
-        	   </div>  
+               <div style="white-space:pre;">${risk.description}</div>  
+              &nbsp;&nbsp;&nbsp; 
               <br>
               <div class="text-muted">
                <div class="row">
@@ -258,16 +257,10 @@
                 </p>
                 </div>
                 <div class="form-group">
-                <p class="text-md">해결방안<br> 
-                </p>
-                ${risk.treatment}
+                <p class="text-md">해결방안</p>
+                  <div style="white-space:pre; color:black;">${risk.treatment}</div>
                 </div>
                 
-                
-                
-                
-
-			  
               <h5 class="mt-5 text-muted">첨부파일</h5>
               <div class="form-group">
               <c:forEach var="file" items="${risk.fileInfo}" varStatus="sts">
