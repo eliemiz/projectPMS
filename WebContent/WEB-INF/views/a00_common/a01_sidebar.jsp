@@ -84,6 +84,16 @@
 				</li>
 				<c:if test="${account.auth == 'Manager'}">
 				<li class="nav-item">
+					<a href="${path}/approval.do" class="nav-link" id="sb-approval">
+						<i class="nav-icon fas fa-tasks"></i>
+						<p>
+							<spring:message code="sb-approval"/>
+						</p>
+					</a>
+				</li>
+				</c:if>
+				<c:if test="${account.auth == 'Manager'}">
+				<li class="nav-item">
 					<a href="${path}/settings.do?method=project" class="nav-link" id="sb-project-setting">
 						<i class="nav-icon fas fa-tasks"></i>
 						<p>
