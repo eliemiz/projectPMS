@@ -287,9 +287,9 @@
 										<option value="">상태 선택</option>
 								        <option value="신규">신규</option>
 								        <option value="진행">진행</option>
-								        <option value="결제대기">결제대기</option>
-								        <option value="반려">반려</option>
-								        <option value="완료">완료</option>
+										<option value="결재대기">결재대기</option>
+										<option value="결재반려">반려</option>
+										<option value="결재완료">완료</option>
 									</select>																	
 								</div>
 								<div class="row mb-3">
