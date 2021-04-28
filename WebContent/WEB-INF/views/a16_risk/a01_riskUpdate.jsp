@@ -180,7 +180,9 @@
 	                      <div class="form-group">
 	                        <form:select path="status" class="form-control select2">
 	                          <form:option value="진행" label="진행"/>
+	                          <c:if test="${account.auth!='Manager'}">
 	                          <form:option value="결재요청" label="결재요청"/>
+	                          </c:if>
 	                          <c:if test="${account.auth=='Manager'}">	                         
 	                          <form:option value="검토" label="검토"/>
 	                          <form:option value="재할당" label="재할당"/>
@@ -354,8 +356,10 @@
            class="btn btn-secondary float-right">취소</button>
           <button type="button" id="uptBtu"
            class="btn btn-primary float-right">수정</button>
+          <c:if test="${account.auth == 'Manager'}">
           <button type="button" id="delBtu"
            class="btn btn-primary float-right">삭제</button> 
+          </c:if>
          </div>      
       </div>	
       </form:form>

@@ -132,6 +132,7 @@
 				alert("예상종료일을 입력하세요.");
 				return false;
 			}
+			
 			$("form").submit();
 		});
 	});
