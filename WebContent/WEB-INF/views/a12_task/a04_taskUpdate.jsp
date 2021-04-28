@@ -249,7 +249,7 @@ html, body {
                      <option value="">상태 선택</option>
                      <form:option value="신규" label="신규"/>
                      <form:option value="진행" label="진행"/>
-                     <form:option value="결제대기" label="결제대기"/>
+                     <form:option value="결재대기" label="결재대기"/>
                   </form:select>
                 </div>
                 <!-- /.form-group -->
