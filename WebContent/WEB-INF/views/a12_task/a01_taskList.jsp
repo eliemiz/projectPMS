@@ -58,7 +58,6 @@ html, body {
 		$("#sb-task").addClass("active");
 		
 		$("#newTask").click(function(){
-			alert($("[name=project_id]").val());
 			location.href = "${path}/task.do?method=insForm";
 		});
 		

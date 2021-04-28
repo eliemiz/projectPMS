@@ -83,26 +83,7 @@ html, body {
 
 		       return year + "-" + month + "-" + day;
 		}
-		
-		/* Get project List */
-		$.ajax({
-			type: "get",
-			url: "${path}/jsonProject.do",
-			dataType: "json",
-			success: function(data){
-				var projectList = data.projectList;
 				
-				$.each(projectList, function(idx, e, arr){
-					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
-				});
-				
-				$("#projectId").val(data.projectId);
-			},
-			error: function(err){
-				alert("에러발생");
-			}
-		});
-		
 		var proc = "${proc}";
 		if(proc=="ins"){
 			// 하위 업무 등록 후 모델값 초기화
@@ -312,15 +293,9 @@ html, body {
 												</c:when>
 												<%-- 일반 업무 등록 --%>
 												<c:otherwise>
-													<label>프로젝트 *</label>
-													<%-- <form:select path="project_id" class="form-control select2"
-														style="width: 100%;">
-														<option value="">프로젝트 선택</option>
-														<c:forEach var="project" items="${projects}">
-															<form:option value="${project.id}">${project.name}</form:option>
-														</c:forEach>
-													</form:select> --%>
-													<select id="projectId" name="project_id" class="form-control" style="display:inline-block;"></select>
+													<label>프로젝트</label>
+													<input type="hidden" name="project_id" value="${project.id}"/>
+													<input type="text" value="${project.name}" class="form-control" readonly/>
 												</c:otherwise>
 											</c:choose>
 										</div>

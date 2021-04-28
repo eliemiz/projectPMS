@@ -105,24 +105,11 @@ public class A12_TaskController {
 		
 	// http://localhost:7080/projectPMS/task.do?method=insForm
 	@RequestMapping(params = "method=insForm")
-	public String insForm(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("task") Task task) {
-		/* Set Project Id : request에서 projectId가 넘어왔다면 자동으로 세선에 저장해준다. */
-		HttpSession session = request.getSession();
-		String projectIdReq = request.getParameter("projectId");
-		if (projectIdReq != null) {
-			session.setAttribute("projectId", projectIdReq);
-		}
-
-		/* Get Project Id : 세션에 값이 없다면, 즉 페이지 진입, 검색 등에 프로젝트 선택한 적이 없을 때 */
-		Object projectIdObj = session.getAttribute("projectId");
-		int projectId;
-		if (projectIdObj == null) {
-			ArrayList<Project> projectList = serviceP.getProjectList();
-			projectId = projectList.get(0).getId();
-			session.setAttribute("projectId", projectId);
-		} else {
-			projectId = Integer.parseInt(projectIdObj.toString());
-		}
+	public String insForm(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("task") Task task, Model d) {
+		ArrayList<Project> projectList = serviceP.getProjectList();
+		int projectId = projectList.get(0).getId();
+		d.addAttribute("project", serviceP.getProject(projectId));
+		
 		return "a12_task\\a02_taskInsert";
 	}
 
