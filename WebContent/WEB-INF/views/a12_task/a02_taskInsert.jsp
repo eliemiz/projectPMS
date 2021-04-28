@@ -73,6 +73,36 @@ html, body {
 <script type="text/javascript">
 	
 	$(document).ready(function(){
+		$("[name=start_date]").val(getToday());
+
+		function getToday(){
+		       var date = new Date();
+		       var year = date.getFullYear();
+		       var month = ("0" + (1 + date.getMonth())).slice(-2);
+		       var day = ("0" + date.getDate()).slice(-2);
+
+		       return year + "-" + month + "-" + day;
+		}
+		
+		/* Get project List */
+		$.ajax({
+			type: "get",
+			url: "${path}/jsonProject.do",
+			dataType: "json",
+			success: function(data){
+				var projectList = data.projectList;
+				
+				$.each(projectList, function(idx, e, arr){
+					$("#projectId").append("<option value='" + e.id + "'>" + e.name + "</option>");
+				});
+				
+				$("#projectId").val(data.projectId);
+			},
+			error: function(err){
+				alert("에러발생");
+			}
+		});
+		
 		var proc = "${proc}";
 		if(proc=="ins"){
 			// 하위 업무 등록 후 모델값 초기화
@@ -103,6 +133,9 @@ html, body {
 				return false;
 			} else if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
+				return false;
+			} else if($("[name=description]").val()==""){
+				alert("내용을 입력하세요");
 				return false;
 			} else if($("[name=priority]").val()==""){
 				alert("우선순위를 선택하세요.");
@@ -161,6 +194,7 @@ html, body {
 			var year_d = $("[name=due_date]").val().split("-")[0];
 			var month_d = $("[name=due_date]").val().split("-")[1];
 			var day_d = $("[name=due_date]").val().split("-")[2];
+			
 			if(year_s > year_d){ // 시작연도가 완료연도보다 더 늦을 때(ex. 2021 > 2020)
 				alert("완료일의 연도는 시작일의 연도보다 이후여야 합니다.");
 				return false;
@@ -279,14 +313,14 @@ html, body {
 												<%-- 일반 업무 등록 --%>
 												<c:otherwise>
 													<label>프로젝트 *</label>
-													<form:select path="project_id" class="form-control select2"
+													<%-- <form:select path="project_id" class="form-control select2"
 														style="width: 100%;">
-
 														<option value="">프로젝트 선택</option>
 														<c:forEach var="project" items="${projects}">
 															<form:option value="${project.id}">${project.name}</form:option>
 														</c:forEach>
-													</form:select>
+													</form:select> --%>
+													<select id="projectId" name="project_id" class="form-control" style="display:inline-block;"></select>
 												</c:otherwise>
 											</c:choose>
 										</div>
@@ -335,7 +369,7 @@ html, body {
 												style="width: 100%;" />
 										</div>
 										<div class="form-group">
-											<label>설명</label>
+											<label>설명 *</label>
 											<form:textarea path="description" class="form-control"
 												style="width: 100%; height:300px;" />
 										</div>
@@ -376,8 +410,7 @@ html, body {
 											<label>시작일 *</label><br>
 											<div class="input-group date" id="startdate"
 												data-target-input="nearest">
-												<form:input path="start_date" type="date"
-													class="form-control" style="width:100%;" />
+												<form:input path="start_date" type="date" class="form-control" style="width:100%;" />
 											</div>
 										</div>
 										<div class="form-group">

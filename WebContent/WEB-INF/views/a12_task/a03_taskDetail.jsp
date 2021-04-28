@@ -221,7 +221,7 @@ html, body {
           <c:choose>
           	<c:when test="${task.parent_id == 0}">
 	          &nbsp;&nbsp;&nbsp;&nbsp;
-	          <label id="childTask" style="cursor:pointer;"><i class="fas fa-pen"></i>하위Task만들기</label>          	
+	          <label id="childTask" style="cursor:pointer;"><i class="fas fa-pen"></i>하위업무만들기</label>          	
           	</c:when>
           </c:choose>
           </div>

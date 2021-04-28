@@ -107,6 +107,9 @@ html, body {
 			} else if($("[name=subject]").val()==""){
 				alert("제목을 입력하세요.");
 				return false;
+			} else if($("[name=description]").val()==""){
+				alert("내용을 입력하세요");
+				return false;
 			} else if($("[name=priority]").val()==""){
 				alert("우선순위를 선택하세요.");
 				return false;
@@ -177,7 +180,6 @@ html, body {
 				}
 			} // 나머지: year_s < year_d 이고, 월이 같을 때는 완료일이 더 이후고, 아니면 완료일의 달이 더 뒤일 때이므로 참
 			
-		
 			if(confirm("수정하시겠습니까?")){
 				$("[name=proc]").val("upt");
 				$("form").attr("action","${path}/task.do?method=update");
@@ -301,7 +303,7 @@ html, body {
             <div class="row">
             	<div class="col-md">
 	            	<div class="form-group">
-	            		<label>설명</label>            	
+	            		<label>설명 *</label>            	
 	            		<form:textarea path="description" value="${task.description}" class="form-control" style="width: 100%; height:300px;"/>
 	            	</div>
             	</div>

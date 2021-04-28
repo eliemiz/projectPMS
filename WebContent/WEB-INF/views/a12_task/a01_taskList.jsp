@@ -58,6 +58,7 @@ html, body {
 		$("#sb-task").addClass("active");
 		
 		$("#newTask").click(function(){
+			alert($("[name=project_id]").val());
 			location.href = "${path}/task.do?method=insForm";
 		});
 		
@@ -137,6 +138,7 @@ html, body {
                 <div style="text-align:right;">
                 	<i class="fas fa-pen"></i>
                 	<label id="newTask" style="cursor:pointer;">새업무만들기</label>
+                	<input type="hidden" name="project_id" value="${projectId}"/>
                 </div>
               </div>
               <div class="card-body">
