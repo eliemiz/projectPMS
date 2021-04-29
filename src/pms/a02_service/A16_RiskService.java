@@ -152,21 +152,37 @@ public class A16_RiskService {
 			sb.append("[해결방안 변경] \n" + oldRisk.getTreatment() + "\n -> " + newRisk.getTreatment() + "\n");
 		}
 		
-		ArrayList<Attachment> files = dao.fileInfo(newRisk.getId());
-		Attachment oldfile = files.get(0);
-		if(oldfile != null) {
-			System.out.println(oldfile.getFilename());
-		}
-		MultipartFile[] newfiles = newRisk.getReport();
-		MultipartFile newfile = newfiles[0];
-		if(newfile != null) {
-			System.out.println(newfile.getOriginalFilename());
-		}
-		if (!oldfile.getFilename().equals(newfile.getOriginalFilename())) {
-			if(newfile.getOriginalFilename() == "") {
-			}else {
-			sb.append("[파일 변경] \n" + oldfile.getFilename() + "\n -> " + newfile.getOriginalFilename() + "\n");
+		/* 파일 수정 이력 */
+		// 이전 파일 이름 호출
+		String oldFileName = "";
+		ArrayList<Attachment> oldFiles = dao.fileInfo(newRisk.getId());
+		if (oldFiles != null) {
+			if (oldFiles.size() > 0) {
+				Attachment oldfile = oldFiles.get(0);
+				if(oldfile != null) {
+					oldFileName = oldfile.getFilename();
+				}
 			}
+		}
+		System.out.println("oldFileName : " + oldFileName);
+		
+		// 새 파일 이름 호출
+		String newFileName = "";
+		MultipartFile[] newfiles = newRisk.getReport();
+		if (newfiles != null) {
+			if (newfiles.length > 0) {
+				MultipartFile newfile = newfiles[0];
+				if(newfile != null) {
+					newFileName = newfile.getOriginalFilename();
+				}
+			}
+		}
+		
+		System.out.println("newFileName : " + newFileName);
+		
+		
+		if (!oldFileName.equals(newFileName)) {
+			sb.append("[파일 변경] \n" + oldFileName + "\n -> " + newFileName + "\n");
 		}
 		return sb.toString();
 	}
