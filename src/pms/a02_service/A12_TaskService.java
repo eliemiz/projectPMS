@@ -167,19 +167,32 @@ public class A12_TaskService {
 			sb.append("[추정시간 변경] " + oldTask.getEstimated() + " -> " + newTask.getEstimated() + "\n");
 		}
 
-		ArrayList<Attachment> files = dao.fileInfo(newTask.getId());
-		Attachment oldfile = files.get(0);
-		if (oldfile != null) {
-			System.out.println(oldfile.getFilename());
+		/* 파일 수정 이력 */
+		// 이전 파일 이름 호출
+		String oldFileName = "";
+		ArrayList<Attachment> oldFiles = dao.fileInfo(newTask.getId());
+		if (oldFiles != null && oldFiles.size() > 0) {
+			Attachment oldFile = oldFiles.get(0);
+			if (oldFile != null) {
+				oldFileName = oldFile.getFilename();
+			}
 		}
-		MultipartFile[] newfiles = newTask.getReport();
-		MultipartFile newfile = newfiles[0];
-		if (newfile != null) {
-			System.out.println(newfile.getOriginalFilename());
+		System.out.println("oldFileName : " + oldFileName);
+		
+		// 새 파일 이름 호출
+		String newFileName = "";
+		MultipartFile[] newFiles = newTask.getReport();
+		if (newFiles != null && newFiles.length > 0) {
+			MultipartFile newFile = newFiles[0];
+			if (newFile != null) {
+				newFileName = newFile.getOriginalFilename();
+			}
 		}
-		if (!oldfile.getFilename().equals(newfile.getOriginalFilename())) {
-			if (newfile.getOriginalFilename() != "") {
-				sb.append("[파일 변경] " + oldfile.getFilename() + " -> " + newfile.getOriginalFilename() + "\n");
+		System.out.println("newFileName : " + newFileName);
+		
+		if (!oldFileName.equals(newFileName)) {
+			if (!newFileName.equals("")) {
+				sb.append("[파일 변경] " + oldFileName + " -> " + newFileName + "\n");
 			}
 		}
 
