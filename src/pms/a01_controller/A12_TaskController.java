@@ -144,8 +144,17 @@ public class A12_TaskController {
 	@RequestMapping(params = "method=detail")
 	public String detail(@ModelAttribute("task") Task task, Model d) {
 		System.out.println("id:"+task.getId());
-//		System.out.println("parent_id:"+task.getParent_id());
-//		d.addAttribute("parentTask", service.getTask(task.getParent_id()));
+		System.out.println("parent_id:"+task.getParent_id());
+
+		// 부모 이름 가져오기
+		Task child = service.getTask(task.getId());
+		if (child.getParent_id() != 0) {
+			Task parent = service.getTask(child.getParent_id());
+			if (parent != null) {
+				d.addAttribute("parent", parent);
+			}
+		}
+		
 		d.addAttribute("task", service.getTask(task.getId()));
 		d.addAttribute("journals", service.getJournalList(task.getId()));
 		return "a12_task\\a03_taskDetail";

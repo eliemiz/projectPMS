@@ -298,22 +298,34 @@ html, body {
                 </div>
                 <!-- /.form-group -->
                 <div class="form-group">
-            		<label>상위 업무 번호</label>
-            		<c:choose>        
+            		<label>상위 업무</label>
+            		<c:choose>
+            			<c:when test="${empty parent}">
+            				&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+							<span name="parent_id" value="0">-</span>
+            			</c:when>
+            			<c:otherwise>
+            				&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;
+            				<span name="parent_id" value="${parent.id}">
+								<a href="${path}/task.do?method=detail&id=${parent.id}">${parent.subject}</a>
+							</span>
+            			</c:otherwise>
+            		</c:choose>
+            		<%-- <c:choose>        
 	            		<c:when test="${task.parent_id != 0}">
 		            		&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; 
 							<span name="parent_id" value="${task.parent_id}">
 								<a href="${path}/task.do?method=detail&id=${task.parent_id}">${task.parent_id}</a>
-								<%-- <c:if test="${task.parent_id==parentTask.id}">
+								<c:if test="${task.parent_id==parentTask.id}">
 								<a href="${path}/task.do?method=detail&id=${parentTask.id}">${parentTask.subject}</a>
-								</c:if> --%>
+								</c:if>
 							</span>
 						</c:when>
 						<c:otherwise>
 		            		&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; 
 							<span name="parent_id" value="0">-</span>						
 						</c:otherwise>
-					</c:choose>					        
+					</c:choose>		 --%>			        
 	             </div>
               </div>
               <!-- /.col -->
