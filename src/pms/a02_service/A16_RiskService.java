@@ -114,28 +114,28 @@ public class A16_RiskService {
 		StringBuilder sb = new StringBuilder(); 
 		
 		if (!oldRisk.getSubject().equals(newRisk.getSubject())) {
-			sb.append("[제목 변경] \n" + oldRisk.getSubject() + "\n -> " + newRisk.getSubject() + "\n");
+			sb.append("[제목 변경]\n " + oldRisk.getSubject() + " \n-> " + newRisk.getSubject() + "\n");
 		}
 		String oldDescription = oldRisk.getDescription();
 		if (oldDescription == null) {
 			oldDescription = "";
 		}
 		if (!oldDescription.equals(newRisk.getDescription())) {
-			sb.append("[내용 변경] \n" + oldDescription + "\n -> " + newRisk.getDescription() + "\n");
+			sb.append("[내용 변경]\n " + oldDescription + " \n-> " + newRisk.getDescription() + "\n");
 		}
 		
 		if (!oldRisk.getStatus().equals(newRisk.getStatus())) {
-			sb.append("[상태 변경] \n" + oldRisk.getStatus() + "\n -> " + newRisk.getStatus() + "\n");
+			sb.append("[상태 변경] " + oldRisk.getStatus() + " -> " + newRisk.getStatus() + "\n");
 		}
 		Account account = daoA.getAccount(newRisk.getAccount_id());
 		if (!oldRisk.getAccount_name().equals(account.getName())) {
 			sb.append("[담당자 변경] " + oldRisk.getAccount_name() + " -> " + account.getName() + "\n");
 		}
 		if (oldRisk.getProbability() != newRisk.getProbability()) {
-			sb.append("[발생가능성 변경] \n" + oldRisk.getProbability() + "\n -> " + newRisk.getProbability() + "\n");
+			sb.append("[발생가능성 변경] " + oldRisk.getProbability() + " -> " + newRisk.getProbability() + "\n");
 		}
 		if (oldRisk.getImpact() != newRisk.getImpact()) {
-			sb.append("[영향도 변경] \n" + oldRisk.getImpact() + "\n -> " + newRisk.getImpact() + "\n");
+			sb.append("[영향도 변경] " + oldRisk.getImpact() + " -> " + newRisk.getImpact() + "\n");
 		}
 		String oldStart = TimeManager.getInstance().datetimeToSimple(oldRisk.getStart_date());
 		String oldEnd = TimeManager.getInstance().datetimeToSimple(oldRisk.getEnd_date());
@@ -146,10 +146,10 @@ public class A16_RiskService {
 			sb.append("[예상완료일 변경] " + oldEnd + " -> " + newRisk.getEnd_date() + "\n");
 		}
 		if (!oldRisk.getStrategy().equals(newRisk.getStrategy())) {
-			sb.append("[전략 변경] \n" + oldRisk.getStrategy() + "\n -> " + newRisk.getStrategy() + "\n");
+			sb.append("[전략 변경] " + oldRisk.getStrategy() + " -> " + newRisk.getStrategy() + "\n");
 		}
 		if (!oldRisk.getTreatment().equals(newRisk.getTreatment())) {
-			sb.append("[해결방안 변경] \n" + oldRisk.getTreatment() + "\n -> " + newRisk.getTreatment() + "\n");
+			sb.append("[해결방안 변경] \n " + oldRisk.getTreatment() + "\n ->  " + newRisk.getTreatment() + "\n");
 		}
 		
 		/* 파일 수정 이력 */
@@ -184,7 +184,7 @@ public class A16_RiskService {
 		if (!oldFileName.equals(newFileName)) {
 			// 나중 파일이 없을 때는 이력 남기지 말 것
 			if (!newFileName.equals("")) {
-				sb.append("[파일 변경] \n" + oldFileName + "\n -> " + newFileName + "\n");
+				sb.append("[파일 변경] " + oldFileName + " -> " + newFileName + "\n");
 			}
 		}
 		return sb.toString();
