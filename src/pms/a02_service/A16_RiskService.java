@@ -163,7 +163,10 @@ public class A16_RiskService {
 			System.out.println(newfile.getOriginalFilename());
 		}
 		if (!oldfile.getFilename().equals(newfile.getOriginalFilename())) {
+			if(newfile.getOriginalFilename() == "") {
+			}else {
 			sb.append("[파일 변경] \n" + oldfile.getFilename() + "\n -> " + newfile.getOriginalFilename() + "\n");
+			}
 		}
 		return sb.toString();
 	}
