@@ -151,9 +151,19 @@ public class A16_RiskService {
 		if (!oldRisk.getTreatment().equals(newRisk.getTreatment())) {
 			sb.append("[해결방안 변경] \n" + oldRisk.getTreatment() + "\n -> " + newRisk.getTreatment() + "\n");
 		}
-		if (!oldRisk.getFileInfo().equals(newRisk.getFileInfo())) {
-			//sb.append("[파일 변경] \n" + oldRisk.getFileInfo() + "\n -> " + newRisk.getFileInfo() + "\n");
-			sb.append("[파일 변경] \n");
+		
+		ArrayList<Attachment> files = dao.fileInfo(newRisk.getId());
+		Attachment oldfile = files.get(0);
+		if(oldfile != null) {
+			System.out.println(oldfile.getFilename());
+		}
+		MultipartFile[] newfiles = newRisk.getReport();
+		MultipartFile newfile = newfiles[0];
+		if(newfile != null) {
+			System.out.println(newfile.getOriginalFilename());
+		}
+		if (!oldfile.getFilename().equals(newfile.getOriginalFilename())) {
+			sb.append("[파일 변경] \n" + oldfile.getFilename() + "\n -> " + newfile.getOriginalFilename() + "\n");
 		}
 		return sb.toString();
 	}
@@ -172,13 +182,21 @@ public class A16_RiskService {
 	
 	public void updateRisk(Risk upt) {
 		
+		Risk old = dao.getRisk(upt.getId());
+		/*
+		ArrayList<Attachment> files = dao.fileInfo(upt.getId());
+		Attachment oldfile = files.get(0);
+		if(oldfile != null) {
+			System.out.println(oldfile.getFilename());
+		}
 		
-		Risk old = dao.getRisk(upt.getId());	
-		old.setFileInfo(dao.fileInfo(old.getId()));
-		old.getFileInfo();
+		MultipartFile[] newfiles = upt.getReport();
+		MultipartFile newfile = newfiles[0];
+		if(newfile != null) {
+			System.out.println(newfile.getOriginalFilename());
+		}*/
+		
 		String updated = getUpdated(old, upt);
-		//old.getFileInfo();
-		
 		if(updated != null) {
 			if (updated != "") {
 				Journal journal = new Journal();
