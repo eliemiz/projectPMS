@@ -55,7 +55,6 @@ html, body {
 	$(document).ready(function(){
 		$("#sm-dashboard").addClass("menu-open");
 		$("#sb-task").addClass("active");
-		$("#sb-task").addClass("active");
 		
 		$("#newTask").click(function(){
 			location.href = "${path}/task.do?method=insForm";

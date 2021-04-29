@@ -139,17 +139,23 @@ html, body {
 			}
 			
 		});
+		var proc = "${proc}";
+		if(proc=="del"){
+			if(confirm("삭제되었습니다.\n업무 리스트화면으로 이동합니다.")){
+				location.href = "${path}/task.do?method=list";		
+			}			
+		}
 		
 		/* 삭제버튼 클릭 */
-		var accId = "${account.id}";
-		var accAuth = "${account.auth}";
-		var writer = $("[name=account_id]").val();		
 		$("#delBtn").on("click",function(){
+			var accId = "${account.id}";
+			var accAuth = "${account.auth}";
+			var writer = $("[name=account_id]").val();
 			if(accId==writer || accAuth=='Manager'){
 				if(confirm("하위 업무가 존재하는 경우 하위 업무도 함께 삭제됩니다.\n삭제하시겠습니까?")){
+					$("[name=proc]").val("del");
 					$("form").attr("action","${path}/task.do?method=delete");
 					$("form").submit();
-					alert("삭제되었습니다.");
 				}
 			} else {
 				alert("삭제 권한이 없습니다.\n담당자 혹은 PM만 삭제가 가능합니다.");
@@ -223,7 +229,6 @@ html, body {
         	<form:hidden path="description"/>
         	<form:hidden path="start_date"/>
         	<form:hidden path="project_name"/>
-        	
           <h3 class="card-title">
           	${task.tracker}&nbsp;&nbsp;#<span id="id" name="id" value="${task.id}">${task.id}</span>
           	<span ></span>

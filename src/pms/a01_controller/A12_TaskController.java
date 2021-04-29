@@ -91,7 +91,7 @@ public class A12_TaskController {
 		// Project Info
 		Project project = serviceP.getProject(projectId);
 		d.addAttribute("project", project);
-		
+		// Task Info
 		TaskSch sch = new TaskSch(projectId, subject, tracker, status, writer);
 		d.addAttribute("tasklist", service.taskList(sch));
 		
@@ -178,9 +178,10 @@ public class A12_TaskController {
 	
 	// http://localhost:7080/projectPMS/task.do?method=delete
 	@RequestMapping(params = "method=delete")
-	public String delete(Task del) {
-		service.deleteTask(del.getId());
-		return "a12_task\\a01_taskList";
+	public String delete(@RequestParam("id") int id, Model d) {
+		d.addAttribute("proc", "del");
+		service.deleteTask(id);
+		return "a12_task\\a03_taskDetail";
 	}
 	
 	// 파일 다운로드
