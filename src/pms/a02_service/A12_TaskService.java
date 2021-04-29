@@ -48,26 +48,26 @@ public class A12_TaskService {
 
 	// task 리스트 조회(검색)
 	public ArrayList<Task> taskList(TaskSch sch) {
-			
+
 		/* Local 시간으로 변경 */
 		ArrayList<Task> taskList = dao.taskList(sch);
 		for (Task task : taskList) {
-			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
-			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));  
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));
+			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
 		}
-		
+
 		return taskList;
 	}
 
 	// task 조회(id이용)
-	public Task getTask(int id) {		
-		
+	public Task getTask(int id) {
+
 		Task task = dao.getTask(id);
-		
+
 		/* Local 시간으로 변경 */
-		task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+		task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));
 		task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
-		
+
 		task.setFileInfo(dao.fileInfo(id));
 		// return dao.getTask(id);
 		return task;
@@ -77,11 +77,11 @@ public class A12_TaskService {
 	public void insertTask(Task ins) {
 		System.out.println("upload:" + upload);
 		System.out.println("uploadTmp:" + uploadTmp);
-		
+
 		/* iso 시간으로 변경 */
 		ins.setStart_date(TimeManager.getInstance().simpleToIso(ins.getStart_date()));
 		ins.setDue_date(TimeManager.getInstance().simpleToIso(ins.getDue_date()));
-		
+
 		dao.insertTask(ins);
 
 		String filename = null;
@@ -95,14 +95,14 @@ public class A12_TaskService {
 		}
 		for (MultipartFile mpf : ins.getReport()) {
 			filename = mpf.getOriginalFilename();
-			filesize = mpf.getSize()/1024;
+			filesize = mpf.getSize() / 1024;
 			if (filename != null && !filename.trim().equals("")) {
 				tmpFile = new File(uploadTmp + filename);
 				try {
 					mpf.transferTo(tmpFile);
 					orgFile = new File(upload + filename);
-					Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);							
-					dao.uploadFile(new Attachment("Task",filename, "(1)"+filename, upload, filesize+"KB"));
+					Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					dao.uploadFile(new Attachment("Task", filename, "(1)" + filename, upload, filesize + "KB"));
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -117,10 +117,10 @@ public class A12_TaskService {
 			}
 		}
 	}
-	
+
 	public String getUpdated(Task oldTask, Task newTask) {
 
-		StringBuilder sb = new StringBuilder(); 
+		StringBuilder sb = new StringBuilder();
 		if (!oldTask.getSubject().equals(newTask.getSubject())) {
 			sb.append("[제목 변경] \n" + oldTask.getSubject() + "\n -> " + newTask.getSubject() + "\n");
 		}
@@ -145,7 +145,7 @@ public class A12_TaskService {
 		if (oldTask.getDone_ratio() != newTask.getDone_ratio()) {
 			sb.append("[진행도 변경] " + oldTask.getDone_ratio() + " -> " + newTask.getDone_ratio() + "\n");
 		}
-		
+
 		String oldStart = TimeManager.getInstance().isoToSimple(oldTask.getStart_date());
 		String oldDue = TimeManager.getInstance().isoToSimple(oldTask.getDue_date());
 		if (!oldStart.equals(newTask.getStart_date())) {
@@ -166,17 +166,29 @@ public class A12_TaskService {
 		if (oldTask.getEstimated() != newTask.getEstimated()) {
 			sb.append("[추정시간 변경] " + oldTask.getEstimated() + " -> " + newTask.getEstimated() + "\n");
 		}
-		if(!oldTask.getFileInfo().equals(newTask.getFileInfo())) {
-			sb.append("[파일 변경]\n");
+
+		ArrayList<Attachment> files = dao.fileInfo(newTask.getId());
+		Attachment oldfile = files.get(0);
+		if (oldfile != null) {
+			System.out.println(oldfile.getFilename());
 		}
-		
-		
+		MultipartFile[] newfiles = newTask.getReport();
+		MultipartFile newfile = newfiles[0];
+		if (newfile != null) {
+			System.out.println(newfile.getOriginalFilename());
+		}
+		if (!oldfile.getFilename().equals(newfile.getOriginalFilename())) {
+			if (newfile.getOriginalFilename() != "") {
+				sb.append("[파일 변경] " + oldfile.getFilename() + " -> " + newfile.getOriginalFilename() + "\n");
+			}
+		}
+
 		return sb.toString();
 	}
 
 	// task 수정
 	public void updateTask(Task upt) {
-		
+
 		// 1. id로 기존 task 로드
 		Task old = dao.getTask(upt.getId());
 		old.setFileInfo(dao.fileInfo(upt.getId()));
@@ -192,15 +204,14 @@ public class A12_TaskService {
 				dao.insertJournal(journal);
 			}
 		}
-		
 
 		/* iso 시간으로 변경 */
 		upt.setStart_date(TimeManager.getInstance().simpleToIso(upt.getStart_date()));
 		/* 등록 시에 due_date + 1 */
 		upt.setDue_date(TimeManager.getInstance().simpleToIso(upt.getDue_date()));
-		
+
 		int id = upt.getId();
-		if(upt.getFilenames()!=null && upt.getFilenames().length>0) {
+		if (upt.getFilenames() != null && upt.getFilenames().length > 0) {
 			String filename = null;
 			long filesize = 0;
 			String orgFilename = null;
@@ -209,47 +220,46 @@ public class A12_TaskService {
 //			Attachment uptFile = null;
 			MultipartFile mpf = null;
 			File pathFile = new File(uploadTmp);
-			for(File f:pathFile.listFiles()) {
-				System.out.println("삭제할 파일:"+f.getName());
+			for (File f : pathFile.listFiles()) {
+				System.out.println("삭제할 파일:" + f.getName());
 				f.delete();
 			}
-			for(int idx=0;idx<upt.getReport().length;idx++) {
+			for (int idx = 0; idx < upt.getReport().length; idx++) {
 				mpf = upt.getReport()[idx];
 				filename = mpf.getOriginalFilename();
 				orgFilename = upt.getFilenames()[idx];
-				if(filename!=null && !filename.trim().equals("")) {
-					tmpFile = new File(uploadTmp+orgFilename);
-					if(tmpFile.exists()) {
+				if (filename != null && !filename.trim().equals("")) {
+					tmpFile = new File(uploadTmp + orgFilename);
+					if (tmpFile.exists()) {
 						tmpFile.delete();
 					}
-					orgFile = new File(upload+orgFilename);
-					if(orgFile.exists()) {
+					orgFile = new File(upload + orgFilename);
+					if (orgFile.exists()) {
 						orgFile.delete();
 					}
-					tmpFile = new File(uploadTmp+filename);
-					orgFile = new File(upload+filename);
+					tmpFile = new File(uploadTmp + filename);
+					orgFile = new File(upload + filename);
 					try {
 						mpf.transferTo(tmpFile);
-						
-						Files.copy(tmpFile.toPath(), orgFile.toPath(),
-								StandardCopyOption.REPLACE_EXISTING);
-						
+
+						Files.copy(tmpFile.toPath(), orgFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						System.out.println("# 상태 에러"+e.getMessage());
+						System.out.println("# 상태 에러" + e.getMessage());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						System.out.println("# 파일 에러:"+e.getMessage());
-					} catch(Exception e) {
-						System.out.println("# 기타 에러:"+e.getMessage());
+						System.out.println("# 파일 에러:" + e.getMessage());
+					} catch (Exception e) {
+						System.out.println("# 기타 에러:" + e.getMessage());
 					}
 					HashMap<String, String> hs = new HashMap<String, String>();
-					hs.put("document_id", ""+id);
+					hs.put("document_id", "" + id);
 					hs.put("filename", filename);
-					hs.put("filesize", filesize+"KB");
-					hs.put("disk_filename", "disk_"+filename);
+					hs.put("filesize", filesize + "KB");
+					hs.put("disk_filename", "disk_" + filename);
 					hs.put("orgFilename", upt.getFilenames()[idx]);
 					dao.updateFile(hs);
 				}
@@ -263,19 +273,17 @@ public class A12_TaskService {
 		dao.deleteTask(id);
 		dao.deleteFile(id);
 	}
-	
+
 	// Journal
-	public ArrayList<Journal> getJournalList(int id){
+	public ArrayList<Journal> getJournalList(int id) {
 		/* iso 시간으로 변경 */
 //		Journal.setCreated_on(TimeManager.getInstance().isoToSimple(Journal.getCreated_on()));
 		return dao.getJournalList(id);
 	}
+
 	public void insertJournal(Journal insj) {
 		dao.insertJournal(insj);
 	}
-	
-
-	
 
 	/* Calendar */
 	// Calendar List
@@ -289,7 +297,8 @@ public class A12_TaskService {
 		}
 		return list;
 	}
-	public ArrayList<Calendar> calenSch(CalendarSch sch){
+
+	public ArrayList<Calendar> calenSch(CalendarSch sch) {
 		ArrayList<Calendar> list = dao.calenSch(sch);
 		for (Calendar c : list) {
 			c.setEnd(TimeManager.getInstance().isoPlusDay(c.getEnd()));
@@ -305,45 +314,47 @@ public class A12_TaskService {
 		ArrayList<GanttChart> list = dao.ganttList(projectId);
 		for (GanttChart gc : list) {
 			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
-			System.out.println("Gantt로 변경: "+gc.getStart_date());
+			System.out.println("Gantt로 변경: " + gc.getStart_date());
 		}
 		return list;
 	}
-	public ArrayList<GanttChart> ganttSch(GanttSearch sch){
+
+	public ArrayList<GanttChart> ganttSch(GanttSearch sch) {
 		ArrayList<GanttChart> list = dao.ganttSch(sch);
 		for (GanttChart gc : list) {
 			gc.setStart_date(TimeManager.getInstance().isoToGantt(gc.getStart_date()));
-			System.out.println("Gantt로 변경: "+gc.getStart_date());
+			System.out.println("Gantt로 변경: " + gc.getStart_date());
 		}
 		return list;
 	}
-	
+
 	// 산출물 리스트 조회
 	public ArrayList<TaskResult> getTaskResult(int projectId) {
 		ArrayList<TaskResult> trList = dao.getTaskResult(projectId);
-		for(TaskResult tr : trList) {
+		for (TaskResult tr : trList) {
 			tr.setDue_date(TimeManager.getInstance().isoToSimple(tr.getDue_date()));
 		}
-		
+
 		return trList;
 	}
 
-	public ArrayList<Task> getTaskUser(int id){
-		
+	public ArrayList<Task> getTaskUser(int id) {
+
 		ArrayList<Task> taskUser = dao.getTaskUser(id);
-		
+
 		/* Local 시간으로 변경 */
 		for (Task task : taskUser) {
-			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));
 			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
-		
+
 		}
 		return taskUser;
 	}
 
 	/* Line Chart */
-	public void getLineChartList(int projectId, ArrayList<String> labels, ArrayList<Double> data1, ArrayList<Double> data2){
-		
+	public void getLineChartList(int projectId, ArrayList<String> labels, ArrayList<Double> data1,
+			ArrayList<Double> data2) {
+
 		/* 업무 목록 로드 */
 		ArrayList<Task> taskList = dao.getTaskListByProjectId(projectId);
 		if (taskList == null) {
@@ -362,7 +373,7 @@ public class A12_TaskService {
 			} else if (startDate.before(firstDate)) {
 				firstDate = startDate;
 			}
-			
+
 			Date dueDate = TimeManager.getInstance().isoToDate(task.getDue_date());
 			if (lastDate == null) {
 				lastDate = dueDate;
@@ -370,61 +381,62 @@ public class A12_TaskService {
 				lastDate = dueDate;
 			}
 		}
-		
+
 		int count = 0;
 		double stack1 = 0.0;
 		double stack2 = 0.0;
 		ArrayList<Double> arr1 = new ArrayList<Double>();
 		ArrayList<Double> arr2 = new ArrayList<Double>();
-		
+
 		/* 시작일부터 종료일까지 순회 */
-		while(!firstDate.after(lastDate)) {
+		while (!firstDate.after(lastDate)) {
 			labels.add(TimeManager.getInstance().dateToSimple(firstDate));
-			
+
 			/* 업무가 해당 범위 내에 있으면 날짜와 진행도 추가 */
 			for (Task task : taskList) {
 				count++;
-				
+
 				Date startDate = TimeManager.getInstance().isoToDate(task.getStart_date());
 				Date dueDate = TimeManager.getInstance().isoToDate(task.getDue_date());
-				
+
 				stack1 += 100;
-				
+
 				if (!firstDate.before(startDate) && !firstDate.after(dueDate)) {
 					stack2 += task.getDone_ratio();
 				} else {
 					stack2 += 100;
 				}
 			}
-			
+
 			arr1.add(stack1);
 			arr2.add(stack2);
-			
+
 			/* index date 하루 추가 */
 			firstDate = new Date(firstDate.getTime() + 1000 * 60 * 60 * 24);
 		}
-		
+
 		for (double i : arr1) {
-			data1.add(i/count);
+			data1.add(i / count);
 		}
-		
+
 		for (double i : arr2) {
-			data2.add(i/count);
+			data2.add(i / count);
 		}
 	}
-	
+
 	/* Approval */
 	// 리스트 불러오기
-	public ArrayList<Task> getTaskList(TaskSch sch){
+	public ArrayList<Task> getTaskList(TaskSch sch) {
 		/* Local 시간으로 변경 */
 		ArrayList<Task> taskList = dao.getTaskList(sch);
 		for (Task task : taskList) {
-			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));  
-			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));  
+			task.setStart_date(TimeManager.getInstance().isoToSimple(task.getStart_date()));
+			task.setDue_date(TimeManager.getInstance().isoToSimple(task.getDue_date()));
 		}
-		
+
 		return taskList;
 	}
+
 	// 상태 업데이트
 	public void updateStatus(Task upt) {
 		dao.updateStatus(upt);
