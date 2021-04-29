@@ -167,7 +167,7 @@ public class A16_RiskController {
 	@RequestMapping(params="method=delete")
 	public String Riskdelete(@RequestParam("id") int id) {
 		service.deleteRisk(id);
-		return "a16_risk\\a01_riskUpdate";
+		return "forward:/risk.do?method=list";
 	}
 	// http://localhost:6080/projectPMS/risk.do?method=download&filename=risk.txt
 	@RequestMapping(params="method=download")

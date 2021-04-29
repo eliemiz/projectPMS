@@ -112,13 +112,7 @@
 				$("form").submit();
 			}
 		});
-		$("#delBtu").on("click",function(){
-			if(confirm("삭제하시겠습니까?")){
-				$("[name=proc]").val("del");
-				$("form").attr("action","${path}/risk.do?method=delete");
-				$("form").submit();
-			}
-		});		
+	
 	})
 </script>
 </head>
@@ -356,10 +350,6 @@
            class="btn btn-secondary float-right">취소</button>
           <button type="button" id="uptBtu"
            class="btn btn-primary float-right">수정</button>
-          <c:if test="${account.auth == 'Manager'}">
-          <button type="button" id="delBtu"
-           class="btn btn-primary float-right">삭제</button> 
-          </c:if>
          </div>      
       </div>	
       </form:form>

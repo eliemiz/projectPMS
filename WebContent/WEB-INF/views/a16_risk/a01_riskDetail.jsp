@@ -99,6 +99,22 @@
 				$("form").submit();
 			}
 		});
+		$("#delBtu").on("click",function(){
+			var auth = "${account.auth}";
+			var status = "${risk.status}";
+			if((status == 'Request' || 
+				status == 'Review' || 
+				status == 'Reassignment' ||
+				status == 'Completed') && auth != 'Manager'){
+				alert("Project Manager만 삭제 가능합니다.")
+			}else{
+				if(confirm("삭제하시겠습니까?")){
+					$("form").attr("action","${path}/risk.do?method=delete");					
+					$("form").submit();				
+						
+				}
+			}
+		});	
 	});
 </script>
 </head>
@@ -163,6 +179,11 @@
                 <button type="button" id="upt"
                  	class="btn btn-primary float-right">수정</button>
                 </c:if>
+              <c:if test="${account.auth == 'Manager'}">
+               &nbsp;&nbsp;
+	        	<button type="button" id="delBtu"
+	         	    class="btn btn-primary float-right">삭제</button> 
+	          </c:if>  
                 &nbsp;&nbsp;&nbsp;
          <%--        <button type="button" onclick="location.href='${path}/risk.do?method=list'"
                  class="btn btn-secondary float-right">삭제</button>  --%>
