@@ -184,9 +184,9 @@
 	        	<button type="button" id="delBtu"
 	         	    class="btn btn-primary float-right">삭제</button> 
 	          </c:if>  
-                &nbsp;&nbsp;&nbsp;
-         <%--        <button type="button" onclick="location.href='${path}/risk.do?method=list'"
-                 class="btn btn-secondary float-right">삭제</button>  --%>
+                &nbsp;&nbsp;
+       			<button type="button" onclick="location.href='${path}/risk.do?method=list'"
+                 class="btn btn-secondary float-right">목록</button>  
               </div>
             </div>
           </div>
