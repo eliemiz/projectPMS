@@ -166,6 +166,9 @@ public class A12_TaskService {
 		if (oldTask.getEstimated() != newTask.getEstimated()) {
 			sb.append("[추정시간 변경] " + oldTask.getEstimated() + " -> " + newTask.getEstimated() + "\n");
 		}
+		if(!oldTask.getFileInfo().equals(newTask.getFileInfo())) {
+			sb.append("[파일 변경]\n");
+		}
 		
 		
 		return sb.toString();
@@ -176,6 +179,8 @@ public class A12_TaskService {
 		
 		// 1. id로 기존 task 로드
 		Task old = dao.getTask(upt.getId());
+		old.setFileInfo(dao.fileInfo(upt.getId()));
+		old.getFileInfo();
 		String updated = getUpdated(old, upt);
 		if (updated != null) {
 			if (updated != "") {
