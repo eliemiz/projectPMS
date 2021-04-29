@@ -182,7 +182,10 @@ public class A16_RiskService {
 		
 		
 		if (!oldFileName.equals(newFileName)) {
-			sb.append("[파일 변경] \n" + oldFileName + "\n -> " + newFileName + "\n");
+			// 나중 파일이 없을 때는 이력 남기지 말 것
+			if (!newFileName.equals("")) {
+				sb.append("[파일 변경] \n" + oldFileName + "\n -> " + newFileName + "\n");
+			}
 		}
 		return sb.toString();
 	}
