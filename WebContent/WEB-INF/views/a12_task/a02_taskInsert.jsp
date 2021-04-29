@@ -74,6 +74,7 @@ html, body {
 	
 	$(document).ready(function(){
 		$("[name=start_date]").val(getToday());
+		$("[name=due_date]").val(getToday());
 
 		function getToday(){
 		       var date = new Date();
