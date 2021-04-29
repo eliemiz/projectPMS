@@ -304,6 +304,9 @@ html, body {
 		            		&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp; 
 							<span name="parent_id" value="${task.parent_id}">
 								<a href="${path}/task.do?method=detail&id=${task.parent_id}">${task.parent_id}</a>
+								<%-- <c:if test="${task.parent_id==parentTask.id}">
+								<a href="${path}/task.do?method=detail&id=${parentTask.id}">${parentTask.subject}</a>
+								</c:if> --%>
 							</span>
 						</c:when>
 						<c:otherwise>

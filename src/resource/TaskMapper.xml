@@ -14,6 +14,7 @@
 		AND t.tracker LIKE '%'||#{tracker}||'%'
 		AND t.status LIKE '%'||#{status}||'%'
 		AND a.name LIKE '%'||#{writer}||'%'
+		START WITH t.parent_id = 0
 		CONNECT BY PRIOR t.id = t.parent_id
 		ORDER siblings BY t.id DESC
 	</select>

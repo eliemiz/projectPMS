@@ -144,6 +144,8 @@ public class A12_TaskController {
 	@RequestMapping(params = "method=detail")
 	public String detail(@ModelAttribute("task") Task task, Model d) {
 		System.out.println("id:"+task.getId());
+//		System.out.println("parent_id:"+task.getParent_id());
+//		d.addAttribute("parentTask", service.getTask(task.getParent_id()));
 		d.addAttribute("task", service.getTask(task.getId()));
 		d.addAttribute("journals", service.getJournalList(task.getId()));
 		return "a12_task\\a03_taskDetail";
